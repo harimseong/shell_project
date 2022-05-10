@@ -1,0 +1,18 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-Iinclude",
+      "-o",
+      "src/minishell.o",
+      "src/minishell.c"
+    ],
+    "directory": "/Users/hseong/42backup/core3/minishell",
+    "file": "/Users/hseong/42backup/core3/minishell/src/minishell.c",
+    "output": "/Users/hseong/42backup/core3/minishell/src/minishell.o"
+  }
+]
