@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/09 15:29:00 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:08:45 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_dlist
 	int			flag;
 }				t_dlist;
 
-void	dlist_init(t_dlist *list);
+t_dlist	*dlist_init(void);
 
 // CREATE AND DELETE
 int		push_front(t_dlist *list, t_item item);

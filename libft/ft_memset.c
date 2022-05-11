@@ -6,11 +6,13 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 21:21:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/03/23 15:43:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:24:19 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+typedef unsigned long long int	t_uint64;
 
 static void	set_word(int c, t_word *num);
 

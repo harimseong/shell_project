@@ -6,16 +6,20 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:20:14 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 14:39:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:12:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "dlinkedlist.h"
 
-void	dlist_init(t_dlist *list)
+t_dlist	*dlist_init(void)
 {
+	t_dlist	*list;
+
+	list = malloc(sizeof(t_dlist));
 	*list = (t_dlist){NULL, NULL, NULL, 0, 0, 0};
+	return (list);
 }
 
 void	print_dlist_forward(t_dlist *list, void (*print_item)(t_item *))
@@ -75,5 +79,4 @@ void	empty_dlist(t_dlist *list, void (*delete_item)(t_item *))
 		--size;
 	}
 	free(list->tail);
-	dlist_init(list);
 }

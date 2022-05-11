@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 23:25:37 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/04 19:33:37 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:30:47 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
-
-typedef long long unsigned int	t_uint64;
 
 typedef struct s_word
 {
-	t_uint64	byte[WORD_BYTES];
+	unsigned long long int	byte[WORD_BYTES];
 }			t_word;
 
 int			ft_isalpha(int c);
@@ -56,11 +53,12 @@ void		ft_swap(int *a, int *b);
 
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s);
+char		*ft_strndup(const char *s, size_t len);
 
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
-char		**ft_split(char const *s, char *delim);
+char		**ft_split(char const *s, const char *delim);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -84,5 +82,8 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int
+ft_execvpe(const char *filename, char *const *argv, char *const *envp);
 
 #endif

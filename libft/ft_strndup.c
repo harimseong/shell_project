@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_recognition.c                                :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 11:02:57 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/09 15:31:04 by hseong           ###   ########.fr       */
+/*   Created: 2022/05/11 15:27:17 by hseong            #+#    #+#             */
+/*   Updated: 2022/05/11 15:28:00 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "minishell_type.h"
-#include "minishell_token.h"
-#include "dlinkedlist.h"
+#include <stdlib.h>
 
-int	token_recognition(char *cmd_line, t_dlist *token_list)
+char	*ft_strndup(const char *src, size_t len)
 {
-	t_token_context	context;
+	char	*dst;
+	size_t	idx;
 
-	context = (t_token_context){0, };
-	while (cmd_line)
+	dst = malloc(len + 1);
+	if (dst == NULL)
+		return (NULL);
+	dst[len] = 0;
+	idx = 0;
+	while (idx < len && src[idx])
 	{
-
+		dst[idx] = src[idx];
+		++idx;
 	}
+	while (idx < len)
+	{
+		dst[idx] = 0;
+		++idx;
+	}
+	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/09 15:31:34 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:45:12 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ enum e_token_type
 typedef struct s_token_context
 {
 	int			type;
-	t_uint64	start_idx;
+	t_uint64	idx;
 }				t_token_context;
 
 typedef void	(*t_token_func)(void *, t_token_context *);

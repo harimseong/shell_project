@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hextoi.c                                        :+:      :+:    :+:   */
+/*   ft_htoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 19:40:39 by hseong            #+#    #+#             */
-/*   Updated: 2022/03/24 20:46:34 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:22:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#define LLONG_MAX (9223372036854775807LL)
 
 static int	g_hex_table[23] = {
 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -35,7 +37,7 @@ int	ft_htoi(const char *str)
 		temp = num;
 		num = 16 * num + g_hex_table[ft_toupper(*str++) - 48];
 	}
-	if (temp > num || num > LONG_MAX)
-		return ((int)LONG_MAX);
+	if (temp > num || num > LLONG_MAX)
+		return ((int)LLONG_MAX);
 	return ((int)num);
 }
