@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:45:12 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:16:00 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,48 +30,48 @@ enum e_token_type
 typedef struct s_token_context
 {
 	int			type;
-	t_uint64	idx;
+	char		*token_start;
 }				t_token_context;
 
-typedef void	(*t_token_func)(void *, t_token_context *);
+typedef void	(*t_token_func)(t_dlist *token_list, t_token_context *);
 typedef char	**t_token_arr;
 
-void	delimit_token(void *arg, t_token_context *context);
-void	do_nothing(void *arg, t_token_context *context);
-void	char_excl(void *arg, t_token_context *context);
-void	char_double_quote(void *arg, t_token_context *context);
-void	char_hash(void *arg, t_token_context *context);
-void	char_dolor(void *arg, t_token_context *context);
-void	char_percent(void *arg, t_token_context *context);
-void	char_ampersand(void *arg, t_token_context *context);
-void	char_single_quote(void *arg, t_token_context *context);
-void	char_paren_open(void *arg, t_token_context *context);
-void	char_paren_close(void *arg, t_token_context *context);
-void	char_asterisk(void *arg, t_token_context *context);
-void	char_plus(void *arg, t_token_context *context);
-void	char_comma(void *arg, t_token_context *context);
-void	char_minus(void *arg, t_token_context *context);
-void	char_dot(void *arg, t_token_context *context);
-void	char_slash(void *arg, t_token_context *context);
-void	char_num(void *arg, t_token_context *context);
-void	char_alphabet(void *arg, t_token_context *context);
-void	char_colon(void *arg, t_token_context *context);
-void	char_semicolon(void *arg, t_token_context *context);
-void	char_less(void *arg, t_token_context *context);
-void	char_equal(void *arg, t_token_context *context);
-void	char_greater(void *arg, t_token_context *context);
-void	char_question(void *arg, t_token_context *context);
-void	char_at(void *arg, t_token_context *context);
-void	char_bracket_open(void *arg, t_token_context *context);
-void	char_backslash(void *arg, t_token_context *context);
-void	char_bracket_close(void *arg, t_token_context *context);
-void	char_caret(void *arg, t_token_context *context);
-void	char_underbar(void *arg, t_token_context *context);
-void	char_backtick(void *arg, t_token_context *context);
-void	char_braces_open(void *arg, t_token_context *context);
-void	char_vertical_bar(void *arg, t_token_context *context);
-void	char_braces_close(void *arg, t_token_context *context);
-void	char_tilde(void *arg, t_token_context *context);
+void	delimit_token(t_dlist *token_list, t_token_context *context);
+void	do_nothing(t_dlist *token_list, t_token_context *context);
+void	char_excl(t_dlist *token_list, t_token_context *context);
+void	char_double_quote(t_dlist *token_list, t_token_context *context);
+void	char_hash(t_dlist *token_list, t_token_context *context);
+void	char_dolor(t_dlist *token_list, t_token_context *context);
+void	char_percent(t_dlist *token_list, t_token_context *context);
+void	char_ampersand(t_dlist *token_list, t_token_context *context);
+void	char_single_quote(t_dlist *token_list, t_token_context *context);
+void	char_paren_open(t_dlist *token_list, t_token_context *context);
+void	char_paren_close(t_dlist *token_list, t_token_context *context);
+void	char_asterisk(t_dlist *token_list, t_token_context *context);
+void	char_plus(t_dlist *token_list, t_token_context *context);
+void	char_comma(t_dlist *token_list, t_token_context *context);
+void	char_minus(t_dlist *token_list, t_token_context *context);
+void	char_dot(t_dlist *token_list, t_token_context *context);
+void	char_slash(t_dlist *token_list, t_token_context *context);
+void	char_num(t_dlist *token_list, t_token_context *context);
+void	char_alphabet(t_dlist *token_list, t_token_context *context);
+void	char_colon(t_dlist *token_list, t_token_context *context);
+void	char_semicolon(t_dlist *token_list, t_token_context *context);
+void	char_less(t_dlist *token_list, t_token_context *context);
+void	char_equal(t_dlist *token_list, t_token_context *context);
+void	char_greater(t_dlist *token_list, t_token_context *context);
+void	char_question(t_dlist *token_list, t_token_context *context);
+void	char_at(t_dlist *token_list, t_token_context *context);
+void	char_bracket_open(t_dlist *token_list, t_token_context *context);
+void	char_backslash(t_dlist *token_list, t_token_context *context);
+void	char_bracket_close(t_dlist *token_list, t_token_context *context);
+void	char_caret(t_dlist *token_list, t_token_context *context);
+void	char_underbar(t_dlist *token_list, t_token_context *context);
+void	char_backtick(t_dlist *token_list, t_token_context *context);
+void	char_braces_open(t_dlist *token_list, t_token_context *context);
+void	char_vertical_bar(t_dlist *token_list, t_token_context *context);
+void	char_braces_close(t_dlist *token_list, t_token_context *context);
+void	char_tilde(t_dlist *token_list, t_token_context *context);
 
 static const
 	t_token_func	g_token_char_tab[128] = {

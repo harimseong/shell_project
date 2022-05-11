@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 14:51:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:44:52 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 18:53:07 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,25 @@
 #include <readline/readline.h>
 #include <stdlib.h>
 
-t_dlist	*minishell_parse_token(char *cmd_line)
+t_dlist	*minishell_parse_token(char *cmdline)
 {
 	t_dlist			*token_list;
 	t_token_context token_context;
 
-	token_context = (t_token_context){0, 0};
-	if (cmd_line == NULL)
+	if (cmdline == NULL)
 		return (NULL);
+	token_context = (t_token_context){0, cmdline};
 	token_list = dlist_init();
-
-	free(cmd_line);
+	while (*token_context.token_start)
+	{
+		
+	}
+	free(cmdline);
 	return (token_list);
+}
+
+void	minishell_analyze_token(t_dlist *token_list)
+{
+	if (token_list == NULL)
+		return (NULL);
 }

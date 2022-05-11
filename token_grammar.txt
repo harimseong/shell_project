@@ -45,9 +45,7 @@ and_or           :                         pipeline
 pipeline         :                        command
                  | pipeline '|' linebreak command
                  ;
-command          : simple_command
-                 ;
-simple_command   : cmd_prefix cmd_word cmd_suffix
+command          : cmd_prefix cmd_word cmd_suffix
                  | cmd_prefix cmd_word
                  | cmd_prefix
                  | cmd_name cmd_suffix
