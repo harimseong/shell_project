@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:20:14 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/09 10:20:15 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 14:39:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	dlist_init(t_dlist *list)
 	*list = (t_dlist){NULL, NULL, NULL, 0, 0, 0};
 }
 
-void	print_dlist_forward(t_dlist *list, void (*print_item)(t_item))
+void	print_dlist_forward(t_dlist *list, void (*print_item)(t_item *))
 {
 	t_node	*node;
 	size_t	idx;
@@ -35,7 +35,7 @@ void	print_dlist_forward(t_dlist *list, void (*print_item)(t_item))
 	}
 }
 
-void	print_dlist_backward(t_dlist *list, void (*print_item)(t_item))
+void	print_dlist_backward(t_dlist *list, void (*print_item)(t_item *))
 {
 	t_node	*node;
 	size_t	idx;
@@ -52,13 +52,13 @@ void	print_dlist_backward(t_dlist *list, void (*print_item)(t_item))
 	}
 }
 
-void	delete_dlist(t_dlist *list, void (*delete_item)(t_item))
+void	delete_dlist(t_dlist *list, void (*delete_item)(t_item *))
 {
 	empty_dlist(list, delete_item);
 	free(list);
 }
 
-void	empty_dlist(t_dlist *list, void (*delete_item)(t_item))
+void	empty_dlist(t_dlist *list, void (*delete_item)(t_item *))
 {
 	size_t		size;
 	t_node		*trav_node;

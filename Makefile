@@ -35,10 +35,8 @@ LIBFLAGS+=	-ldlinkedlist
 LIBS	+=	DLLIST.lib
 
 
-all: $(NAME)
-
-fast:
-	$(MAKE) all -j 8
+all:
+	$(MAKE) $(NAME) -j 8
 
 $(NAME): $(LIBS) $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIBFLAGS)

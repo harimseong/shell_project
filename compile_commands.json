@@ -11,8 +11,24 @@
       "src/minishell.o",
       "src/minishell.c"
     ],
-    "directory": "/Users/hseong/42backup/core3/minishell",
-    "file": "/Users/hseong/42backup/core3/minishell/src/minishell.c",
-    "output": "/Users/hseong/42backup/core3/minishell/src/minishell.o"
+    "directory": "/Users/hseong/minishell",
+    "file": "/Users/hseong/minishell/src/minishell.c",
+    "output": "/Users/hseong/minishell/src/minishell.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "-Iinclude",
+      "-o",
+      "src/memory_management.o",
+      "src/memory_management.c"
+    ],
+    "directory": "/Users/hseong/minishell",
+    "file": "/Users/hseong/minishell/src/memory_management.c",
+    "output": "/Users/hseong/minishell/src/memory_management.o"
   }
 ]

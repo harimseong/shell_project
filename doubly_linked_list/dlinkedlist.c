@@ -6,14 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/08 06:46:55 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 14:40:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "dlinkedlist.h"
 
-int	push_front(t_dlist *list, t_item item)
+int	push_front(t_dlist *list, t_item *item)
 {
 	t_node	*new_node;
 
@@ -32,7 +32,7 @@ int	push_front(t_dlist *list, t_item item)
 	return (1);
 }
 
-int	push_back(t_dlist *list, t_item item)
+int	push_back(t_dlist *list, t_item *item)
 {
 	t_node	*new_node;
 
@@ -51,7 +51,7 @@ int	push_back(t_dlist *list, t_item item)
 	return (1);
 }
 
-void	pop_front(t_dlist *list, void (*delete_item)(t_item))
+void	pop_front(t_dlist *list, void (*delete_item)(t_item *))
 {
 	t_node	*del_node;
 
@@ -68,7 +68,7 @@ void	pop_front(t_dlist *list, void (*delete_item)(t_item))
 	--list->size;
 }
 
-void	pop_back(t_dlist *list, void (*delete_item)(t_item))
+void	pop_back(t_dlist *list, void (*delete_item)(t_item *))
 {
 	t_node	*del_node;
 

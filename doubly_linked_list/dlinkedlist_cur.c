@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:56 by hseong            #+#    #+#             */
-/*   Updated: 2022/02/25 19:39:34 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/11 14:41:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	move_back(t_dlist *list)
 	++list->idx;
 }
 
-void	set_cur(t_dlist *list, t_item item)
+void	set_cur(t_dlist *list, t_item *item)
 {
 	list->cur->item = item;
 }
