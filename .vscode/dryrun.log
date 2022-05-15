@@ -1,0 +1,68 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/mnt/c/Users/Son/42/minishell'
+make minishell -j 8
+make[1]: Entering directory '/mnt/c/Users/Son/42/minishell'
+make -C libft all
+make -C doubly_linked_list all
+gcc -Wall -Wextra -Werror -c -o src/minishell.o src/minishell.c -Iinclude
+gcc -Wall -Wextra -Werror -c -o src/memory_management.o src/memory_management.c -Iinclude
+make[2]: Entering directory '/mnt/c/Users/Son/42/minishell/doubly_linked_list'
+gcc -Wall -Wextra -Werror -c -o dlinkedlist.o dlinkedlist.c -I. -I../include
+make[2]: Entering directory '/mnt/c/Users/Son/42/minishell/libft'
+gcc -Wall -Wextra -Werror ft_isalpha.c -c -o ft_isalpha.o -I.
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_util.o dlinkedlist_util.c -I. -I../include
+gcc -Wall -Wextra -Werror ft_isdigit.c -c -o ft_isdigit.o -I.
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_peek.o dlinkedlist_peek.c -I. -I../include
+gcc -Wall -Wextra -Werror ft_isalnum.c -c -o ft_isalnum.o -I.
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_cur.o dlinkedlist_cur.c -I. -I../include
+gcc -Wall -Wextra -Werror ft_isascii.c -c -o ft_isascii.o -I.
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_dup.o dlinkedlist_dup.c -I. -I../include
+ar rcs libdlinkedlist.a dlinkedlist.o dlinkedlist_util.o dlinkedlist_peek.o dlinkedlist_cur.o dlinkedlist_dup.o
+make[2]: Leaving directory '/mnt/c/Users/Son/42/minishell/doubly_linked_list'
+ 
+mv doubly_linked_list/libdlinkedlist.a .
+gcc -Wall -Wextra -Werror ft_isprint.c -c -o ft_isprint.o -I.
+gcc -Wall -Wextra -Werror ft_strlen.c -c -o ft_strlen.o -I.
+gcc -Wall -Wextra -Werror ft_isspace.c -c -o ft_isspace.o -I.
+gcc -Wall -Wextra -Werror ft_ishex.c -c -o ft_ishex.o -I.
+gcc -Wall -Wextra -Werror ft_abs.c -c -o ft_abs.o -I.
+gcc -Wall -Wextra -Werror ft_swap.c -c -o ft_swap.o -I.
+gcc -Wall -Wextra -Werror ft_memset.c -c -o ft_memset.o -I.
+gcc -Wall -Wextra -Werror ft_bzero.c -c -o ft_bzero.o -I.
+gcc -Wall -Wextra -Werror ft_memcpy.c -c -o ft_memcpy.o -I.
+gcc -Wall -Wextra -Werror ft_memmove.c -c -o ft_memmove.o -I.
+gcc -Wall -Wextra -Werror ft_strlcpy.c -c -o ft_strlcpy.o -I.
+gcc -Wall -Wextra -Werror ft_strlcat.c -c -o ft_strlcat.o -I.
+gcc -Wall -Wextra -Werror ft_toupper.c -c -o ft_toupper.o -I.
+gcc -Wall -Wextra -Werror ft_tolower.c -c -o ft_tolower.o -I.
+gcc -Wall -Wextra -Werror ft_strchr.c -c -o ft_strchr.o -I.
+gcc -Wall -Wextra -Werror ft_strrchr.c -c -o ft_strrchr.o -I.
+gcc -Wall -Wextra -Werror ft_strncmp.c -c -o ft_strncmp.o -I.
+gcc -Wall -Wextra -Werror ft_memchr.c -c -o ft_memchr.o -I.
+gcc -Wall -Wextra -Werror ft_memcmp.c -c -o ft_memcmp.o -I.
+gcc -Wall -Wextra -Werror ft_strnstr.c -c -o ft_strnstr.o -I.
+gcc -Wall -Wextra -Werror ft_atoi.c -c -o ft_atoi.o -I.
+gcc -Wall -Wextra -Werror ft_atoi_ptr.c -c -o ft_atoi_ptr.o -I.
+gcc -Wall -Wextra -Werror ft_htoi.c -c -o ft_htoi.o -I.
+gcc -Wall -Wextra -Werror ft_calloc.c -c -o ft_calloc.o -I.
+gcc -Wall -Wextra -Werror ft_strdup.c -c -o ft_strdup.o -I.
+gcc -Wall -Wextra -Werror ft_substr.c -c -o ft_substr.o -I.
+gcc -Wall -Wextra -Werror ft_strjoin.c -c -o ft_strjoin.o -I.
+gcc -Wall -Wextra -Werror ft_strtrim.c -c -o ft_strtrim.o -I.
+gcc -Wall -Wextra -Werror ft_split.c -c -o ft_split.o -I.
+gcc -Wall -Wextra -Werror ft_itoa.c -c -o ft_itoa.o -I.
+gcc -Wall -Wextra -Werror ft_strmapi.c -c -o ft_strmapi.o -I.
+gcc -Wall -Wextra -Werror ft_striteri.c -c -o ft_striteri.o -I.
+gcc -Wall -Wextra -Werror ft_putchar_fd.c -c -o ft_putchar_fd.o -I.
+gcc -Wall -Wextra -Werror ft_putstr_fd.c -c -o ft_putstr_fd.o -I.
+gcc -Wall -Wextra -Werror ft_putendl_fd.c -c -o ft_putendl_fd.o -I.
+gcc -Wall -Wextra -Werror ft_putnbr_fd.c -c -o ft_putnbr_fd.o -I.
+gcc -Wall -Wextra -Werror ft_execvpe.c -c -o ft_execvpe.o -I.
+ar rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_isspace.o ft_ishex.o ft_abs.o ft_swap.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_atoi_ptr.o ft_htoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_execvpe.o
+make[2]: Leaving directory '/mnt/c/Users/Son/42/minishell/libft'
+ 
+mv libft/libft.a .
+gcc -Wall -Wextra -Werror -o minishell src/minishell.o src/memory_management.o -lreadline -L. -lft -ldlinkedlist
+make[1]: Leaving directory '/mnt/c/Users/Son/42/minishell'
+make: Leaving directory '/mnt/c/Users/Son/42/minishell'
+ 
