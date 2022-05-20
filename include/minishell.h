@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:16:01 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/20 19:33:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 #include "minishell_const.h"
 #include "minishell_token.h"
 
-void		minishell_get_cmdline(void);
-void		minishell_analyze_token(t_dlist *list);
-void		minishell_free_token(t_token_arr *token_arr_ptr);
-t_dlist		*minishell_parse_token(char *cmd_line);
+void	minishell_get_cmdline(void);
+void	minishell_analyze_token(t_dlist *list);
+void	minishell_free_token(t_token_arr *token_arr_ptr);
+int		minishell_parse_token(char *cmd_line);
 
-char	**ft_split(const char *str, const char *delim);
+void	print_item(t_token *token);
+void	delete_item(t_token **token);
 
 #endif

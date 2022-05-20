@@ -8,6 +8,7 @@ RM		=	rm -f
 
 
 SRC		=	minishell.c\
+			minishell_token.c\
 			memory_management.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
@@ -34,9 +35,17 @@ DLLIST_DIR=	doubly_linked_list
 LIBFLAGS+=	-ldlinkedlist
 LIBS	+=	DLLIST.lib
 
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+endif
+
 
 all:
 	$(MAKE) $(NAME) -j 8
+
+debug:
+	$(MAKE) clean
+	$(MAKE) DEBUG_FLAG=1 all
 
 $(NAME): $(LIBS) $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIBFLAGS)

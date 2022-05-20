@@ -1,4 +1,5 @@
 /* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   minishell_token.h                                  :+:      :+:    :+:   */
@@ -29,8 +30,10 @@ enum e_token_type
 
 typedef struct s_token_context
 {
+	char		*cmd_line;
 	int			type;
-	char		*token_start;
+	char		*token_itr;
+	char		*token_begin;
 }				t_token_context;
 
 typedef void	(*t_token_func)(t_dlist *token_list, t_token_context *);

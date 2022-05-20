@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:20:14 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:12:53 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/20 21:32:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_dlist	*dlist_init(void)
 	return (list);
 }
 
-void	print_dlist_forward(t_dlist *list, void (*print_item)(t_item *))
+void	print_dlist_forward(t_dlist *list, void (*print_content)(void *))
 {
 	t_node	*node;
 	size_t	idx;
@@ -33,13 +33,13 @@ void	print_dlist_forward(t_dlist *list, void (*print_item)(t_item *))
 	idx = 0;
 	while (idx < size)
 	{
-		print_item(node->item);
+		print_content(node->content);
 		node = node->next;
 		++idx;
 	}
 }
 
-void	print_dlist_backward(t_dlist *list, void (*print_item)(t_item *))
+void	print_dlist_backward(t_dlist *list, void (*print_content)(void *))
 {
 	t_node	*node;
 	size_t	idx;
@@ -50,19 +50,19 @@ void	print_dlist_backward(t_dlist *list, void (*print_item)(t_item *))
 	idx = size;
 	while (idx > 0)
 	{
-		print_item(node->item);
+		print_content(node->content);
 		node = node->prev;
 		--idx;
 	}
 }
 
-void	delete_dlist(t_dlist *list, void (*delete_item)(t_item *))
+void	delete_dlist(t_dlist *list, void (*delete_content)(void *))
 {
-	empty_dlist(list, delete_item);
+	empty_dlist(list, delete_content);
 	free(list);
 }
 
-void	empty_dlist(t_dlist *list, void (*delete_item)(t_item *))
+void	empty_dlist(t_dlist *list, void (*delete_content)(void *))
 {
 	size_t		size;
 	t_node		*trav_node;
@@ -73,7 +73,7 @@ void	empty_dlist(t_dlist *list, void (*delete_item)(t_item *))
 	trav_node = list->head->next;
 	while (size > 1)
 	{
-		delete_item(trav_node->prev->item);
+		delete_content(trav_node->prev->content);
 		free(trav_node->prev);
 		trav_node = trav_node->next;
 		--size;

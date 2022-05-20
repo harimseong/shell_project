@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:25:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:11:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/20 21:30:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_dlist	*duplicate_dlist(t_dlist *list)
 	list->cur = list->head;
 	while (idx < size)
 	{
-		push_back(clone, list->cur->item);
+		push_back(clone, list->cur->content);
 		move_back(list);
 		++idx;
 	}

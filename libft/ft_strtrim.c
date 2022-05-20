@@ -6,13 +6,11 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 20:29:06 by hseong            #+#    #+#             */
-/*   Updated: 2021/11/11 04:35:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/20 18:33:48 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_strndup(const char *s, size_t size);
 
 // this has similar behaivor as java's one.
 char	*ft_strtrim(char const *s1, char const *set)
@@ -33,25 +31,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ret = ft_strndup(s1 + left, right - left + 1);
 	if (!ret)
 		return (NULL);
-	return (ret);
-}
-
-static char	*ft_strndup(const char *s, size_t size)
-{
-	char	*ret;
-	size_t	idx;
-
-	idx = ft_strlen(s);
-	size = (idx < size) * size + (idx >= size) * size;
-	ret = (char *)malloc(sizeof(char) * (size + 1));
-	if (!ret)
-		return (NULL);
-	ret[size] = 0;
-	idx = 0;
-	while (idx < size)
-	{
-		ret[idx] = s[idx];
-		++idx;
-	}
 	return (ret);
 }
