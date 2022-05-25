@@ -7,8 +7,8 @@ DEBUG	=	-g3 -fsanitize=address
 RM		=	rm -f
 
 
-SRC		=	minishell.c\
-			minishell_token.c\
+SRC		=	main.c\
+			token.c\
 			memory_management.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)

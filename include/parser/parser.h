@@ -1,18 +1,17 @@
 /* ************************************************************************** */
-
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_token.h                                  :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 18:16:00 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/25 21:26:11 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_TOKEN_H
-# define MINISHELL_TOKEN_H
+#ifndef PARSER_H
+# define PARSER_H
 
 # include "dlinkedlist.h"
 
@@ -35,6 +34,12 @@ typedef struct s_token_context
 	char		*token_itr;
 	char		*token_begin;
 }				t_token_context;
+
+typedef struct s_input_line
+{
+	char	*str;
+	int		pos;
+}		t_input_line;
 
 typedef void	(*t_token_func)(t_dlist *token_list, t_token_context *);
 typedef char	**t_token_arr;

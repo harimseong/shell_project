@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/25 12:21:43 by hseong           ###   ########.fr       */
+/*   Created: 2022/05/04 19:05:47 by hseong            #+#    #+#             */
+/*   Updated: 2022/05/25 21:29:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef TYPE_H
+# define TYPE_H
 
-#include "types.h"
-#include "constants.h"
-#include "parser/token.h"
+# include <sys/_types/_size_t.h>
 
-void	minishell_get_cmdline(void);
-void	minishell_analyze_token(t_dlist *list);
-void	minishell_free_token(t_token_arr *token_arr_ptr);
-int		minishell_parse_token(char *cmd_line);
+# ifndef NULL
+#  define NULL ((void *)0)
+# endif
 
-void	print_item(t_token *token);
-void	delete_item(t_token **token);
+# define ULLINT unsigned long long int
+# define LLINT long long int
+
+typedef ULLINT	t_uint64;
+typedef LLINT	t_int64;
+
+typedef struct s_token
+{
+	int		type;
+	char	*token;
+}				t_token;
 
 #endif

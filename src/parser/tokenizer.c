@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_const.h                                  :+:      :+:    :+:   */
+/*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 15:10:09 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/20 18:55:55 by hseong           ###   ########.fr       */
+/*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
+/*   Updated: 2022/05/25 21:37:59 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_CONST_H
-# define MINISHELL_CONST_H
+#include "libft.h"
+#include "constants.h"
+#include "parser/tokenizer.h"
 
-# define SUCCESS (0)
-# define FAIL (1)
+t_token	*get_token(t_input_line *input_line)
+{
+	int		cursor;
 
-#endif
+	cursor = input_line->str[input_line->pos];
+	if (cursor == 0)
+		return (NULL);
+	if (ft_isalnum(cursor) == TRUE)
+		return (get_word(input_line));
+	el
+}

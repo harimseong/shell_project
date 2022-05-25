@@ -6,14 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/20 21:32:09 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/25 12:21:03 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DLINKEDLIST_H
 # define DLINKEDLIST_H
 
-# include "minishell_type.h"
+# include "types.h"
 
 typedef struct s_node
 {

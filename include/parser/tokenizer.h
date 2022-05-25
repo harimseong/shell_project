@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_type.h                                   :+:      :+:    :+:   */
+/*   tokenizer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 19:05:47 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:16:14 by hseong           ###   ########.fr       */
+/*   Created: 2022/05/25 21:08:48 by hseong            #+#    #+#             */
+/*   Updated: 2022/05/25 21:38:01 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_TYPE_H
-# define MINISHELL_TYPE_H
+#ifndef TOKENIZER_H
+# define TOKENIZER_H
 
-# include <sys/_types/_size_t.h>
+# include "types.h"
+# include "parser/parser.h"
 
-# define ULLINT unsigned long long int
-# define LLINT long long int
-
-typedef ULLINT	t_uint64;
-typedef LLINT	t_int64;
-
-typedef struct s_token
-{
-	int		type;
-	char	*token;
-	t_int64	len;
-}				t_token;
+t_token	*get_token(t_input_line *input_line);
 
 #endif

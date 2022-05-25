@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.h                                            :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 22:40:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/05 22:41:22 by hseong           ###   ########.fr       */
+/*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
+/*   Updated: 2022/05/25 21:28:05 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_H
-# define TOKEN_H
+#include "types.h"
+#include "parser/parser.h"
+#include "parser/tokenizer.h"
 
-typedef struct s_token
+t_token	*parse(const char *line)
 {
-	
-}			t_token;
+	t_input_line	input_line;
+	t_token			*token;
 
-#endif
+	input_line = (t_input_line){(char *)line, 0};
+	token = get_token(&input_line);
+}
