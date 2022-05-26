@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:05:47 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/25 21:29:51 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 14:15:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,5 @@
 
 typedef ULLINT	t_uint64;
 typedef LLINT	t_int64;
-
-typedef struct s_token
-{
-	int		type;
-	char	*token;
-}				t_token;
 
 #endif

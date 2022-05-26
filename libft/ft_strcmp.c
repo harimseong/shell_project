@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.h                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 21:08:48 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/25 21:38:01 by hseong           ###   ########.fr       */
+/*   Created: 2021/11/09 18:27:48 by hseong            #+#    #+#             */
+/*   Updated: 2022/05/26 18:28:14 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKENIZER_H
-# define TOKENIZER_H
+#include "libft.h"
 
-# include "types.h"
-# include "parser/parser.h"
-
-t_token	*get_token(t_input_line *input_line);
-
-#endif
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 && *s2 && *s1 == *s2)
+	{
+		++s1;
+		++s2;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
+}

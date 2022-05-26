@@ -6,12 +6,12 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/20 21:33:12 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 16:37:10 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "dlinkedlist.h"
+#include "minishell.h"
 #include "libft.h"
 #include <readline/readline.h>
 #include <unistd.h>
@@ -28,7 +28,7 @@ int	main(int argc, char *argv[], char *envp[])
 	(void)envp;
 	while (token_list != NULL)
 	{
-		minishell_parse_token(readline(g_prompt));
+		parse(readline(g_prompt));
 		//delete_dlist(token_list, delete_item);
 	}
 	return (0);
