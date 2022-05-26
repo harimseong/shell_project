@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 19:01:46 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 21:15:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_dlist
 }				t_dlist;
 
 t_dlist	*dlist_init(void);
+void	dlist_local_init(t_dlist *list);
 
 // CREATE AND DELETE
 int		push_front(t_dlist *list, void *content);
@@ -58,6 +59,7 @@ void	print_dlist_backward(t_dlist *list, void (*print_content)(void *));
 // utils
 void	ft_putnbr_space(int num);
 void	mergesort_dlist(t_dlist *list, t_comp comp);
-t_dlist	*duplicate_dlist(t_dlist *list);
+t_dlist	*duplicate_dlist(t_dlist *list, size_t content_size);
+void	*copy_content(void *node, size_t n);
 
 #endif

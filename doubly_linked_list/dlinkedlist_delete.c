@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlinkedlist_dup.c                                  :+:      :+:    :+:   */
+/*   dlinkedlist_delete.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 17:25:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 21:15:11 by hseong           ###   ########.fr       */
+/*   Created: 2022/05/26 20:58:50 by hseong            #+#    #+#             */
+/*   Updated: 2022/05/26 20:59:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+
 #include "dlinkedlist.h"
 
-t_dlist	*duplicate_dlist(t_dlist *list, size_t content_size)
+void	delete_dlist(t_dlist *list, void (*delete_content)(void *))
 {
-	t_dlist		*clone;
-	size_t		size;
-	size_t		idx;
-
-	clone = dlist_init();
-	size = list->size;
-	idx = 0;
-	list->cur = list->head;
-	while (idx < size)
-	{
-		push_back(clone, copy_content(list->cur->content, content_size));
-		move_back(list);
-		++idx;
-	}
-	list->cur = NULL;
-	return (clone);
+	empty_dlist(list, delete_content);
+	free(list);
 }
 
-void	*copy_content(void *input, size_t content_size)
+void	empty_dlist(t_dlist *list, void (*delete_content)(void *))
 {
-	void	*content;
+	size_t		size;
+	t_node		*trav_node;
 
-	content = malloc(content_size);
-	ft_memcpy(content, input, content_size);
-	return (content);
+	size = list->size;
+	if (size == 0)
+		return ;
+	trav_node = list->head->next;
+	while (size > 1)
+	{
+		delete_content(trav_node->prev->content);
+		free(trav_node->prev);
+		trav_node = trav_node->next;
+		--size;
+	}
+	free(list->tail);
 }

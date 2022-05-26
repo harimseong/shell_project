@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 20:20:02 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 22:03:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@
 #include "dlinkedlist.h"
 #include "types.h"
 #include "parser/token.h"
-//#include "parser/parser.h"
+#include "parser/parser.h"
 
-//static void	parse_pipeline(t_iterator *iterator, t_dlist *pipeline_list);
+static void	parse_pipeline(t_iterator *iterator, t_dlist *pipeline_list);
 void	parse_command(t_iterator *iterator, t_dlist *pipeline_list);
 
-extern t_dlist	*envlist;
-
-t_dlist *temp_parse(const char *line)
+t_dlist *temp_parse(const char *line, t_dlist *env_list)
 {
 	char		**temp;
 	int			temp_len;
@@ -38,29 +36,28 @@ t_dlist *temp_parse(const char *line)
 	if (temp_len == 0)
 		return ((void *)1);
 	if (ft_strcmp(temp[0], "export") == 0)
-		builtin_export(envlist, temp_len, temp);
+		builtin_export(env_list, temp_len, temp);
 	else if (ft_strcmp(temp[0], "env") == 0)
-		builtin_env(envlist);
+		builtin_env(env_list);
 	return ((void *)1);
 }
 
-/*
 t_dlist	*parse(const char *line)
 {
 	t_iterator	iterator;
 	t_dlist		*pipeline_list;
 	t_token		*token;
 
-	iterator = (t_iterator){(char *)line, 0};
 	pipeline_list = dlist_init();
-	push_back(pipeline_list, malloc(t_pipeline));
+	push_back(pipeline_list, malloc(sizeof(t_pipeline)));
+	iterator = (t_iterator){(char *)line, 0};
 	parse_pipeline(&iterator, pipeline_list);
-	token = token_handler(TOKEN_PEEK);
+	token = token_handler(&iterator, TOKEN_PEEK);
 	while (ft_strcmp(token->word, "&&") == 0
 			|| ft_strcmp(token->word, "||"))
 	{
 		parse_pipeline(&iterator, pipeline_list);
-		token = token_handler(TOKEN_PEEK);
+		token = token_handler(&iterator, TOKEN_PEEK);
 	}
 	if (token->type != 0)
 	{
@@ -75,15 +72,22 @@ void	parse_pipeline(t_iterator *iterator, t_dlist *pipeline_list)
 	t_token		*token;
 
 	parse_command(iterator, pipeline_list);
-	token = token_handler(TOKEN_PEEK);
+	token = token_handler(iterator, TOKEN_PEEK);
 	while (token->type == '|')
 	{
 		parse_command(iterator, pipeline_list);
-		token = token_handler(TOKEN_PEEK);
-	}
-	if (1)
-	{
+		token = token_handler(iterator, TOKEN_PEEK);
 	}
 }
 
-*/
+void	parser_error(t_token *token)
+{
+	(void)token;
+}
+
+t_token	*token_handler(t_iterator *iterator, int type)
+{
+	(void)iterator;
+	(void)type;
+	return (NULL);
+}

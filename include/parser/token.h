@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 18:16:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 21:34:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ typedef struct s_token
 typedef t_token	*(*t_token_func)(t_iterator *);
 typedef char	**t_token_arr;
 
-t_token	*get_token(t_iterator *iterator);
-t_token	*token_handler(int num);
+t_token	*token_handler(t_iterator *iterator, int num);
 
 /* token recognition functions */
 t_token	*delimit_token(t_iterator *iterator);

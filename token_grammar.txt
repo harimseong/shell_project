@@ -50,6 +50,7 @@ io_redirect      : io_file
                  ;
 io_file          : '<'       filename
                  | '>'       filename
+                 | DGREAT    filename
                  ;
 filename         : WORD                      /* Apply rule 2 */
                  ;

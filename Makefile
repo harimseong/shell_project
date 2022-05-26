@@ -9,7 +9,10 @@ RM		=	rm -f
 # parser source files
 SRC		=	main.c\
 			memory_management.c\
-			parser/parser.c
+			parser/parser.c\
+			parser/parse_command.c\
+			parser/parse_redirect.c
+#			parser/tokenizer.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 # builtin source files
@@ -24,7 +27,9 @@ OBJ		=	$(SRC:%.c=%.o)
 
 INCL	=	minishell.h\
 			doubly_linked_list.h\
-			libft.h
+			libft.h\
+			parser/parser.h\
+			parser/token.h
 INCL_DIR=	include
 INCL	:=	$(INCL:%=$(INCL_DIR)/%)
 

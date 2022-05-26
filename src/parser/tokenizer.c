@@ -6,10 +6,11 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 14:39:37 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 22:03:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "dlinkedlist.h"
 #include "libft.h"
 #include "constants.h"
 #include "parser/token.h"
@@ -147,10 +148,11 @@ static const
 	/*127 del*/do_nothing
 };
 
-t_token	*get_token(t_iterator *iterator)
+t_token	*token_handler(t_iterator *iterator, int type)
 {
 	int		cursor;
 
+	(void)type;
 	cursor = iterator->line[iterator->pos];
 	if (cursor == 0)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 18:17:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 21:53:33 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@ typedef struct s_redirect
 
 typedef struct s_command
 {
-	t_dlist	*word_list;
-	t_dlist	*redirect_list;
+	t_dlist	word_list;
+	t_dlist	redirect_list;
 }			t_command;
 
 typedef struct s_pipeline
 {
 	int		pipeline_type;
-	t_dlist	*command_list;
+	t_dlist	command_list;
 }			t_pipeline;
 
+void	set_command(t_token *token, t_dlist *pipeline_list);
 void	parser_error(t_token *token);
 
 #endif
