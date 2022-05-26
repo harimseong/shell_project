@@ -19,6 +19,7 @@ SRC2	=	env.c\
 			builtin.c
 SRC2_DIR=	cmd_temp
 SRC2	:=	$(SRC2:%=$(SRC2_DIR)/%)
+SRC		+=	$(SRC2)
 OBJ		=	$(SRC:%.c=%.o)
 
 INCL	=	minishell.h\
