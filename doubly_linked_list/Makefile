@@ -7,7 +7,8 @@ SRC		= dlinkedlist.c\
 		  dlinkedlist_util.c\
 		  dlinkedlist_peek.c\
 		  dlinkedlist_cur.c\
-		  dlinkedlist_dup.c
+		  dlinkedlist_dup.c\
+		  dlinkedlist_mergesort.c
 OBJ		= $(SRC:%.c=%.o)
 
 INCLUDE	= dlinkedlist.h
