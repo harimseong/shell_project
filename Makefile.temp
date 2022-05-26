@@ -6,20 +6,14 @@ CFLAGS	=	-Wall -Wextra -Werror
 DEBUG	=	-g3 -fsanitize=address
 RM		=	rm -f
 
-# parser source files
+
 SRC		=	main.c\
-			memory_management.c\
-			parser/parser.c
+			token.c\
+			memory_management.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
-# builtin source files
-SRC2	=	env.c\
-			export.c\
-			key_compare.c\
-			builtin.c
-SRC2_DIR=	cmd_temp
-SRC2	:=	$(SRC2:%=$(SRC2_DIR)/%)
 OBJ		=	$(SRC:%.c=%.o)
+
 
 INCL	=	minishell.h\
 			doubly_linked_list.h\
@@ -47,7 +41,7 @@ endif
 
 
 all:
-	$(MAKE) $(NAME)
+	$(MAKE) $(NAME) -j 8
 
 debug:
 	$(MAKE) clean

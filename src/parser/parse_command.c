@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:58:32 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 17:14:32 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 19:52:47 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ void	parse_cmd_name(t_iterator *iterator, t_dlist *pipeline_list)
 
 	token = token_handler(TOKEN_GET);
 	node = pipeline_list->tail;
-	node->
 }

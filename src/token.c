@@ -6,13 +6,13 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 14:51:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/20 21:48:07 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 20:05:18 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "dlinkedlist.h"
-#include "minishell_token.h"
+#include "parser/token.h"
 #include <readline/readline.h>
 #include <stdlib.h>
 
