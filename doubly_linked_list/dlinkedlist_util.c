@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:20:14 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 21:00:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/27 21:22:40 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	dlist_local_init(t_dlist *list)
 	*list = (t_dlist){NULL, NULL, NULL, 0, 0, 0};
 }
 
-void	print_dlist_forward(t_dlist *list, void (*print_content)(void *))
+void	dlist_print_forward(t_dlist *list, void (*print_content)(void *))
 {
 	t_node	*node;
 	size_t	idx;
@@ -45,7 +45,7 @@ void	print_dlist_forward(t_dlist *list, void (*print_content)(void *))
 	}
 }
 
-void	print_dlist_backward(t_dlist *list, void (*print_content)(void *))
+void	dlist_print_backward(t_dlist *list, void (*print_content)(void *))
 {
 	t_node	*node;
 	size_t	idx;
@@ -61,4 +61,3 @@ void	print_dlist_backward(t_dlist *list, void (*print_content)(void *))
 		--idx;
 	}
 }
-

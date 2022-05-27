@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 20:58:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 20:59:21 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/27 21:21:03 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 #include "dlinkedlist.h"
 
-void	delete_dlist(t_dlist *list, void (*delete_content)(void *))
+void	dlist_delete(t_dlist *list, void (*delete_content)(void *))
 {
-	empty_dlist(list, delete_content);
+	dlist_empty(list, delete_content);
 	free(list);
 }
 
-void	empty_dlist(t_dlist *list, void (*delete_content)(void *))
+void	dlist_empty(t_dlist *list, void (*delete_content)(void *))
 {
 	size_t		size;
 	t_node		*trav_node;

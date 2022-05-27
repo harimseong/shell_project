@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 21:15:21 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/27 21:21:50 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int		push_front(t_dlist *list, void *content);
 int		push_back(t_dlist *list, void *content);
 void	pop_front(t_dlist *list, void (*delete_content)(void *));
 void	pop_back(t_dlist *list, void (*delete_content)(void *));
-void	delete_dlist(t_dlist *list, void (*delete_content)(void *));
-void	empty_dlist(t_dlist *list, void (*delete_content)(void *));
+void	dlist_delete(t_dlist *list, void (*delete_content)(void *));
+void	dlist_empty(t_dlist *list, void (*delete_content)(void *));
 
 // UPDATE cur
 void	move_front(t_dlist *list);
@@ -53,13 +53,13 @@ void	set_cur(t_dlist *list, void *content);
 // READ
 void	peek_front(t_dlist *list, void (*delete_content)(void *));
 void	peek_back(t_dlist *list, void (*delete_content)(void *));
-void	print_dlist_forward(t_dlist *list, void (*print_content)(void *));
-void	print_dlist_backward(t_dlist *list, void (*print_content)(void *));
+void	dlist_print_forward(t_dlist *list, void (*print_content)(void *));
+void	dlist_print_backward(t_dlist *list, void (*print_content)(void *));
 
 // utils
 void	ft_putnbr_space(int num);
 void	mergesort_dlist(t_dlist *list, t_comp comp);
-t_dlist	*duplicate_dlist(t_dlist *list, size_t content_size);
+t_dlist	*dlist_duplicate(t_dlist *list, size_t content_size);
 void	*copy_content(void *node, size_t n);
 
 #endif
