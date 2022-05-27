@@ -6,32 +6,34 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:36:10 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 14:14:07 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/27 22:54:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser/token.h"
 #include "libft.h"
 
-void	delimit_token(t_input_line *input_line);
+t_token	*delimit_token(t_iterator *iterator)
 {
-	if (context->type == 0)
-	{
-		++context->token_itr;
-		return ;
-	}
-	else
-	{
-		push_back(token_list, ft_strndup(context->token_begin,
-			context->token_itr - context->token_begin));
-		context->type = 0;
-		++context->token_itr;
-	}
+	t_token		*token;
 
+	(void)iterator;
+	token = make_token(NULL, TT_DELIMITER);
+	return (token);
 }
 
-void	do_nothing(t_dlist *token_list, t_token_context *context)
+t_token	*do_nothing(t_iterator *iterator)
 {
-	(void)token_list;
-	(void)context;
+	t_token		*token;
+
+	(void)iterator;
+	token = make_token(NULL, TT_ERROR);
+	return (token);
+}
+
+t_token	*char_alphabet(t_iterator *iterator)
+{
+	t_token		*token;
+
+	return (token);
 }

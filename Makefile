@@ -10,9 +10,10 @@ RM		=	rm -f
 SRC		=	main.c\
 			memory_management.c\
 			parser/parser.c\
+			parser/parser_error.c\
 			parser/parse_command.c\
-			parser/parse_redirect.c
-#			parser/tokenizer.c
+			parser/parse_redirect.c\
+			parser/tokenizer.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 # builtin source files

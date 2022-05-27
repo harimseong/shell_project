@@ -6,78 +6,82 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:58:32 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 21:53:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/27 21:12:14 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "dlinkedlist.h"
+#include "libft.h"
 #include "types.h"
+#include "constants.h"
 #include "parser/token.h"
 #include "parser/parser.h"
-#include <unistd.h>
 
-static void	parse_cmd_prefix(t_iterator *iterator, t_dlist *pipeline_list);
-static void	parse_cmd_name(t_iterator *iterator, t_dlist *pipeline_list);
-void		parse_io_redirect(t_iterator *iterator, t_dlist *pipeline_list);
+static void	parse_cmd_prefix(t_command *command);
+static void	parse_cmd_suffix(t_command *command);
+static void	parse_cmd_name(t_command *command);
+void		parse_io_redirect(t_dlist *pipeline_list);
 
-void	parse_command(t_iterator *iterator, t_dlist *pipeline_list)
+void	parse_command(t_command *command)
 {
 	t_token		*token;
 
-	token = token_handler(iterator, TOKEN_PEEK);
-	if (token->type == '<' || token->type == '>'
-		|| token->type == DGREAT || token->type == DLESS)
-		parse_cmd_prefix(iterator, pipeline_list);
-	else
-		parse_cmd_name(iterator, pipeline_list);
-}
-
-void	parse_cmd_name(t_iterator *iterator, t_dlist *pipeline_list)
-{
-	t_token		*token;
-
-	token = token_handler(iterator, TOKEN_GET);
-	set_command(token, pipeline_list);
-}
-
-void	parse_cmd_prefix(t_iterator *iterator, t_dlist *pipeline_list)
-{
-	t_token		*token;
-
-	parse_io_redirect(iterator, pipeline_list);
-	token = token_handler(iterator, TOKEN_PEEK);
-	while (token->type == '<' || token->type == '>'
-		|| token->type == DLESS || token->type == DGREAT)
+	*command = (t_command){.word_list = dlist_init(),
+		.redirect_list = dlist_init()};
+	token = token_handler(TH_PEEK, NULL);
+	if ((token->type & TT_REDIRECT) == TRUE)
 	{
-		parse_io_redirect(iterator, pipeline_list);
-		token = token_handler(iterator, TOKEN_PEEK);
+		parse_cmd_prefix(command);
+		token = token_handler(TH_PEEK, NULL);
+		if (token->type != TT_WORD)
+			return ;
 	}
-}
-
-void	parse_cmd_suffix(t_iterator *iterator, t_dlist *pipeline_list)
-{
-	t_token		*token;
-
-	token = token_handler(iterator, TOKEN_PEEK);
-	if (token->type == '<' || token->type == '>'
-		|| token->type == DLESS || token->type == DGREAT)
+	if (token->type == TT_WORD)
 	{
-		parse_io_redirect(iterator, pipeline_list);
-		parse_cmd_suffix(iterator, pipeline_list);
-	}
-	else if (token->type == 1)
-	{
-		token = token_handler(iterator, TOKEN_GET);
-		set_command(token, pipeline_list);
-		parse_cmd_suffix(iterator, pipeline_list);
+		parse_cmd_name(command);
+		token = token_handler(TH_PEEK, NULL);
+		if ((token->type & TT_REDIRECT) == TRUE || token->type == TT_WORD)
+			parse_cmd_suffix(command);
 	}
 	else
-		parser_error(token);
+		token->type = TT_ERROR;
 }
 
-void	set_command(t_token *token, t_dlist *pipeline_list)
+void	parse_cmd_name(t_command *command)
 {
-	(void)token;
-	(void)pipeline_list;
+	t_token		*token;
+
+	token = token_handler(TH_GET, NULL);
+	push_back(command->word_list, token);
+}
+
+void	parse_cmd_prefix(t_command *command)
+{
+	t_token		*token;
+
+	parse_io_redirect(command->redirect_list);
+	token = token_handler(TH_PEEK, NULL);
+	while ((token->type & TT_REDIRECT) == TRUE)
+	{
+		parse_io_redirect(command->redirect_list);
+		token = token_handler(TH_PEEK, NULL);
+	}
+}
+
+void	parse_cmd_suffix(t_command *command)
+{
+	t_token		*token;
+
+	token = token_handler(TH_PEEK, NULL);
+	if ((token->type & TT_REDIRECT) == TRUE)
+	{
+		parse_io_redirect(command->redirect_list);
+		parse_cmd_suffix(command);
+	}
+	else if (token->type == TT_WORD)
+	{
+		token = token_handler(TH_GET, NULL);
+		push_back(command->word_list, token);
+		parse_cmd_suffix(command);
+	}
 }

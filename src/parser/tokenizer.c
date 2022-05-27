@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 22:03:21 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/27 22:46:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,13 +148,23 @@ static const
 	/*127 del*/do_nothing
 };
 
-t_token	*token_handler(t_iterator *iterator, int type)
+t_token	*token_handler(int type, t_iterator *new_iterator)
 {
-	int		cursor;
+	static t_iterator	*iterator;
+	int					target;
 
-	(void)type;
-	cursor = iterator->line[iterator->pos];
-	if (cursor == 0)
-		return (NULL);
-	return (g_token_tab[cursor](iterator));
+	if (new_iterator != NULL && type == TH_SET)
+		iterator = new_iterator;
+	target = iterator->line[iterator->pos - 1];
+	return (g_token_tab[target](iterator));
+}
+
+t_token	*make_token(char *word, int type) 
+{
+	t_token	*new_token;
+
+	new_token = malloc(sizeof(t_token));
+	new_token->word = word;
+	new_token->type = type;
+	return (new_token);
 }
