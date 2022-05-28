@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/27 22:47:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/28 21:19:26 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_token	*token_handler(int type, t_iterator *iterator);
 t_token	*make_token(char *word, int type);
 
 /* token recognition functions */
-t_token	*delimit_token(t_iterator *iterator);
+t_token	*char_delimiter(t_iterator *iterator);
 t_token	*do_nothing(t_iterator *iterator);
 t_token	*char_excl(t_iterator *iterator);
 t_token	*char_double_quote(t_iterator *iterator);

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/27 22:46:06 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/28 21:29:31 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 #include "constants.h"
 #include "parser/token.h"
 #include "parser/parser.h"
+#include <unistd.h>
 
 static const
 	t_token_func	g_token_tab[128] = {
-	/*0 nul*/delimit_token,
+	/*0 nul*/char_delimiter,
 	/*1 soh*/do_nothing,
 	/*2 stx*/do_nothing,
 	/*3 etx*/do_nothing,
@@ -27,11 +28,11 @@ static const
 	/*6 ack*/do_nothing,
 	/*7 bel*/do_nothing,
 	/*8 bs*/do_nothing,
-	/*9 ht*/delimit_token,
-	/*10 nl*/delimit_token,
-	/*11 vt*/delimit_token,
-	/*12 np*/delimit_token,
-	/*13 cr*/delimit_token,
+	/*9 ht*/char_delimiter,
+	/*10 nl*/char_delimiter,
+	/*11 vt*/char_delimiter,
+	/*12 np*/char_delimiter,
+	/*13 cr*/char_delimiter,
 	/*14 so*/do_nothing,
 	/*15 si*/do_nothing,
 	/*16 dle*/do_nothing,
@@ -50,7 +51,7 @@ static const
 	/*29 gs*/do_nothing,
 	/*30 rs*/do_nothing,
 	/*31 us*/do_nothing,
-	/*32 sp*/delimit_token,
+	/*32 sp*/char_delimiter,
 	/*33  !*/char_excl,
 	/*34  "*/char_double_quote,
 	/*35  #*/char_hash,
@@ -151,15 +152,33 @@ static const
 t_token	*token_handler(int type, t_iterator *new_iterator)
 {
 	static t_iterator	*iterator;
+	static t_token		*token;
+	t_token				*temp;
 	int					target;
 
+	target = iterator->line[iterator->pos];
 	if (new_iterator != NULL && type == TH_SET)
+	{
 		iterator = new_iterator;
-	target = iterator->line[iterator->pos - 1];
-	return (g_token_tab[target](iterator));
+		token = NULL;
+	}
+	else if (type == TH_PEEK)
+	{
+		if (token == NULL)
+			token = g_token_tab[target](iterator);
+		return (token);
+	}
+	else if (type == TH_GET)
+	{
+		temp = token;
+		token = g_token_tab[target](iterator);
+		return (temp);
+	}
+	ft_putstr_fd("minishell: token handler flag error\n", STDOUT_FILENO);
+	return (NULL);
 }
 
-t_token	*make_token(char *word, int type) 
+t_token	*make_token(char *word, int type)
 {
 	t_token	*new_token;
 

@@ -6,20 +6,23 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:36:10 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/27 22:54:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/28 21:24:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "constants.h"
 #include "parser/token.h"
 #include "libft.h"
 
-t_token	*delimit_token(t_iterator *iterator)
+t_token	*char_delimiter(t_iterator *iterator)
 {
 	t_token		*token;
+	char		target;
 
-	(void)iterator;
-	token = make_token(NULL, TT_DELIMITER);
-	return (token);
+	target = iterator->line[++iterator->pos];
+	while (target && ft_isspace(target) == TRUE)
+		target = iterator->line[++iterator->pos];
+	return (g_token_tab[target](iterator));
 }
 
 t_token	*do_nothing(t_iterator *iterator)
