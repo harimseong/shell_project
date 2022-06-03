@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:25:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 21:15:11 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/03 19:10:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "dlinkedlist.h"
 
-t_dlist	*duplicate_dlist(t_dlist *list, size_t content_size)
+t_dlist	*dlist_duplicate(t_dlist *list, size_t content_size)
 {
 	t_dlist		*clone;
 	size_t		size;

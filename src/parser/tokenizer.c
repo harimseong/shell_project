@@ -6,51 +6,58 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/28 21:29:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/03 21:46:43 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 
 #include "dlinkedlist.h"
 #include "libft.h"
 #include "constants.h"
 #include "parser/token.h"
 #include "parser/parser.h"
-#include <unistd.h>
+#include "parser/token_recognition.h"
+
+typedef int	(*t_token_func)(t_iterator *, t_token *);
+
+static t_token *get_token(t_iterator *iterator);
+static int		check_character(t_iterator *iterator, t_token *token);
 
 static const
 	t_token_func	g_token_tab[128] = {
 	/*0 nul*/char_delimiter,
-	/*1 soh*/do_nothing,
-	/*2 stx*/do_nothing,
-	/*3 etx*/do_nothing,
-	/*4 eot*/do_nothing,
-	/*5 enq*/do_nothing,
-	/*6 ack*/do_nothing,
-	/*7 bel*/do_nothing,
-	/*8 bs*/do_nothing,
+	/*1 soh*/exceptional_char,
+	/*2 stx*/exceptional_char,
+	/*3 etx*/exceptional_char,
+	/*4 eot*/exceptional_char,
+	/*5 enq*/exceptional_char,
+	/*6 ack*/exceptional_char,
+	/*7 bel*/exceptional_char,
+	/*8 bs*/exceptional_char,
 	/*9 ht*/char_delimiter,
 	/*10 nl*/char_delimiter,
 	/*11 vt*/char_delimiter,
 	/*12 np*/char_delimiter,
 	/*13 cr*/char_delimiter,
-	/*14 so*/do_nothing,
-	/*15 si*/do_nothing,
-	/*16 dle*/do_nothing,
-	/*17 dc1*/do_nothing,
-	/*18 dc2*/do_nothing,
-	/*19 dc3*/do_nothing,
-	/*20 dc4*/do_nothing,
-	/*21 nak*/do_nothing,
-	/*22 syn*/do_nothing,
-	/*23 etb*/do_nothing,
-	/*24 can*/do_nothing,
-	/*25 em*/do_nothing,
-	/*26 sub*/do_nothing,
-	/*27 esc*/do_nothing,
-	/*28 fs*/do_nothing,
-	/*29 gs*/do_nothing,
-	/*30 rs*/do_nothing,
-	/*31 us*/do_nothing,
+	/*14 so*/exceptional_char,
+	/*15 si*/exceptional_char,
+	/*16 dle*/exceptional_char,
+	/*17 dc1*/exceptional_char,
+	/*18 dc2*/exceptional_char,
+	/*19 dc3*/exceptional_char,
+	/*20 dc4*/exceptional_char,
+	/*21 nak*/exceptional_char,
+	/*22 syn*/exceptional_char,
+	/*23 etb*/exceptional_char,
+	/*24 can*/exceptional_char,
+	/*25 em*/exceptional_char,
+	/*26 sub*/exceptional_char,
+	/*27 esc*/exceptional_char,
+	/*28 fs*/exceptional_char,
+	/*29 gs*/exceptional_char,
+	/*30 rs*/exceptional_char,
+	/*31 us*/exceptional_char,
 	/*32 sp*/char_delimiter,
 	/*33  !*/char_excl,
 	/*34  "*/char_double_quote,
@@ -146,7 +153,7 @@ static const
 	/*124  |*/char_vertical_bar,
 	/*125  }*/char_braces_close,
 	/*126  ~*/char_tilde,
-	/*127 del*/do_nothing
+	/*127 del*/exceptional_char
 };
 
 t_token	*token_handler(int type, t_iterator *new_iterator)
@@ -154,36 +161,74 @@ t_token	*token_handler(int type, t_iterator *new_iterator)
 	static t_iterator	*iterator;
 	static t_token		*token;
 	t_token				*temp;
-	int					target;
 
-	target = iterator->line[iterator->pos];
 	if (new_iterator != NULL && type == TH_SET)
 	{
 		iterator = new_iterator;
 		token = NULL;
+		return (NULL);
 	}
 	else if (type == TH_PEEK)
 	{
 		if (token == NULL)
-			token = g_token_tab[target](iterator);
+			token = get_token(iterator);
 		return (token);
 	}
 	else if (type == TH_GET)
 	{
 		temp = token;
-		token = g_token_tab[target](iterator);
+		token = get_token(iterator);
 		return (temp);
 	}
 	ft_putstr_fd("minishell: token handler flag error\n", STDOUT_FILENO);
 	return (NULL);
 }
 
+t_token *get_token(t_iterator *iterator)
+{
+	t_token	*new_token;
+	char	target;
+	char	*line;
+
+	line = iterator->line;
+	target = line[iterator->start];
+	iterator->end = iterator->start;
+	new_token = ft_calloc(1, sizeof(t_token));
+	while (check_character(iterator, new_token) != DELIMIT)
+		++iterator->end;
+	new_token->word = ft_strndup(line + iterator->start,
+		iterator->end - iterator->start + 1);
+	iterator->start = iterator->end;
+	return (new_token);
+}
+
+int	check_character(t_iterator *iterator, t_token *token)
+{
+	int		idx;
+	int		ret;
+
+	idx = 0;
+	ret = CONTINUE;
+	while (idx < TABLE_SIZE && ret == CONTINUE)
+	{
+		ret = g_token_recog_tab[idx](iterator, token);
+		++idx;
+	}
+	if (ret == DELIMIT)
+		return (0);
+	return (1);
+}
+
+/*
 t_token	*make_token(char *word, int type)
 {
 	t_token	*new_token;
 
+	if (type == TT_ERROR)
+		return (NULL);
 	new_token = malloc(sizeof(t_token));
 	new_token->word = word;
 	new_token->type = type;
 	return (new_token);
 }
+*/

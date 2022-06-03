@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/27 22:32:17 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/03 19:08:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #include "parser/token.h"
 #include "parser/parser.h"
 
-static void	parse_pipeline(t_pipeline *pipeline);
+//static void	parse_pipeline(t_pipeline *pipeline);
 void	parse_command(t_command *command);
 
 t_dlist *temp_parse(const char *line, t_dlist *env_list)
@@ -45,13 +45,15 @@ t_dlist *temp_parse(const char *line, t_dlist *env_list)
 	return ((void *)1);
 }
 
+/*
 t_dlist	*parse(const char *line)
 {
 	t_iterator	iterator;
 	t_dlist		*pipeline_list;
 	t_token		*token;
 
-	iterator = (t_iterator){(char *)line, 0};
+	iterator = (t_iterator){(char *)line, 0, 0};
+	token_handler(TH_SET, &iterator);
 	token = token_handler(TH_PEEK, NULL);
 	if (token->type == 0)
 		return (NULL);
@@ -65,7 +67,7 @@ t_dlist	*parse(const char *line)
 		parse_pipeline(pipeline_list->tail->content);
 		token = token_handler(TH_PEEK, NULL);
 	}
-	if (token->type != TT_DELIMITER)
+	if (token->type != TT_EMPTY)
 	{
 		parser_error(pipeline_list, token);
 		return (NULL);
@@ -90,3 +92,4 @@ void	parse_pipeline(t_pipeline *pipeline)
 		token = token_handler(TH_PEEK, NULL);
 	}
 }
+*/

@@ -6,11 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:29:37 by gson              #+#    #+#             */
-/*   Updated: 2022/05/26 21:16:09 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/03 19:10:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
+#include "dlinkedlist.h"
 
 int	builtin_export(t_dlist *envlist, int argc, char **argv)
 {
@@ -20,7 +21,7 @@ int	builtin_export(t_dlist *envlist, int argc, char **argv)
 	t_env	*temp_env;
 	char	**element;
 
-	cp_envlist = duplicate_dlist(envlist, sizeof(t_env));
+	cp_envlist = dlist_duplicate(envlist, sizeof(t_env));
 	mergesort_dlist(cp_envlist, key_compare);
 	cp_envlist->cur = cp_envlist->head;
 	if (argc == 1)
