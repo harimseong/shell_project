@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/03 21:49:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/04 23:19:34 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,10 @@ static const t_token_recog_func	g_token_recog_tab[8]
 	check_word,
 	check_new_word
 };
+
+int		expand_operator(char target, int type);
+void	find_expansion_word(t_iterator *iterator, t_token *token);
+int		is_operator(char target);
+int		is_special(char target);
 
 #endif

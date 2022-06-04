@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/03 21:27:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/04 23:19:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,22 @@
 enum e_token_type
 {
 	TT_EMPTY = 0,
-	TT_WORD,
-	TT_ASSIGNMENT_WORD,
+	TT_WORD = 0x00000010,
+	TT_ASSIGNMENT_WORD = 0x00000020,
 	/* operators */
 	TT_OPERATOR = 0x70000000,
+	TT_DOLLAR = 0x70000010,
 	TT_PIPELINE = 0x70010000,		/* pipeline operators */
-	TT_AND = 0x70010004,				/* '&&' */
-	TT_OR = 0x70010008,				/* '||' */
+	TT_AND = 0x70010010,				/* '&&' */
+	TT_OR = 0x70010020,				/* '||' */
 	TT_REDIRECT = 0x70020000,	/* redirection operators */
 	TT_LESS = 0x70020001,			/* '<' */
 	TT_DLESS = 0x70020002,		/* '<<' */
 	TT_GREAT = 0x70020011,		/* '>' */
 	TT_DGREAT = 0x70020012,		/* '>>' */
 	TT_QUOTE_MASK = 0x70040000,
-	TT_SQUOTE = 0x70040004,
-	TT_DQUOTE = 0x70040008,
+	TT_SQUOTE = 0x70040010,
+	TT_DQUOTE = 0x70040020,
 	TT_PIPE = 0x70080000,
 	TT_ERROR = 0x7fff0000
 };
@@ -66,43 +67,5 @@ typedef char	**t_token_arr;
 
 t_token	*token_handler(int type, t_iterator *iterator);
 //t_token	*make_token(char *word, int type);
-
-/* token recognition functions */
-int		char_delimiter(t_iterator *iterator, t_token *token);
-int		exceptional_char(t_iterator *iterator, t_token *token);
-int		char_excl(t_iterator *iterator, t_token *token);
-int		char_double_quote(t_iterator *iterator, t_token *token);
-int		char_hash(t_iterator *iterator, t_token *token);
-int		char_dolor(t_iterator *iterator, t_token *token);
-int		char_percent(t_iterator *iterator, t_token *token);
-int		char_ampersand(t_iterator *iterator, t_token *token);
-int		char_single_quote(t_iterator *iterator, t_token *token);
-int		char_paren_open(t_iterator *iterator, t_token *token);
-int		char_paren_close(t_iterator *iterator, t_token *token);
-int		char_asterisk(t_iterator *iterator, t_token *token);
-int		char_plus(t_iterator *iterator, t_token *token);
-int		char_comma(t_iterator *iterator, t_token *token);
-int		char_minus(t_iterator *iterator, t_token *token);
-int		char_dot(t_iterator *iterator, t_token *token);
-int		char_slash(t_iterator *iterator, t_token *token);
-int		char_num(t_iterator *iterator, t_token *token);
-int		char_alphabet(t_iterator *iterator, t_token *token);
-int		char_colon(t_iterator *iterator, t_token *token);
-int		char_semicolon(t_iterator *iterator, t_token *token);
-int		char_less(t_iterator *iterator, t_token *token);
-int		char_equal(t_iterator *iterator, t_token *token);
-int		char_greater(t_iterator *iterator, t_token *token);
-int		char_question(t_iterator *iterator, t_token *token);
-int		char_at(t_iterator *iterator, t_token *token);
-int		char_bracket_open(t_iterator *iterator, t_token *token);
-int		char_backslash(t_iterator *iterator, t_token *token);
-int		char_bracket_close(t_iterator *iterator, t_token *token);
-int		char_caret(t_iterator *iterator, t_token *token);
-int		char_underbar(t_iterator *iterator, t_token *token);
-int		char_backtick(t_iterator *iterator, t_token *token);
-int		char_braces_open(t_iterator *iterator, t_token *token);
-int		char_vertical_bar(t_iterator *iterator, t_token *token);
-int		char_braces_close(t_iterator *iterator, t_token *token);
-int		char_tilde(t_iterator *iterator, t_token *token);
 
 #endif

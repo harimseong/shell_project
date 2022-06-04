@@ -31,3 +31,6 @@ cat " -e"	#success
 export TEST1="cat"
 export TEST2=" -e"
 $TEST1$TEST2	#success
+
+c"a"t -e 	#success
+c"a"t$TEST2 #success

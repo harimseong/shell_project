@@ -13,7 +13,8 @@ SRC		=	main.c\
 			parser/parser_error.c\
 			parser/parse_command.c\
 			parser/parse_redirect.c\
-			parser/tokenizer.c
+			parser/tokenizer.c\
+			parser/token/helper_functions.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 # builtin source files
