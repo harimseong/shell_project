@@ -1,7 +1,10 @@
 NAME	= libdlinkedlist.a
 
+
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
+DEBUG	=	-g3 -fsanitize=address
+
 
 SRC		= dlinkedlist.c\
 		  dlinkedlist_util.c\
@@ -9,11 +12,19 @@ SRC		= dlinkedlist.c\
 		  dlinkedlist_cur.c\
 		  dlinkedlist_dup.c\
 		  dlinkedlist_delete.c\
-		  dlinkedlist_mergesort.c
+		  dlinkedlist_mergesort.c\
+		  dlinkedlist_transfer.c
 OBJ		= $(SRC:%.c=%.o)
+
 
 INCLUDE	= dlinkedlist.h
 INCL_DIR= ../include
+
+
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+endif
+
 
 all: $(NAME)
 

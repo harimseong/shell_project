@@ -6,13 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:20:14 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/27 21:22:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 04:16:01 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "dlinkedlist.h"
+#include "libft.h"
 
 t_dlist	*dlist_init(void)
 {
@@ -26,6 +27,20 @@ t_dlist	*dlist_init(void)
 void	dlist_local_init(t_dlist *list)
 {
 	*list = (t_dlist){NULL, NULL, NULL, 0, 0, 0};
+}
+
+t_node	*dlist_find_content(t_dlist *list, void *content, size_t size)
+{
+	t_node	*node;
+
+	node = list->head;
+	while (node != NULL)
+	{
+		if (ft_memcmp(node->content, content, size) == 0)
+			break ;
+		node = node->next;
+	}
+	return (node);
 }
 
 void	dlist_print_forward(t_dlist *list, void (*print_content)(void *))

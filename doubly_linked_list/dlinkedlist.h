@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/27 21:21:50 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 14:36:47 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,15 @@ void	dlist_local_init(t_dlist *list);
 // CREATE AND DELETE
 int		push_front(t_dlist *list, void *content);
 int		push_back(t_dlist *list, void *content);
+int		insert_at(t_dlist *list, t_node *at, void *content);
 void	pop_front(t_dlist *list, void (*delete_content)(void *));
 void	pop_back(t_dlist *list, void (*delete_content)(void *));
+void	erase_at(t_dlist *list, t_node *at, void (*delete_content)(void *));
+
 void	dlist_delete(t_dlist *list, void (*delete_content)(void *));
 void	dlist_empty(t_dlist *list, void (*delete_content)(void *));
+void	dlist_transfer_arr(t_dlist *list, const void *arr, size_t size, size_t count);
+t_dlist	*dlist_init_arr(const void *arr, size_t size, size_t count);
 
 // UPDATE cur
 void	move_front(t_dlist *list);
@@ -60,6 +65,7 @@ void	dlist_print_backward(t_dlist *list, void (*print_content)(void *));
 void	ft_putnbr_space(int num);
 void	mergesort_dlist(t_dlist *list, t_comp comp);
 t_dlist	*dlist_duplicate(t_dlist *list, size_t content_size);
+t_node	*dlist_find_content(t_dlist *list, void *content, size_t size);
 void	*copy_content(void *node, size_t n);
 
 #endif

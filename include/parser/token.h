@@ -6,13 +6,12 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/04 23:19:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 04:41:11 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_H
 # define TOKEN_H
-
 /*
  * 0xf0000000 	Operator bit-mask
  * LSB = 1 		expandable operator
@@ -24,7 +23,7 @@ enum e_token_type
 {
 	TT_EMPTY = 0,
 	TT_WORD = 0x00000010,
-	TT_ASSIGNMENT_WORD = 0x00000020,
+//	TT_ASSIGNMENT_WORD = 0x00000020,
 	/* operators */
 	TT_OPERATOR = 0x70000000,
 	TT_DOLLAR = 0x70000010,
@@ -52,9 +51,11 @@ enum e_token_handler
 
 typedef struct s_iterator
 {
-	char	*line;
-	int		start;
-	int		end;
+	t_dlist	*line;
+	t_node	*start;
+	t_node	*end;
+	int		len;
+	t_dlist	*env_list;
 }				t_iterator;
 
 typedef struct s_token

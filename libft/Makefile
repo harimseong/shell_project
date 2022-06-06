@@ -32,7 +32,7 @@ BNS = ft_lstnew.c ft_lstadd_front.c\
 	ft_lstclear.c ft_lstiter.c\
 	ft_lstmap.c
 
-ADD = ft_execvpe.c
+ADD = ft_execvpe.c ft_print_memory.c
 SRC += $(ADD)
 
 OBJS = $(SRC:%.c=%.o)

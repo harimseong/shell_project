@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 21:10:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 15:05:09 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,33 @@ void	pop_back(t_dlist *list, void (*delete_content)(void *))
 	delete_content(del_node->content);
 	free(del_node);
 	--list->size;
+}
+
+int	insert_at(t_dlist *list, t_node *at, void *content)
+{
+	t_node	*trav;
+	t_node	*new_node;
+
+	trav = list->head;
+	while (trav && trav != at)
+		trav = trav->next;
+	if (trav == NULL || trav != at)
+		return (0);
+	new_node = malloc(sizeof(t_node));
+	new_node->content = content;
+	++list->size;
+	if (at == list->head)
+	{
+		new_node->prev = NULL;
+		new_node->next = list->head;
+		list->head->prev = new_node;
+		list->head = new_node;
+		return (1);
+	}
+	trav = trav->prev;
+	trav->next = new_node;
+	new_node->prev = trav;
+	new_node->next = at;
+	at->prev = new_node;
+	return (1);
 }

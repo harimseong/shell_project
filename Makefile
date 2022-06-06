@@ -13,8 +13,12 @@ SRC		=	main.c\
 			parser/parser_error.c\
 			parser/parse_command.c\
 			parser/parse_redirect.c\
-			parser/tokenizer.c\
-			parser/token/helper_functions.c
+			parser/print_parsing_info.c\
+			parser/token/tokenizer.c\
+			parser/token/helper_functions.c\
+			parser/token/recognition_procedure_1.c\
+			parser/token/recognition_procedure_2.c\
+			parser/token/word_expansion.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 # builtin source files
@@ -36,21 +40,23 @@ INCL_DIR=	include
 INCL	:=	$(INCL:%=$(INCL_DIR)/%)
 
 
-LIBFLAGS=	-L.
+LIB_ADD	=	-L.
+LIBTARGET=	all
 
 LIBFT	=	libft.a
 LIBFT_DIR=	libft
-LIBFLAGS+=	-lft
+LIB_ADD	+=	-lft
 LIBS	+=	LIBFT.lib
 
 
 DLLIST	=	libdlinkedlist.a
 DLLIST_DIR=	doubly_linked_list
-LIBFLAGS+=	-ldlinkedlist
+LIB_ADD	+=	-ldlinkedlist
 LIBS	+=	DLLIST.lib
 
 ifeq ($(DEBUG_FLAG), 1)
 CFLAGS	+=	$(DEBUG)
+LIBFLAGS= DEBUG_FLAG=1	
 endif
 
 
@@ -62,13 +68,13 @@ debug:
 	$(MAKE) DEBUG_FLAG=1 all
 
 $(NAME): $(LIBS) $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIBFLAGS)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
 
 $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR)
 
 $(LIBS): %.lib:
-	@$(MAKE) -C $($*_DIR) all
+	@$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
 	mv $($*_DIR)/$($*) .
 
 clean:

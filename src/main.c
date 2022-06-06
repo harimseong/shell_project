@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 20:41:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 15:59:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "libft.h"
 #include "minishell.h"
 #include "../cmd_temp/cmd.h"
+#include "parser/parser.h"
+
+static void	get_argument(int argc, char **argv);
 
 static const char	*g_prompt = "$> ";
 
@@ -28,18 +31,24 @@ int	main(int argc, char *argv[], char *envp[])
 	pipeline_list = (void *)1;
 	env_list = dlist_init();
 	env_list = set_envlist(envp, env_list);
-	(void)argc;
-	(void)argv;
-	(void)envp;
-	while (pipeline_list != NULL)
+	get_argument(argc, argv);
+	while (1)
 	{
-		pipeline_list = temp_parse(readline(g_prompt), env_list);
-		//parse(readline(g_prompt));
-		//delete_dlist(token_list, delete_item);
+		//pipeline_list = temp_parse(readline(g_prompt), env_list);
+		pipeline_list = parser(readline(g_prompt), env_list);
+		if (pipeline_list == NULL)
+			continue ;
+		dlist_print_forward(pipeline_list, pipeline_list_print);
+		dlist_delete(pipeline_list, pipeline_list_delete);
 	}
 	return (0);
 }
 
+void	get_argument(int argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+}
 /*
 void	print_item(t_token *token)
 {

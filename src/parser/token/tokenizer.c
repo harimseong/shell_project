@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/04 23:19:32 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 16:18:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef int	(*t_token_func)(t_iterator *, t_token *);
 
 static t_token *get_token(t_iterator *iterator);
-static int		check_character(t_iterator *iterator, t_token *token);
+static int		recog_character(t_iterator *iterator, t_token *token);
 
 t_token	*token_handler(int type, t_iterator *new_iterator)
 {
@@ -55,37 +55,28 @@ t_token	*token_handler(int type, t_iterator *new_iterator)
 t_token *get_token(t_iterator *iterator)
 {
 	t_token	*new_token;
-	char	target;
-	char	*line;
 
-	line = iterator->line;
-	target = line[iterator->start];
 	new_token = ft_calloc(1, sizeof(t_token));
-	while (line[iterator->start] != 0)
+	while (get_char(iterator->start) != 0)
 	{
 		iterator->end = iterator->start;
-		while (check_character(iterator, new_token) != DELIMIT)
-			++iterator->end;
+		iterator->len = 0;
+		while (recog_character(iterator, new_token))
+			iterator->end = iterator->end->next;
 		if (new_token->type != TT_EMPTY)
 			break ;
-		iterator->start = iterator->end + (iterator->start == iterator->end);
+		iterator->start = iterator->end;
+		if (iterator->len == 0)
+			iterator->start = iterator->end->next;
 	}
-	/*
 	if (new_token->type == TT_EMPTY)
-	{
-		free(new_token);
-		return (NULL);
-	}
-	*/
-	if ((new_token->type & TT_DOLLAR) == TT_DOLLAR)
-		return (word_expansion(iterator, new_token));
-	else
-		new_token->word = ft_strndup(line + iterator->start,
-			iterator->end - iterator->start);
+		return (new_token);
+	new_token->word = convert_list(iterator->start, iterator->len);
+	iterator->start = iterator->end;
 	return (new_token);
 }
 
-int	check_character(t_iterator *iterator, t_token *token)
+int	recog_character(t_iterator *iterator, t_token *token)
 {
 	int		idx;
 	int		ret;
@@ -99,19 +90,6 @@ int	check_character(t_iterator *iterator, t_token *token)
 	}
 	if (ret == DELIMIT)
 		return (0);
+	++iterator->len;
 	return (1);
 }
-
-/*
-t_token	*make_token(char *word, int type)
-{
-	t_token	*new_token;
-
-	if (type == TT_ERROR)
-		return (NULL);
-	new_token = malloc(sizeof(t_token));
-	new_token->word = word;
-	new_token->type = type;
-	return (new_token);
-}
-*/
