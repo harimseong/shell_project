@@ -3,7 +3,7 @@ NAME	=	minishell
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
-DEBUG	=	-g3 -fsanitize=address
+DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
 RM		=	rm -f
 
 # parser source files
@@ -76,6 +76,7 @@ $(OBJ): %.o: %.c
 $(LIBS): %.lib:
 	@$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
 	mv $($*_DIR)/$($*) .
+	touch $*.lib
 
 clean:
 	$(RM) $(OBJ)
@@ -87,6 +88,7 @@ fclean: clean $(LIBS:%=%.clean)
 $(LIBS:%=%.clean): %.lib.clean:
 	$(RM) $($*)
 	@$(MAKE) -C $($*_DIR) fclean
+	$(RM) $*.lib
 
 re: fclean
 	$(MAKE) all

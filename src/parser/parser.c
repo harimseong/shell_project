@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 16:15:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 21:06:26 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 	t_token		*token;
 	t_iterator	iterator;
 
+	if (line == NULL)
+		return (NULL);
 	dlist_line = dlist_init_arr(line, sizeof(char), ft_strlen(line) + 1);
 	iterator = (t_iterator){dlist_line, dlist_line->head, dlist_line->head,
 		0, env_list};
@@ -75,12 +77,16 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	token = token_handler(TH_PEEK, NULL);
 	while ((token->type & TT_PIPELINE) == TRUE)
 	{
+		token_handler(TH_GET, NULL);
 		push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 		parse_pipeline(pipeline_list->tail->content);
 		token = token_handler(TH_PEEK, NULL);
 	}
 	if (token->type != TT_EMPTY)
 	{
+		if (DEBUG_FLAG)
+			printf("minishell: parse error: %s: %s: %d: token_type %x\n",
+				__FILE__, __FUNCTION__, __LINE__, token->type);
 		parser_error(pipeline_list, token);
 		return (NULL);
 	}
@@ -130,6 +136,7 @@ void	parse_pipeline(t_pipeline *pipeline)
 	token = token_handler(TH_PEEK, NULL);
 	while (token->type == TT_PIPE)
 	{
+		token_handler(TH_GET, NULL);
 		push_back(pipeline->command_list, ft_calloc(1, sizeof(t_command)));
 		parse_command(command_list->tail->content);
 		token = token_handler(TH_PEEK, NULL);

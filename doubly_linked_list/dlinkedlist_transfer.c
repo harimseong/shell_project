@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:07:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/05 15:23:45 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 18:06:09 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	dlist_transfer_arr(t_dlist *list, const void *arr, size_t size, size_t coun
 	void	*unit;
 	size_t	idx;
 
+	if (arr == NULL || size == 0)
+		return ;
 	idx = 0;
 	while (idx < count)
 	{

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 16:26:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:46:34 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static const t_token_recog_func	g_token_recog_tab[8]
 
 // helper functions
 char	get_char(t_node *node);
-int		check_long_operator(char target, int type);
+int		check_long_operator(char target, int *type);
 int		is_operator(char target);
 int		is_special(char target);
 int		get_operator_type(char target);

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 04:21:18 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:46:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_operator(t_iterator *iterator, t_token *token)
 	type = token->type;
 	target = get_char(iterator->end);
 	if ((type & TT_OPERATOR) == TT_OPERATOR)
-		return (check_long_operator(target, type));
+		return (check_long_operator(target, &token->type));
 	return (CONTINUE);
 }
 

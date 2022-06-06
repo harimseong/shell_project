@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:23:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 16:28:11 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 19:46:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	is_operator(char target)
 	return (0);
 }
 
-int	check_long_operator(char target, int type)
+int	check_long_operator(char target, int *type)
 {
-	if (!(((type == TT_LESS) && target == '<')
-		|| ((type == TT_GREAT) && target == '>')))
+	if (!(((*type == TT_LESS) && target == '<')
+		|| ((*type == TT_GREAT) && target == '>')))
 		return (DELIMIT);
 	if (target == '<')
-		type = TT_DLESS;
+		*type = TT_DLESS;
 	else if (target == '>')
-		type = TT_DGREAT;
+		*type = TT_DGREAT;
 	return (APPLIED);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 15:59:21 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/06 21:24:59 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	t_dlist		*pipeline_list;
 	t_dlist		*env_list;
+	char		*line;
 
 	pipeline_list = (void *)1;
 	env_list = dlist_init();
@@ -34,8 +35,10 @@ int	main(int argc, char *argv[], char *envp[])
 	get_argument(argc, argv);
 	while (1)
 	{
-		//pipeline_list = temp_parse(readline(g_prompt), env_list);
-		pipeline_list = parser(readline(g_prompt), env_list);
+		line = readline(g_prompt);
+		if (line == NULL)
+			break ;
+		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 			continue ;
 		dlist_print_forward(pipeline_list, pipeline_list_print);
