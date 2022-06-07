@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 16:18:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:12:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,35 @@ t_token	*token_handler(int type, t_iterator *new_iterator)
 		token = get_token(iterator);
 		return (temp);
 	}
-	ft_putstr_fd("minishell: token handler flag error\n", STDOUT_FILENO);
+	ft_putstr_fd("minishell: token handler error\n", STDERR_FILENO);
 	return (NULL);
 }
 
 t_token *get_token(t_iterator *iterator)
 {
 	t_token	*new_token;
+	t_dlist	*buf;
 
 	new_token = ft_calloc(1, sizeof(t_token));
-	while (get_char(iterator->start) != 0)
+	buf = iterator->line;
+	while (get_char(buf->head) != 0)
 	{
-		iterator->end = iterator->start;
-		iterator->len = 0;
+		buf->cur = buf->head;
+		buf->idx = 0;
 		while (recog_character(iterator, new_token))
-			iterator->end = iterator->end->next;
+			move_back(buf);
 		if (new_token->type != TT_EMPTY)
 			break ;
-		iterator->start = iterator->end;
-		if (iterator->len == 0)
-			iterator->start = iterator->end->next;
+		while (buf->size > 0 && buf->head != buf->cur)
+			pop_front(buf, free);
+		if (buf->idx == 0)
+			pop_front(buf, free);
 	}
 	if (new_token->type == TT_EMPTY)
 		return (new_token);
-	new_token->word = convert_list(iterator->start, iterator->len);
-	iterator->start = iterator->end;
+	new_token->word = convert_list(buf->head, buf->idx);
+	while (buf->size > 0 && buf->head != buf->cur)
+		pop_front(buf, free);
 	return (new_token);
 }
 
@@ -85,7 +89,8 @@ int	recog_character(t_iterator *iterator, t_token *token)
 	ret = CONTINUE;
 	while (idx < TABLE_SIZE && ret == CONTINUE)
 	{
-		ret = g_token_recog_tab[idx](iterator, token);
+		ret = g_token_recog_tab[idx](iterator, token,
+			get_char(iterator->line->cur));
 		++idx;
 	}
 	if (ret == DELIMIT)

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:23:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 19:46:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:18:07 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*convert_list(t_node *node, size_t len)
 //	if (word == NULL)
 //		return (NULL);
 	idx = 0;
-	while (idx < len)
+	while (node && idx < len)
 	{
 		word[idx] = get_char(node);
 		++idx;

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:57:22 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 21:09:53 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/07 13:16:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void word_list_print(void *word)
 {
 	if (word == NULL)
 		return ;
-	printf("\t\t\t{\n\t\t\t\ttoken word = %s\n", ((t_token *)word)->word);
+	printf("\t\t\t{\n\t\t\t\ttoken word = \"%s\"\n", ((t_token *)word)->word);
 	printf("\t\t\t\ttoken type = 0x%x\n\t\t\t}\n", ((t_token *)word)->type);
 }
 

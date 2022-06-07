@@ -14,11 +14,11 @@ SRC		=	main.c\
 			parser/parse_command.c\
 			parser/parse_redirect.c\
 			parser/print_parsing_info.c\
-			parser/token/tokenizer.c\
-			parser/token/helper_functions.c\
-			parser/token/recognition_procedure_1.c\
-			parser/token/recognition_procedure_2.c\
-			parser/token/word_expansion.c
+			tokenizer/tokenizer.c\
+			tokenizer/helper_functions.c\
+			tokenizer/recognition_procedure_1.c\
+			tokenizer/recognition_procedure_2.c\
+			tokenizer/word_expansion.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 # builtin source files
@@ -74,9 +74,8 @@ $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR)
 
 $(LIBS): %.lib:
-	@$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
-	mv $($*_DIR)/$($*) .
-	touch $*.lib
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
 
 clean:
 	$(RM) $(OBJ)
@@ -93,4 +92,4 @@ $(LIBS:%=%.clean): %.lib.clean:
 re: fclean
 	$(MAKE) all
 
-.PHONY: all clean fclean libclean re
+.PHONY: all clean fclean re

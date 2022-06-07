@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:56 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/20 21:30:14 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/07 23:54:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_front(t_dlist *list)
 {
-	if (list->cur == list->head)
+	if (list->size < 2)
 		return ;
 	list->cur = list->cur->prev;
 	--list->idx;
@@ -22,7 +22,7 @@ void	move_front(t_dlist *list)
 
 void	move_back(t_dlist *list)
 {
-	if (list->cur == list->tail)
+	if (list->size < 2)
 		return ;
 	list->cur = list->cur->next;
 	++list->idx;

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 21:06:26 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:20:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "errors.h"
 #include "parser/token.h"
 #include "parser/parser.h"
+#include "parser/token_recognition.h"
 #include "minishell.h"
 
 void			parse_command(t_command *command);
@@ -55,12 +56,18 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 	t_dlist		*dlist_line;
 	t_token		*token;
 	t_iterator	iterator;
+	char		*arr_line;
 
 	if (line == NULL)
 		return (NULL);
 	dlist_line = dlist_init_arr(line, sizeof(char), ft_strlen(line) + 1);
-	iterator = (t_iterator){dlist_line, dlist_line->head, dlist_line->head,
-		0, env_list};
+	iterator = (t_iterator){dlist_line,	0, env_list};
+	if (DEBUG_FLAG)
+	{
+		arr_line = convert_list(dlist_line->head, dlist_line->size);
+		printf("debug: input line: %s\n", arr_line);
+		free(arr_line);
+	}
 	token_handler(TH_SET, &iterator);
 	token = token_handler(TH_PEEK, NULL);
 	if (token->type == TT_EMPTY)
@@ -75,7 +82,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 	parse_pipeline(pipeline_list->head->content);
 	token = token_handler(TH_PEEK, NULL);
-	while ((token->type & TT_PIPELINE) == TRUE)
+	while ((token->type & TT_PIPELINE) == TT_PIPELINE)
 	{
 		token_handler(TH_GET, NULL);
 		push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
@@ -134,7 +141,7 @@ void	parse_pipeline(t_pipeline *pipeline)
 	push_back(command_list, ft_calloc(1, sizeof(t_command)));
 	parse_command(command_list->head->content);
 	token = token_handler(TH_PEEK, NULL);
-	while (token->type == TT_PIPE)
+	while ((token->type & TT_PIPE) == TT_PIPE)
 	{
 		token_handler(TH_GET, NULL);
 		push_back(pipeline->command_list, ft_calloc(1, sizeof(t_command)));

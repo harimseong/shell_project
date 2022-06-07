@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 04:41:11 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:01:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ enum e_token_type
 //	TT_ASSIGNMENT_WORD = 0x00000020,
 	/* operators */
 	TT_OPERATOR = 0x70000000,
-	TT_DOLLAR = 0x70000010,
 	TT_PIPELINE = 0x70010000,		/* pipeline operators */
 	TT_AND = 0x70010010,				/* '&&' */
 	TT_OR = 0x70010020,				/* '||' */
@@ -52,8 +51,6 @@ enum e_token_handler
 typedef struct s_iterator
 {
 	t_dlist	*line;
-	t_node	*start;
-	t_node	*end;
 	int		len;
 	t_dlist	*env_list;
 }				t_iterator;
