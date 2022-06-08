@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 05:13:17 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 21:03:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 		erase_at(iterator->line, iterator->record, free);
 		erase_at(iterator->line, iterator->line->cur->prev, free);
 		iterator->line->idx -= 2;
-		move_front(iterator->line);
 		token->type = TT_WORD;
-		return (APPLIED);
+		return (recog_character(iterator, token));
 	}
 	else if ((target == '\'' || target == '"')
 		&& !check_token_type(token->type, TT_QUOTE_MASK))
@@ -66,7 +65,8 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 		iterator->record = iterator->line->cur;
 		if (token->type != TT_EMPTY && !check_token_type(token->type, TT_WORD))
 			return (DELIMIT);
-		token->type |= TT_SQUOTE * (target == '\'') + TT_DQUOTE * (target == '"');
+		token->type
+			|= TT_SQUOTE * (target == '\'') + TT_DQUOTE * (target == '"');
 		return (APPLIED);
 	}
 	return (CONTINUE);

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 05:00:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 20:59:02 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef char	**t_token_arr;
 
 t_token	*token_handler(int type, t_iterator *iterator);
 int		check_token_type(int type, int comp);
+int		recog_character(t_iterator *iterator, t_token *token);
 //t_token	*make_token(char *word, int type);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 04:36:49 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 21:07:39 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 typedef int	(*t_token_func)(t_iterator *, t_token *);
 
 static t_token *get_token(t_iterator *iterator);
-static int		recog_character(t_iterator *iterator, t_token *token);
 
 t_token	*token_handler(int type, t_iterator *new_iterator)
 {
@@ -63,7 +62,7 @@ t_token *get_token(t_iterator *iterator)
 	{
 		buf->cur = buf->head;
 		buf->idx = 0;
-		while (recog_character(iterator, new_token))
+		while (recog_character(iterator, new_token) != DELIMIT)
 			move_back(buf);
 		if (new_token->type != TT_EMPTY)
 			break ;
@@ -93,8 +92,7 @@ int	recog_character(t_iterator *iterator, t_token *token)
 			get_char(iterator->line->cur));
 		++idx;
 	}
-	if (ret == DELIMIT)
-		return (0);
+	iterator->len += ret != DELIMIT;
 	++iterator->len;
-	return (1);
+	return (ret);
 }

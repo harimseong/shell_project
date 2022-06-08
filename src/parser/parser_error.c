@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:37 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 13:39:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 20:49:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	pipeline_list_delete(void *pipeline)
 	if (((t_pipeline *)pipeline)->command_list != NULL)
 		dlist_delete(((t_pipeline *)pipeline)->command_list,
 			command_list_delete);
-	free(pipeline);
 }
 
 void	command_list_delete(void *command)
@@ -43,13 +42,11 @@ void	command_list_delete(void *command)
 	if (((t_command *)command)->redirect_list != NULL)
 		dlist_delete(((t_command *)command)->redirect_list,
 			redirect_list_delete);
-	free(command);
 }
 
 void	word_list_delete(void *token)
 {
 	free(((t_token *)token)->word);
-	free(token);
 }
 
 void	redirect_list_delete(void *redirect_arg)
@@ -59,5 +56,4 @@ void	redirect_list_delete(void *redirect_arg)
 	redirect = redirect_arg;
 	free(redirect->token_set[0]->word);
 	free(redirect->token_set[1]->word);
-	free(redirect);
 }
