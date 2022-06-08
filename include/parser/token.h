@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 14:01:52 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 05:00:57 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,24 @@
 enum e_token_type
 {
 	TT_EMPTY = 0,
-	TT_WORD = 0x00000010,
+	TT_WORD = 0x01000000,
 //	TT_ASSIGNMENT_WORD = 0x00000020,
 	/* operators */
-	TT_OPERATOR = 0x70000000,
-	TT_PIPELINE = 0x70010000,		/* pipeline operators */
-	TT_AND = 0x70010010,				/* '&&' */
-	TT_OR = 0x70010020,				/* '||' */
-	TT_REDIRECT = 0x70020000,	/* redirection operators */
-	TT_LESS = 0x70020001,			/* '<' */
-	TT_DLESS = 0x70020002,		/* '<<' */
-	TT_GREAT = 0x70020011,		/* '>' */
-	TT_DGREAT = 0x70020012,		/* '>>' */
-	TT_QUOTE_MASK = 0x70040000,
-	TT_SQUOTE = 0x70040010,
-	TT_DQUOTE = 0x70040020,
-	TT_PIPE = 0x70080000,
-	TT_ERROR = 0x7fff0000
+	TT_OPERATOR = 0x02000000,
+	TT_PIPELINE = 0x02010000,		/* pipeline operators */
+	TT_AND = 0x02010010,				/* '&&' */
+	TT_OR = 0x02010020,				/* '||' */
+	TT_REDIRECT = 0x02020000,	/* redirection operators */
+	TT_LESS = 0x02020001,			/* '<' */
+	TT_DLESS = 0x02020002,		/* '<<' */
+	TT_GREAT = 0x02020011,		/* '>' */
+	TT_DGREAT = 0x02020012,		/* '>>' */
+	TT_PIPE = 0x02040000,
+	TT_QUOTE_MASK = 0x04080000,
+//	TT_QUOTE_START = 0x0408010,
+	TT_SQUOTE = 0x04080020,
+	TT_DQUOTE = 0x04080040,
+	TT_ERROR = 0x80000000
 };
 
 enum e_token_handler
@@ -50,6 +51,7 @@ enum e_token_handler
 
 typedef struct s_iterator
 {
+	t_node	*record;
 	t_dlist	*line;
 	int		len;
 	t_dlist	*env_list;
@@ -64,6 +66,7 @@ typedef struct s_token
 typedef char	**t_token_arr;
 
 t_token	*token_handler(int type, t_iterator *iterator);
+int		check_token_type(int type, int comp);
 //t_token	*make_token(char *word, int type);
 
 #endif

@@ -6,9 +6,11 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:18:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/26 19:05:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 02:33:39 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 #include "dlinkedlist.h"
 #ifndef NULL

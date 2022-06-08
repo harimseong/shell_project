@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 14:20:52 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 04:39:04 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 	if (line == NULL)
 		return (NULL);
 	dlist_line = dlist_init_arr(line, sizeof(char), ft_strlen(line) + 1);
-	iterator = (t_iterator){dlist_line,	0, env_list};
+	iterator = (t_iterator){NULL, dlist_line, 0, env_list};
 	if (DEBUG_FLAG)
 	{
 		arr_line = convert_list(dlist_line->head, dlist_line->size);
@@ -82,7 +82,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 	parse_pipeline(pipeline_list->head->content);
 	token = token_handler(TH_PEEK, NULL);
-	while ((token->type & TT_PIPELINE) == TT_PIPELINE)
+	while (check_token_type(token->type, TT_PIPELINE))
 	{
 		token_handler(TH_GET, NULL);
 		push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
@@ -116,7 +116,7 @@ t_dlist	*parse(const char *line)
 	push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 	parse_pipeline(pipeline_list->head->content);
 	token = token_handler(TH_PEEK, NULL);
-	while ((token->type & TT_PIPELINE) == TRUE)
+	while (check_token_type(token->type, TRUE))
 	{
 		push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 		parse_pipeline(pipeline_list->tail->content);
@@ -141,7 +141,7 @@ void	parse_pipeline(t_pipeline *pipeline)
 	push_back(command_list, ft_calloc(1, sizeof(t_command)));
 	parse_command(command_list->head->content);
 	token = token_handler(TH_PEEK, NULL);
-	while ((token->type & TT_PIPE) == TT_PIPE)
+	while (check_token_type(token->type, TT_PIPE))
 	{
 		token_handler(TH_GET, NULL);
 		push_back(pipeline->command_list, ft_calloc(1, sizeof(t_command)));

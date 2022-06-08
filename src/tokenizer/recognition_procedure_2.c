@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:28:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 12:51:54 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 14:55:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	check_new_operator(t_iterator *iterator, t_token *token, char target)
 	(void)iterator;
 	if (!is_operator(target))
 		return (CONTINUE);
-	if ((token->type & TT_QUOTE_MASK) == TT_QUOTE_MASK)
-		return (APPLIED);
 	if (token->type != TT_EMPTY)
 		return (DELIMIT);
 	token->type = get_operator_type(target);
@@ -34,7 +32,7 @@ int	check_blank(t_iterator *iterator, t_token *token, char target)
 	(void)iterator;
 	if (!ft_isspace(target))
 		return (CONTINUE);
-	if ((token->type & TT_QUOTE_MASK) == TT_QUOTE_MASK)
+	if (check_token_type(token->type, TT_QUOTE_MASK))
 		return (APPLIED);
 	return (DELIMIT);
 }
@@ -50,7 +48,8 @@ int	check_word(t_iterator *iterator, t_token *token, char target)
 	*/
 	(void)iterator;
 	(void)target;
-	if ((token->type & TT_WORD) == TT_WORD)
+	if (check_token_type(token->type, TT_WORD))
+//		|| check_token_type(token->type, TT_QUOTE_MASK))
 		return (APPLIED);
 	return (CONTINUE);
 }
@@ -59,11 +58,12 @@ int	check_new_word(t_iterator *iterator, t_token *token, char target)
 {
 	/*
 	char	target;
-
-	target = iterator->line[iterator->end];
+target = iterator->line[iterator->end];
 	*/
 	(void)iterator;
 	(void)target;
-	token->type = TT_WORD;
+//	if (check_token_type(token->type, TT_QUOTE_MASK))
+//		token->type |= TT_WORD;
+	token->type |= TT_WORD;
 	return (APPLIED);
 }

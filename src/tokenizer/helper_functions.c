@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:23:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 14:18:07 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 04:23:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 int	is_operator(char target)
 {
 	if (target == '<' || target == '>'
-		|| target == '|' || target == '$'
-		|| target == '\'' || target == '"')
+		|| target == '|')
+//		|| target == '&')
 		return (1);
 	return (0);
 }

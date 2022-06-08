@@ -16,6 +16,7 @@ SRC		=	main.c\
 			parser/print_parsing_info.c\
 			tokenizer/tokenizer.c\
 			tokenizer/helper_functions.c\
+			tokenizer/helper_functions_2.c\
 			tokenizer/recognition_procedure_1.c\
 			tokenizer/recognition_procedure_2.c\
 			tokenizer/word_expansion.c

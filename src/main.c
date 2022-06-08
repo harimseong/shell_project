@@ -6,11 +6,13 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 14:10:22 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 02:54:43 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <readline/readline.h>
+#include <readline/history.h>
 #include <unistd.h>
 
 #include "dlinkedlist.h"

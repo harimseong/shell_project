@@ -6,14 +6,12 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 23:00:28 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 03:11:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DLINKEDLIST_H
 # define DLINKEDLIST_H
-
-# include <sys/_types/_size_t.h>
 
 typedef int	(*t_comp)(void *, void *);
 

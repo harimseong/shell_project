@@ -34,3 +34,7 @@ $TEST1$TEST2	#success
 
 c"a"t -e 	#success
 c"a"t$TEST2 #success
+
+""			#"\0" token
+"" a		#"\0" "a" tokens
+""a			#"a" token

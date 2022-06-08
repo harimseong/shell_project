@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 20:58:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 15:12:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 05:43:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ void	dlist_empty(t_dlist *list, void (*delete_content)(void *))
 	trav_node = list->head->next;
 	while (size > 1)
 	{
+		*trav_node->prev = (t_node){NULL, NULL, NULL};
 		delete_content(trav_node->prev->content);
 		free(trav_node->prev);
 		trav_node = trav_node->next;
 		--size;
 	}
+	delete_content(list->tail);
+	*list->tail= (t_node){NULL, NULL, NULL};
 	free(list->tail);
 }
 
@@ -59,6 +62,7 @@ void	erase_at(t_dlist *list, t_node *at, void (*delete_content)(void *))
 	at->prev->next = at->next;
 	at->next->prev = at->prev;
 	delete_content(at->content);
+	*at = (t_node){NULL, NULL, NULL};
 	free(at);
 	--list->size;
 }

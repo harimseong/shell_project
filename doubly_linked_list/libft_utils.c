@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlinkedlist_cur.c                                  :+:      :+:    :+:   */
+/*   libft_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 20:17:56 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 03:18:08 by hseong           ###   ########.fr       */
+/*   Created: 2022/06/08 03:14:28 by hseong            #+#    #+#             */
+/*   Updated: 2022/06/08 03:15:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-#include "dlinkedlist.h"
-
-void	move_front(t_dlist *list)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (list->size < 2 || list->head == list->cur)
-		return ;
-	list->cur = list->cur->prev;
-	--list->idx;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
+
+	if (!n)
+		return (0);
+	str1 = s1;
+	str2 = s2;
+	while (--n && *str1 == *str2)
+	{
+		++str1;
+		++str2;
+	}
+	return (*str1 - *str2);
 }
 
-void	move_back(t_dlist *list)
+void	*ft_memcpy(void *dst, const void *src, size_t len)
 {
-	if (list->size < 2 || list->tail == list->cur)
-		return ;
-	list->cur = list->cur->next;
-	++list->idx;
-}
+	unsigned char		*d;
+	const unsigned char	*s;
 
-void	set_cur(t_dlist *list, void *content)
-{
-	list->cur->content = content;
+	d = dst;
+	s = src;
+	while (len--)
+		*d++ = *s++;
+	return (dst);
 }
