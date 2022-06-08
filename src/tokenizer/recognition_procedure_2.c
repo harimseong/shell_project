@@ -6,20 +6,18 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:28:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 14:55:37 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:15:11 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dlinkedlist.h"
 #include "libft.h"
 #include "constants.h"
-#include "parser/token.h"
 #include "parser/token_recognition.h"
 
 int	check_new_operator(t_iterator *iterator, t_token *token, char target)
 {
 	(void)iterator;
-	if (!is_operator(target))
+	if (!ft_strchr(OPERATOR_LIST, target))
 		return (CONTINUE);
 	if (token->type != TT_EMPTY)
 		return (DELIMIT);

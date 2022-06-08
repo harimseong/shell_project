@@ -61,22 +61,24 @@ LIBFLAGS= DEBUG_FLAG=1
 endif
 
 
-all:
+libs: $(LIBS)
 	$(MAKE) $(NAME)
+
+all: $(NAME)
 
 debug:
 	$(MAKE) clean
 	$(MAKE) DEBUG_FLAG=1 all
 
-$(NAME): $(LIBS) $(OBJ)
+$(LIBS): %.lib:
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
+
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
 
 $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR)
-
-$(LIBS): %.lib:
-	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
-	@cp -p $($*_DIR)/$($*) .
 
 clean:
 	$(RM) $(OBJ)
@@ -93,4 +95,4 @@ $(LIBS:%=%.clean): %.lib.clean:
 re: fclean
 	$(MAKE) all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libs

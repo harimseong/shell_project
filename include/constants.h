@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:10:09 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/06 16:03:09 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:44:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@
 
 # define TRUE (1)
 # define FALSE (0)
+
+# define OPERATOR_LIST "<>|&"
+# define SPECIAL_CHAR_LIST "?*"
 
 #endif

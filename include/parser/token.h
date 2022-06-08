@@ -6,12 +6,15 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 20:59:02 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:47:03 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_H
 # define TOKEN_H
+
+# include "dlinkedlist.h"
+
 /*
  * 0xf0000000 	Operator bit-mask
  * LSB = 1 		expandable operator
@@ -35,10 +38,12 @@ enum e_token_type
 	TT_GREAT = 0x02020011,		/* '>' */
 	TT_DGREAT = 0x02020012,		/* '>>' */
 	TT_PIPE = 0x02040000,
-	TT_QUOTE_MASK = 0x04080000,
+	TT_CONTROL_OP = 0x02080000,
+	TT_AMPERSAND = 0x020800010,
+	TT_QUOTE_MASK = 0x04000000,
 //	TT_QUOTE_START = 0x0408010,
-	TT_SQUOTE = 0x04080020,
-	TT_DQUOTE = 0x04080040,
+	TT_SQUOTE = 0x04000020,
+	TT_DQUOTE = 0x04000040,
 	TT_ERROR = 0x80000000
 };
 

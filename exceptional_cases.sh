@@ -30,7 +30,8 @@ cat" -e" 	#fail
 cat " -e"	#success 
 export TEST1="cat"
 export TEST2=" -e"
-$TEST1$TEST2	#success
+$TEST1$TEST2		#success(two token)
+echo $TEST1$TEST2	#one token
 
 c"a"t -e 	#success
 c"a"t$TEST2 #success
@@ -38,3 +39,11 @@ c"a"t$TEST2 #success
 ""			#"\0" token
 "" a		#"\0" "a" tokens
 ""a			#"a" token
+
+| ls -al
+ls -al | #
+
+$			$# $ token
+echo $		$# $
+$$			# number
+

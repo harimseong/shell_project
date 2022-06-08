@@ -6,18 +6,18 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 23:17:49 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:22:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dlinkedlist.h"
+#include "constants.h"
 #include "libft.h"
-#include "../cmd_temp/cmd.h"
-#include "parser/token.h"
 #include "parser/token_recognition.h"
+#include "../cmd_temp/cmd.h"
 
 static t_node	*find_env(t_iterator *iterator);
 static void		*extract_content(void *arg);
+static void		special_expansion(t_iterator *iterator);
 
 int	expand_word(t_iterator *iterator)
 {
@@ -29,6 +29,10 @@ int	expand_word(t_iterator *iterator)
 	buf = iterator->line;
 	node = find_env(iterator);
 	expand_point = buf->cur->next;
+	if (node == NULL && (ft_isdigit(get_char(buf->cur))
+		|| ft_strchr(SPECIAL_CHAR_LIST, get_char(buf->cur)) != NULL))
+		// out of subject feature 
+		special_expansion(iterator);
 	if (node != NULL)
 	{
 		env_value = ((t_env *)node->content)->value;
@@ -79,4 +83,9 @@ void		*extract_content(void *arg)
 
 	env_node = arg;
 	return (env_node->key);
+}
+
+void	special_expansion(t_iterator *iterator)
+{
+	(void)iterator;
 }

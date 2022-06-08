@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 04:39:04 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:40:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,18 @@
 #include <sys/errno.h>
 #include <unistd.h>
 
-#include "dlinkedlist.h"
 #include "libft.h"
 #include "../cmd_temp/cmd.h"
 #include "types.h"
 #include "constants.h"
 #include "errors.h"
-#include "parser/token.h"
-#include "parser/parser.h"
 #include "parser/token_recognition.h"
+#include "parser/parser.h"
 #include "minishell.h"
 
 void			parse_command(t_command *command);
 static void		parse_pipeline(t_pipeline *pipeline);
 static t_dlist	*parse_init(t_dlist *pipeline_list);
-
-/*
-t_dlist *temp_parse(const char *line, t_dlist *env_list)
-{
-	char		**temp;
-	int			temp_len;
-
-	if (line == NULL)
-		return (NULL);
-	temp_len = 0;
-	temp = ft_split(line, " ");
-	while (temp[temp_len])
-		++temp_len;
-	if (temp_len == 0)
-		return ((void *)1);
-	if (ft_strcmp(temp[0], "export") == 0)
-		builtin_export(env_list, temp_len, temp);
-	else if (ft_strcmp(temp[0], "env") == 0)
-		builtin_env(env_list);
-	return ((void *)1);
-}
-*/
 
 t_dlist	*parser(const char *line, t_dlist *env_list)
 {

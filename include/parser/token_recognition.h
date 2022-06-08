@@ -6,12 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 23:17:36 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:53:03 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_RECOGNITION_H
 # define TOKEN_RECOGNITION_H
+
+# include "parser/token.h"
 
 # define TABLE_SIZE (8)
 # define CONTINUE (0)
@@ -29,6 +31,14 @@ int	check_blank(t_iterator *iterator, t_token *token, char target);
 int	check_word(t_iterator *iterator, t_token *token, char target);
 int	check_new_word(t_iterator *iterator, t_token *token, char target);
 
+// helper functions
+char	get_char(t_node *node);
+int		check_long_operator(char target, int *type);
+int		get_operator_type(char target);
+char	*convert_list(t_node *start, size_t len);
+
+int		expand_word(t_iterator *iterator);
+
 static const t_token_recog_func	g_token_recog_tab[8]
 	= {
 	check_eoi,
@@ -40,15 +50,5 @@ static const t_token_recog_func	g_token_recog_tab[8]
 	check_word,
 	check_new_word
 };
-
-// helper functions
-char	get_char(t_node *node);
-int		check_long_operator(char target, int *type);
-int		is_operator(char target);
-int		is_special(char target);
-int		get_operator_type(char target);
-char	*convert_list(t_node *start, size_t len);
-
-int		expand_word(t_iterator *iterator);
 
 #endif

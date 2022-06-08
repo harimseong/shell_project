@@ -6,11 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 03:22:39 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 03:35:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:11:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_token_type(int type, int comp)
-{
-	return ((type & comp) == comp);
-}

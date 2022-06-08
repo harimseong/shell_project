@@ -6,18 +6,16 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 21:07:39 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:21:49 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include "dlinkedlist.h"
 #include "libft.h"
 #include "constants.h"
-#include "parser/token.h"
-#include "parser/parser.h"
 #include "parser/token_recognition.h"
+#include "parser/parser.h"
 
 typedef int	(*t_token_func)(t_iterator *, t_token *);
 

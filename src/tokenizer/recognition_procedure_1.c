@@ -6,16 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 21:03:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:15:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include <stdio.h>
 
-#include "dlinkedlist.h"
 #include "libft.h"
 #include "constants.h"
-#include "parser/token.h"
 #include "parser/token_recognition.h"
 
 int	check_eoi(t_iterator *iterator, t_token *token, char target)

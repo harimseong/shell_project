@@ -6,16 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 03:57:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:19:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-#include "dlinkedlist.h"
 #include "libft.h"
 #include "constants.h"
-#include "parser/token.h"
 #include "parser/parser.h"
 
 static void	parse_io_file(t_dlist *redirect_list);

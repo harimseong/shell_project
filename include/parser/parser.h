@@ -6,12 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 13:39:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/08 22:18:02 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
+
+# include "parser/token.h"
 
 # ifndef DEBUG_FLAG
 #  define DEBUG_FLAG (0)
