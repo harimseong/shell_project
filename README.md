@@ -8,7 +8,7 @@ installing it with package manager like apt or brew is recommended.
 ##### Homebrew
 `brew install readline`
 ##### Ubuntu
-`apt install libreadlin-dev`
+`apt install libreadline-dev`
 
 ### what it does
 the goal of this project is mimicking bash shell as stated on project specification, so this minishell is not an actual shell programming language, but a simple prompting program mimicking small part of bash shell.  
