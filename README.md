@@ -12,5 +12,5 @@ the biggest challenge was making parser because available tools are limited by a
 the rule includes neither regular expression function nor bison and yacc, just some of C standard library functions and system calls.  
 so I hand coded tokenizer and parser and my partner did same for built-ins. 
 
-I referenced POSIX shell command language specification for tokenizer and learned recursive descent parser to understand parsing process and make parser.  
+I referenced POSIX shell command language specification for tokenizer and studied parser lectures to understand parsing process and make parser(RDP).  
 bash source code from https://ftp.gnu.org/ was helpful but not much. 
