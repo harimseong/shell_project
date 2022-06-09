@@ -6,11 +6,13 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 19:04:57 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/09 10:16:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/05/26 20:38:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+#include "dlinkedlist.h"
 #include "minishell.h"
 
 void	minishell_free_token(char ***token_arr_ptr)

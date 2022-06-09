@@ -6,14 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 14:40:25 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:43:33 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "dlinkedlist.h"
 
-int	push_front(t_dlist *list, t_item *item)
+int	push_front(t_dlist *list, void *content)
 {
 	t_node	*new_node;
 
@@ -24,7 +24,7 @@ int	push_front(t_dlist *list, t_item *item)
 		list->tail = new_node;
 	else
 		list->head->prev = new_node;
-	new_node->item = item;
+	new_node->content = content;
 	new_node->next = list->head;
 	new_node->prev = NULL;
 	list->head = new_node;
@@ -32,7 +32,7 @@ int	push_front(t_dlist *list, t_item *item)
 	return (1);
 }
 
-int	push_back(t_dlist *list, t_item *item)
+int	push_back(t_dlist *list, void *content)
 {
 	t_node	*new_node;
 
@@ -43,7 +43,7 @@ int	push_back(t_dlist *list, t_item *item)
 		list->head = new_node;
 	else
 		list->tail->next = new_node;
-	new_node->item = item;
+	new_node->content = content;
 	new_node->next = NULL;
 	new_node->prev = list->tail;
 	list->tail = new_node;
@@ -51,7 +51,7 @@ int	push_back(t_dlist *list, t_item *item)
 	return (1);
 }
 
-void	pop_front(t_dlist *list, void (*delete_item)(t_item *))
+void	pop_front(t_dlist *list, void (*delete_content)(void *))
 {
 	t_node	*del_node;
 
@@ -63,12 +63,12 @@ void	pop_front(t_dlist *list, void (*delete_item)(t_item *))
 		list->head->prev = NULL;
 	else
 		list->tail = NULL;
-	delete_item(del_node->item);
+	delete_content(del_node->content);
 	free(del_node);
 	--list->size;
 }
 
-void	pop_back(t_dlist *list, void (*delete_item)(t_item *))
+void	pop_back(t_dlist *list, void (*delete_content)(void *))
 {
 	t_node	*del_node;
 
@@ -80,7 +80,36 @@ void	pop_back(t_dlist *list, void (*delete_item)(t_item *))
 		list->tail->next = NULL;
 	else
 		list->head = NULL;
-	delete_item(del_node->item);
+	delete_content(del_node->content);
 	free(del_node);
 	--list->size;
+}
+
+int	insert_at(t_dlist *list, t_node *at, void *content)
+{
+	t_node	*trav;
+	t_node	*new_node;
+
+	trav = list->head;
+	while (trav && trav != at)
+		trav = trav->next;
+	if (trav == NULL || trav != at)
+		return (0);
+	new_node = malloc(sizeof(t_node));
+	new_node->content = content;
+	++list->size;
+	if (at == list->head)
+	{
+		new_node->prev = NULL;
+		new_node->next = list->head;
+		list->head->prev = new_node;
+		list->head = new_node;
+		return (1);
+	}
+	trav = trav->prev;
+	trav->next = new_node;
+	new_node->prev = trav;
+	new_node->next = at;
+	at->prev = new_node;
+	return (1);
 }

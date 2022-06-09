@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/05 14:43:20 by hseong           ###   ########.fr       */
+/*   Created: 2022/06/05 14:48:34 by hseong            #+#    #+#             */
+/*   Updated: 2022/06/05 14:56:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef ERRORS_H
+# define ERRORS_H
 
-# include "types.h"
-# include "parser/token.h"
+enum e_error_type
+{
+	ERR_ALLOC = 0x00000001,
+	ERR_PARSER = 0x00000002
+};
 
-t_dlist	*parser(const char *line, t_dlist *env_list);
-t_dlist	*temp_parse(const char *line, t_dlist *env_list);
-
-void	print_item(t_token *token);
-void	delete_item(t_token **token);
+size_t	error_handler(int assertion, void *arg, int type);
 
 #endif

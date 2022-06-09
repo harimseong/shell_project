@@ -3,38 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   dlinkedlist_peek.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 06:51:51 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 14:39:46 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 16:41:13 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 #include "dlinkedlist.h"
 
-void	peek_front(t_dlist *list, void (*print_item)(t_item *))
+void	peek_front(t_dlist *list, void (*print_content)(void *))
 {
 	if (list->size == 0)
 		return ;
-	print_item(list->head->item);
+	print_content(list->head->content);
 }
 
-void	peek_back(t_dlist *list, void (*print_item)(t_item *))
+void	peek_back(t_dlist *list, void (*print_content)(void *))
 {
 	if (list->size == 0)
 		return ;
-	print_item(list->tail->item);
+	print_content(list->tail->content);
 }
 
-t_item	*get_front(t_dlist *list)
+void	*get_front(t_dlist *list)
 {
 	if (list->size == 0)
 		return (0);
-	return (list->head->item);
+	return (list->head->content);
 }
-t_item	*get_back(t_dlist *list)
+
+void	*get_back(t_dlist *list)
 {
 	if (list->size == 0)
 		return (0);
-	return (list->tail->item);
+	return (list->tail->content);
 }
