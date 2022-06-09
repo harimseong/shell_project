@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dlinkedlist_peek.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 06:51:51 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 02:33:01 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 17:14:55 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	*get_front(t_dlist *list)
 		return (0);
 	return (list->head->content);
 }
+
 void	*get_back(t_dlist *list)
 {
 	if (list->size == 0)

@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_compare.c                                      :+:      :+:    :+:   */
+/*   delete_content.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 18:40:48 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:20:49 by gson             ###   ########.fr       */
+/*   Created: 2022/06/02 22:36:54 by gson              #+#    #+#             */
+/*   Updated: 2022/06/03 13:42:53 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
-int	key_compare(void *node1, void *node2)
+void	delete_content(void *env)
 {
-	return (ft_strcmp(((t_env *)node1)->key, ((t_env *)node2)->key));
+	free(((t_env *)env)->key);
+	free(((t_env *)env)->value);
+	free((t_env *)env);
 }

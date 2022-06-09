@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   dlinkedlist_transfer.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:07:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 14:44:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 17:15:06 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "dlinkedlist.h"
 
-void	dlist_transfer_arr(t_dlist *list, const void *arr, size_t size, size_t count)
+void	dlist_transfer_arr(t_dlist *list, const void *arr,
+			size_t size, size_t count)
 {
 	void	*unit;
 	size_t	idx;

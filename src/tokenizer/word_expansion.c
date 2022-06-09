@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   word_expansion.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 22:22:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 17:20:51 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	expand_word(t_iterator *iterator)
 	node = find_env(iterator);
 	expand_point = buf->cur->next;
 	if (node == NULL && (ft_isdigit(get_char(buf->cur))
-		|| ft_strchr(SPECIAL_CHAR_LIST, get_char(buf->cur)) != NULL))
-		// out of subject feature 
+			|| ft_strchr(SPECIAL_CHAR_LIST, get_char(buf->cur)) != NULL))
+		// out of subject feature
 		special_expansion(iterator);
 	if (node != NULL)
 	{
@@ -72,12 +72,12 @@ t_node	*find_env(t_iterator *iterator)
 	while (idx--)
 		erase_at(iterator->line, iterator->line->cur->next, free);
 	node = dlist_find_content(iterator->env_list, expression,
-		ft_strlen(expression) + 1, extract_content);
+			ft_strlen(expression) + 1, extract_content);
 	free(expression);
 	return (node);
 }
 
-void		*extract_content(void *arg)
+void	*extract_content(void *arg)
 {
 	t_env	*env_node;
 

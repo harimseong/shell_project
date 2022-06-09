@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 23:19:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 17:25:03 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,9 +153,9 @@ int	check_token_type(int type, int comp)
 int	check_long_operator(char target, int *type)
 {
 	if (!(((*type == TT_LESS) && target == '<')
-		|| ((*type == TT_GREAT) && target == '>')
-		|| ((*type == TT_PIPE) && target == '|')
-		|| ((*type == TT_AMPERSAND) && target == '&')))
+			|| ((*type == TT_GREAT) && target == '>')
+			|| ((*type == TT_PIPE) && target == '|')
+			|| ((*type == TT_AMPERSAND) && target == '&')))
 		return (DELIMIT);
 	*type = g_token_type_tab[(int)target];
 	if (target == '<')
