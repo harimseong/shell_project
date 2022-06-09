@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:24:39 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 21:48:05 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_token	*get_token(t_iterator *iterator)
 	}
 	if (new_token->type == TT_EMPTY)
 		return (new_token);
-	new_token->word = convert_list(buf->head, buf->idx);
+	new_token->word = dlist_to_string(buf->head, buf->idx);
 	while (buf->size > 0 && buf->head != buf->cur)
 		pop_front(buf, free);
 	return (new_token);

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:56 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:42:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 20:56:07 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@
 void	pop_node(t_dlist *list, t_node *del_node,
 		void (*delete_content)(void *))
 {
-	del_node->next->prev = del_node->prev;
-	del_node->prev->next = del_node->next;
-	delete_content(del_node->content);
-	free(del_node);
-	--list->size;
+	erase_at(list, del_node, delete_content);
 }
 
 void	move_front(t_dlist *list)

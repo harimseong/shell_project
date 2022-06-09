@@ -9,19 +9,21 @@ RM		=	rm -f
 # parser source files
 SRC		=	main.c\
 			memory_management.c\
+			execute_command.c\
+			execute_helper_func.c\
+			delete_command_list.c\
+			minishell_initialize.c\
 			parser/parser.c\
 			parser/parser_error.c\
 			parser/parse_command.c\
 			parser/parse_redirect.c\
 			parser/print_parsing_info.c\
 			tokenizer/tokenizer.c\
-			tokenizer/helper_functions.c\
-			tokenizer/helper_functions_2.c\
+			tokenizer/token_helper_func.c\
 			tokenizer/recognition_procedure_1.c\
 			tokenizer/recognition_procedure_2.c\
-			tokenizer/word_expansion.c
-# builtin source files
-SRC2	=	built_in/env.c\
+			tokenizer/word_expansion.c\
+			built_in/env.c\
 			built_in/export.c\
 			built_in/key_compare.c\
 			built_in/set_env.c\
@@ -33,16 +35,17 @@ SRC2	=	built_in/env.c\
 			built_in/ft_atoll.c\
 			built_in/ft_split_first.c\
 			built_in/unset.c
-SRC		+=	$(SRC2)
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 OBJ		=	$(SRC:%.c=%.o)
 
-INCL	=	built_in/minishell.h\
-			built_in/doubly_linked_list.h\
-			built_in/libft.h\
-			built_in/parser/parser.h\
-			built_in/parser/token.h
+INCL	=	minishell.h\
+			doubly_linked_list.h\
+			libft.h\
+			cmd.h\
+			parser/parser.h\
+			parser/token.h\
+			parser/token_recognition.h
 INCL_DIR=	include
 INCL	:=	$(INCL:%=$(INCL_DIR)/%)
 

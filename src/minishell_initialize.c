@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_content.c                                   :+:      :+:    :+:   */
+/*   minishell_initialize.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 22:36:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 22:48:11 by hseong           ###   ########.fr       */
+/*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
+/*   Updated: 2022/06/09 23:19:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cmd.h"
-
-void	delete_content(void *env)
+char	*minishell_initialize(int argc, char **argv)
 {
-	free(((t_env *)env)->key);
-	free(((t_env *)env)->value);
-	free((t_env *)env);
+	char	*prompt;
+
+	(void)argc;
+	(void)argv;
+	prompt = "$> ";
+	return (prompt);
 }

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 18:22:04 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 22:43:56 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@
 # include "parser/token.h"
 
 t_dlist	*parser(const char *line, t_dlist *env_list);
-void	execute_pipeline(t_dlist *pipeline_list, t_dlist *env_list);
+void	process_pipeline(t_dlist *pipeline_list, t_dlist *env_list);
 
+void	delete_pipeline_content(void *pipeline_arg);
+void	delete_command_content(void *command_arg);
+void	delete_word_content(void *token_arg);
+void	delete_redirect_content(void *redirect_arg);
+void	delete_env_content(void *env_arg);
+
+void	pipeline_content_print(void *pipeline);
 void	print_item(t_token *token);
 void	delete_item(t_token **token);
 

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_content.c                                   :+:      :+:    :+:   */
+/*   execute_helper_func.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 22:36:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 22:48:11 by hseong           ###   ########.fr       */
+/*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
+/*   Updated: 2022/06/09 22:30:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
+#include "parser/token.h"
+#include "execute.h"
 
-void	delete_content(void *env)
+void	*get_word_from_token(void *content)
 {
-	free(((t_env *)env)->key);
-	free(((t_env *)env)->value);
-	free((t_env *)env);
+	t_token	*token;
+	
+	token = content;
+	return (token->word);
+}
+
+void	*get_key_from_env(void *content)
+{
+	t_env	*env;
+
+	env = content;
+	return (env->key);
 }

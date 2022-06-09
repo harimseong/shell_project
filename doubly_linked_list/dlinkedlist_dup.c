@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:25:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/03 19:10:52 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 21:07:32 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,10 @@ t_dlist	*dlist_duplicate(t_dlist *list, size_t content_size)
 	list->cur = list->head;
 	while (idx < size)
 	{
-		push_back(clone, copy_content(list->cur->content, content_size));
+		push_back(clone, ft_strndup(list->cur->content, content_size));
 		move_back(list);
 		++idx;
 	}
 	list->cur = NULL;
 	return (clone);
-}
-
-void	*copy_content(void *input, size_t content_size)
-{
-	void	*content;
-
-	content = malloc(content_size);
-	ft_memcpy(content, input, content_size);
-	return (content);
 }

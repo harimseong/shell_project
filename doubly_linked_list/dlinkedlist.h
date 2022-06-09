@@ -6,12 +6,14 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:53:01 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 22:21:10 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DLINKEDLIST_H
 # define DLINKEDLIST_H
+
+# include <stddef.h>
 
 typedef int	(*t_comp)(void *, void *);
 
@@ -47,9 +49,10 @@ void	pop_node(t_dlist *list, t_node *del_node,
 
 void	dlist_delete(t_dlist *list, void (*delete_content)(void *));
 void	dlist_empty(t_dlist *list, void (*delete_content)(void *));
-void	dlist_transfer_arr(t_dlist *list, const void *arr,
+void	*dlist_to_array(t_dlist *list, void *(*extract_contetn)(void *));
+void	array_to_dlist(t_dlist *list, const void *arr,
 			size_t size, size_t count);
-t_dlist	*dlist_init_arr(const void *arr, size_t size, size_t count);
+t_dlist	*array_to_dlist_init(const void *arr, size_t size, size_t count);
 
 // UPDATE cur
 void	move_front(t_dlist *list);
@@ -59,6 +62,8 @@ void	set_cur(t_dlist *list, void *content);
 // READ
 void	peek_front(t_dlist *list, void (*delete_content)(void *));
 void	peek_back(t_dlist *list, void (*delete_content)(void *));
+void	*get_front(t_dlist *list);
+void	*get_back(t_dlist *list);
 void	dlist_print_forward(t_dlist *list, void (*print_content)(void *));
 void	dlist_print_backward(t_dlist *list, void (*print_content)(void *));
 
@@ -68,6 +73,7 @@ void	dlist_mergesort(t_dlist *list, t_comp comp);
 t_dlist	*dlist_duplicate(t_dlist *list, size_t content_size);
 t_node	*dlist_find_content(t_dlist *list, void *content, size_t size,
 			void *(*extract_contetn)(void *));
-void	*copy_content(void *node, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t len);
+int		ft_memcmp(const void *s1, const void *s2, size_t len);
 
 #endif

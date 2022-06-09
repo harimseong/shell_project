@@ -6,14 +6,14 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:07:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:15:06 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 22:21:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 #include "dlinkedlist.h"
 
-void	dlist_transfer_arr(t_dlist *list, const void *arr,
+void	array_to_dlist(t_dlist *list, const void *arr,
 			size_t size, size_t count)
 {
 	void	*unit;
@@ -31,22 +31,32 @@ void	dlist_transfer_arr(t_dlist *list, const void *arr,
 	}
 }
 
-t_dlist	*dlist_init_arr(const void *arr, size_t size, size_t count)
+t_dlist	*array_to_dlist_init(const void *arr, size_t size, size_t count)
 {
-	t_dlist	*list;
-	void	*unit;
-	size_t	idx;
+	t_dlist	*new_list;
 
-	if (arr == NULL)
-		return (NULL);
-	list = dlist_init();
+	new_list = dlist_init();
+	array_to_dlist(new_list, arr, size, count);
+	return (new_list);
+}
+
+void	*dlist_to_array(t_dlist *list, void *(*extract_content)(void *))
+{
+	void	**array;
+	t_node	*node;
+	size_t	idx;
+	size_t	size;
+
+	array = malloc(sizeof(void *) * list->size + 1);
 	idx = 0;
-	while (idx < count)
+	size = list->size;
+	node = list->head;
+	array[size] = NULL;
+	while (idx < size)
 	{
-		unit = malloc(size);
-		ft_memcpy(unit, arr + size * idx, size);
-		push_back(list, unit);
+		array[idx] = extract_content(node->content);
+		node = node->next;
 		++idx;
 	}
-	return (list);
+	return (array);
 }

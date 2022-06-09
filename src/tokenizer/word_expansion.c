@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 18:02:39 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 21:48:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_node	*find_env(t_iterator *iterator)
 		target = get_char(node);
 		++idx;
 	}
-	expression = convert_list(iterator->line->cur->next, idx);
+	expression = dlist_to_string(iterator->line->cur->next, idx);
 	iterator->len -= idx + 1;
 	while (idx--)
 		erase_at(iterator->line, iterator->line->cur->next, free);
