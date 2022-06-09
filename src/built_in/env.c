@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:24:02 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 17:20:32 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 18:14:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	check_arg_error(int argc, char **argv)
 {
-	if (argc > 2)
+	if (argc > 1)
 	{
-		printf("env: %s: No such file or directory\n", argv[2]);
+		printf("env: %s: No such file or directory\n", argv[1]);
 		return (1);
 	}
 	return (0);

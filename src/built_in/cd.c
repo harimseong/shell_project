@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 23:05:58 by gson              #+#    #+#             */
-/*   Updated: 2022/06/03 16:39:39 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 18:13:46 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ int	cd(t_dlist *envlist, int argc, char **argv)
 	char	*oldpath;
 	char	*path;
 
-	if (argc > 2)
-		path = ft_strdup(argv[2]);
+	if (argc > 1)
+		path = ft_strdup(argv[1]);
 	else
 		path = set_home(envlist);
 	if (ft_strcmp(path, "-") == 0)

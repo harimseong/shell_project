@@ -6,14 +6,14 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:20:51 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 18:02:39 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "constants.h"
 #include "libft.h"
 #include "parser/token_recognition.h"
-#include "../cmd_temp/cmd.h"
+#include "cmd.h"
 
 static t_node	*find_env(t_iterator *iterator);
 static void		*extract_content(void *arg);

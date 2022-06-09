@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:29:37 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 17:51:55 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 18:15:48 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,11 @@ int	export(t_dlist *envlist, int argc, char **argv)
 	int		status;
 
 	status = 0;
-	if (argc == 2)
+	if (argc == 1)
 		export_no_args(envlist);
-	else if (argc > 2)
+	else if (argc > 1)
 	{
-		i = 2;
+		i = 1;
 		while (argv[i] != 0)
 		{
 			if (export_args(envlist, argv[i]) == 1)

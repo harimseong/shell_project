@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:54:04 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 18:22:10 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 #include "dlinkedlist.h"
 #include "libft.h"
 #include "minishell.h"
-#include "../cmd_temp/cmd.h"
+#include "cmd.h"
 #include "parser/parser.h"
 
 static void	get_argument(int argc, char **argv);
+static int	get_return(t_dlist *pipeline_list);
 
 static const char	*g_prompt = "$> ";
 
@@ -30,6 +31,7 @@ int	main(int argc, char *argv[], char *envp[])
 	t_dlist		*pipeline_list;
 	t_dlist		*env_list;
 	char		*line;
+	static int	old_return;
 
 	pipeline_list = (void *)1;
 	env_list = dlist_init();
@@ -44,6 +46,8 @@ int	main(int argc, char *argv[], char *envp[])
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 			continue ;
+		execute_pipeline(pipeline_list, env_list);
+		old_return = get_return(pipeline_list);
 		dlist_print_forward(pipeline_list, pipeline_list_print);
 		dlist_delete(pipeline_list, pipeline_list_delete);
 	}
@@ -62,3 +66,8 @@ void	print_item(t_token *token)
 	write(1, " ", 1);
 }
 */
+
+int	get_return(t_dlist *pipeline_list)
+{
+	(void)pipeline_list;
+}

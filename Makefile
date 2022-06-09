@@ -20,31 +20,29 @@ SRC		=	main.c\
 			tokenizer/recognition_procedure_1.c\
 			tokenizer/recognition_procedure_2.c\
 			tokenizer/word_expansion.c
+# builtin source files
+SRC2	=	built_in/env.c\
+			built_in/export.c\
+			built_in/key_compare.c\
+			built_in/set_env.c\
+			built_in/check_key.c\
+			built_in/delete_content.c\
+			built_in/echo.c\
+			built_in/exit.c\
+			built_in/cd.c\
+			built_in/ft_atoll.c\
+			built_in/ft_split_first.c\
+			built_in/unset.c
+SRC		+=	$(SRC2)
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
-# builtin source files
-SRC2	=	env.c\
-			export.c\
-			key_compare.c\
-			set_env.c\
-			check_key.c\
-			delete_content.c\
-			echo.c\
-			exit.c\
-			cd.c\
-			ft_atoll.c\
-			ft_split_first.c\
-			unset.c
-SRC2_DIR=	cmd_temp
-SRC2	:=	$(SRC2:%=$(SRC2_DIR)/%)
-SRC		+=	$(SRC2)
 OBJ		=	$(SRC:%.c=%.o)
 
-INCL	=	minishell.h\
-			doubly_linked_list.h\
-			libft.h\
-			parser/parser.h\
-			parser/token.h
+INCL	=	built_in/minishell.h\
+			built_in/doubly_linked_list.h\
+			built_in/libft.h\
+			built_in/parser/parser.h\
+			built_in/parser/token.h
 INCL_DIR=	include
 INCL	:=	$(INCL:%=$(INCL_DIR)/%)
 
@@ -101,6 +99,6 @@ $(LIBS:%=%.clean): %.lib.clean:
 	$(RM) $*.lib
 
 re: fclean
-	$(MAKE) all
+	$(MAKE) libs
 
 .PHONY: all clean fclean re libs

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:48:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/03 14:20:46 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 18:14:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	echo(char **argv)
 	int	i;
 
 	flag = 0;
-	i = 2;
+	i = 1;
 	while (check_echo_flag(argv[i]) == 1)
 	{
 		flag = 1;

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 21:35:30 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 16:16:12 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 18:16:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ int	unset(t_dlist *envlist, int argc, char **argv)
 	int	status;
 
 	status = 0;
-	if (argc == 2)
+	if (argc == 1)
 		return (0);
-	else if (argc > 2)
+	else if (argc > 1)
 	{
-		i = 2;
+		i = 1;
 		while (i < argc)
 		{
 			if (unset_arg(envlist, argv[i]) == 1)

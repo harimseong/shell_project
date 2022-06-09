@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 22:40:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 18:02:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 
 #include "libft.h"
-#include "../cmd_temp/cmd.h"
+#include "cmd.h"
 #include "types.h"
 #include "constants.h"
 #include "errors.h"
