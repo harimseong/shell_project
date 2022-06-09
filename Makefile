@@ -26,7 +26,15 @@ SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 SRC2	=	env.c\
 			export.c\
 			key_compare.c\
-			builtin.c
+			set_env.c\
+			check_key.c\
+			delete_content.c\
+			echo.c\
+			exit.c\
+			cd.c\
+			ft_atoll.c\
+			ft_split_first.c\
+			unset.c
 SRC2_DIR=	cmd_temp
 SRC2	:=	$(SRC2:%=$(SRC2_DIR)/%)
 SRC		+=	$(SRC2)

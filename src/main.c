@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 02:54:43 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 17:54:04 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[], char *envp[])
 	env_list = dlist_init();
 	env_list = set_envlist(envp, env_list);
 	get_argument(argc, argv);
-	builtin_export(env_list, 1, NULL);
+	export(env_list, 1, NULL);
 	while (1)
 	{
 		line = readline(g_prompt);

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:18:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:13:56 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 17:52:48 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 static t_node	*split_list(t_node **head, size_t len, t_comp comp);
 static t_node	*join_list(t_node **headptr, t_node *mid, size_t len,
 					t_comp comp);
+static void		move_node(t_node **sortnode, t_node **node, size_t *count);
 
-void	mergesort_dlist(t_dlist *list, t_comp comp)
+void	dlist_mergesort(t_dlist *list, t_comp comp)
 {
 	t_node	**headptr;
 	t_node	*node;
@@ -85,11 +86,7 @@ t_node	*join_list(t_node **headptr, t_node *mid, size_t len, t_comp comp)
 	while (--len)
 	{
 		if (head_count > 0 && (mid_count == 0
-<<<<<<< HEAD
-				|| comp(head->content, mid->content) < 0))
-=======
 			|| comp(head->content, mid->content) < 0))
->>>>>>> upstream/master
 			move_node(&(sortnode->next), &head, &head_count);
 		else
 			move_node(&(sortnode->next), &mid, &mid_count);
@@ -99,7 +96,7 @@ t_node	*join_list(t_node **headptr, t_node *mid, size_t len, t_comp comp)
 	return (sortnode);
 }
 
-static void	move_node(t_node **sortnode, t_node **node, size_t *count)
+void	move_node(t_node **sortnode, t_node **node, size_t *count)
 {
 	*sortnode = *node;
 	(*node) = (*node)->next;

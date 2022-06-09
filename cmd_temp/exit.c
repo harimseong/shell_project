@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/03 18:27:51 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 17:51:31 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int	builtin_exit(t_dlist *envlist, int argc, char **argv)
 		printf("minishell: exit: too many arguments\n");
 		status = 1;
 	}
-	delete_dlist(envlist, &delete_content);
+	dlist_delete(envlist, &delete_content);
 	exit((int)status);
 }

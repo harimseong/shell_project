@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:29:37 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 17:20:43 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 17:51:55 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	export_no_args(t_dlist *envlist)
 	t_dlist	*cp_envlist;
 	t_env	*cur_env;
 
-	cp_envlist = duplicate_dlist(envlist);
-	mergesort_dlist(cp_envlist, key_compare);
+	cp_envlist = dlist_duplicate(envlist, sizeof(t_env));
+	dlist_mergesort(cp_envlist, key_compare);
 	cp_envlist->cur = cp_envlist->head;
 	while (cp_envlist->cur != 0)
 	{

@@ -6,11 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:56 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:22:53 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 17:42:57 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdlib.h>
 
 #include "dlinkedlist.h"
 

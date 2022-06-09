@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 17:54:49 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 17:09:36 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 # include <string.h>
 # include <limits.h>
 # include <sys/errno.h>
-# include "dlinkedlist.h"
-# include "libft.h"
+# include "../doubly_linked_list/dlinkedlist.h"
 
 typedef struct s_env {
 	char			*key;
@@ -39,7 +38,4 @@ int			builtin_exit(t_dlist *envlist, int argc, char **argv);
 long long	ft_atoll(char *str, int *error);
 int			is_contain_special(char *str);
 int			check_identifier_first(char identifier);
-t_dlist		*set_envlist(char **cpenv, t_dlist *envlist);
-char		**copy_env(char	**cpenv, char **envp);
-t_env		*set_env(char *fullenv);
 #endif

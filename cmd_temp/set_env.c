@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:50:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/03 17:31:59 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 17:53:34 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**copy_env(char	**cpenv, char **envp)
 	cpenv[i] = 0;
 	return (cpenv);
 }
-
+/*
 int	main(int argc, char **argv, char *envp[])
 {
 	char	**cpenv;
@@ -99,3 +99,4 @@ int	main(int argc, char **argv, char *envp[])
 		builtin_exit(envlist, argc, argv);
 	return (status);
 }
+*/

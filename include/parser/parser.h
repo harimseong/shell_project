@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 22:18:02 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/09 12:35:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ typedef struct s_pipeline
 	t_dlist		*command_list;
 }			t_pipeline;
 
-//void	set_command(t_token *token, t_dlist *pipeline_list);
-//void	set_arguments(t_token *token, t_dlist *pipeline_list);
-//void
-//set_redirection(t_token *operator, t_token *word, t_dlist *pipeline_list);
+//void	set_command(t_dlist *command_list);
+//void	set_redirect(t_dlist *redirect_list);
 void	parser_error(t_dlist *list, t_token *token);
 void	pipeline_list_delete(void *pipeline);
 void	pipeline_list_print(void *pipeline);
