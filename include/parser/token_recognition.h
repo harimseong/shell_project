@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 16:39:44 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 17:20:14 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*convert_list(t_node *start, size_t len);
 int		expand_word(t_iterator *iterator);
 
 static const t_token_recog_func
-		g_token_recog_tab[8]
+	g_token_recog_tab[8]
 	= {
 	check_eoi,
 	check_operator,

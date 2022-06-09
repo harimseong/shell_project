@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   dlinkedlist_delete.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 20:58:50 by hseong            #+#    #+#             */
 /*   Updated: 2022/06/09 15:59:48 by gson             ###   ########.fr       */
+=======
+/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/26 20:58:50 by hseong            #+#    #+#             */
+/*   Updated: 2022/06/08 05:43:08 by hseong           ###   ########.fr       */
+>>>>>>> upstream/master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +47,11 @@ void	dlist_empty(t_dlist *list, void (*delete_content)(void *))
 		--size;
 	}
 	delete_content(list->tail);
+<<<<<<< HEAD
 	*list->tail = (t_node){NULL, NULL, NULL};
+=======
+	*list->tail= (t_node){NULL, NULL, NULL};
+>>>>>>> upstream/master
 	free(list->tail);
 }
 
