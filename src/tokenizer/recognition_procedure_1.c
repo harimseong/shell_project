@@ -3,25 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   recognition_procedure_1.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 16:35:11 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/09 17:24:55 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-=======
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 22:15:20 by hseong           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-# include <stdio.h>
-
->>>>>>> upstream/master
 #include "libft.h"
 #include "constants.h"
 #include "parser/token_recognition.h"

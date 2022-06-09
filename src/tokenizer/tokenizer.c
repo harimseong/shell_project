@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 16:36:22 by gson             ###   ########.fr       */
-=======
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 22:21:49 by hseong           ###   ########.fr       */
->>>>>>> upstream/master
+/*   Updated: 2022/06/09 17:24:39 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +19,7 @@
 
 typedef int	(*t_token_func)(t_iterator *, t_token *);
 
-<<<<<<< HEAD
 static t_token	*get_token(t_iterator *iterator);
-=======
-static t_token *get_token(t_iterator *iterator);
->>>>>>> upstream/master
 
 t_token	*token_handler(int type, t_iterator *new_iterator)
 {
@@ -60,11 +49,7 @@ t_token	*token_handler(int type, t_iterator *new_iterator)
 	return (NULL);
 }
 
-<<<<<<< HEAD
 t_token	*get_token(t_iterator *iterator)
-=======
-t_token *get_token(t_iterator *iterator)
->>>>>>> upstream/master
 {
 	t_token	*new_token;
 	t_dlist	*buf;
@@ -102,11 +87,7 @@ int	recog_character(t_iterator *iterator, t_token *token)
 	while (idx < TABLE_SIZE && ret == CONTINUE)
 	{
 		ret = g_token_recog_tab[idx](iterator, token,
-<<<<<<< HEAD
 				get_char(iterator->line->cur));
-=======
-			get_char(iterator->line->cur));
->>>>>>> upstream/master
 		++idx;
 	}
 	iterator->len += ret != DELIMIT;

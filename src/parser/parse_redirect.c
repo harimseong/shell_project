@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_redirect.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 16:37:18 by gson             ###   ########.fr       */
-=======
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 22:19:38 by hseong           ###   ########.fr       */
->>>>>>> upstream/master
+/*   Updated: 2022/06/09 17:24:26 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +53,7 @@ void	parse_io_file(t_dlist *redirect_list)
 		+ (operator->type == TT_GREAT) * REDIR_OUT
 		+ (operator->type == TT_DGREAT) * REDIR_APPEND;
 	*redirect = (t_redirect){type, -1, NULL,
-<<<<<<< HEAD
 	{operator, filename}};
-=======
-		{operator, filename}};
->>>>>>> upstream/master
 	push_back(redirect_list, redirect);
 }
 
@@ -87,10 +76,6 @@ void	parse_io_heredoc(t_dlist *redirect_list)
 	end_word = token_handler(TH_GET, NULL);
 	redirect = malloc(sizeof(t_redirect));
 	*redirect = (t_redirect){REDIR_HEREDOC, -1, end_word->word,
-<<<<<<< HEAD
 	{heredoc, end_word}};
-=======
-		{heredoc, end_word}};
->>>>>>> upstream/master
 	push_back(redirect_list, redirect);
 }

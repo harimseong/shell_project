@@ -6,11 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 23:25:37 by hseong            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/06/09 16:37:46 by gson             ###   ########.fr       */
-=======
-/*   Updated: 2022/06/06 14:49:03 by hseong           ###   ########.fr       */
->>>>>>> upstream/master
+/*   Updated: 2022/06/09 17:25:22 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +84,8 @@ void		ft_lstclear(t_list **lst, void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-<<<<<<< HEAD
 int			ft_execvpe(const char *filename, char *const *argv,
 				char *const *envp);
-=======
-int
-ft_execvpe(const char *filename, char *const *argv, char *const *envp);
->>>>>>> upstream/master
 void		*ft_print_memory(void *addr, size_t len);
 
 #endif

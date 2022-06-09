@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 16:34:40 by gson             ###   ########.fr       */
-=======
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 23:19:44 by hseong           ###   ########.fr       */
->>>>>>> upstream/master
+/*   Updated: 2022/06/09 17:25:03 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,15 +153,9 @@ int	check_token_type(int type, int comp)
 int	check_long_operator(char target, int *type)
 {
 	if (!(((*type == TT_LESS) && target == '<')
-<<<<<<< HEAD
 			|| ((*type == TT_GREAT) && target == '>')
 			|| ((*type == TT_PIPE) && target == '|')
 			|| ((*type == TT_AMPERSAND) && target == '&')))
-=======
-		|| ((*type == TT_GREAT) && target == '>')
-		|| ((*type == TT_PIPE) && target == '|')
-		|| ((*type == TT_AMPERSAND) && target == '&')))
->>>>>>> upstream/master
 		return (DELIMIT);
 	*type = g_token_type_tab[(int)target];
 	if (target == '<')
