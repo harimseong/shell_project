@@ -8,7 +8,7 @@ RM		=	rm -f
 
 # parser source files
 SRC		=	main.c\
-			memory_management.c\
+			read_pipeline.c\
 			execute_command.c\
 			execute_helper_func.c\
 			delete_command_list.c\

@@ -6,63 +6,38 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:01:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/10 18:23:00 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:02:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <sys/errno.h>
 
-#define MAX_PATHNAME (1000)
+#define MAX_PATHNAME (1024)
 
 void			*ft_memset(void *b, int c, size_t len);
 size_t			ft_strlen(const char *s);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 
-static size_t	get_path_tab_size(void);
-
-static const char	*g_path_table[] = {
-	"/usr/bin/",
-	"/bin",
-	"/Users/hseong/42backup/core3/minishell",
-	NULL
-};
-
-int	ft_execvpe(const char *filename, char *const *argv, char *const *envp)
+int	ft_execvpe(const char *filename, char *const *argv, char *const *envp, char **path_arr)
 {
 	char	fullpath[MAX_PATHNAME + 1];
-	size_t	table_size;
-	size_t	idx;
 	size_t	path_len;
 
 	execve(filename, argv, envp);
-	table_size = get_path_tab_size();
-	idx = 0;
-	while (idx < table_size)
+	while (*path_arr != NULL)
 	{
 		ft_memset(fullpath, 0, MAX_PATHNAME + 1);
-		path_len = ft_strlen(g_path_table[idx]);
+		path_len = ft_strlen(*path_arr);
 		if (path_len + ft_strlen(filename) + 2 >= MAX_PATHNAME)
-		{
-			++idx;
 			continue ;
-		}
-		ft_strlcpy(fullpath, g_path_table[idx], path_len + 1);
+		ft_strlcpy(fullpath, *path_arr, path_len + 1);
 		if (fullpath[path_len - 1] != '/')
 			fullpath[path_len] = '/';
 		ft_strlcat(fullpath, filename, MAX_PATHNAME + 1);
 		execve(fullpath, argv, envp);
-		++idx;
+		++path_arr;
 	}
-	return (-1);
-}
-
-static size_t	get_path_tab_size(void)
-{
-	size_t		size;
-
-	size = 0;
-	while (g_path_table[size])
-		++size;
-	return (size);
+	return (errno);
 }

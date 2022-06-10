@@ -6,11 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:25:03 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/10 23:21:02 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 #include "parser/token_recognition.h"
 
 static const int	g_token_type_tab[128]
@@ -176,7 +177,7 @@ char	get_char(t_node *node)
 	return (*(char *)node->content);
 }
 
-char	*convert_list(t_node *node, size_t len)
+char	*dlist_to_string(t_node *node, size_t len)
 {
 	char	*word;
 	size_t	idx;

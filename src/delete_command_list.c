@@ -6,18 +6,17 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:37 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 23:13:25 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/10 23:18:32 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "dlinkedlist.h"
 #include "minishell.h"
 #include "cmd.h"
 #include "parser/parser.h"
 
-void	pipeline_content_delete(void *pipeline_arg)
+void	delete_pipeline_content(void *pipeline_arg)
 {
 	if (((t_pipeline *)pipeline_arg)->command_list != NULL)
 		dlist_delete(((t_pipeline *)pipeline_arg)->command_list,
@@ -25,7 +24,7 @@ void	pipeline_content_delete(void *pipeline_arg)
 	free(pipeline_arg);
 }
 
-void	command_content_delete(void *command_arg)
+void	delete_command_content(void *command_arg)
 {
 	if (((t_command *)command_arg)->word_list != NULL)
 		dlist_delete(((t_command *)command_arg)->word_list,
@@ -36,13 +35,13 @@ void	command_content_delete(void *command_arg)
 	free(command_arg);
 }
 
-void	word_content_delete(void *token_arg)
+void	delete_word_content(void *token_arg)
 {
 	free(((t_token *)token_arg)->word);
 	free(token_arg);
 }
 
-void	redirect_content_delete(void *redirect_arg)
+void	delete_redirect_content(void *redirect_arg)
 {
 	t_redirect	*redirect;
 

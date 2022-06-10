@@ -6,22 +6,22 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 23:15:51 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/10 21:26:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <sys/errno.h>
 #include <unistd.h>
-
 #include "libft.h"
+
+#include "minishell.h"
 #include "cmd.h"
 #include "types.h"
 #include "constants.h"
 #include "errors.h"
-#include "parser/token_recognition.h"
 #include "parser/parser.h"
-#include "minishell.h"
+#include "parser/token_recognition.h"
 
 void			parse_command(t_command *command);
 static void		parse_pipeline(t_pipeline *pipeline);

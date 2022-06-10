@@ -47,3 +47,5 @@ $			$# $ token
 echo $		$# $
 $$			# number
 
+
+# Ctrl-C running process and check its status
