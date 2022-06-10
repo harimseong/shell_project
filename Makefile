@@ -53,20 +53,21 @@ INCL	:=	$(INCL:%=$(INCL_DIR)/%)
 LIB_ADD	=	-L.
 LIBTARGET=	all
 
+# NOTE: library order (-ldlinkedlist and -lft) can be problem
+DLLIST	=	libdlinkedlist.a
+DLLIST_DIR=	doubly_linked_list
+LIB_ADD	+=	-ldlinkedlist
+LIBS	+=	DLLIST.lib
+
 LIBFT	=	libft.a
 LIBFT_DIR=	libft
 LIB_ADD	+=	-lft
 LIBS	+=	LIBFT.lib
 
 
-DLLIST	=	libdlinkedlist.a
-DLLIST_DIR=	doubly_linked_list
-LIB_ADD	+=	-ldlinkedlist
-LIBS	+=	DLLIST.lib
-
 ifeq ($(DEBUG_FLAG), 1)
 CFLAGS	+=	$(DEBUG)
-LIBFLAGS= DEBUG_FLAG=1	
+LIBFLAGS= DEBUG_FLAG=1
 endif
 
 

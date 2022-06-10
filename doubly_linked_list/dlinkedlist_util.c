@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:20:14 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:15:13 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/11 03:05:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	dlist_local_init(t_dlist *list)
 	*list = (t_dlist){NULL, NULL, NULL, 0, 0, 0};
 }
 
-t_node	*dlist_find_content(t_dlist *list, void *content, size_t size,
+t_node	*dlist_find_content(t_dlist *list, const void *content, size_t size,
 	void *(*extract_content)(void *))
 {
 	t_node	*node;

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 18:15:05 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 02:16:22 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	check_longlong(char *arg)
 	long long	num;
 
 	error = 0;
+	// need fix
 	num = ft_atoll(arg, &error);
+	(void)num;
 	if (error == -1)
 		return (0);
 	return (1);
@@ -66,10 +68,8 @@ long long	find_status(t_dlist *envlist)
 int	builtin_exit(t_dlist *envlist, int argc, char **argv)
 {
 	long long	status;
-	int			i;
 
 	status = find_status(envlist);
-	i = 0;
 	if (argc == 2)
 	{
 		if (check_only_numeric(argv[1]) == 0 || check_longlong(argv[1]) == 0)

@@ -13,8 +13,8 @@ SRC		= dlinkedlist.c\
 		  dlinkedlist_dup.c\
 		  dlinkedlist_delete.c\
 		  dlinkedlist_mergesort.c\
-		  dlinkedlist_transfer.c\
-		  libft_utils.c
+		  dlinkedlist_transfer.c
+#		  libft_utils.c
 OBJ		= $(SRC:%.c=%.o)
 
 

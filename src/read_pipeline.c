@@ -6,11 +6,13 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:26:28 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 02:04:36 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "libft.h"
 
 #include "minishell.h"

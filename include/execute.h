@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:31:10 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:22:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 03:07:54 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 void	*get_word_from_token(void *content);
 void	*get_key_from_env(void *content);
+char	*get_value_from_env(t_dlist *env_list, const char *key);
 
 #endif

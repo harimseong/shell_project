@@ -6,12 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:01:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:02:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 02:56:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <sys/errno.h>
+
+#include "libft.h"
 
 #define MAX_PATHNAME (1024)
 
@@ -20,7 +22,8 @@ size_t			ft_strlen(const char *s);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 
-int	ft_execvpe(const char *filename, char *const *argv, char *const *envp, char **path_arr)
+int	ft_execvpe(const char *filename, char *const *argv, char *const *envp,
+	char **path_arr)
 {
 	char	fullpath[MAX_PATHNAME + 1];
 	size_t	path_len;

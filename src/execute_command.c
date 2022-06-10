@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 23:16:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 03:07:40 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	execute_command(t_dlist *word_list, t_dlist *redirect_list,
 //	if (is_builtin(argv[0]))
 //		status = execute_builtin(argv[0], argv, envp);	
 //	else
-		status = ft_execvpe(argv[0], argv, envp);
+		status = ft_execvpe(argv[0], argv, envp,
+			ft_split(get_value_from_env(env_list, "PATH"), ":"));
 	dlist_delete(env_list, delete_env_content);
 	free(argv);
 	free(envp);
