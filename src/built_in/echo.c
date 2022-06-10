@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:48:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 18:14:08 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 05:13:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ int	check_echo_flag(char *arg)
 	return (0);
 }
 
-int	echo(char **argv)
+int	echo(t_dlist *envlist, int argc, char **argv)
 {
 	int	flag;
 	int	i;
 
+	(void)envlist;
+	(void)argc;
 	flag = 0;
 	i = 1;
 	while (check_echo_flag(argv[i]) == 1)

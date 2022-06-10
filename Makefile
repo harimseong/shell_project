@@ -78,7 +78,7 @@ all: $(NAME)
 
 debug:
 	$(MAKE) clean
-	$(MAKE) DEBUG_FLAG=1 all
+	$(MAKE) DEBUG_FLAG=1 libs
 
 $(LIBS): %.lib:
 	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all

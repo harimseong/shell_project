@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 20:43:47 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 05:49:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	delete_command_content(void *command_arg);
 void	delete_word_content(void *token_arg);
 void	delete_redirect_content(void *redirect_arg);
 void	delete_env_content(void *env_arg);
+void	delete_no_content(void *arg);
 
 void	pipeline_content_print(void *pipeline);
 void	print_item(t_token *token);

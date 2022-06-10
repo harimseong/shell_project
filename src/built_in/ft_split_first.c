@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:16:11 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/03 19:01:31 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/11 04:26:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	**alloc_words_two(const char *str, size_t count, const char *delim)
 		str += idx;
 		++str_idx;
 	}
-	if (str_idx != count)
+	 if (str_idx != count)
 		dealloc_words(&str_arr, str_idx);
 	return (str_arr);
 }

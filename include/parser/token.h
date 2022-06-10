@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/08 22:47:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 04:14:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ enum e_token_type
 
 enum e_token_handler
 {
-	TH_GET,
+	TH_GET = 1,
 	TH_SET,
-	TH_PEEK
+	TH_PEEK,
+	TH_END
 };
 
 typedef struct s_iterator

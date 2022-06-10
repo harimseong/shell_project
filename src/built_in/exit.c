@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/11 02:16:22 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 05:22:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ long long	find_status(t_dlist *envlist)
 	while (envlist->cur != 0)
 	{
 		cur_env = (t_env *)envlist->cur->content;
-		if (ft_strcmp(cur_env->key, "?") == 0)
+		if (ft_strncmp(cur_env->key, "?\0", 2) == 0)
 		{
 			status = ft_atoll(cur_env->value, NULL);
 			return (status);

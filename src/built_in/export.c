@@ -6,10 +6,11 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:29:37 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 18:15:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 06:02:32 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
 #include "cmd.h"
 
 static int	check_arg_error(char **element, char *argv)
@@ -76,7 +77,7 @@ int	export_no_args(t_dlist *envlist)
 	t_dlist	*cp_envlist;
 	t_env	*cur_env;
 
-	cp_envlist = dlist_duplicate(envlist, sizeof(t_env));
+	cp_envlist = dlist_duplicate(envlist, copy_env_content);
 	dlist_mergesort(cp_envlist, key_compare);
 	cp_envlist->cur = cp_envlist->head;
 	while (cp_envlist->cur != 0)
@@ -90,6 +91,7 @@ int	export_no_args(t_dlist *envlist)
 			printf("declare -x %s\n", cur_env->key);
 		cp_envlist->cur = cp_envlist->cur->next;
 	}
+	dlist_delete(cp_envlist, delete_env_content);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 17:54:49 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 05:57:36 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			env(t_dlist *envlist, int argc, char **argv);
 int			cd(t_dlist *envlist, int argc, char **argv);
 int			export(t_dlist *envlist, int argc, char **argv);
 int			unset(t_dlist *envlist, int argc, char **argv);
-int			echo(char **argv);
+int			echo(t_dlist *envlist, int argc, char **argv);
 int			builtin_exit(t_dlist *envlist, int argc, char **argv);
 long long	ft_atoll(char *str, int *error);
 int			is_contain_special(char *str);
@@ -42,4 +42,6 @@ int			check_identifier_first(char identifier);
 t_dlist		*set_envlist(char **cpenv, t_dlist *envlist);
 char		**copy_env(char	**cpenv, char **envp);
 t_env		*set_env(char *fullenv);
+void		*copy_env_content(void *content);;
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 20:58:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:25:58 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/11 04:09:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@ void	dlist_empty(t_dlist *list, void (*delete_content)(void *))
 	trav_node = list->head->next;
 	while (size > 1)
 	{
-		*trav_node->prev = (t_node){NULL, NULL, NULL};
 		delete_content(trav_node->prev->content);
+		*trav_node->prev = (t_node){NULL, NULL, NULL};
 		free(trav_node->prev);
 		trav_node = trav_node->next;
 		--size;
 	}
-	delete_content(list->tail);
+	delete_content(list->tail->content);
 	*list->tail = (t_node){NULL, NULL, NULL};
 	free(list->tail);
+	*list = (t_dlist){NULL, NULL, NULL, 0, 0, 0};
 }
 
 void	erase_at(t_dlist *list, t_node *at, void (*delete_content)(void *))

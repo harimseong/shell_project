@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:37 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 23:18:32 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 04:28:56 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	delete_redirect_content(void *redirect_arg)
 	redirect = redirect_arg;
 	free(redirect->token_set[0]->word);
 	free(redirect->token_set[1]->word);
+	free(redirect->token_set[0]);
+	free(redirect->token_set[1]);
 	free(redirect);
 }
 

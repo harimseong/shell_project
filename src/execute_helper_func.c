@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 03:04:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 03:55:36 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,17 @@ char	*get_value_from_env(t_dlist *env_list, const char *key)
 	node = dlist_find_content(env_list, key, 4, get_key_from_env);
 	env = node->content;
 	return (env->value);
+}
+
+void	free_path_arr(char **path_arr)
+{
+	size_t	idx;
+
+	idx = 0;
+	while (path_arr[idx])
+	{
+		free(path_arr[idx]);
+		++idx;
+	}
+	free(path_arr);
 }

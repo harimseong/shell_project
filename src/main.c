@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 23:22:28 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 05:44:50 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	main(int argc, char *argv[], char *envp[])
 	char		*prompt;
 
 	pipeline_list = (void *)1;
-	env_list = dlist_init();
-	env_list = set_envlist(envp, env_list);
+	env_list = set_envlist(envp, dlist_init());
 	prompt = minishell_initialize(argc, argv);
 	while (1)
 	{
@@ -41,9 +40,10 @@ int	main(int argc, char *argv[], char *envp[])
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 			continue ;
+//		dlist_print_forward(pipeline_list, pipeline_content_print);
 		read_pipeline(pipeline_list, env_list);
-		dlist_print_forward(pipeline_list, pipeline_content_print);
 		dlist_delete(pipeline_list, delete_pipeline_content);
 	}
+// 	free env_list in Ctrl-D signal handler
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 03:07:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 05:37:57 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,92 @@
 #include "libft.h"
 
 #include "minishell.h"
+#include "constants.h"
 #include "cmd.h"
 #include "execute.h"
 #include "parser/parser.h"
 
+typedef int			(*t_program)(t_dlist *, int, char **);
+
+static int	is_builtin(const char *name);
+static int	set_redirect(t_dlist *redirect_list);
+static int	execute_builtin(t_dlist *env_list, char **argv, int idx);
+
+static const int	g_builtin_tab_size = 7;
+static const char	*g_builtin_name_tab[] = {
+	NULL,
+	"cd",
+	"echo",
+	"env",
+	"exit",
+	"export",
+	"pwd",
+	"unset"
+};
+static const t_program	g_builtin_tab[7] = {
+	cd,
+	echo,
+	env,
+	builtin_exit,
+	export,
+	NULL,
+	unset
+};
+
 int	execute_command(t_dlist *word_list, t_dlist *redirect_list,
 		t_dlist *env_list)
 {
-	int		pid;
+	int		idx;
 	int		status;
 	char	**argv;
 	char	**envp;
+	char	**path_arr;
 
-	(void)redirect_list;
-	pid = fork();
-	if (pid != 0)
-		return (pid);
 	argv = dlist_to_array(word_list, get_word_from_token);
-	envp = dlist_to_array(env_list, get_key_from_env);
-//	if (is_builtin(argv[0]))
-//		status = execute_builtin(argv[0], argv, envp);	
-//	else
-		status = ft_execvpe(argv[0], argv, envp,
-			ft_split(get_value_from_env(env_list, "PATH"), ":"));
-	dlist_delete(env_list, delete_env_content);
+	set_redirect(redirect_list);
+	idx = is_builtin(argv[0]);
+	if (idx)
+		status = execute_builtin(env_list, argv, idx - 1);
+	else
+	{
+		path_arr = ft_split(get_value_from_env(env_list, "PATH"), ":");
+		envp = dlist_to_array(env_list, get_key_from_env);
+		status = ft_execvpe(argv[0], argv, envp, path_arr);
+		free(envp);
+		free_path_arr(path_arr);
+	}
 	free(argv);
-	free(envp);
+	builtin_exit(env_list, 1, NULL);
 	return (status);
+}
+
+int	set_redirect(t_dlist *redirect_list)
+{
+	(void)redirect_list;
+	return (0);
+}
+
+int	is_builtin(const char *name)
+{
+	int		idx;
+
+	idx = 1;
+	while (idx < g_builtin_tab_size)
+	{
+		if (ft_strncmp(name, g_builtin_name_tab[idx],
+			ft_strlen(g_builtin_name_tab[idx]) + 1) == 0)
+			return (idx);
+		++idx;
+	}
+	return (0);
+}
+
+int	execute_builtin(t_dlist *env_list, char **argv, int idx)
+{
+	int		argc;
+
+	argc = 0;
+	while (argv[argc] != NULL)
+		++argc;
+	return (g_builtin_tab[idx](env_list, argc, argv));
 }

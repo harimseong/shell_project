@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 03:06:06 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 06:01:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	dlist_print_backward(t_dlist *list, void (*print_content)(void *));
 // utils
 void	ft_putnbr_space(int num);
 void	dlist_mergesort(t_dlist *list, t_comp comp);
-t_dlist	*dlist_duplicate(t_dlist *list, size_t content_size);
+t_dlist	*dlist_duplicate(t_dlist *list, void *(*copy_content)(void *));
 t_node	*dlist_find_content(t_dlist *list, const void *content, size_t size,
 			void *(*extract_contetn)(void *));
 void	*ft_memcpy(void *dst, const void *src, size_t len);

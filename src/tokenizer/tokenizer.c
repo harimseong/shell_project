@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:26:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 04:40:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ t_token	*token_handler(int type, t_iterator *new_iterator)
 		token = get_token(iterator);
 		return (temp);
 	}
-	ft_putstr_fd("minishell: token handler error\n", STDERR_FILENO);
+	else if (type == TH_END)
+		dlist_delete(iterator->line, free);
 	return (NULL);
 }
 

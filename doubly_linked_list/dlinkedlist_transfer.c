@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:07:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 22:21:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 04:07:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	*dlist_to_array(t_dlist *list, void *(*extract_content)(void *))
 	size_t	idx;
 	size_t	size;
 
-	array = malloc(sizeof(void *) * list->size + 1);
+	array = malloc(sizeof(void *) * (list->size + 1));
 	idx = 0;
 	size = list->size;
 	node = list->head;

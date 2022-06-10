@@ -3,7 +3,7 @@ NAME	= libdlinkedlist.a
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
-DEBUG	=	-g3 -fsanitize=address
+DEBUG	= -g3 -fsanitize=address
 
 
 SRC		= dlinkedlist.c\

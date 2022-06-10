@@ -2,3 +2,4 @@ bash_source
 *.json
 *.a
 .cache
+.clangd
