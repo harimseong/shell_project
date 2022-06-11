@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 22:37:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 21:51:17 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 #  define DEBUG_FLAG (0)
 # endif
 
+# define REDIR_NUM_OPS (4)
 enum e_redir
 {
-	REDIR_IN,
+	REDIR_PROCESSED = -1,
+	REDIR_IN = 0,
 	REDIR_OUT,
 	REDIR_APPEND,
 	REDIR_HEREDOC
@@ -32,6 +34,7 @@ typedef struct s_redirect
 	enum e_redir	redir_type;
 	int				descriptor;
 	char			*heredoc;
+	char			*filename;
 	t_token			*token_set[2];
 }			t_redirect;
 

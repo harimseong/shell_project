@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 05:32:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 17:59:40 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 
 #include "minishell.h"
 #include "cmd.h"
+#include "constants.h"
 #include "parser/parser.h"
 
-int	execute_command(t_dlist *word_list, t_dlist *redirect_list,
+int	generate_process(t_dlist *word_list, t_dlist *redirect_list,
 	t_dlist *env_list);
 static int	read_command_list(t_dlist *command_list, t_dlist *env_list);
 static int	wait_process(t_dlist *pid_list);
@@ -49,10 +50,8 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list)
 	command = get_front(command_list);
 	while (command != NULL)
 	{
-		pid = fork();
-		if (pid == 0)
-			execute_command(command->word_list,
-			command->redirect_list, env_list);
+		pid = generate_process(command->word_list, command->redirect_list,
+			env_list);
 		pop_front(command_list, delete_command_content);
 		command = get_front(command_list);
 		push_back(pid_list,

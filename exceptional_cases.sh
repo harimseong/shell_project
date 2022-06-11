@@ -49,3 +49,6 @@ $$			# number
 
 
 # Ctrl-C running process and check its status
+
+
+ls < 'nonexist file' | ls -a	# only 'ls -a' outputs

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 04:56:33 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 21:55:40 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 		return (NULL);
 	dlist_line = array_to_dlist_init(line, sizeof(char), ft_strlen(line) + 1);
 	iterator = (t_iterator){NULL, dlist_line, 0, env_list};
-	if (DEBUG_FLAG)
+	if (0)//DEBUG_FLAG)
 	{
 		arr_line = dlist_to_string(dlist_line->head, dlist_line->size);
 		printf("debug: input line: %s\n", arr_line);

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 17:43:00 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 21:55:55 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	main(int argc, char *argv[], char *envp[])
 //		system("leaks minishell");
 	}
 // 	free env_list in Ctrl-D signal handler
+//		+prompt
 	return (0);
 }

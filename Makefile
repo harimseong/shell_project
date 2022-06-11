@@ -8,11 +8,13 @@ RM		=	rm -f
 
 # parser source files
 SRC		=	main.c\
+			minishell_initialize.c\
 			read_pipeline.c\
+			generate_process.c\
+			redirect_process.c\
 			execute_command.c\
 			execute_helper_func.c\
 			delete_command_list.c\
-			minishell_initialize.c\
 			parser/parser.c\
 			parser/parser_error.c\
 			parser/parse_command.c\

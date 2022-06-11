@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:26:50 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 20:58:27 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	parse_io_file(t_dlist *redirect_list)
 	type = (operator->type == TT_LESS) * REDIR_IN
 		+ (operator->type == TT_GREAT) * REDIR_OUT
 		+ (operator->type == TT_DGREAT) * REDIR_APPEND;
-	*redirect = (t_redirect){type, -1, NULL,
+	*redirect = (t_redirect){type, -1, NULL, filename->word,
 	{operator, filename}};
 	push_back(redirect_list, redirect);
 }
@@ -75,7 +75,7 @@ void	parse_io_heredoc(t_dlist *redirect_list)
 	}
 	end_word = token_handler(TH_GET, NULL);
 	redirect = malloc(sizeof(t_redirect));
-	*redirect = (t_redirect){REDIR_HEREDOC, -1, end_word->word,
+	*redirect = (t_redirect){REDIR_HEREDOC, -1, end_word->word, NULL,
 	{heredoc, end_word}};
 	push_back(redirect_list, redirect);
 }
