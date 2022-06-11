@@ -1,0 +1,152 @@
+2
+<<<<
+DEBUG.flag
+Makefile
+Makefile.temp
+README.md
+bash_out_test.txt
+compile_commands.json
+dlist_find_test.c
+doubly_linked_list
+exceptional_cases.sh
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+o1
+o2
+o3
+out2
+src
+test1
+testdir
+testfile
+token_grammar.txt
+hseong $> 123
+pipeline
+{
+	command
+	{
+		word_list
+		{
+			{
+				token word = "123"
+				token type = 0x1000000
+			}
+		}
+	
+		redirect_list
+		{
+		}
+	}
+}
+hseong $> 3
+pipeline
+{
+	command
+	{
+		word_list
+		{
+			{
+				token word = "3"
+				token type = 0x1000000
+			}
+		}
+	
+		redirect_list
+		{
+		}
+	}
+}
+hseong $> 3
+pipeline
+{
+	command
+	{
+		word_list
+		{
+			{
+				token word = "3"
+				token type = 0x1000000
+			}
+		}
+	
+		redirect_list
+		{
+		}
+	}
+}
+hseong $> 3
+pipeline
+{
+	command
+	{
+		word_list
+		{
+			{
+				token word = "3"
+				token type = 0x1000000
+			}
+		}
+	
+		redirect_list
+		{
+		}
+	}
+}
+hseong $> 123
+pipeline
+{
+	command
+	{
+		word_list
+		{
+			{
+				token word = "123"
+				token type = 0x1000000
+			}
+		}
+	
+		redirect_list
+		{
+		}
+	}
+}
+hseong $> 12
+pipeline
+{
+	command
+	{
+		word_list
+		{
+			{
+				token word = "12"
+				token type = 0x1000000
+			}
+		}
+	
+		redirect_list
+		{
+		}
+	}
+}
+hseong $> 1234
+pipeline
+{
+	command
+	{
+		word_list
+		{
+			{
+				token word = "1234"
+				token type = 0x1000000
+			}
+		}
+	
+		redirect_list
+		{
+		}
+	}
+}
+hseong $> 

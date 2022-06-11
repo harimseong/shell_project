@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 17:59:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 22:16:56 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list)
 	command = get_front(command_list);
 	while (command != NULL)
 	{
+//		set_pipe(
 		pid = generate_process(command->word_list, command->redirect_list,
 			env_list);
 		pop_front(command_list, delete_command_content);
