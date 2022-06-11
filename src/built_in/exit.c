@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/11 05:22:08 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 17:37:16 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_longlong(char *arg)
 	long long	num;
 
 	error = 0;
-	// need fix
+	// need fix (unused variable)
 	num = ft_atoll(arg, &error);
 	(void)num;
 	if (error == -1)

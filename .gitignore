@@ -3,3 +3,4 @@ bash_source
 *.a
 .cache
 .clangd
+*.o

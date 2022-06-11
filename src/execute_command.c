@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 05:37:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 17:15:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	execute_command(t_dlist *word_list, t_dlist *redirect_list,
 	else
 	{
 		path_arr = ft_split(get_value_from_env(env_list, "PATH"), ":");
-		envp = dlist_to_array(env_list, get_key_from_env);
+		envp = dlist_to_array(env_list, env_to_str);
 		status = ft_execvpe(argv[0], argv, envp, path_arr);
 		free(envp);
 		free_path_arr(path_arr);

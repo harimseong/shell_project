@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 03:55:36 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 17:19:22 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,23 @@ void	*get_word_from_token(void *content)
 	return (token->word);
 }
 
-void	*get_key_from_env(void *content)
+void	*env_to_str(void *content)
 {
+	char	*env_str;
 	t_env	*env;
+	size_t	env_str_len;
 
 	env = content;
-	return (env->key);
+	env_str_len = ft_strlen(env->key) + 1;
+	if (env->value != NULL)
+		env_str_len += ft_strlen(env->value) + 1;
+	env_str = ft_calloc(1, env_str_len);
+	ft_strlcat(env_str, env->key, env_str_len);
+	if (env->value == NULL)
+		return (env_str);
+	ft_strlcat(env_str, "=", env_str_len);
+	ft_strlcat(env_str, env->value, env_str_len);
+	return (env_str);
 }
 
 char	*get_value_from_env(t_dlist *env_list, const char *key)
@@ -39,6 +50,14 @@ char	*get_value_from_env(t_dlist *env_list, const char *key)
 	node = dlist_find_content(env_list, key, 4, get_key_from_env);
 	env = node->content;
 	return (env->value);
+}
+
+void	*get_key_from_env(void *content)
+{
+	t_env	*env;
+
+	env = content;
+	return (env->key);
 }
 
 void	free_path_arr(char **path_arr)
