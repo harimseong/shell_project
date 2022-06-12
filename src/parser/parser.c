@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 21:55:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:53:55 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #include "minishell.h"
 #include "cmd.h"
+#include "parser/token.h"
 #include "types.h"
 #include "constants.h"
 #include "errors.h"
@@ -46,7 +47,7 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 	}
 	token_handler(TH_SET, &iterator);
 	token = token_handler(TH_PEEK, NULL);
-	if (token->type == TT_EMPTY)
+	if (check_token_type(token->type, TT_EMPTY))
 	{
 		delete_word_content(token);
 		token_handler(TH_END, NULL);
@@ -70,7 +71,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 		token = token_handler(TH_PEEK, NULL);
 	}
 	token_handler(TH_END, NULL);
-	if (token->type != TT_EMPTY)
+	if (!check_token_type(token->type, TT_EMPTY))
 	{
 		if (DEBUG_FLAG)
 			printf("minishell: parse error: %s: %s: %d: token_type %x\n",

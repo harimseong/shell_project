@@ -6,13 +6,14 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:25:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:52:31 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #include "constants.h"
+#include "parser/token.h"
 #include "parser/token_recognition.h"
 
 int	check_eoi(t_iterator *iterator, t_token *token, char target)
@@ -60,7 +61,8 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 		&& !check_token_type(token->type, TT_QUOTE_MASK))
 	{
 		iterator->record = iterator->line->cur;
-		if (token->type != TT_EMPTY && !check_token_type(token->type, TT_WORD))
+		if (!check_token_type(token->type, TT_EMPTY)
+			&& !check_token_type(token->type, TT_WORD))
 			return (DELIMIT);
 		token->type
 			|= TT_SQUOTE * (target == '\'') + TT_DQUOTE * (target == '"');
@@ -71,9 +73,14 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 
 int	check_dollar(t_iterator *iterator, t_token *token, char target)
 {
+	char	next_target;
+
 	if (target == '$' && !check_token_type(token->type, TT_SQUOTE))
 	{
-		if (expand_word(iterator))
+		next_target = get_char(iterator->line->cur->next);
+		if (next_target == '\0' || ft_isspace(next_target))
+			token->type = TT_WORD;
+		else if (expand_word(iterator))
 			return (DELIMIT);
 		return (APPLIED);
 	}

@@ -6,13 +6,14 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:28:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:25:32 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:53:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #include "constants.h"
+#include "parser/token.h"
 #include "parser/token_recognition.h"
 
 int	check_new_operator(t_iterator *iterator, t_token *token, char target)
@@ -20,7 +21,7 @@ int	check_new_operator(t_iterator *iterator, t_token *token, char target)
 	(void)iterator;
 	if (!ft_strchr(OPERATOR_LIST, target))
 		return (CONTINUE);
-	if (token->type != TT_EMPTY)
+	if (!check_token_type(token->type, TT_EMPTY))
 		return (DELIMIT);
 	token->type = get_operator_type(target);
 	return (APPLIED);

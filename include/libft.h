@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 23:25:37 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 02:55:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:29:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			ft_atoi_ptr(char **strptr);
 int			ft_htoi(const char *str);
 int			ft_abs(int num);
 void		ft_swap(int *a, int *b);
+size_t		ft_max(size_t n1, size_t n2);
 
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s);

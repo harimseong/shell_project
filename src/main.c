@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 23:02:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 01:57:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[], char *envp[])
 	env_list = set_envlist(envp, dlist_init());
 	prompt = NULL;
 	minishell_initialize(argc, argv, &prompt);
-	while (1)
+	while (prompt)
 	{
 		line = readline(prompt);
 		if (line == NULL)
@@ -49,4 +49,22 @@ int	main(int argc, char *argv[], char *envp[])
 // 	free env_list in Ctrl-D signal handler
 //		+ prompt
 	return (0);
+}
+
+void	minishell_errormsg(const char *s1, const char *s2, const char *s3)
+{
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
+	if (s1 != NULL)
+		ft_putstr_fd(s1, STDERR_FILENO);
+	if (s2 != NULL)
+	{
+		ft_putstr_fd(": ", STDERR_FILENO);
+		ft_putstr_fd(s2, STDERR_FILENO);
+	}
+	if (s3 != NULL)
+	{
+		ft_putstr_fd(": ", STDERR_FILENO);
+		ft_putstr_fd(s3, STDERR_FILENO);
+	}
+	ft_putstr_fd("\n", STDERR_FILENO);
 }

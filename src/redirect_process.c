@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:48:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 23:09:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:10:28 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	redirect_append(t_redirect *redirect)
 	return (0);
 }
 
+// readline history should be considered
 int	redirect_heredoc(t_redirect *redirect)
 {
 	char	*string;
@@ -68,9 +69,9 @@ int	redirect_heredoc(t_redirect *redirect)
 	if (pipe(pipe_fd) < 0)
 		return (1);
 	heredoc = redirect->heredoc;
-	heredoc_len = ft_strlen(heredoc);
 	string = readline(g_heredoc_prompt);
-	while (ft_strncmp(string, heredoc, heredoc_len) != 0)
+	heredoc_len = ft_strlen(heredoc);
+	while (ft_strncmp(string, heredoc, ft_max(ft_strlen(string), heredoc_len)) != 0)
 	{
 		write(pipe_fd[1], string, ft_strlen(string));
 		free(string);

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 05:49:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/12 19:36:05 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	delete_no_content(void *arg);
 void	pipeline_content_print(void *pipeline);
 void	print_item(t_token *token);
 void	delete_item(t_token **token);
+void	minishell_errormsg(const char *s1, const char *s2, const char *s3);
 
 #endif

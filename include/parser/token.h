@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 04:14:37 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/12 20:03:33 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
  *			 	|f000|0000|
  * |operator category|operator type|
  */
-enum e_token_type
+typedef enum e_token_type
 {
-	TT_EMPTY = 0,
+	TT_EMPTY = 0x00000000,
 	TT_WORD = 0x01000000,
 //	TT_ASSIGNMENT_WORD = 0x00000020,
 	/* operators */
@@ -44,8 +44,8 @@ enum e_token_type
 //	TT_QUOTE_START = 0x0408010,
 	TT_SQUOTE = 0x04000020,
 	TT_DQUOTE = 0x04000040,
-	TT_ERROR = 0x80000000
-};
+	TT_ERROR = 0x40000000
+}	t_token_type;
 
 enum e_token_handler
 {
@@ -65,14 +65,14 @@ typedef struct s_iterator
 
 typedef struct s_token
 {
-	char	*word;
-	int		type;
+	char			*word;
+	t_token_type	type;
 }				t_token;
 
 typedef char	**t_token_arr;
 
 t_token	*token_handler(int type, t_iterator *iterator);
-int		check_token_type(int type, int comp);
+int		check_token_type(t_token_type type, t_token_type comp);
 int		recog_character(t_iterator *iterator, t_token *token);
 //t_token	*make_token(char *word, int type);
 
