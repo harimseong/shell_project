@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 17:43:00 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 01:13:16 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char *argv[], char *envp[])
 	char		*line;
 	char		*prompt;
 
+	handle_signals();
 	pipeline_list = (void *)1;
 	env_list = set_envlist(envp, dlist_init());
 	prompt = minishell_initialize(argc, argv);

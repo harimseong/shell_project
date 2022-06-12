@@ -34,7 +34,8 @@ SRC		=	main.c\
 			built_in/cd.c\
 			built_in/ft_atoll.c\
 			built_in/ft_split_first.c\
-			built_in/unset.c
+			built_in/unset.c\
+			signal/handle_signal.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 OBJ		=	$(SRC:%.c=%.o)
