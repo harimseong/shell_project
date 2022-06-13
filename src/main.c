@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 18:30:09 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 21:13:58 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	minishell_assertion(int is_true, const char *file, int line)
 {
 	char	*number;
 
+	if (DEBUG_FLAG == 0)
+		return ;
 	if (is_true)
 		return ;
 	minishell_errormsg(strerror(errno), NULL, NULL);
