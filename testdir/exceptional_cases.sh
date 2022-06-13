@@ -7,7 +7,7 @@
 
 
 # parse error
-echo "abc" > text.txt | ls -a |||| ls -l
+# echo "abc" > text.txt | ls -a |||| ls -l
 
 
 # equal sign
@@ -40,7 +40,7 @@ c"a"t$TEST2 #success
 "" a		#"\0" "a" tokens
 ""a			#"a" token
 
-| ls -al
+# | ls -al
 ls -al | #
 
 $			$# $ token
@@ -52,3 +52,10 @@ $$			# number
 
 
 ls < 'nonexist file' | ls -a	# only 'ls -a' outputs
+
+
+#<< 123 | cat -e			# heredoc takes input but not transfer it to cat 
+> 'filename' | cat -e	# the file is truncated and nothing prints out.
+
+cat -e | wc				# wc blocks until cat ends
+cat -e > /dev/ttys??? | wc	# wc doesn't block
