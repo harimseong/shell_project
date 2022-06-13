@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:58:32 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 20:01:54 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 21:38:17 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	parse_command(t_command *command)
 			|| check_token_type(token->type, TT_WORD))
 			parse_cmd_suffix(command);
 	}
-	else if (check_token_type(token->type, TT_PIPE))
-		return ;
+//	else if (check_token_type(token->type, TT_PIPE))
+//		return ;
 	else
 	{
 		if (DEBUG_FLAG)
