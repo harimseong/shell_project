@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/12 19:47:47 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 20:02:54 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 #include "parser/parser.h"
 
 static void	parse_io_file(t_dlist *redirect_list);
-static void	parse_io_heredoc(t_dlist *redirect_list);
+static void	parse_io_heredoc(t_dlist *redirect_list, int *flag);
 
-void	parse_io_redirect(t_dlist *redirect_list)
+void	parse_io_redirect(t_dlist *redirect_list, int *flag)
 {
 	t_token		*token;
 
 	token = token_handler(TH_PEEK, NULL);
 	if (check_token_type(token->type, TT_DLESS))
-		parse_io_heredoc(redirect_list);
+		parse_io_heredoc(redirect_list, flag);
 	else if (check_token_type(token->type, TT_REDIRECT))
 		parse_io_file(redirect_list);
 }
@@ -42,8 +42,8 @@ void	parse_io_file(t_dlist *redirect_list)
 	if (!check_token_type(filename->type, TT_WORD))
 	{
 		if (DEBUG_FLAG)
-			printf("minishell: parse error: %s: %s: %d: token_type %x\n",
-				__FILE__, __FUNCTION__, __LINE__, filename->type);
+			printf("minishell: parse error: %s: %d: token_type %x\n",
+				__FILE__, __LINE__, filename->type);
 		filename->type = TT_ERROR;
 		return ;
 	}
@@ -57,7 +57,7 @@ void	parse_io_file(t_dlist *redirect_list)
 	push_back(redirect_list, redirect);
 }
 
-void	parse_io_heredoc(t_dlist *redirect_list)
+void	parse_io_heredoc(t_dlist *redirect_list, int *flag)
 {
 	t_token		*heredoc;
 	t_token		*end_word;
@@ -68,8 +68,8 @@ void	parse_io_heredoc(t_dlist *redirect_list)
 	if (!check_token_type(end_word->type, TT_WORD))
 	{
 		if (DEBUG_FLAG)
-			printf("minishell: parse error: %s: %s: %d: token_type %x\n",
-				__FILE__, __FUNCTION__, __LINE__, end_word->type);
+			printf("minishell: parse error: %s: %d: token_type %x\n",
+				__FILE__, __LINE__, end_word->type);
 		end_word->type = TT_ERROR;
 		return ;
 	}
@@ -77,5 +77,6 @@ void	parse_io_heredoc(t_dlist *redirect_list)
 	redirect = malloc(sizeof(t_redirect));
 	*redirect = (t_redirect){REDIR_HEREDOC, -1, end_word->word, NULL,
 	{heredoc, end_word}};
+	*flag = CMD_HEREDOC;
 	push_back(redirect_list, redirect);
 }

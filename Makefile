@@ -81,7 +81,6 @@ all: $(NAME)
 debug:
 	$(MAKE) clean
 	$(MAKE) DEBUG_FLAG=1 libs
-	touch DEBUG.flag
 
 $(LIBS): %.lib:
 	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all

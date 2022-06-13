@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:58:32 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:26:47 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 20:01:54 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 static void	parse_cmd_prefix(t_command *command);
 static void	parse_cmd_suffix(t_command *command);
 static void	parse_cmd_name(t_command *command);
-void		parse_io_redirect(t_dlist *pipeline_list);
+void		parse_io_redirect(t_dlist *pipeline_list, int *flag);
 
 void	parse_command(t_command *command)
 {
@@ -67,11 +67,11 @@ void	parse_cmd_prefix(t_command *command)
 {
 	t_token		*token;
 
-	parse_io_redirect(command->redirect_list);
+	parse_io_redirect(command->redirect_list, &command->flag);
 	token = token_handler(TH_PEEK, NULL);
 	while (check_token_type(token->type, TT_REDIRECT))
 	{
-		parse_io_redirect(command->redirect_list);
+		parse_io_redirect(command->redirect_list, &command->flag);
 		token = token_handler(TH_PEEK, NULL);
 	}
 }
@@ -83,7 +83,7 @@ void	parse_cmd_suffix(t_command *command)
 	token = token_handler(TH_PEEK, NULL);
 	if (check_token_type(token->type, TT_REDIRECT))
 	{
-		parse_io_redirect(command->redirect_list);
+		parse_io_redirect(command->redirect_list, &command->flag);
 		parse_cmd_suffix(command);
 	}
 	else if (check_token_type(token->type, TT_WORD))

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 22:16:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 20:30:04 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include "constants.h"
 #include "parser/parser.h"
 
-int	generate_process(t_dlist *word_list, t_dlist *redirect_list,
-	t_dlist *env_list);
+int			generate_process(t_command *command, t_dlist *env_list,
+	int pipe_exist);
 static int	read_command_list(t_dlist *command_list, t_dlist *env_list);
 static int	wait_process(t_dlist *pid_list);
 
@@ -44,23 +44,27 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list)
 	t_command	*command;
 	t_dlist		*pid_list;
 	pid_t		pid;
-	int			status;
+	int			prev_cmd_flag;
 
 	pid_list = dlist_init();
 	command = get_front(command_list);
+	prev_cmd_flag = 0;
 	while (command != NULL)
 	{
-//		set_pipe(
-		pid = generate_process(command->word_list, command->redirect_list,
-			env_list);
+		if (prev_cmd_flag == CMD_HEREDOC)
+		{
+			pid = *((pid_t *)get_front(pid_list));
+			pop_front(pid_list, free);
+			waitpid(pid, NULL, 0);
+		}
+		pid = generate_process(command, env_list, command_list->size > 1);
+		prev_cmd_flag = command->flag;
 		pop_front(command_list, delete_command_content);
 		command = get_front(command_list);
 		push_back(pid_list,
 			ft_memcpy(malloc(sizeof(pid_t)), &pid, sizeof(pid_t)));
 	}
-	status = wait_process(pid_list);
-	dlist_delete(pid_list, free);
-	return (status);
+	return (wait_process(pid_list));
 }
 
 int	wait_process(t_dlist *pid_list)
@@ -74,5 +78,6 @@ int	wait_process(t_dlist *pid_list)
 		waitpid(*pid_ptr, &status, 0);
 		pop_front(pid_list, free);
 	}
+	dlist_delete(pid_list, free);
 	return (status);
 }

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 06:10:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 16:00:10 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	minishell_initialize(int argc, char **argv, char **prompt)
 			if (found_option == FALSE)
 				minishell_errormsg(argv[idx], "invaild option",  NULL);
 			else
-				perror("minishell");
+				minishell_errormsg(NULL, NULL, NULL);
 			return (1);
 		}
 		++idx;

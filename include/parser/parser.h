@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 23:06:28 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 20:49:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ enum e_redir
 	REDIR_PROCESSED = 0xff
 };
 
+enum command
+{
+	CMD_NORMAL = 0,
+	CMD_HEREDOC
+};
+
 typedef struct s_redirect
 {
 	enum e_redir	redir_type;
@@ -44,6 +50,8 @@ typedef struct s_redirect
  */
 typedef struct s_command
 {
+	int			std_fd_set[2];
+	int			flag;
 	t_dlist		*word_list;
 	t_dlist		*redirect_list;
 }			t_command;

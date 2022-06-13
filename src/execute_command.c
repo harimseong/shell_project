@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/12 20:42:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 20:56:40 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ int	execute_command(t_dlist *word_list, t_dlist *env_list)
 	}
 	if (status == ENOENT)
 		minishell_errormsg(argv[0], "command not found", NULL);
-	else if (status != 0)
-		perror("minishell");
+	minishell_assertion(status == 0 && status != ENOENT, __FILE__, __LINE__);
 	free(argv);
 	builtin_exit(env_list, 1, NULL);
 	return (status);
