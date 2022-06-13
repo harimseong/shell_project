@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/13 01:10:14 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/13 17:32:24 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int			check_identifier_first(char identifier);
 t_dlist		*set_envlist(char **cpenv, t_dlist *envlist);
 char		**copy_env(char	**cpenv, char **envp);
 t_env		*set_env(char *fullenv);
-void		*copy_env_content(void *content);;
-void		handle_signals_cmd(void);
+void		*copy_env_content(void *content);
 void		handle_signals(void);
 #endif

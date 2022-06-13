@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 01:13:16 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/13 17:32:43 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,24 @@ int	main(int argc, char *argv[], char *envp[])
 	prompt = minishell_initialize(argc, argv);
 	while (1)
 	{
-		line = readline(prompt);
+		line = readline(prompt);	
+	// 	free env_list in Ctrl-D signal handler
 		if (line == NULL)
+		{
+			printf("\nexit\n");
+			dlist_delete(env_list, &delete_content);
 			break ;
-		pipeline_list = parser(line, env_list);
-		if (pipeline_list == NULL)
-			continue ;
-//		dlist_print_forward(pipeline_list, pipeline_content_print);
-		read_pipeline(pipeline_list, env_list);
-		dlist_delete(pipeline_list, delete_pipeline_content);
-//		system("leaks minishell");
+		}
+		else
+		{
+			pipeline_list = parser(line, env_list);
+			if (pipeline_list == NULL)
+				continue ;
+	//		dlist_print_forward(pipeline_list, pipeline_content_print);
+			read_pipeline(pipeline_list, env_list);
+			dlist_delete(pipeline_list, delete_pipeline_content);
+	//		system("leaks minishell");
+		}
 	}
-// 	free env_list in Ctrl-D signal handler
 	return (0);
 }
