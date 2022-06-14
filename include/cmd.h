@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 21:44:57 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 22:59:23 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stddef.h>
 # include <string.h>
 # include <limits.h>
 # include <signal.h>
@@ -41,6 +42,7 @@ int			builtin_exit(t_dlist *envlist, int argc, char **argv);
 long long	ft_atoll(char *str, int *error);
 int			is_contain_special(char *str);
 int			check_identifier_first(char identifier);
+int			check_key_dup(t_dlist *envlist, char **element, char *argv);
 t_dlist		*set_envlist(char **cpenv, t_dlist *envlist);
 char		**copy_env(char	**cpenv, char **envp);
 t_env		*set_env(char *fullenv);

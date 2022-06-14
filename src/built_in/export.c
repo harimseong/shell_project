@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:29:37 by gson              #+#    #+#             */
-/*   Updated: 2022/06/11 06:02:32 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:59:31 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	export_args(t_dlist *envlist, char *argv)
 		return (1);
 	if (check_identifier_first(element[0][0]) == 0
 		&& ft_strlen(element[0]) == 1)
+		return (0);
+	if (check_key_dup(envlist, element, argv) == 1)
 		return (0);
 	new_env = make_new_env(element, argv);
 	push_back(envlist, new_env);
