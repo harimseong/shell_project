@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 03:34:09 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 06:23:15 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	if (!check_token_type(token->type, TT_EMPTY))
 	{
 		set_question(g_env_list, PARSE_ERROR_STATUS);
-//		if (DEBUG_FLAG)
-//			printf("minishell: parse error: %s: %s: %d: token_type %x\n",
-//				__FILE__, __FUNCTION__, __LINE__, token->type);
+		if (DEBUG_FLAG)
+			printf("minishell: parse error: %s: %s: %d: token_type %x\n",
+				__FILE__, __FUNCTION__, __LINE__, token->type);
 		parser_error(pipeline_list, token);
 		delete_word_content(token);
 		return (NULL);

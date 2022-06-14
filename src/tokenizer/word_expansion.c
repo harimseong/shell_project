@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 04:31:14 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 07:00:27 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "parser/token_recognition.h"
 #include "cmd.h"
 
+char			*convert_value_to_quoted(char *value);
 static t_node	*find_env(t_iterator *iterator);
 static void		*extract_content(void *arg);
 
@@ -24,18 +25,20 @@ int	expand_word(t_iterator *iterator)
 {
 	t_node	*node;
 	t_node	*expand_point;
+	char	*env_out;
 	char	*env_value;
 	t_dlist	*buf;
 
 	buf = iterator->line;
 	node = find_env(iterator);
 	expand_point = buf->cur->next;
-	if (node != NULL)
+	if (node != NULL && ((t_env *)node->content)->value != NULL)
 	{
 		env_value = ((t_env *)node->content)->value;
-		while (*env_value)
+		env_out = convert_value_to_quoted(env_value);
+		while (*env_out)
 		{
-			insert_at(buf, expand_point, ft_strndup(env_value++, 1));
+			insert_at(buf, expand_point, ft_strndup(env_out++, 1));
 			++iterator->len;
 		}
 	}

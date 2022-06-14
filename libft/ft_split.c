@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:16:11 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:30:20 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 05:06:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	**ft_split(const char *str, const char *delim)
 {
 	size_t	count;
 
+	if (str == NULL)
+		return (NULL);
 	count = get_count(str, delim);
 	return (alloc_words(str, count, delim));
 }

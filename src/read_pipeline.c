@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 23:47:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 05:11:58 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ int	wait_process(t_dlist *pid_list)
 		waitpid(pid, &status, 0);
 	}
 	handle_signals();
-	if (status >= 128)
-		ft_putstr_fd("\n", STDERR_FILENO);
 	dlist_delete(pid_list, free);
 	return (WEXITSTATUS(status));
 }

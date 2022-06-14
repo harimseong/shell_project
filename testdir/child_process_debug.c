@@ -22,8 +22,9 @@ int	main(int argc, char **argv, char **envp)
 	pid = fork();
 	if (pid == 0)
 	{
-		while (1)
-			continue;
+		char	buf[10];
+		read(0, buf, 10);
+		return (0);
 	}
 	waitpid(0, NULL, 0);
 	return (0);

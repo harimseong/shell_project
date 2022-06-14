@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:01:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 02:56:20 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 05:06:45 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_execvpe(const char *filename, char *const *argv, char *const *envp,
 	char	fullpath[MAX_PATHNAME + 1];
 	size_t	path_len;
 
+	if (path_arr == NULL)
+		return (ENOENT);
 	execve(filename, argv, envp);
 	while (*path_arr != NULL)
 	{

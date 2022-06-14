@@ -6,11 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 04:39:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 06:58:05 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include  <stdio.h>
 
 #include "constants.h"
 #include "parser/token.h"
@@ -79,7 +80,7 @@ int	check_dollar(t_iterator *iterator, t_token *token, char target)
 //
 		else if (expand_word(iterator))
 			return (DELIMIT);
-		return (APPLIED);
+		return (check_quote(iterator, token, get_char(iterator->line->cur)));
 	}
 	return (CONTINUE);
 }
