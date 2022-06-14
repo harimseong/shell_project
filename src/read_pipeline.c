@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 20:30:04 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:27:26 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,15 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list)
 int	wait_process(t_dlist *pid_list)
 {
 	int		status;
-	pid_t	*pid_ptr;
+	pid_t	pid;
 
 	while (pid_list->size > 0)
 	{
-		pid_ptr = get_front(pid_list);
-		waitpid(*pid_ptr, &status, 0);
+		pid = *((pid_t *)get_front(pid_list));
 		pop_front(pid_list, free);
+		if (pid < 0)
+			continue ;
+		waitpid(pid, &status, 0);
 	}
 	dlist_delete(pid_list, free);
 	return (status);

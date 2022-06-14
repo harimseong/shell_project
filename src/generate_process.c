@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 20:57:33 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:19:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@
 
 typedef int						(*t_redirect_func)(t_redirect *, int [2]);
 
+int			is_internal_builtin(t_dlist *word_list);
 int			execute_command(t_dlist *word_list, t_dlist *env_list);
+int			execute_internal_builtin(t_dlist *word_list,
+		t_dlist *env_list, int idx);
 static int	set_redirect(t_dlist *redirect_list, int std_fd_set[2]);
 static int	fork_and_pipe(int *recent_read_end,
 		int *pipe_fd, int pipe_exist);
 static int	safe_dup2(int oldfd, int newfd, int line);
-//static int	close_fd(t_dlist *redirect_list);
 
 static const t_redirect_func	g_redirect_func_tab[REDIR_NUM_OPS] = {
 	redirect_in,
@@ -35,7 +37,6 @@ static const t_redirect_func	g_redirect_func_tab[REDIR_NUM_OPS] = {
 	redirect_heredoc
 };
 
-// close(0) doesn't disable stdin.
 int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 {
 	static int	recent_read_end;
@@ -45,6 +46,9 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 
 	command->std_fd_set[0] = dup(STDIN_FILENO);
 	command->std_fd_set[1] = dup(STDOUT_FILENO);
+	status = is_internal_builtin(command->word_list);
+	if (status >= 0)
+		return (execute_internal_builtin(command->word_list, env_list, status));
 	pid = fork_and_pipe(&recent_read_end, pipe_fd, pipe_exist);
 	if (pid == 0)
 	{

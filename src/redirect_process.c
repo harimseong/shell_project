@@ -6,14 +6,16 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:48:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 17:00:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:16:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <readline/readline.h>
+#include <readline/history.h>
 #include "libft.h"
 
 #include "execute.h"

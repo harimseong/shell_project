@@ -1,6 +1,8 @@
 bash_source
 *.json
 *.a
-.cache
-.clangd
+*.cache
+*.clangd
 *.o
+*.vscode
+*.dSYM
