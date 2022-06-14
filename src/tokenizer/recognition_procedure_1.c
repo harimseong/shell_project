@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/12 20:52:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 04:39:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 int	check_eoi(t_iterator *iterator, t_token *token, char target)
 {
-	(void)token;
 	(void)iterator;
 	if (target == '\0')
 	{
@@ -31,12 +30,8 @@ int	check_eoi(t_iterator *iterator, t_token *token, char target)
 
 int	check_operator(t_iterator *iterator, t_token *token, char target)
 {
-	int		type;
-
-	(void)token;
 	(void)iterator;
-	type = token->type;
-	if ((type & TT_OPERATOR) == TT_OPERATOR)
+	if (check_token_type(token->type, TT_OPERATOR))
 		return (check_long_operator(target, &token->type));
 	return (CONTINUE);
 }
@@ -80,6 +75,8 @@ int	check_dollar(t_iterator *iterator, t_token *token, char target)
 		next_target = get_char(iterator->line->cur->next);
 		if (next_target == '\0' || ft_isspace(next_target))
 			token->type = TT_WORD;
+//		else if (next_target == '?')
+//
 		else if (expand_word(iterator))
 			return (DELIMIT);
 		return (APPLIED);
