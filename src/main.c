@@ -21,7 +21,7 @@
 #include "parser/parser.h"
 
 int			minishell_initialize(int argc, char **argv, char **prompt);
-static void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr);
+//static void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr);
 
 t_dlist		*g_env_list;
 
@@ -40,14 +40,14 @@ int	main(int argc, char *argv[], char *envp[])
 	minishell_initialize(argc, argv, &prompt);
 	while (prompt)
 	{
-		jobs_per_loop(env_list, &prompt);
 		line = readline(prompt);
 		if (line == NULL)
 		{
 			printf("exit\n");
 			builtin_exit(env_list, 0, NULL);
 		}
-		add_history(line);
+		if (ft_strlen(line) > 0)
+			add_history(line);
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 		{
@@ -100,7 +100,7 @@ void	minishell_assertion(int is_true, const char *file, int line)
 	ft_putstr_fd("\n", STDERR_FILENO);
 	free(number);
 }
-
+/*
 void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr)
 {
 	int		status;
@@ -111,3 +111,4 @@ void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr)
 	prompt = ft_strjoin(ft_itoa(status), "\t>");
 	*prompt_ptr = prompt;
 }
+*/

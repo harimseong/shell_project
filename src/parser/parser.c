@@ -60,7 +60,6 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 		token_handler(TH_END, NULL);
 		return (NULL);
 	}
-	add_history(line);
 	return (parse_init(dlist_init()));
 }
 
