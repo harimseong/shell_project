@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 03:37:55 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 03:38:48 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		line = readline(prompt);
 		if (line == NULL)
-		{
-			printf("exit\n");
-			builtin_exit(env_list, 0, NULL);
-		}
+			builtin_print_exit(env_list, 0, NULL);
 		if (ft_strlen(line) > 0)
 			add_history(line);
 		pipeline_list = parser(line, env_list);
