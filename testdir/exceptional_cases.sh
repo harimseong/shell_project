@@ -59,3 +59,11 @@ ls < 'nonexist file' | ls -a	# only 'ls -a' outputs
 
 cat -e | wc				# wc blocks until cat ends
 cat -e > /dev/ttys??? | wc	# wc doesn't block
+
+
+cat << 1 << 2 << 3 << 4
+unset
+export PATH=a
+
+
+#heredoc history?

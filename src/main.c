@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 22:12:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 16:08:09 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char *argv[], char *envp[])
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 			continue ;
+		add_history(line);
 //		dlist_print_forward(pipeline_list, pipeline_content_print);
 		read_pipeline(pipeline_list, env_list);
 //		system("lsof -p $$");
