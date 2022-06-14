@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 23:10:15 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 23:43:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,22 @@ int	main(int argc, char *argv[], char *envp[])
 	minishell_initialize(argc, argv, &prompt);
 	while (prompt)
 	{
+		jobs_per_loop(env_list, &prompt);
 		line = readline(prompt);
 		if (line == NULL)
 		{
 			printf("exit\n");
 			builtin_exit(env_list, 0, NULL);
 		}
+		add_history(line);
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
+		{
+			set_question(env_list, 0);
 			continue ;
-		add_history(line);
+		}
 		read_pipeline(pipeline_list, env_list);
 		dlist_delete(pipeline_list, delete_pipeline_content);
-		jobs_per_loop(env_list, &prompt);
 	}
 	return (0);
 }

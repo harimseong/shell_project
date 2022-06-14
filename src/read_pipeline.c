@@ -6,11 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:56:06 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 23:47:03 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+# include <stdio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "libft.h"
@@ -73,14 +74,18 @@ int	wait_process(t_dlist *pid_list)
 	int		status;
 	pid_t	pid;
 
+	status = 0;
 	while (pid_list->size > 0)
 	{
 		pid = *((pid_t *)get_front(pid_list));
 		pop_front(pid_list, free);
 		if (pid < 0)
+		{
+			status = -pid;
 			continue ;
+		}
 		waitpid(pid, &status, 0);
 	}
 	dlist_delete(pid_list, free);
-	return (status);
+	return (WEXITSTATUS(status));
 }
