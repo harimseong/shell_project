@@ -35,6 +35,7 @@ SRC		=	main.c\
 			built_in/ft_atoll.c\
 			built_in/ft_split_first.c\
 			built_in/unset.c\
+			built_in/pwd.c\
 			signal/handle_signal.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
@@ -51,7 +52,7 @@ INCL_DIR=	include
 INCL	:=	$(INCL:%=$(INCL_DIR)/%)
 
 
-LIB_ADD	=	-L.
+LIB_ADD	=	-L. -L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
 LIBTARGET=	all
 
 # NOTE: library order (-ldlinkedlist and -lft) can be problem
@@ -64,7 +65,6 @@ LIBFT	=	libft.a
 LIBFT_DIR=	libft
 LIB_ADD	+=	-lft
 LIBS	+=	LIBFT.lib
-
 
 ifeq ($(DEBUG_FLAG), 1)
 CFLAGS	+=	$(DEBUG)
@@ -90,7 +90,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
 
 $(OBJ): %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 
 clean:
 	$(RM) $(OBJ)

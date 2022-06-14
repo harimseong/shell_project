@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_initialize.c                             :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 19:36:17 by gson             ###   ########.fr       */
+/*   Created: 2022/06/14 18:19:12 by gson              #+#    #+#             */
+/*   Updated: 2022/06/14 19:07:06 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "readline/readline.h"
+#include "minishell.h"
+#include "cmd.h"
 
-char	*minishell_initialize(int argc, char **argv)
+int	pwd(t_dlist *envlist, int argc, char **argv)
 {
-	char	*prompt;
+	char	*cwd;
 
+	(void)envlist;
 	(void)argc;
 	(void)argv;
-	rl_catch_signals = 0;
-	prompt = "$> ";
-	return (prompt);
+	cwd = getcwd(NULL, 0);
+	printf("%s\n", cwd);
+	free(cwd);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/11 17:37:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 19:03:04 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int	builtin_exit(t_dlist *envlist, int argc, char **argv)
 		status = 1;
 	}
 	dlist_delete(envlist, &delete_content);
+	printf("exit\n");
 	exit((int)status);
 }

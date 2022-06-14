@@ -1,0 +1,117 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/gson/minishell'
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C doubly_linked_list  all
+ 
+make[1]: Entering directory `/Users/gson/minishell/doubly_linked_list'
+gcc -Wall -Wextra -Werror -c -o dlinkedlist.o dlinkedlist.c -I. -I../include
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_util.o dlinkedlist_util.c -I. -I../include
+ 
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_peek.o dlinkedlist_peek.c -I. -I../include
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_cur.o dlinkedlist_cur.c -I. -I../include
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_dup.o dlinkedlist_dup.c -I. -I../include
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_delete.o dlinkedlist_delete.c -I. -I../include
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_mergesort.o dlinkedlist_mergesort.c -I. -I../include
+gcc -Wall -Wextra -Werror -c -o dlinkedlist_transfer.o dlinkedlist_transfer.c -I. -I../include
+ar rcs libdlinkedlist.a dlinkedlist.o dlinkedlist_util.o dlinkedlist_peek.o dlinkedlist_cur.o dlinkedlist_dup.o dlinkedlist_delete.o dlinkedlist_mergesort.o dlinkedlist_transfer.o
+make[1]: Leaving directory `/Users/gson/minishell/doubly_linked_list'
+ 
+cp -p doubly_linked_list/libdlinkedlist.a .
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C libft  all
+ 
+make[1]: Entering directory `/Users/gson/minishell/libft'
+gcc -Wall -Wextra -Werror ft_isalpha.c -c -o ft_isalpha.o -I.
+gcc -Wall -Wextra -Werror ft_isdigit.c -c -o ft_isdigit.o -I.
+gcc -Wall -Wextra -Werror ft_isalnum.c -c -o ft_isalnum.o -I.
+gcc -Wall -Wextra -Werror ft_isascii.c -c -o ft_isascii.o -I.
+gcc -Wall -Wextra -Werror ft_isprint.c -c -o ft_isprint.o -I.
+gcc -Wall -Wextra -Werror ft_strlen.c -c -o ft_strlen.o -I.
+ 
+gcc -Wall -Wextra -Werror ft_isspace.c -c -o ft_isspace.o -I.
+gcc -Wall -Wextra -Werror ft_ishex.c -c -o ft_ishex.o -I.
+gcc -Wall -Wextra -Werror ft_abs.c -c -o ft_abs.o -I.
+gcc -Wall -Wextra -Werror ft_swap.c -c -o ft_swap.o -I.
+gcc -Wall -Wextra -Werror ft_memset.c -c -o ft_memset.o -I.
+gcc -Wall -Wextra -Werror ft_bzero.c -c -o ft_bzero.o -I.
+ 
+gcc -Wall -Wextra -Werror ft_memcpy.c -c -o ft_memcpy.o -I.
+gcc -Wall -Wextra -Werror ft_memmove.c -c -o ft_memmove.o -I.
+gcc -Wall -Wextra -Werror ft_strlcpy.c -c -o ft_strlcpy.o -I.
+gcc -Wall -Wextra -Werror ft_strlcat.c -c -o ft_strlcat.o -I.
+gcc -Wall -Wextra -Werror ft_toupper.c -c -o ft_toupper.o -I.
+gcc -Wall -Wextra -Werror ft_tolower.c -c -o ft_tolower.o -I.
+gcc -Wall -Wextra -Werror ft_strchr.c -c -o ft_strchr.o -I.
+gcc -Wall -Wextra -Werror ft_strrchr.c -c -o ft_strrchr.o -I.
+gcc -Wall -Wextra -Werror ft_strcmp.c -c -o ft_strcmp.o -I.
+ 
+gcc -Wall -Wextra -Werror ft_strncmp.c -c -o ft_strncmp.o -I.
+gcc -Wall -Wextra -Werror ft_memchr.c -c -o ft_memchr.o -I.
+gcc -Wall -Wextra -Werror ft_memcmp.c -c -o ft_memcmp.o -I.
+gcc -Wall -Wextra -Werror ft_strnstr.c -c -o ft_strnstr.o -I.
+gcc -Wall -Wextra -Werror ft_atoi.c -c -o ft_atoi.o -I.
+gcc -Wall -Wextra -Werror ft_atoi_ptr.c -c -o ft_atoi_ptr.o -I.
+gcc -Wall -Wextra -Werror ft_htoi.c -c -o ft_htoi.o -I.
+gcc -Wall -Wextra -Werror ft_calloc.c -c -o ft_calloc.o -I.
+gcc -Wall -Wextra -Werror ft_strdup.c -c -o ft_strdup.o -I.
+gcc -Wall -Wextra -Werror ft_substr.c -c -o ft_substr.o -I.
+ 
+gcc -Wall -Wextra -Werror ft_strndup.c -c -o ft_strndup.o -I.
+gcc -Wall -Wextra -Werror ft_strjoin.c -c -o ft_strjoin.o -I.
+gcc -Wall -Wextra -Werror ft_strtrim.c -c -o ft_strtrim.o -I.
+gcc -Wall -Wextra -Werror ft_split.c -c -o ft_split.o -I.
+gcc -Wall -Wextra -Werror ft_itoa.c -c -o ft_itoa.o -I.
+gcc -Wall -Wextra -Werror ft_strmapi.c -c -o ft_strmapi.o -I.
+gcc -Wall -Wextra -Werror ft_striteri.c -c -o ft_striteri.o -I.
+gcc -Wall -Wextra -Werror ft_putchar_fd.c -c -o ft_putchar_fd.o -I.
+gcc -Wall -Wextra -Werror ft_putstr_fd.c -c -o ft_putstr_fd.o -I.
+ 
+gcc -Wall -Wextra -Werror ft_putendl_fd.c -c -o ft_putendl_fd.o -I.
+gcc -Wall -Wextra -Werror ft_putnbr_fd.c -c -o ft_putnbr_fd.o -I.
+gcc -Wall -Wextra -Werror ft_execvpe.c -c -o ft_execvpe.o -I.
+gcc -Wall -Wextra -Werror ft_print_memory.c -c -o ft_print_memory.o -I.
+ar rcs libft.a ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_strlen.o ft_isspace.o ft_ishex.o ft_abs.o ft_swap.o ft_memset.o ft_bzero.o ft_memcpy.o ft_memmove.o ft_strlcpy.o ft_strlcat.o ft_toupper.o ft_tolower.o ft_strchr.o ft_strrchr.o ft_strcmp.o ft_strncmp.o ft_memchr.o ft_memcmp.o ft_strnstr.o ft_atoi.o ft_atoi_ptr.o ft_htoi.o ft_calloc.o ft_strdup.o ft_substr.o ft_strndup.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_striteri.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_execvpe.o ft_print_memory.o
+make[1]: Leaving directory `/Users/gson/minishell/libft'
+cp -p libft/libft.a .
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make minishell
+ 
+make[1]: Entering directory `/Users/gson/minishell'
+gcc -Wall -Wextra -Werror -c -o src/main.o src/main.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+ 
+gcc -Wall -Wextra -Werror -c -o src/read_pipeline.o src/read_pipeline.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/execute_command.o src/execute_command.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/execute_helper_func.o src/execute_helper_func.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/delete_command_list.o src/delete_command_list.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/minishell_initialize.o src/minishell_initialize.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+ 
+gcc -Wall -Wextra -Werror -c -o src/parser/parser.o src/parser/parser.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/parser/parser_error.o src/parser/parser_error.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/parser/parse_command.o src/parser/parse_command.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/parser/parse_redirect.o src/parser/parse_redirect.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/parser/print_parsing_info.o src/parser/print_parsing_info.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/tokenizer/tokenizer.o src/tokenizer/tokenizer.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+ 
+gcc -Wall -Wextra -Werror -c -o src/tokenizer/token_helper_func.o src/tokenizer/token_helper_func.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/tokenizer/recognition_procedure_1.o src/tokenizer/recognition_procedure_1.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/tokenizer/recognition_procedure_2.o src/tokenizer/recognition_procedure_2.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/tokenizer/word_expansion.o src/tokenizer/word_expansion.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/env.o src/built_in/env.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/export.o src/built_in/export.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+ 
+gcc -Wall -Wextra -Werror -c -o src/built_in/key_compare.o src/built_in/key_compare.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/set_env.o src/built_in/set_env.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/check_key.o src/built_in/check_key.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/delete_content.o src/built_in/delete_content.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/echo.o src/built_in/echo.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/exit.o src/built_in/exit.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/cd.o src/built_in/cd.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+ 
+gcc -Wall -Wextra -Werror -c -o src/built_in/ft_atoll.o src/built_in/ft_atoll.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/ft_split_first.o src/built_in/ft_split_first.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/unset.o src/built_in/unset.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/built_in/pwd.o src/built_in/pwd.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -c -o src/signal/handle_signal.o src/signal/handle_signal.c -Iinclude -I/Users/gson/.brew/Cellar/readline/8.1.2/include
+gcc -Wall -Wextra -Werror -o minishell src/main.o src/read_pipeline.o src/execute_command.o src/execute_helper_func.o src/delete_command_list.o src/minishell_initialize.o src/parser/parser.o src/parser/parser_error.o src/parser/parse_command.o src/parser/parse_redirect.o src/parser/print_parsing_info.o src/tokenizer/tokenizer.o src/tokenizer/token_helper_func.o src/tokenizer/recognition_procedure_1.o src/tokenizer/recognition_procedure_2.o src/tokenizer/word_expansion.o src/built_in/env.o src/built_in/export.o src/built_in/key_compare.o src/built_in/set_env.o src/built_in/check_key.o src/built_in/delete_content.o src/built_in/echo.o src/built_in/exit.o src/built_in/cd.o src/built_in/ft_atoll.o src/built_in/ft_split_first.o src/built_in/unset.o src/built_in/pwd.o src/signal/handle_signal.o -lreadline -L. -L/Users/gson/.brew/Cellar/readline/8.1.2/lib -ldlinkedlist -lft
+make[1]: Leaving directory `/Users/gson/minishell'
+ 
+make: Leaving directory `/Users/gson/minishell'
+ 

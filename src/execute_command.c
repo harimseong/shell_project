@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 17:34:48 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 19:04:52 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static const t_program	g_builtin_tab[7] = {
 	env,
 	builtin_exit,
 	export,
-	NULL,
+	pwd,
 	unset
 };
 
