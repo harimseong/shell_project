@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Tue Jun 14 20:27:16 2022
+# Make data base, printed on Tue Jun 14 21:46:20 2022
 
 # Variables
 
@@ -16,10 +16,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 42)
+# makefile (from `Makefile', line 45)
 OBJ = $(SRC:%.c=%.o)
-# makefile (from `Makefile', line 41)
-SRC := src/main.c src/read_pipeline.c src/execute_command.c src/execute_helper_func.c src/delete_command_list.c src/minishell_initialize.c src/parser/parser.c src/parser/parser_error.c src/parser/parse_command.c src/parser/parse_redirect.c src/parser/print_parsing_info.c src/tokenizer/tokenizer.c src/tokenizer/token_helper_func.c src/tokenizer/recognition_procedure_1.c src/tokenizer/recognition_procedure_2.c src/tokenizer/word_expansion.c src/built_in/env.c src/built_in/export.c src/built_in/key_compare.c src/built_in/set_env.c src/built_in/check_key.c src/built_in/delete_content.c src/built_in/echo.c src/built_in/exit.c src/built_in/cd.c src/built_in/ft_atoll.c src/built_in/ft_split_first.c src/built_in/unset.c src/built_in/pwd.c src/signal/handle_signal.c
+# makefile (from `Makefile', line 44)
+ 
+SRC := src/main.c src/minishell_initialize.c src/read_pipeline.c src/generate_process.c src/redirect_process.c src/execute_command.c src/execute_helper_func.c src/delete_command_list.c src/parser/parser.c src/parser/parser_error.c src/parser/parse_command.c src/parser/parse_redirect.c src/parser/print_parsing_info.c src/tokenizer/tokenizer.c src/tokenizer/token_helper_func.c src/tokenizer/recognition_procedure_1.c src/tokenizer/recognition_procedure_2.c src/tokenizer/word_expansion.c src/built_in/env.c src/built_in/export.c src/built_in/key_compare.c src/built_in/set_env.c src/built_in/check_key.c src/built_in/delete_content.c src/built_in/echo.c src/built_in/exit.c src/built_in/cd.c src/built_in/ft_atoll.c src/built_in/ft_split_first.c src/built_in/unset.c src/built_in/pwd.c src/built_in/find_question.c src/signal/handle_signal.c
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -64,9 +65,9 @@ VSCODE_LOG_STACK = false
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# makefile (from `Makefile', line 65)
+# makefile (from `Makefile', line 68)
 LIBFT_DIR = libft
-# makefile (from `Makefile', line 56)
+# makefile (from `Makefile', line 59)
 LIBTARGET = all
 # environment
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.7yf4eaQJU2/Listeners
@@ -76,7 +77,7 @@ SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.7yf4eaQJU2/Listeners
 HOMEBREW_TEMP = /tmp/gson/Homebrew/Temp
 # environment
 PWD = /Users/gson/minishell
-# makefile (from `Makefile', line 51)
+# makefile (from `Makefile', line 54)
 INCL_DIR = include
 # environment
 HOME = /Users/gson
@@ -104,7 +105,7 @@ MAKECMDGOALS := all
 HOMEBREW_CACHE = /tmp/gson/Homebrew/Caches
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 64)
+# makefile (from `Makefile', line 67)
 LIBFT = libft.a
 # makefile (from `Makefile', line 4)
 CC = gcc
@@ -118,7 +119,7 @@ USER = gson
 .DEFAULT_GOAL := libs
 # makefile (from `Makefile', line 1)
 NAME = minishell
-# makefile (from `Makefile', line 66)
+# makefile (from `Makefile', line 69)
 LIB_ADD = -L. -L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib -ldlinkedlist -lft
 # environment
 PIPE_LOGGING = true
@@ -128,7 +129,7 @@ LESS = -R
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
-# makefile (from `Makefile', line 52)
+# makefile (from `Makefile', line 55)
 INCL := include/minishell.h include/doubly_linked_list.h include/libft.h include/cmd.h include/parser/parser.h include/parser/token.h include/parser/token_recognition.h
 # default
 .VARIABLES := 
@@ -140,7 +141,7 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000ck0m0034h5/T/
 VSCODE_IPC_HOOK = /Users/gson/Library/Application Support/Code/1.39.2-main.sock
 # makefile
 MAKEFLAGS = Rrqp
-# makefile (from `Makefile', line 60)
+# makefile (from `Makefile', line 63)
 DLLIST_DIR = doubly_linked_list
 # environment
 MFLAGS = -Rrqp
@@ -160,7 +161,7 @@ __CF_USER_TEXT_ENCODING = 0x19205:0x0:0x0
 COMMAND_MODE = unix2003
 # default
 MAKEFILES := 
-# makefile (from `Makefile', line 40)
+# makefile (from `Makefile', line 43)
 SRC_DIR = src
 # automatic
 <F = $(notdir $<)
@@ -168,7 +169,7 @@ SRC_DIR = src
 PAGER = less
 # environment
 LC_ALL = C
-# makefile (from `Makefile', line 67)
+# makefile (from `Makefile', line 70)
 LIBS = DLLIST.lib LIBFT.lib
 # environment
 SECURITYSESSIONID = 186a6
@@ -180,14 +181,15 @@ SUFFIXES :=
 .INCLUDE_DIRS = /usr/local/include
 # environment
 MAKELEVEL := 0
-# makefile (from `Makefile', line 59)
+# makefile (from `Makefile', line 62)
 DLLIST = libdlinkedlist.a
 # environment
 LANG = C
 # environment
 VSCODE_PID = 973
 # variable set hash-table stats:
-# Load=87/1024=8%, Rehash=0, Collisions=10/135=7%
+ 
+# Load=87/1024=8%, Rehash=0, Collisions=12/141=9%
 
 # Pattern-specific Variable Values
 
@@ -195,9 +197,9 @@ VSCODE_PID = 973
 
 # Directories
 
-# . (device 16777225, inode 2165495): 27 files, no impossibilities.
+# . (device 16777225, inode 2165495): 14 files, no impossibilities.
 
-# 27 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -207,111 +209,92 @@ VSCODE_PID = 973
 
 # Not a target:
 src/built_in/echo.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 LIBFT.lib:
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `LIBFT'
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 86):
+#  commands to execute (from `Makefile', line 88):
 	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
 	@cp -p $($*_DIR)/$($*) .
+	
+
+src/execute_command.o: src/execute_command.c
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `src/execute_command'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
+	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/tokenizer/tokenizer.o: src/tokenizer/tokenizer.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/tokenizer/tokenizer'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/read_pipeline.o: src/read_pipeline.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/read_pipeline'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/built_in/env.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/parser/parser_error.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/tokenizer/word_expansion.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/built_in/exit.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 19:03:04
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: minishell
- 
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 # Not a target:
 src/built_in/set_env.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/parser/parse_command.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 .PHONY: all clean fclean re libs
 #  Implicit rule search has not been done.
@@ -320,91 +303,92 @@ src/parser/parse_command.c:
 
 # Not a target:
 src/tokenizer/token_helper_func.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/minishell_initialize.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/main.o: src/main.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/main'
-#  Last modified 2022-06-14 19:37:16
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := src/main.o
+# automatic
+# % := 
+# automatic
+# * := src/main
+# automatic
+# + := src/main.c
+# automatic
+# | := 
+# automatic
+# < := src/main.c
+# automatic
+# ^ := src/main.c
+# automatic
+# ? := src/main.c
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/delete_command_list.o: src/delete_command_list.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/delete_command_list'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/tokenizer/recognition_procedure_1.o: src/tokenizer/recognition_procedure_1.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/tokenizer/recognition_procedure_1'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
-	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
-	
-
-src/minishell_initialize.o: src/minishell_initialize.c
-#  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `src/minishell_initialize'
-#  Last modified 2022-06-14 19:37:16
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/built_in/unset.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/built_in/key_compare.o: src/built_in/key_compare.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/key_compare'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/execute_helper_func.o: src/execute_helper_func.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/execute_helper_func'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
+	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+	
+
+src/redirect_process.o: src/redirect_process.c
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `src/redirect_process'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
@@ -415,27 +399,27 @@ src/execute_helper_func.o: src/execute_helper_func.c
 #  File has not been updated.
 
 # Not a target:
-src/parser/parse_redirect.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+src/generate_process.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
-src/minishell_initialize.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 19:36:17
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+src/parser/parse_redirect.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/execute_command.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:58:51
+#  Last modified 2022-06-14 21:46:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -444,24 +428,18 @@ Makefile:
 src/signal/handle_signal.o: src/signal/handle_signal.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/signal/handle_signal'
-#  Last modified 2022-06-14 19:37:16
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/built_in/pwd.o: src/built_in/pwd.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/pwd'
-#  Last modified 2022-06-14 19:31:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
@@ -470,19 +448,17 @@ libs: DLLIST.lib LIBFT.lib
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 76):
+#  commands to execute (from `Makefile', line 79):
 	$(MAKE) $(NAME)
 	
 
 src/built_in/cd.o: src/built_in/cd.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/cd'
-#  Last modified 2022-06-14 19:31:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
+ 
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
@@ -490,10 +466,9 @@ debug:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 81):
+#  commands to execute (from `Makefile', line 84):
 	$(MAKE) clean
 	$(MAKE) DEBUG_FLAG=1 libs
-	touch DEBUG.flag
 	
 
 DLLIST.lib.clean:
@@ -501,30 +476,30 @@ DLLIST.lib.clean:
 #  Implicit/static pattern stem: `DLLIST'
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 104):
+#  commands to execute (from `Makefile', line 106):
 	$(RM) $($*)
 	@$(MAKE) -C $($*_DIR) fclean
 	$(RM) $*.lib
 	
 
 # Not a target:
+src/built_in/find_question.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 src/tokenizer/tokenizer.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/tokenizer/recognition_procedure_2.o: src/tokenizer/recognition_procedure_2.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/tokenizer/recognition_procedure_2'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
@@ -533,8 +508,7 @@ DLLIST.lib:
 #  Implicit/static pattern stem: `DLLIST'
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 86):
- 
+#  commands to execute (from `Makefile', line 88):
 	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
 	@cp -p $($*_DIR)/$($*) .
 	
@@ -542,80 +516,62 @@ DLLIST.lib:
 src/parser/print_parsing_info.o: src/parser/print_parsing_info.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/parser/print_parsing_info'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/built_in/check_key.o: src/built_in/check_key.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/check_key'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/read_pipeline.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/built_in/echo.o: src/built_in/echo.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/echo'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
-minishell: src/main.o src/read_pipeline.o src/execute_command.o src/execute_helper_func.o src/delete_command_list.o src/minishell_initialize.o src/parser/parser.o src/parser/parser_error.o src/parser/parse_command.o src/parser/parse_redirect.o src/parser/print_parsing_info.o src/tokenizer/tokenizer.o src/tokenizer/token_helper_func.o src/tokenizer/recognition_procedure_1.o src/tokenizer/recognition_procedure_2.o src/tokenizer/word_expansion.o src/built_in/env.o src/built_in/export.o src/built_in/key_compare.o src/built_in/set_env.o src/built_in/check_key.o src/built_in/delete_content.o src/built_in/echo.o src/built_in/exit.o src/built_in/cd.o src/built_in/ft_atoll.o src/built_in/ft_split_first.o src/built_in/unset.o src/built_in/pwd.o src/signal/handle_signal.o
+minishell: src/main.o src/minishell_initialize.o src/read_pipeline.o src/generate_process.o src/redirect_process.o src/execute_command.o src/execute_helper_func.o src/delete_command_list.o src/parser/parser.o src/parser/parser_error.o src/parser/parse_command.o src/parser/parse_redirect.o src/parser/print_parsing_info.o src/tokenizer/tokenizer.o src/tokenizer/token_helper_func.o src/tokenizer/recognition_procedure_1.o src/tokenizer/recognition_procedure_2.o src/tokenizer/word_expansion.o src/built_in/env.o src/built_in/export.o src/built_in/key_compare.o src/built_in/set_env.o src/built_in/check_key.o src/built_in/delete_content.o src/built_in/echo.o src/built_in/exit.o src/built_in/cd.o src/built_in/ft_atoll.o src/built_in/ft_split_first.o src/built_in/unset.o src/built_in/pwd.o src/built_in/find_question.o src/signal/handle_signal.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-14 19:37:16
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 90):
+# Load=0/32=0%, Rehash=0, Collisions=0/6=0%
+#  commands to execute (from `Makefile', line 92):
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
 	
 
 src/built_in/export.o: src/built_in/export.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/export'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/built_in/ft_split_first.o: src/built_in/ft_split_first.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/ft_split_first'
-#  Last modified 2022-06-14 19:31:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
@@ -624,7 +580,7 @@ fclean: clean DLLIST.lib.clean LIBFT.lib.clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 99):
+#  commands to execute (from `Makefile', line 101):
 	$(RM) $($(LIBS:%.lib=%))
 	$(RM) $(NAME)
 	$(RM) DEBUG.flag
@@ -633,19 +589,16 @@ fclean: clean DLLIST.lib.clean LIBFT.lib.clean
 src/parser/parser.o: src/parser/parser.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/parser/parser'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-14 19:36:51
+#  Last modified 2022-06-14 20:53:47
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -653,39 +606,27 @@ src/main.c:
 
 # Not a target:
 src/delete_command_list.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/tokenizer/recognition_procedure_1.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/built_in/key_compare.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/execute_helper_func.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -693,63 +634,54 @@ src/execute_helper_func.c:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+src/redirect_process.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 src/built_in/ft_atoll.o: src/built_in/ft_atoll.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/ft_atoll'
-#  Last modified 2022-06-14 19:31:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/built_in/delete_content.o: src/built_in/delete_content.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/delete_content'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/signal/handle_signal.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 19:37:08
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/built_in/pwd.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 19:07:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/built_in/cd.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 re: fclean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 109):
+#  commands to execute (from `Makefile', line 111):
 	$(MAKE) libs
 	
 
@@ -758,182 +690,143 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 96):
+#  commands to execute (from `Makefile', line 98):
 	$(RM) $(OBJ)
 	
 
+ 
 # Not a target:
 src/tokenizer/recognition_procedure_2.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
- 
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/built_in/env.o: src/built_in/env.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/env'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/parser/print_parsing_info.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/built_in/check_key.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/parser/parser_error.o: src/parser/parser_error.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/parser/parser_error'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/tokenizer/word_expansion.o: src/tokenizer/word_expansion.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/tokenizer/word_expansion'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/built_in/exit.o: src/built_in/exit.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/exit'
-#  Last modified 2022-06-14 19:31:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/built_in/set_env.o: src/built_in/set_env.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/set_env'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/parser/parse_command.o: src/parser/parse_command.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/parser/parse_command'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/built_in/export.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/built_in/ft_split_first.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/tokenizer/token_helper_func.o: src/tokenizer/token_helper_func.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/tokenizer/token_helper_func'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 # Not a target:
 src/parser/parser.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 src/built_in/unset.o: src/built_in/unset.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/built_in/unset'
-#  Last modified 2022-06-14 19:31:06
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
+	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+	
+
+src/generate_process.o: src/generate_process.c
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `src/generate_process'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
 src/parser/parse_redirect.o: src/parser/parse_redirect.c
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: `src/parser/parse_redirect'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
-src/execute_command.o: src/execute_command.c
+src/minishell_initialize.o: src/minishell_initialize.c
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `src/execute_command'
-#  Last modified 2022-06-14 19:31:05
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-#  commands to execute (from `Makefile', line 93):
+#  Implicit/static pattern stem: `src/minishell_initialize'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
 	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 	
 
@@ -942,41 +835,35 @@ LIBFT.lib.clean:
 #  Implicit/static pattern stem: `LIBFT'
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 104):
+#  commands to execute (from `Makefile', line 106):
 	$(RM) $($*)
 	@$(MAKE) -C $($*_DIR) fclean
 	$(RM) $*.lib
 	
 
 # Not a target:
-src/execute_command.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 19:04:52
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
 src/built_in/ft_atoll.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/built_in/delete_content.c:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-14 18:09:09
-#  File has been updated.
-#  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+src/built_in/find_question.o: src/built_in/find_question.c
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `src/built_in/find_question'
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 95):
+	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+	
 
 # files hash-table stats:
-# Load=75/1024=7%, Rehash=0, Collisions=6/160=4%
+# Load=81/1024=8%, Rehash=0, Collisions=6/172=3%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -988,6 +875,6 @@ src/built_in/delete_content.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Jun 14 20:27:16 2022
+# Finished Make data base on Tue Jun 14 21:46:20 2022
 
  

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/12 20:52:41 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:29:23 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # define DELIMIT (1)
 # define APPLIED (2)
 
-typedef int	(*t_token_recog_func)(t_iterator *, t_token *, char target);
+typedef int						(*t_token_recog_func)(t_iterator *,
+		t_token *, char target);
 
 int		check_eoi(t_iterator *iterator, t_token *token, char target);
 int		check_operator(t_iterator *iterator, t_token *token, char target);
@@ -40,8 +41,7 @@ char	*dlist_to_string(t_node *start, size_t len);
 int		expand_word(t_iterator *iterator);
 int		special_expansion(t_iterator *iterator);
 
-static const t_token_recog_func
-	g_token_recog_tab[8]
+static const t_token_recog_func	g_token_recog_tab[8]
 	= {
 	check_eoi,
 	check_operator,

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 20:31:22 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 20:53:47 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		line = readline(prompt);
 		if (line == NULL)
+		{
+			printf("exit\n");
 			builtin_exit(env_list, 0, NULL);
+		}
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 			continue ;

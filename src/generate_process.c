@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_process.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 20:57:33 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:09:57 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef int						(*t_redirect_func)(t_redirect *, int [2]);
 int			execute_command(t_dlist *word_list, t_dlist *env_list);
 static int	set_redirect(t_dlist *redirect_list, int std_fd_set[2]);
 static int	fork_and_pipe(int *recent_read_end,
-		int *pipe_fd, int pipe_exist);
+				int *pipe_fd, int pipe_exist);
 static int	safe_dup2(int oldfd, int newfd, int line);
 //static int	close_fd(t_dlist *redirect_list);
 

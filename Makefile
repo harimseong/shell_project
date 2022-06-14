@@ -38,6 +38,7 @@ SRC		=	main.c\
 			built_in/ft_split_first.c\
 			built_in/unset.c\
 			built_in/pwd.c\
+			built_in/find_question.c\
 			signal/handle_signal.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
