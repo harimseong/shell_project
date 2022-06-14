@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 03:24:58 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 04:15:33 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 	status = is_internal_builtin(command->word_list);
 	if (status >= 0)
 		return (execute_internal_builtin(command->word_list, env_list, status));
+	signal(SIGINT, SIG_IGN);
 	pid = fork_and_pipe(&recent_read_end, pipe_fd, pipe_exist);
 	if (pid == 0)
 	{

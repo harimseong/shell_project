@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 06:12:14 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 04:23:39 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	expand_word(t_iterator *iterator)
 	buf = iterator->line;
 	node = find_env(iterator);
 	expand_point = buf->cur->next;
-	if (ft_isdigit(get_char(expand_point)))
+	if (get_char(expand_point) == '?' || ft_isdigit(get_char(expand_point)))
 		special_expansion(iterator);
 	if (node != NULL)
 	{
