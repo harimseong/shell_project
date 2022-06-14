@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 20:56:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:32:36 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef int			(*t_program)(t_dlist *, int, char **);
 static int	is_builtin(const char *name);
 static int	execute_builtin(t_dlist *env_list, char **argv, int idx);
 
-static const int	g_builtin_tab_size = 7;
-static const char	*g_builtin_name_tab[] = {
+static const int		g_builtin_tab_size = 7;
+static const char		*g_builtin_name_tab[] = {
 	NULL,
 	"cd",
 	"echo",
@@ -34,13 +34,14 @@ static const char	*g_builtin_name_tab[] = {
 	"pwd",
 	"unset"
 };
+
 static const t_program	g_builtin_tab[7] = {
 	cd,
 	echo,
 	env,
 	builtin_exit,
 	export,
-	NULL,
+	pwd,
 	unset
 };
 
@@ -80,7 +81,7 @@ int	is_builtin(const char *name)
 	while (idx < g_builtin_tab_size)
 	{
 		if (ft_strncmp(name, g_builtin_name_tab[idx],
-			ft_strlen(g_builtin_name_tab[idx]) + 1) == 0)
+				ft_strlen(g_builtin_name_tab[idx]) + 1) == 0)
 			return (idx);
 		++idx;
 	}

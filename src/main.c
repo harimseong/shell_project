@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 16:08:09 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:31:22 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+#include "readline/readline.h"
+#include "readline/history.h"
 #include <unistd.h>
 #include "libft.h"
 
@@ -24,11 +24,12 @@ int	minishell_initialize(int argc, char **argv, char **prompt);
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	t_dlist		*pipeline_list;
-	t_dlist		*env_list;
-	char		*line;
-	char		*prompt;
+	t_dlist			*pipeline_list;
+	t_dlist			*env_list;
+	char			*line;
+	char			*prompt;
 
+	handle_signals();
 	pipeline_list = (void *)1;
 	env_list = set_envlist(envp, dlist_init());
 	prompt = NULL;
@@ -37,7 +38,7 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		line = readline(prompt);
 		if (line == NULL)
-			break ;
+			builtin_exit(env_list, 0, NULL);
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 			continue ;
@@ -46,10 +47,7 @@ int	main(int argc, char *argv[], char *envp[])
 		read_pipeline(pipeline_list, env_list);
 //		system("lsof -p $$");
 		dlist_delete(pipeline_list, delete_pipeline_content);
-//		system("leaks minishell");
 	}
-// 	free env_list in Ctrl-D signal handler
-//		+ prompt
 	return (0);
 }
 

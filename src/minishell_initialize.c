@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_initialize.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 16:00:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 20:30:29 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "readline/readline.h"
+#include "readline/history.h"
 #include <stdlib.h>
 #include "libft.h"
 
@@ -29,6 +31,7 @@ int	minishell_initialize(int argc, char **argv, char **prompt)
 	int		found_option;
 	int		found_arg;
 
+	rl_catch_signals = 0;
 	if (argc == 1)
 	{
 		set_prompt(prompt);

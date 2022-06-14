@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/11 05:57:36 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 19:07:45 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 # include <stdlib.h>
 # include <string.h>
 # include <limits.h>
+# include <signal.h>
 # include <sys/errno.h>
 # include "dlinkedlist.h"
 # include "libft.h"
+
+int	g_exit_code;
 
 typedef struct s_env {
 	char			*key;
@@ -35,6 +38,7 @@ int			cd(t_dlist *envlist, int argc, char **argv);
 int			export(t_dlist *envlist, int argc, char **argv);
 int			unset(t_dlist *envlist, int argc, char **argv);
 int			echo(t_dlist *envlist, int argc, char **argv);
+int			pwd(t_dlist *envlist, int argc, char **argv);
 int			builtin_exit(t_dlist *envlist, int argc, char **argv);
 long long	ft_atoll(char *str, int *error);
 int			is_contain_special(char *str);
@@ -42,6 +46,6 @@ int			check_identifier_first(char identifier);
 t_dlist		*set_envlist(char **cpenv, t_dlist *envlist);
 char		**copy_env(char	**cpenv, char **envp);
 t_env		*set_env(char *fullenv);
-void		*copy_env_content(void *content);;
-
+void		*copy_env_content(void *content);
+void		handle_signals(void);
 #endif
