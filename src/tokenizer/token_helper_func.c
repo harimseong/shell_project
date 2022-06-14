@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 22:05:52 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 21:47:01 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,4 +200,3 @@ int	get_operator_type(char target)
 {
 	return (g_token_type_tab[(int)target]);
 }
-

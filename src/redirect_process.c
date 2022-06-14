@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_process.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:48:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 17:00:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:09:30 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include <readline/readline.h>
+#include <stdio.h>
+#include "readline/readline.h"
 #include "libft.h"
 
 #include "execute.h"
@@ -79,7 +80,7 @@ int	redirect_heredoc(t_redirect *redirect, int std_fd_set[2])
 	// Ctrl-D in heredoc
 	heredoc_len = ft_strlen(heredoc);
 	while (string && ft_strncmp(string, heredoc,
-		ft_max(ft_strlen(string), heredoc_len)) != 0)
+			ft_max(ft_strlen(string), heredoc_len)) != 0)
 	{
 		write(pipe_fd[1], string, ft_strlen(string));
 		write(pipe_fd[1], "\n", 1);
