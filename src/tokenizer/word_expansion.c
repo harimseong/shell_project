@@ -6,19 +6,19 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:26:36 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 06:12:14 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #include "constants.h"
+#include "minishell.h"
 #include "parser/token_recognition.h"
 #include "cmd.h"
 
 static t_node	*find_env(t_iterator *iterator);
 static void		*extract_content(void *arg);
-static void		special_expansion(t_iterator *iterator);
 
 int	expand_word(t_iterator *iterator)
 {
@@ -30,9 +30,7 @@ int	expand_word(t_iterator *iterator)
 	buf = iterator->line;
 	node = find_env(iterator);
 	expand_point = buf->cur->next;
-	if (node == NULL && (ft_isdigit(get_char(buf->cur))
-			|| ft_strchr(SPECIAL_CHAR_LIST, get_char(buf->cur)) != NULL))
-		// out of subject feature
+	if (ft_isdigit(get_char(expand_point)))
 		special_expansion(iterator);
 	if (node != NULL)
 	{
@@ -86,7 +84,9 @@ void	*extract_content(void *arg)
 	return (env_node->key);
 }
 
-void	special_expansion(t_iterator *iterator)
+int	special_expansion(t_iterator *iterator)
 {
 	(void)iterator;
+	minishell_errormsg("special expansion is not supported", NULL, NULL);
+	return (0);
 }

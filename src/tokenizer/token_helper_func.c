@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 23:21:02 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/13 22:05:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,19 +146,19 @@ static const int	g_token_type_tab[128]
 /*127 del*/0
 };
 
-int	check_token_type(int type, int comp)
+int	check_token_type(t_token_type type, t_token_type comp)
 {
-	return ((type & comp) == comp);
+	return ((type & (!!comp * comp + !comp * 0x7fffffff)) == comp);
 }
 
-int	check_long_operator(char target, int *type)
+int	check_long_operator(char target, t_token_type *type)
 {
 	if (!(((*type == TT_LESS) && target == '<')
 			|| ((*type == TT_GREAT) && target == '>')
 			|| ((*type == TT_PIPE) && target == '|')
 			|| ((*type == TT_AMPERSAND) && target == '&')))
 		return (DELIMIT);
-	*type = g_token_type_tab[(int)target];
+//	*type = g_token_type_tab[(int)target];
 	if (target == '<')
 		*type = TT_DLESS;
 	else if (target == '>')

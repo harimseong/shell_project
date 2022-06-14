@@ -1,0 +1,20 @@
+  PID TTY           TIME CMD
+72781 ttys000    0:00.80 -zsh
+73209 ttys001    0:00.10 -zsh
+73252 ttys001    0:00.01 man lsof
+73253 ttys001    0:00.00 sh -c (cd "/usr/share/man" && (echo ".ll 8.8i"; echo ".nr LL 8.8i"; /bin/cat '/usr/share/man/man8/lsof.8') | /usr/bin/tbl | /usr/bin/groff -Wall -mtty-char -Tascii -mandoc -c | (less || true))
+73254 ttys001    0:00.00 sh -c (cd "/usr/share/man" && (echo ".ll 8.8i"; echo ".nr LL 8.8i"; /bin/cat '/usr/share/man/man8/lsof.8') | /usr/bin/tbl | /usr/bin/groff -Wall -mtty-char -Tascii -mandoc -c | (less || true))
+73259 ttys001    0:00.00 sh -c (cd "/usr/share/man" && (echo ".ll 8.8i"; echo ".nr LL 8.8i"; /bin/cat '/usr/share/man/man8/lsof.8') | /usr/bin/tbl | /usr/bin/groff -Wall -mtty-char -Tascii -mandoc -c | (less || true))
+73260 ttys001    0:00.04 less
+70405 ttys004    0:00.11 -zsh
+70436 ttys005    0:00.29 -zsh
+74205 ttys005    0:00.01 man lsof
+74206 ttys005    0:00.00 sh -c (cd "/usr/share/man" && (echo ".ll 11.3i"; echo ".nr LL 11.3i"; /bin/cat '/usr/share/man/man8/lsof.8') | /usr/bin/tbl | /usr/bin/groff -Wall -mtty-char -Tascii -mandoc -c | (less || true))
+74207 ttys005    0:00.00 sh -c (cd "/usr/share/man" && (echo ".ll 11.3i"; echo ".nr LL 11.3i"; /bin/cat '/usr/share/man/man8/lsof.8') | /usr/bin/tbl | /usr/bin/groff -Wall -mtty-char -Tascii -mandoc -c | (less || true))
+74212 ttys005    0:00.00 sh -c (cd "/usr/share/man" && (echo ".ll 11.3i"; echo ".nr LL 11.3i"; /bin/cat '/usr/share/man/man8/lsof.8') | /usr/bin/tbl | /usr/bin/groff -Wall -mtty-char -Tascii -mandoc -c | (less || true))
+74213 ttys005    0:00.04 less
+70453 ttys006    0:01.05 -zsh
+79669 ttys006    0:00.00 ./a.out
+79698 ttys006    0:00.00 ./a.out
+79734 ttys006    0:00.00 sh -c lsof -p $(ps > psout2 && grep < psout2 a.out | cut -d ' ' -f 1 | head -n 2)
+79735 ttys006    0:00.00 sh -c lsof -p $(ps > psout2 && grep < psout2 a.out | cut -d ' ' -f 1 | head -n 2)

@@ -6,13 +6,11 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 17:19:22 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 20:48:46 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
-#include "dlinkedlist.h"
-#include "parser/token.h"
 #include "execute.h"
 
 void	*get_word_from_token(void *content)

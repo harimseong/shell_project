@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 19:04:52 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 20:32:36 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,14 @@
 #include "constants.h"
 #include "cmd.h"
 #include "execute.h"
-#include "parser/parser.h"
 
 typedef int			(*t_program)(t_dlist *, int, char **);
 
 static int	is_builtin(const char *name);
-static int	set_redirect(t_dlist *redirect_list);
 static int	execute_builtin(t_dlist *env_list, char **argv, int idx);
 
-static const int	g_builtin_tab_size = 7;
-static const char	*g_builtin_name_tab[] = {
+static const int		g_builtin_tab_size = 7;
+static const char		*g_builtin_name_tab[] = {
 	NULL,
 	"cd",
 	"echo",
@@ -47,8 +45,7 @@ static const t_program	g_builtin_tab[7] = {
 	unset
 };
 
-int	execute_command(t_dlist *word_list, t_dlist *redirect_list,
-		t_dlist *env_list)
+int	execute_command(t_dlist *word_list, t_dlist *env_list)
 {
 	int		idx;
 	int		status;
@@ -57,7 +54,6 @@ int	execute_command(t_dlist *word_list, t_dlist *redirect_list,
 	char	**path_arr;
 
 	argv = dlist_to_array(word_list, get_word_from_token);
-	set_redirect(redirect_list);
 	idx = is_builtin(argv[0]);
 	if (idx)
 		status = execute_builtin(env_list, argv, idx - 1);
@@ -69,15 +65,12 @@ int	execute_command(t_dlist *word_list, t_dlist *redirect_list,
 		free(envp);
 		free_path_arr(path_arr);
 	}
+	if (status == ENOENT)
+		minishell_errormsg(argv[0], "command not found", NULL);
+	minishell_assertion(status == 0 && status != ENOENT, __FILE__, __LINE__);
 	free(argv);
 	builtin_exit(env_list, 1, NULL);
 	return (status);
-}
-
-int	set_redirect(t_dlist *redirect_list)
-{
-	(void)redirect_list;
-	return (0);
 }
 
 int	is_builtin(const char *name)
@@ -88,7 +81,7 @@ int	is_builtin(const char *name)
 	while (idx < g_builtin_tab_size)
 	{
 		if (ft_strncmp(name, g_builtin_name_tab[idx],
-			ft_strlen(g_builtin_name_tab[idx]) + 1) == 0)
+				ft_strlen(g_builtin_name_tab[idx]) + 1) == 0)
 			return (idx);
 		++idx;
 	}

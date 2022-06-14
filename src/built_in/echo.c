@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:48:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/11 05:13:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/11 22:01:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	check_echo_flag(char *arg)
 	int	i;
 	int	arg_len;
 
+	if (arg == NULL)
+		return (0);
 	i = 0;
 	arg_len = ft_strlen(arg);
 	if (arg[i] == '-')
@@ -38,7 +40,11 @@ int	echo(t_dlist *envlist, int argc, char **argv)
 	int	i;
 
 	(void)envlist;
-	(void)argc;
+	if (argc == 1)
+	{
+		printf("\n");
+		return (0);
+	}
 	flag = 0;
 	i = 1;
 	while (check_echo_flag(argv[i]) == 1)
