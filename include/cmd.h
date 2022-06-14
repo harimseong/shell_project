@@ -46,6 +46,7 @@ char		**copy_env(char	**cpenv, char **envp);
 t_env		*set_env(char *fullenv);
 void		*copy_env_content(void *content);
 void		handle_signals(void);
+void		handle_signals_cmd(void);
 int			check_key_dup(t_dlist *envlist, char **element, char *argv);
 
 #endif

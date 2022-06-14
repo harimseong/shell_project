@@ -86,6 +86,9 @@ int	wait_process(t_dlist *pid_list)
 		}
 		waitpid(pid, &status, 0);
 	}
+	handle_signals();
+	if (status >= 128)
+		ft_putstr_fd("\n", STDERR_FILENO);
 	dlist_delete(pid_list, free);
 	return (WEXITSTATUS(status));
 }
