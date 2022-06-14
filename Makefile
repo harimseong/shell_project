@@ -33,13 +33,15 @@ SRC		=	main.c\
 			built_in/delete_content.c\
 			built_in/echo.c\
 			built_in/exit.c\
+			built_in/exit_wrapper.c\
 			built_in/cd.c\
 			built_in/ft_atoll.c\
 			built_in/ft_split_first.c\
 			built_in/unset.c\
 			built_in/pwd.c\
 			built_in/find_question.c\
-			signal/handle_signal.c
+			signal/handle_signal.c\
+			get_next_line.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 OBJ		=	$(SRC:%.c=%.o)
@@ -51,9 +53,10 @@ INCL	=	minishell.h\
 			parser/parser.h\
 			parser/token.h\
 			parser/token_recognition.h
-INCL_DIR=	include
-INCL	:=	$(INCL:%=$(INCL_DIR)/%)
-
+INCL_DIR=	-I./include
+ifeq ($(shell uname), Darwin)
+INCL_DIR+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+endif
 
 LIB_ADD	=	-L. -L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
 LIBTARGET=	all
@@ -92,7 +95,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
 
 $(OBJ): %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCL_DIR) -I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCL_DIR) 
 
 clean:
 	$(RM) $(OBJ)

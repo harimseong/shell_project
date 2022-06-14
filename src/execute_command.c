@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 23:30:45 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 03:36:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static const char		*g_builtin_name_tab[]
 static const t_program	g_builtin_tab[7]
 	= {
 	cd,
-	builtin_exit,
+	builtin_print_exit,
 	unset,
 	export,
 	echo,
@@ -65,14 +65,13 @@ int	execute_command(t_dlist *word_list, t_dlist *env_list)
 		status = ft_execvpe(argv[0], argv, envp, path_arr);
 		free(envp);
 		free_path_arr(path_arr);
+		if (status == ENOENT)
+			minishell_errormsg(argv[0], "command not found", NULL);
+		else
+			minishell_assertion(status == 0, __FILE__, __LINE__);
 	}
-	if (status == ENOENT)
-		minishell_errormsg(argv[0], "command not found", NULL);
-	minishell_assertion(status == 0 && status != ENOENT, __FILE__, __LINE__);
 	free(argv);
-	set_question(env_list, status);
-	builtin_exit(env_list, 1, NULL);
-	return (status);
+	return (builtin_set_exit(env_list, status, 0, NULL));
 }
 
 int	is_builtin(const char *name)

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:24:44 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/15 03:23:33 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "libft.h"
 
 #include "minishell.h"
+#include "cmd.h"
 #include "constants.h"
 
 static int	set_prompt(char **prompt);
@@ -31,12 +32,10 @@ int	minishell_initialize(int argc, char **argv, char **prompt)
 	int		found_option;
 	int		found_arg;
 
+	handle_signals();
 	rl_catch_signals = 0;
 	if (argc == 1)
-	{
-		set_prompt(prompt);
-		return (0);
-	}
+		return (set_prompt(prompt));
 	idx = 0;
 	while (argv[idx] != NULL)
 	{
@@ -81,5 +80,5 @@ int	set_prompt(char **prompt)
 
 	front = getenv("USER");
 	*prompt = ft_strjoin(front, g_default_prompt);
-	return (0);
+	return (*prompt == NULL);
 }
