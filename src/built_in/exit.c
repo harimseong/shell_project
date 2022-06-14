@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 19:03:04 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 21:52:44 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	check_longlong(char *arg)
 	long long	num;
 
 	error = 0;
-	// need fix (unused variable)
 	num = ft_atoll(arg, &error);
 	(void)num;
 	if (error == -1)
@@ -87,6 +86,5 @@ int	builtin_exit(t_dlist *envlist, int argc, char **argv)
 		status = 1;
 	}
 	dlist_delete(envlist, &delete_content);
-	printf("exit\n");
 	exit((int)status);
 }

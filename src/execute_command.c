@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:24:39 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:35:56 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 #include "cmd.h"
 #include "execute.h"
 
-typedef int			(*t_program)(t_dlist *, int, char **);
+typedef int				(*t_program)(t_dlist *, int, char **);
 
 static int	is_builtin(const char *name);
 static int	execute_builtin(t_dlist *env_list, char **argv, int idx);
 
 static const int		g_builtin_tab_size = 7;
 static const int		g_internal_builtin_tab_size = 4;
-static const char		*g_builtin_name_tab[] = {
+static const char		*g_builtin_name_tab[]
+	= {
 	"cd",
 	"exit",
 	"unset",
@@ -34,8 +35,8 @@ static const char		*g_builtin_name_tab[] = {
 	"env",
 	"pwd",
 };
-
-static const t_program	g_builtin_tab[7] = {
+static const t_program	g_builtin_tab[7]
+	= {
 	cd,
 	builtin_exit,
 	unset,

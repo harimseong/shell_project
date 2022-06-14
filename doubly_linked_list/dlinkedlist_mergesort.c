@@ -6,16 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:18:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/09 17:52:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:23:51 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "dlinkedlist.h"
-
-#ifndef NULL
-# define NULL (0)
-#endif
 
 static t_node	*split_list(t_node **head, size_t len, t_comp comp);
 static t_node	*join_list(t_node **headptr, t_node *mid, size_t len,
@@ -86,7 +82,7 @@ t_node	*join_list(t_node **headptr, t_node *mid, size_t len, t_comp comp)
 	while (--len)
 	{
 		if (head_count > 0 && (mid_count == 0
-			|| comp(head->content, mid->content) < 0))
+				|| comp(head->content, mid->content) < 0))
 			move_node(&(sortnode->next), &head, &head_count);
 		else
 			move_node(&(sortnode->next), &mid, &mid_count);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_pipeline.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:27:26 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:33:58 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "parser/parser.h"
 
 int			generate_process(t_command *command, t_dlist *env_list,
-	int pipe_exist);
+				int pipe_exist);
 static int	read_command_list(t_dlist *command_list, t_dlist *env_list);
 static int	wait_process(t_dlist *pid_list);
 

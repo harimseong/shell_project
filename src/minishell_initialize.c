@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 20:30:29 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 22:24:44 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	minishell_initialize(int argc, char **argv, char **prompt)
 		if (found_option == FALSE && found_arg == FALSE)
 		{
 			if (found_option == FALSE)
-				minishell_errormsg(argv[idx], "invaild option",  NULL);
+				minishell_errormsg(argv[idx], "invaild option", NULL);
 			else
 				minishell_errormsg(NULL, NULL, NULL);
 			return (1);

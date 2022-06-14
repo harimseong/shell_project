@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_process.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:19:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:35:15 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			execute_internal_builtin(t_dlist *word_list,
 		t_dlist *env_list, int idx);
 static int	set_redirect(t_dlist *redirect_list, int std_fd_set[2]);
 static int	fork_and_pipe(int *recent_read_end,
-		int *pipe_fd, int pipe_exist);
+				int *pipe_fd, int pipe_exist);
 static int	safe_dup2(int oldfd, int newfd, int line);
 
 static const t_redirect_func	g_redirect_func_tab[REDIR_NUM_OPS] = {

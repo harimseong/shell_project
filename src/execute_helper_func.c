@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_helper_func.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 20:48:46 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:10:09 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	*get_word_from_token(void *content)
 {
 	t_token	*token;
-	
+
 	token = content;
 	return (token->word);
 }

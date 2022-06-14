@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 19:07:45 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 21:44:57 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <sys/errno.h>
 # include "dlinkedlist.h"
 # include "libft.h"
-
-int	g_exit_code;
 
 typedef struct s_env {
 	char			*key;
@@ -48,4 +46,6 @@ char		**copy_env(char	**cpenv, char **envp);
 t_env		*set_env(char *fullenv);
 void		*copy_env_content(void *content);
 void		handle_signals(void);
+void		set_question(t_dlist *envlist, int status);
+int			find_question(t_dlist *envlist);
 #endif
