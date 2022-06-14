@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 04:15:33 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 04:25:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <signal.h>
 
 #include "minishell.h"
+#include "cmd.h"
 #include "execute.h"
 #include "parser/parser.h"
 
@@ -50,11 +51,10 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 	status = is_internal_builtin(command->word_list);
 	if (status >= 0)
 		return (execute_internal_builtin(command->word_list, env_list, status));
-	signal(SIGINT, SIG_IGN);
+	handle_signals_cmd();
 	pid = fork_and_pipe(&recent_read_end, pipe_fd, pipe_exist);
 	if (pid == 0)
 	{
-		signal(SIGINT, SIG_DFL);
 		status = set_redirect(command->redirect_list, command->std_fd_set);
 		minishell_assertion(status == 0, __FILE__, __LINE__);
 		if (status == 0 && command->word_list->size > 0)

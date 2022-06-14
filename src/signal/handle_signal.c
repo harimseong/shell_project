@@ -19,6 +19,17 @@
 
 extern t_dlist	*g_env_list;
 
+static void	handle_sigint_child(int signo)
+{
+	set_question(g_env_list, 130);
+	if (signo == SIGINT)
+	{
+		printf("\n");
+		rl_on_new_line();
+		rl_replace_line("", 0);
+	}
+}
+
 static void	handle_sigint(int signo)
 {
 	set_question(g_env_list, 1);
@@ -30,6 +41,12 @@ static void	handle_sigint(int signo)
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
+}
+
+void	handle_signals_cmd(void)
+{
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, handle_sigint_child);
 }
 
 void	handle_signals(void)
