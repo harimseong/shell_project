@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 20:53:47 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:10:15 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 #include "cmd.h"
 #include "parser/parser.h"
 
-int	minishell_initialize(int argc, char **argv, char **prompt);
+int			minishell_initialize(int argc, char **argv, char **prompt);
+static void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr);
+
+t_dlist		*g_env_list;
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -32,6 +35,7 @@ int	main(int argc, char *argv[], char *envp[])
 	handle_signals();
 	pipeline_list = (void *)1;
 	env_list = set_envlist(envp, dlist_init());
+	g_env_list = env_list;
 	prompt = NULL;
 	minishell_initialize(argc, argv, &prompt);
 	while (prompt)
@@ -46,13 +50,17 @@ int	main(int argc, char *argv[], char *envp[])
 		if (pipeline_list == NULL)
 			continue ;
 		add_history(line);
-//		dlist_print_forward(pipeline_list, pipeline_content_print);
 		read_pipeline(pipeline_list, env_list);
-//		system("lsof -p $$");
 		dlist_delete(pipeline_list, delete_pipeline_content);
+		jobs_per_loop(env_list, &prompt);
 	}
 	return (0);
 }
+//				inspection tools
+// opened fd:
+// 				system("lsof -p $$");
+// token list:
+// 				dlist_print_forward(pipeline_list, pipeline_content_print);
 
 void	minishell_errormsg(const char *s1, const char *s2, const char *s3)
 {
@@ -88,4 +96,15 @@ void	minishell_assertion(int is_true, const char *file, int line)
 	ft_putstr_fd(number, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 	free(number);
+}
+
+void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr)
+{
+	int		status;
+	char	*prompt;
+
+	free(*prompt_ptr);
+	status = find_question(env_list);
+	prompt = ft_strjoin(ft_itoa(status), "\t>");
+	*prompt_ptr = prompt;
 }

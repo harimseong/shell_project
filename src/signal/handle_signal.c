@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 21:49:12 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/14 23:10:55 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 #include "readline/readline.h"
 #include "readline/history.h"
 #include "cmd.h"
+#include "minishell.h"
+
+extern t_dlist	*g_env_list;
 
 static void	handle_sigint(int signo)
 {
+	set_question(g_env_list, 1);
 	if (signo == SIGINT)
 	{
 		rl_catch_signals = 0;

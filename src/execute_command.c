@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:35:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:50:22 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ int	is_internal_builtin(t_dlist *word_list)
 	int		idx;
 	char	*name;
 
+	if (word_list->size < 1)
+		return (-1);
 	token = get_front(word_list);
 	name = token->word;
 	idx = 0;

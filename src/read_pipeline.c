@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:33:58 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:56:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 	{
 		pipeline->result
 			= read_command_list(pipeline->command_list, env_list);
+		set_question(env_list, pipeline->result);
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
 	}

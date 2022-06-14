@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 18:28:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/14 22:54:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 t_dlist	*parser(const char *line, t_dlist *env_list);
 void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list);
+
+void	set_question(t_dlist *envlist, int status);
+int		find_question(t_dlist *envlist);
 
 void	delete_pipeline_content(void *pipeline_arg);
 void	delete_command_content(void *command_arg);
