@@ -25,7 +25,7 @@ typedef int						(*t_redirect_func)(t_redirect *, int [2]);
 int			is_internal_builtin(t_dlist *word_list);
 int			execute_command(t_dlist *word_list, t_dlist *env_list);
 int			execute_internal_builtin(t_dlist *word_list,
-		t_dlist *env_list, int idx);
+				t_dlist *env_list, int idx);
 static int	set_redirect(t_dlist *redirect_list, int std_fd_set[2]);
 static int	fork_and_pipe(int *recent_read_end,
 				int *pipe_fd, int pipe_exist);
