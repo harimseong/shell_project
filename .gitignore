@@ -6,3 +6,4 @@ bash_source
 *.o
 *.vscode
 *.dSYM
+*.flag

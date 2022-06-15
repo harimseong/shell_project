@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 09:21:00 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:51:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int	expand_word(t_iterator *iterator)
 	}
 	buf->cur = buf->cur->next;
 	erase_at(buf, buf->cur->prev, free);
-//	if (buf->cur->prev)
-//		move_front(buf);
 	return (node == NULL);
 }
 
@@ -97,7 +95,6 @@ int	special_expansion(t_iterator *iterator, char target)
 	erase_at(iterator->line, expand_point->prev, free);
 	if (target == '?')
 	{
-
 		status_str = *find_question(g_env_list);
 		idx = 0;
 		insert_at(iterator->line, expand_point, ft_strndup("'", 1));

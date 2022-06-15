@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/13 22:11:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:53:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,19 @@ typedef enum e_token_type
 {
 	TT_EMPTY = 0x00000000,
 	TT_WORD = 0x01000000,
-//	TT_ASSIGNMENT_WORD = 0x00000020,
-	/* operators */
 	TT_OPERATOR = 0x02000000,
-	TT_PIPELINE = 0x02010000,		/* pipeline operators */
-	TT_AND = 0x02010010,				/* '&&' */
-	TT_OR = 0x02010020,				/* '||' */
-	TT_REDIRECT = 0x02020000,	/* redirection operators */
-	TT_LESS = 0x02020001,			/* '<' */
-	TT_DLESS = 0x02020002,		/* '<<' */
-	TT_GREAT = 0x02020004,		/* '>' */
-	TT_DGREAT = 0x02020008,		/* '>>' */
+	TT_PIPELINE = 0x02010000,
+	TT_AND = 0x02010010,
+	TT_OR = 0x02010020,
+	TT_REDIRECT = 0x02020000,
+	TT_LESS = 0x02020001,
+	TT_DLESS = 0x02020002,
+	TT_GREAT = 0x02020004,
+	TT_DGREAT = 0x02020008,
 	TT_PIPE = 0x02040000,
 	TT_CONTROL_OP = 0x02080000,
 	TT_AMPERSAND = 0x020800010,
 	TT_QUOTE_MASK = 0x04000000,
-//	TT_QUOTE_START = 0x0408010,
 	TT_SQUOTE = 0x04000020,
 	TT_DQUOTE = 0x04000040,
 	TT_ERROR = 0x40000000
@@ -74,6 +71,5 @@ typedef char	**t_token_arr;
 t_token	*token_handler(int type, t_iterator *iterator);
 int		check_token_type(t_token_type type, t_token_type comp);
 int		recog_character(t_iterator *iterator, t_token *token);
-//t_token	*make_token(char *word, int type);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 18:45:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:39:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,22 +113,3 @@ int	safe_dup2(int oldfd, int newfd, int line)
 	minishell_assert(status >= 0 && close(oldfd) == 0, __FILE__, line);
 	return (status);
 }
-/*
-int	close_fd(t_dlist *redirect_list)
-{
-	t_redirect	*redirect;
-
-	redirect = get_front(redirect_list);
-	while (redirect != NULL)
-	{
-		if (redirect->redir_type == REDIR_PROCESSED)
-		{
-			if (close(redirect->descriptor) < 0)
-				return (1);
-		}
-		pop_front(redirect_list, delete_redirect_content);
-		redirect = get_front(redirect_list);
-	}
-	return (0);
-}
-*/

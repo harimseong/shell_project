@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 05:15:00 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 08:09:59 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:52:06 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ char	*convert_value_to_quoted(char *value)
 	while (value[idx])
 	{
 		if (idx > 0 && ft_isspace(value[idx - 1])
-				&& value[idx] && !ft_isspace(value[idx]))
-			new_value[jdx++] = '\'';		
+			&& value[idx] && !ft_isspace(value[idx]))
+			new_value[jdx++] = '\'';
 		new_value[jdx++] = value[idx];
 		if (!ft_isspace(value[idx])
-				&& (ft_isspace(value[idx + 1]) || value[idx + 1] == 0))
-			new_value[jdx++] = '\'';		
+			&& (ft_isspace(value[idx + 1]) || value[idx + 1] == 0))
+			new_value[jdx++] = '\'';
 		++idx;
 	}
 	new_value[jdx] = 0;

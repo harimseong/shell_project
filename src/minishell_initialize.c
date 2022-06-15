@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 18:07:36 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:38:03 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,58 +22,19 @@
 #include "constants.h"
 
 static int	set_prompt(char **prompt);
-static int	find_option(const char *name);
-static int	find_arg(const char *name);
 
 static const char	*g_default_prompt = " $> ";
 
 int	minishell_initialize(int argc, char **argv, char **prompt)
 {
-	int		idx;
-	int		found_option;
-	int		found_arg;
-
+	(void)argc;
+	(void)argv;
+	(void)argc;
 	handle_signals();
 	dup2(STDIN_FILENO, MINISHELL_STDIN);
 	dup2(STDOUT_FILENO, MINISHELL_STDOUT);
 	rl_catch_signals = 0;
-	if (argc == 1)
-		return (set_prompt(prompt));
-	idx = 0;
-	while (argv[idx] != NULL)
-	{
-		found_option = find_option(argv[idx]);
-		found_arg = find_arg(argv[idx]);
-		if (found_option == FALSE && found_arg == FALSE)
-		{
-			if (found_option == FALSE)
-				minishell_errormsg(argv[idx], "invaild option", NULL);
-			else
-				minishell_errormsg(NULL, NULL, NULL);
-			return (1);
-		}
-		++idx;
-	}
-	return (0);
-}
-
-int	find_option(const char *name)
-{
-	int		comp_len;
-
-	comp_len = ft_strlen(name);
-	if (comp_len < 2)
-		comp_len = 2;
-	if (ft_strncmp(name, "-c", comp_len) == 0)
-		return (TRUE);
-	else if (name[0] == '-')
-		return (FALSE);
-	return (TRUE);
-}
-
-int	find_arg(const char *name)
-{
-	(void)name;
+	set_prompt(prompt);
 	return (0);
 }
 

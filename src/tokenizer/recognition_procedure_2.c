@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:28:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 04:40:17 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:51:15 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,31 +41,17 @@ int	check_blank(t_iterator *iterator, t_token *token, char target)
 
 int	check_word(t_iterator *iterator, t_token *token, char target)
 {
-	/*
-	char	target;
-
-	target = iterator->line[iterator->end];
-	if (is_special(target))
-		return (DELIMIT);
-	*/
 	(void)iterator;
 	(void)target;
 	if (check_token_type(token->type, TT_WORD))
-//		|| check_token_type(token->type, TT_QUOTE_MASK))
 		return (APPLIED);
 	return (CONTINUE);
 }
 
 int	check_new_word(t_iterator *iterator, t_token *token, char target)
 {
-	/*
-	char	target;
-target = iterator->line[iterator->end];
-	*/
 	(void)iterator;
 	(void)target;
-//	if (check_token_type(token->type, TT_QUOTE_MASK))
-//		token->type |= TT_WORD;
 	token->type |= TT_WORD;
 	return (APPLIED);
 }
