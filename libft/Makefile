@@ -45,6 +45,10 @@ ifeq ($(BNS_FLAG), 1)
 OBJS += $(BNS_OBJS)
 endif
 
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	-g3 -fsanitize=address
+endif
+
 HDR = libft.h
 
 all: $(NAME)

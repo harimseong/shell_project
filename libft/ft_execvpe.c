@@ -6,14 +6,12 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:01:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 05:06:45 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 10:12:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <sys/errno.h>
-
-#include "libft.h"
 
 #define MAX_PATHNAME (1024)
 
@@ -28,15 +26,18 @@ int	ft_execvpe(const char *filename, char *const *argv, char *const *envp,
 	char	fullpath[MAX_PATHNAME + 1];
 	size_t	path_len;
 
+	ft_memset(fullpath, 0, MAX_PATHNAME + 1);
+	if (ft_strlen(filename) + 3 >= MAX_PATHNAME)
+		return (ENOENT);
+	fullpath[0] = '/';
+	ft_strlcat(fullpath, filename, MAX_PATHNAME + 1);
+	execve(fullpath, argv, envp);
 	if (path_arr == NULL)
 		return (ENOENT);
-	execve(filename, argv, envp);
 	while (*path_arr != NULL)
 	{
 		ft_memset(fullpath, 0, MAX_PATHNAME + 1);
 		path_len = ft_strlen(*path_arr);
-		if (path_len + ft_strlen(filename) + 2 >= MAX_PATHNAME)
-			continue ;
 		ft_strlcpy(fullpath, *path_arr, path_len + 1);
 		if (fullpath[path_len - 1] != '/')
 			fullpath[path_len] = '/';

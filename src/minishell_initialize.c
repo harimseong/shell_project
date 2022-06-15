@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 08:46:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 09:58:17 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "readline/readline.h"
 #include "readline/history.h"
 #include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
 
 #include "minishell.h"
@@ -33,6 +34,8 @@ int	minishell_initialize(int argc, char **argv, char **prompt)
 	int		found_arg;
 
 	handle_signals();
+	dup2(STDIN_FILENO, 10);
+	dup2(STDOUT_FILENO, 11);
 	rl_catch_signals = 0;
 	if (argc == 1)
 		return (set_prompt(prompt));
