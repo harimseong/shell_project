@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 06:23:15 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 08:49:58 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 #include "parser/parser.h"
 #include "parser/token_recognition.h"
 
-#define PARSE_ERROR_STATUS (258)
+#define PARSE_ERROR_STATUS (255)
 
 extern t_dlist	*g_env_list;
 
@@ -41,13 +41,13 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 	t_token		*token;
 	t_iterator	iterator;
 
-	set_question(g_env_list, 0);
 	dlist_line = array_to_dlist_init(line, sizeof(char), ft_strlen(line) + 1);
 	iterator = (t_iterator){NULL, dlist_line, 0, env_list};
 	token_handler(TH_SET, &iterator);
 	token = token_handler(TH_PEEK, NULL);
 	if (check_token_type(token->type, TT_EMPTY))
 	{
+		set_question(g_env_list, 0);
 		delete_word_content(token);
 		token_handler(TH_END, NULL);
 		return (NULL);

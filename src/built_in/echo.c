@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:48:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/11 22:01:42 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 09:29:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,17 @@ int	echo(t_dlist *envlist, int argc, char **argv)
 	int	i;
 
 	(void)envlist;
-	if (argc == 1)
-	{
-		printf("\n");
-		return (0);
-	}
 	flag = 0;
 	i = 1;
-	while (check_echo_flag(argv[i]) == 1)
+	while (i < argc && check_echo_flag(argv[i]) == 1)
 	{
 		flag = 1;
 		i++;
 	}
-	while (argv[i + 1] != 0)
-	{
-		printf("%s ", argv[i]);
-		i++;
-	}
-	printf("%s", argv[i]);
+	while (i + 1 < argc)
+		printf("%s ", argv[i++]);
+	if (argv[i] != NULL)
+		printf("%s", argv[i]);
 	if (flag == 0)
 		printf("\n");
 	return (0);

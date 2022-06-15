@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 06:57:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 09:05:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "parser/parser.h"
 
 int			minishell_initialize(int argc, char **argv, char **prompt);
-//static void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr);
+static void	prompt_info(t_dlist *env_list);
 
 t_dlist		*g_env_list;
 
@@ -37,6 +37,7 @@ int	main(int argc, char *argv[], char *envp[])
 	minishell_initialize(argc, argv, &prompt);
 	while (prompt)
 	{
+		prompt_info(env_list);
 		line = readline(prompt);
 		if (line == NULL)
 			builtin_print_exit(env_list, 0, NULL);
@@ -92,15 +93,9 @@ void	minishell_assertion(int is_true, const char *file, int line)
 	ft_putstr_fd("\n", STDERR_FILENO);
 	free(number);
 }
-/*
-void	jobs_per_loop(t_dlist *env_list, char **prompt_ptr)
-{
-	int		status;
-	char	*prompt;
 
-	free(*prompt_ptr);
-	status = find_question(env_list);
-	prompt = ft_strjoin(ft_itoa(status), "\t>");
-	*prompt_ptr = prompt;
+void	prompt_info(t_dlist *env_list)
+{
+	if (DEBUG_FLAG)
+		printf("%-4.d|", get_question(env_list));
 }
-*/

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 23:33:45 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 09:09:02 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 extern t_dlist	*g_env_list;
 
-static void	handle_sigint_child(int signo)
+static void	handle_sigint_cmd(int signo)
 {
-	set_question(g_env_list, 130);
+	set_question(g_env_list, 128 + signo);
 	if (signo == SIGINT)
 	{
 		printf("\n");
@@ -45,8 +45,7 @@ static void	handle_sigint(int signo)
 
 void	handle_signals_cmd(void)
 {
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, handle_sigint_child);
+	signal(SIGINT, handle_sigint_cmd);
 }
 
 void	handle_signals(void)

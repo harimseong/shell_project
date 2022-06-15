@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 02:55:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 09:14:32 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		builtin_print_exit(t_dlist *env_list, int argc, char **argv);
 int		builtin_set_exit(t_dlist *env_list, int status, int argc, char **argv);
 
 void	set_question(t_dlist *envlist, int status);
-int		find_question(t_dlist *envlist);
+char	**find_question(t_dlist *envlist);
+int		get_question(t_dlist *envlist);
 
 void	delete_pipeline_content(void *pipeline_arg);
 void	delete_command_content(void *command_arg);

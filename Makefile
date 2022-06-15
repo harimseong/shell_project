@@ -84,9 +84,12 @@ libs: $(LIBS)
 
 all: $(NAME)
 
-debug:
-	$(MAKE) clean
+debug: DEBUG.flag
 	$(MAKE) DEBUG_FLAG=1 libs
+	touch DEBUG.flag
+
+DEBUG.flag:
+	$(MAKE) clean
 
 $(LIBS): %.lib:
 	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
@@ -100,6 +103,7 @@ $(OBJ): %.o: %.c
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) DEBUG.flag
 
 fclean: clean $(LIBS:%=%.clean)
 	$(RM) $($(LIBS:%.lib=%))
