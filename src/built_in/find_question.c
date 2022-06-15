@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 21:05:10 by gson              #+#    #+#             */
-/*   Updated: 2022/06/15 09:20:15 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 18:00:46 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	set_question(t_dlist *envlist, int status)
 	char	**value_ptr;
 
 	value_ptr = find_question(envlist);
+	free(*value_ptr);
 	*value_ptr = ft_itoa(status);
 }
 
@@ -33,7 +34,6 @@ char	**find_question(t_dlist *envlist)
 			return (&cur_env->value);
 		envlist->cur = envlist->cur->next;
 	}
-	export(envlist, 2, (char *[3]){"export", "?=0", NULL});
 	return (0);
 }
 

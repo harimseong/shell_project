@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 05:08:22 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 18:03:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ void	*get_key_from_env(void *content)
 	return (env->key);
 }
 
-void	free_path_arr(char **path_arr)
+void	free_2d_arr(char **arr)
 {
 	size_t	idx;
 
-	if (path_arr == NULL)
+	if (arr == NULL)
 		return ;
 	idx = 0;
-	while (path_arr[idx])
+	while (arr[idx])
 	{
-		free(path_arr[idx]);
+		free(arr[idx]);
 		++idx;
 	}
-	free(path_arr);
+	free(arr);
 }

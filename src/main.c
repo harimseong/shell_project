@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 09:05:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 18:44:07 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	minishell_errormsg(const char *s1, const char *s2, const char *s3)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-void	minishell_assertion(int is_true, const char *file, int line)
+void	minishell_assert(int is_true, const char *file, int line)
 {
 	char	*number;
 

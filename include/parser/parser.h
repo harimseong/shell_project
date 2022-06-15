@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 22:34:12 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 18:07:00 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_redirect
  */
 typedef struct s_command
 {
-	int			std_fd_set[2];
 	int			flag;
 	t_dlist		*word_list;
 	t_dlist		*redirect_list;

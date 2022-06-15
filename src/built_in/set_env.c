@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:50:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 22:36:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 17:56:18 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ t_dlist	*set_envlist(char **cpenv, t_dlist *envlist)
 		i++;
 	}
 	content = malloc(sizeof(t_env));
-	content->key = ft_strdup("?");
-	content->value = ft_strdup("0");
+	content->key = ft_strndup("?", 2);
+	content->value = ft_strndup("0", 2);
 	content->has_equal = -1;
 	push_back(envlist, content);
 	return (envlist);

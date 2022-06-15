@@ -55,11 +55,13 @@ INCL	=	minishell.h\
 			parser/token.h\
 			parser/token_recognition.h
 INCL_DIR=	-I./include
+
 ifeq ($(shell uname), Darwin)
 INCL_DIR+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
 endif
 
-LIB_ADD	=	-L. -L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+LIB_ADD	+=	-L. 
 LIBTARGET=	all
 
 # NOTE: library order (-ldlinkedlist and -lft) can be problem
@@ -75,21 +77,28 @@ LIBS	+=	LIBFT.lib
 
 ifeq ($(DEBUG_FLAG), 1)
 CFLAGS	+=	$(DEBUG)
-LIBFLAGS= DEBUG_FLAG=1
+LIBFLAGS=	DEBUG_FLAG=1
+COMPILE	=	DEBUG.flag
+else
+COMPILE	=	RELEASE.flag
 endif
 
 
-libs: $(LIBS)
+libs: $(COMPILE) $(LIBS)
 	$(MAKE) $(NAME)
 
 all: $(NAME)
 
-debug: DEBUG.flag
+debug: 
 	$(MAKE) DEBUG_FLAG=1 libs
-	touch DEBUG.flag
+
+RELEASE.flag:
+	$(MAKE) fclean
+	touch RELEASE.flag
 
 DEBUG.flag:
-	$(MAKE) clean
+	$(MAKE) fclean
+	touch DEBUG.flag
 
 $(LIBS): %.lib:
 	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
@@ -103,12 +112,11 @@ $(OBJ): %.o: %.c
 
 clean:
 	$(RM) $(OBJ)
-	$(RM) DEBUG.flag
+	$(RM) DEBUG.flag RELEASE.flag
 
 fclean: clean $(LIBS:%=%.clean)
 	$(RM) $($(LIBS:%.lib=%))
 	$(RM) $(NAME)
-	$(RM) DEBUG.flag
 
 $(LIBS:%=%.clean): %.lib.clean:
 	$(RM) $($*)

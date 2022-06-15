@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 09:58:17 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 18:07:36 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	minishell_initialize(int argc, char **argv, char **prompt)
 	int		found_arg;
 
 	handle_signals();
-	dup2(STDIN_FILENO, 10);
-	dup2(STDOUT_FILENO, 11);
+	dup2(STDIN_FILENO, MINISHELL_STDIN);
+	dup2(STDOUT_FILENO, MINISHELL_STDOUT);
 	rl_catch_signals = 0;
 	if (argc == 1)
 		return (set_prompt(prompt));

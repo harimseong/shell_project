@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 09:14:32 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 18:24:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	pipeline_content_print(void *pipeline);
 void	print_item(t_token *token);
 
 void	minishell_errormsg(const char *s1, const char *s2, const char *s3);
-void	minishell_assertion(int is_true, const char *file, int line);
+void	minishell_assert(int is_true, const char *file, int line);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 08:49:58 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/15 19:22:48 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	token = token_handler(TH_PEEK, NULL);
 	while (check_token_type(token->type, TT_PIPELINE))
 	{
-		token_handler(TH_GET, NULL);
+		delete_word_content(token_handler(TH_GET, NULL));
 		push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 		parse_pipeline(pipeline_list->tail->content);
 		token = token_handler(TH_PEEK, NULL);
@@ -96,7 +96,7 @@ void	parse_pipeline(t_pipeline *pipeline)
 	token = token_handler(TH_PEEK, NULL);
 	while (check_token_type(token->type, TT_PIPE))
 	{
-		token_handler(TH_GET, NULL);
+		delete_word_content(token_handler(TH_GET, NULL));
 		push_back(pipeline->command_list, ft_calloc(1, sizeof(t_command)));
 		parse_command(command_list->tail->content);
 		token = token_handler(TH_PEEK, NULL);
