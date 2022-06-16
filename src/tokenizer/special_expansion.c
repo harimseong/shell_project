@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 20:54:50 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 22:45:14 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 
 #include "minishell.h"
+#include "parser/token.h"
 #include "parser/token_recognition.h"
 
 typedef int		(*t_expand_func)(t_iterator *, t_node *, int);
@@ -165,13 +166,10 @@ int	special_expansion(t_iterator *iterator, char target, int token_type)
 {
 	t_node	*expand_point;
 
-	expand_point = iterator->line->cur->next->next;
-	erase_at(iterator->line, expand_point->prev, free);
-	if (check_token_type(token_type, TT_QUOTE_MASK))
-		insert_at(iterator->line, expand_point, ft_strndup("'", 1));
+	expand_point = iterator->line->cur->next;
+	if (check_token_type(token_type, TT_DOLLAR))
+		expand_point = expand_point->next;
 	g_special_expansion_tab[(int)target](iterator, expand_point, token_type);
-	if (check_token_type(token_type, TT_QUOTE_MASK))
-		insert_at(iterator->line, expand_point, ft_strndup("'", 1));
 	iterator->line->cur = iterator->line->cur->next;
 	erase_at(iterator->line, iterator->line->cur->prev, free);
 	return (0);
@@ -185,6 +183,7 @@ int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type)
 	(void)token_type;
 	status_str = *find_question(g_env_list);
 	idx = 0;
+	erase_at(iterator->line, expand_point->prev, free);
 	while (status_str[idx])
 	{
 		insert_at(iterator->line, expand_point,
