@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 16:01:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 10:12:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 16:09:39 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ int	ft_execvpe(const char *filename, char *const *argv, char *const *envp,
 	char	fullpath[MAX_PATHNAME + 1];
 	size_t	path_len;
 
-	ft_memset(fullpath, 0, MAX_PATHNAME + 1);
-	if (ft_strlen(filename) + 3 >= MAX_PATHNAME)
-		return (ENOENT);
-	fullpath[0] = '/';
-	ft_strlcat(fullpath, filename, MAX_PATHNAME + 1);
-	execve(fullpath, argv, envp);
 	if (path_arr == NULL)
 		return (ENOENT);
 	while (*path_arr != NULL)
@@ -45,5 +39,5 @@ int	ft_execvpe(const char *filename, char *const *argv, char *const *envp,
 		execve(fullpath, argv, envp);
 		++path_arr;
 	}
-	return (errno);
+	return (-1);
 }

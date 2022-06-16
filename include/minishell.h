@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 18:24:08 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:52:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "types.h"
 # include "parser/token.h"
+# include "sys/errno.h"
 
 t_dlist	*parser(const char *line, t_dlist *env_list);
 void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list);

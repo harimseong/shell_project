@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 21:35:30 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 18:16:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:36:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_arg_error(char *argv)
 	return (0);
 }
 
-int	unset_arg(t_dlist *envlist, char *argv)
+static int	unset_arg(t_dlist *envlist, char *argv)
 {
 	t_env	*cur_env;
 

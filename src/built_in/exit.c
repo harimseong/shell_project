@@ -6,13 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 21:52:44 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/16 15:35:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
-int	check_longlong(char *arg)
+static int	check_longlong(char *arg)
 {
 	int			error;
 	long long	num;
@@ -25,7 +25,7 @@ int	check_longlong(char *arg)
 	return (1);
 }
 
-int	check_only_numeric(char *arg)
+static int	check_only_numeric(char *arg)
 {
 	int	i;
 
@@ -44,7 +44,7 @@ int	check_only_numeric(char *arg)
 	return (1);
 }
 
-long long	find_status(t_dlist *envlist)
+static long long	find_status(t_dlist *envlist)
 {
 	t_env		*cur_env;
 	long long	status;

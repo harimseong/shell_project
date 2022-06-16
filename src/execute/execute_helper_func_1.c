@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_helper_func.c                              :+:      :+:    :+:   */
+/*   execute_helper_func_1.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 18:03:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 13:20:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char	*get_value_from_env(t_dlist *env_list, const char *key)
 	t_node	*node;
 	t_env	*env;
 
-	node = dlist_find_content(env_list, key, 5, get_key_from_env);
+	node = dlist_find_content(env_list, key, ft_strlen(key) + 1,
+		get_key_from_env);
 	if (node == NULL)
 		return (NULL);
 	env = node->content;
@@ -61,7 +62,7 @@ void	*get_key_from_env(void *content)
 	return (env->key);
 }
 
-void	free_2d_arr(char **arr)
+void	free_str_arr(char **arr)
 {
 	size_t	idx;
 

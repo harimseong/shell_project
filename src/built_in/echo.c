@@ -6,13 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:48:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/15 09:29:25 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:35:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
-int	check_echo_flag(char *arg)
+static int	check_echo_flag(char *arg)
 {
 	int	i;
 	int	arg_len;

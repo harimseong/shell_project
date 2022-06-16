@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 13:01:05 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 13:26:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int		check_new_word(t_iterator *iterator, t_token *token, char target);
 
 // helper functions
 char	get_char(t_node *node);
-int		check_long_operator(char target, t_token_type *type);
 int		get_operator_type(char target);
+int		check_long_operator(char target, t_token_type *type);
 char	*dlist_to_string(t_node *start, size_t len);
+int		is_ifs(char c);
 
 int		expand_word(t_iterator *iterator, int token_type);
 int		special_expansion(t_iterator *iterator, char target);

@@ -18,7 +18,12 @@
    ------------------------------------------------------- */
 %start program
 %%
-program          : list
+program          : linebreak
+                 | complete_commands linebreak;
+                 ;
+complete_commands: list
+                 | list seperator_op
+                 | list seperator_op list
                  ;
 list             :             pipeline
                  | list AND_IF pipeline // left recursion
@@ -27,11 +32,18 @@ list             :             pipeline
 pipeline         :              command
                  | pipeline '|' command // left recursion
                  ;
-command          : cmd_prefix cmd_word cmd_suffix
+command          : simple_command
+                 | compound_command
+				 ;
+simple_command   : cmd_prefix cmd_word cmd_suffix
                  | cmd_prefix cmd_word
                  | cmd_prefix
                  | cmd_name cmd_suffix
                  | cmd_name
+                 ;
+compound_command : subshell
+                 ;
+subshell         : '(' list ')'
                  ;
 cmd_name         : WORD                   /* Apply rule 7a */
                  ;
@@ -57,4 +69,9 @@ filename         : WORD                      /* Apply rule 2 */
 io_here          : DLESS     here_end
                  ;
 here_end         : WORD                      /* Apply rule 3 */
+                 ;
+seperator_op     : '&'
+                 | ';'
+                 ;
+linebreak        : 'newline'
                  ;

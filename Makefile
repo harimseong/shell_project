@@ -9,12 +9,14 @@ RM		=	rm -f
 # parser source files
 SRC		=	main.c\
 			minishell_initialize.c\
-			read_pipeline.c\
-			generate_process.c\
-			redirect_process.c\
-			execute_command.c\
-			execute_helper_func.c\
 			delete_command_list.c\
+			execute/read_pipeline.c\
+			execute/generate_process.c\
+			execute/redirect_process.c\
+			execute/execute_command.c\
+			execute/execute_helper_func_1.c\
+			execute/execute_helper_func_2.c\
+			execute/execve_wrapper.c\
 			parser/parser.c\
 			parser/parser_error.c\
 			parser/parse_command.c\
@@ -41,8 +43,7 @@ SRC		=	main.c\
 			built_in/unset.c\
 			built_in/pwd.c\
 			built_in/find_question.c\
-			signal/handle_signal.c\
-			get_next_line.c
+			signal/handle_signal.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
 OBJ		=	$(SRC:%.c=%.o)
@@ -57,7 +58,7 @@ INCL	=	minishell.h\
 INCL_DIR=	-I./include
 
 ifeq ($(shell uname), Darwin)
-INCL_DIR+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
 endif
 

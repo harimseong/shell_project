@@ -6,13 +6,15 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 23:05:58 by gson              #+#    #+#             */
-/*   Updated: 2022/06/09 18:13:46 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 15:33:59 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
-void	set_env_pwd(t_dlist *envlist)
+#define MAX_PATH (1024)
+
+static void	set_env_pwd(t_dlist *envlist)
 {
 	t_env	*cur_env;
 	char	*oldpwd;
@@ -38,7 +40,7 @@ void	set_env_pwd(t_dlist *envlist)
 	}
 }
 
-int	move_directory(t_dlist *envlist, char *path)
+static int	move_directory(t_dlist *envlist, const char *path)
 {
 	if (ft_strcmp(path, "-") == 0)
 	{
@@ -54,7 +56,7 @@ int	move_directory(t_dlist *envlist, char *path)
 	return (0);
 }
 
-char	*check_oldpath(t_dlist *envlist)
+static char	*check_oldpath(t_dlist *envlist)
 {
 	t_env	*cur_env;
 	char	*oldpath;
@@ -68,14 +70,14 @@ char	*check_oldpath(t_dlist *envlist)
 			if (cur_env->value == NULL)
 				oldpath = NULL;
 			else
-				oldpath = ft_strdup(cur_env->value);
+				oldpath = cur_env->value;
 		}
 		envlist->cur = envlist->cur->next;
 	}
 	return (oldpath);
 }
 
-char	*set_home(t_dlist *envlist)
+static char	*set_home(t_dlist *envlist)
 {
 	t_env	*cur_env;
 	char	*home;
@@ -89,7 +91,7 @@ char	*set_home(t_dlist *envlist)
 			if (cur_env->value == NULL)
 				home = NULL;
 			else
-				home = ft_strdup(cur_env->value);
+				home = cur_env->value;
 		}
 		envlist->cur = envlist->cur->next;
 	}
@@ -102,7 +104,7 @@ int	cd(t_dlist *envlist, int argc, char **argv)
 	char	*path;
 
 	if (argc > 1)
-		path = ft_strdup(argv[1]);
+		path = argv[1];
 	else
 		path = set_home(envlist);
 	if (ft_strcmp(path, "-") == 0)

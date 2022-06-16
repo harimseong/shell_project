@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 18:47:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 16:12:26 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,9 @@ int	execute_command(t_dlist *word_list, t_dlist *env_list)
 	{
 		path_arr = ft_split(get_value_from_env(env_list, "PATH"), ":");
 		envp = dlist_to_array(env_list, env_to_str);
-		status = ft_execvpe(argv[0], argv, envp, path_arr);
-		free_2d_arr(envp);
-		free_2d_arr(path_arr);
-		if (status == ENOENT)
-			minishell_errormsg(argv[0], "command not found", NULL);
-		else
-			minishell_assert(status == 0, __FILE__, __LINE__);
+		status = execve_wrapper(argv[0], argv, envp, path_arr);
+		free_str_arr(envp);
+		free_str_arr(path_arr);
 	}
 	free(argv);
 	return (builtin_set_exit(env_list, status, 0, NULL));

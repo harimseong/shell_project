@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 05:15:00 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:52:06 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 13:26:27 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ char	*convert_value_to_quoted(char *value)
 	new_value = malloc(ft_strlen(value) + 2 * count + 1);
 	idx = 0;
 	jdx = 0;
-	if (value[0] && !ft_isspace(value[0]))
+	if (value[0] && !is_ifs(value[0]))
 		new_value[jdx++] = '\'';
 	while (value[idx])
 	{
-		if (idx > 0 && ft_isspace(value[idx - 1])
-			&& value[idx] && !ft_isspace(value[idx]))
+		if (idx > 0 && is_ifs(value[idx - 1])
+			&& value[idx] && !is_ifs(value[idx]))
 			new_value[jdx++] = '\'';
 		new_value[jdx++] = value[idx];
-		if (!ft_isspace(value[idx])
-			&& (ft_isspace(value[idx + 1]) || value[idx + 1] == 0))
+		if (!is_ifs(value[idx])
+			&& (is_ifs(value[idx + 1]) || value[idx + 1] == 0))
 			new_value[jdx++] = '\'';
 		++idx;
 	}
@@ -52,7 +52,7 @@ int	count_words(char *str)
 	count = 0;
 	while (*str)
 	{
-		if (!ft_isspace(*str) && (ft_isspace(str[1]) || str[1] == 0))
+		if (!is_ifs(*str) && (is_ifs(str[1]) || str[1] == 0))
 			++count;
 		++str;
 	}
