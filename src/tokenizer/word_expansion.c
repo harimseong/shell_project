@@ -6,17 +6,16 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 13:02:25 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:27:48 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "constants.h"
 #include "minishell.h"
-#include "parser/token.h"
-#include "parser/token_recognition.h"
 #include "cmd.h"
+#include "constants.h"
+#include "parser/token_recognition.h"
 
 char			*convert_value_to_quoted(char *value);
 static t_node	*find_env(t_iterator *iterator);
@@ -52,6 +51,10 @@ int	expand_word(t_iterator *iterator, int token_type)
 	return (node == NULL);
 }
 
+/*
+ * this function take word after $ and remove that word from input line.
+ * after that it finds corresponding environment variable on env_list.
+ */
 t_node	*find_env(t_iterator *iterator)
 {
 	char	target;
@@ -86,29 +89,4 @@ void	*extract_content(void *arg)
 
 	env_node = arg;
 	return (env_node->key);
-}
-
-int	special_expansion(t_iterator *iterator, char target)
-{
-	t_node	*expand_point;
-	int		idx;
-	char	*status_str;
-
-	expand_point = iterator->line->cur->next->next;
-	erase_at(iterator->line, expand_point->prev, free);
-	if (target == '?')
-	{
-		status_str = *find_question(g_env_list);
-		idx = 0;
-		insert_at(iterator->line, expand_point, ft_strndup("'", 1));
-		while (status_str[idx])
-		{
-			insert_at(iterator->line, expand_point,
-				ft_strndup(status_str + idx++, 1));
-		}
-		insert_at(iterator->line, expand_point, ft_strndup("'", 1));
-	}
-	iterator->line->cur = iterator->line->cur->next;
-	erase_at(iterator->line, iterator->line->cur->prev, free);
-	return (0);
 }

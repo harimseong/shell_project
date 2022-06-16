@@ -6,15 +6,16 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:28:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 13:26:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:14:31 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #include "constants.h"
-#include "parser/token.h"
 #include "parser/token_recognition.h"
+
+#define OPERATOR_LIST ("<>|&")
 
 int	check_new_operator(t_iterator *iterator, t_token *token, char target)
 {

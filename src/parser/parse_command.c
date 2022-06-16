@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:58:32 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:41:28 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:12:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 
 #include "minishell.h"
-#include "types.h"
 #include "constants.h"
 #include "parser/parser.h"
 

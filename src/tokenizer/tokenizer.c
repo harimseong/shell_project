@@ -6,13 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:02:05 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:14:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
-#include  <stdio.h>
 
 #include "constants.h"
 #include "minishell.h"

@@ -6,16 +6,15 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:37 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/12 19:48:53 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:15:52 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
 #include "minishell.h"
-#include "parser/token.h"
 #include "parser/parser.h"
-#include <unistd.h>
 
 void	parser_error(t_dlist *pipeline_list, t_token *token)
 {

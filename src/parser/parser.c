@@ -6,24 +6,21 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:22:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:15:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <sys/errno.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "readline/readline.h"
 #include "readline/history.h"
-#include <stdlib.h>
-#include <sys/errno.h>
-#include <unistd.h>
 #include "libft.h"
 
 #include "minishell.h"
 #include "cmd.h"
-#include "parser/token.h"
-#include "types.h"
 #include "constants.h"
-#include "errors.h"
 #include "parser/parser.h"
 #include "parser/token_recognition.h"
 

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 16:12:26 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:33:49 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "libft.h"
 
 #include "minishell.h"
-#include "constants.h"
 #include "cmd.h"
+#include "constants.h"
 #include "execute.h"
 
 typedef int				(*t_program)(t_dlist *, int, char **);
@@ -60,7 +60,7 @@ int	execute_command(t_dlist *word_list, t_dlist *env_list)
 		status = execute_builtin(env_list, argv, idx);
 	else
 	{
-		path_arr = ft_split(get_value_from_env(env_list, "PATH"), ":");
+		path_arr = ft_split(find_env_by_key(env_list, "PATH"), ":");
 		envp = dlist_to_array(env_list, env_to_str);
 		status = execve_wrapper(argv[0], argv, envp, path_arr);
 		free_str_arr(envp);

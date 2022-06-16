@@ -6,15 +6,15 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:38:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:15:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "readline/readline.h"
 #include "readline/history.h"
-#include <stdlib.h>
-#include <unistd.h>
 #include "libft.h"
 
 #include "minishell.h"

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:30:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 13:20:42 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:33:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ void	*env_to_str(void *content)
 	return (env_str);
 }
 
-// 5 = sizeof "PATH\0"
-char	*get_value_from_env(t_dlist *env_list, const char *key)
+char	*find_env_by_key(t_dlist *env_list, const char *key)
 {
 	t_node	*node;
 	t_env	*env;
 
 	node = dlist_find_content(env_list, key, ft_strlen(key) + 1,
-		get_key_from_env);
+			get_key_from_env);
 	if (node == NULL)
 		return (NULL);
 	env = node->content;

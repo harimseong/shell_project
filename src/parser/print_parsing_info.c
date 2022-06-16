@@ -6,14 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:57:22 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/10 21:27:04 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 19:15:57 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
 #include "constants.h"
-#include "parser/token.h"
 #include "parser/parser.h"
 
 static void	command_content_print(void *command);

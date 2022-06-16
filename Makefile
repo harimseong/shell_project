@@ -28,6 +28,7 @@ SRC		=	main.c\
 			tokenizer/recognition_procedure_2.c\
 			tokenizer/word_expansion.c\
 			tokenizer/word_expansion_quotize.c\
+			tokenizer/special_expansion.c\
 			built_in/env.c\
 			built_in/export.c\
 			built_in/key_compare.c\
