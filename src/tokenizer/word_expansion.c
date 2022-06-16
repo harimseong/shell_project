@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:51:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/16 13:02:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "constants.h"
 #include "minishell.h"
+#include "parser/token.h"
 #include "parser/token_recognition.h"
 #include "cmd.h"
 
@@ -23,7 +24,7 @@ static void		*extract_content(void *arg);
 
 extern t_dlist	*g_env_list;
 
-int	expand_word(t_iterator *iterator)
+int	expand_word(t_iterator *iterator, int token_type)
 {
 	t_node	*node;
 	t_node	*expand_point;
@@ -37,7 +38,9 @@ int	expand_word(t_iterator *iterator)
 	if (node != NULL && ((t_env *)node->content)->value != NULL)
 	{
 		env_value = ((t_env *)node->content)->value;
-		env_out = convert_value_to_quoted(env_value);
+		env_out = env_value;
+		if (!check_token_type(token_type, TT_QUOTE_MASK))
+			env_out = convert_value_to_quoted(env_value);
 		while (*env_out)
 		{
 			insert_at(buf, expand_point, ft_strndup(env_out++, 1));
