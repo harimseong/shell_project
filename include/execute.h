@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:31:10 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:33:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 20:04:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define EXECUTE_H
 
 # include "parser/parser.h"
+
+enum e_command
+{
+	CMD_NORMAL = 0,
+	CMD_HEREDOC
+};
 
 int		execve_wrapper(const char *filename, char **argv, char **envp,
 			char **path_arr);

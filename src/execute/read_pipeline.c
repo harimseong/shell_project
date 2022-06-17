@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 19:59:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 21:57:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list,
 	flag = is_builtin(get_word_from_token(get_front(command->word_list)));
 	if (flag > 0 && command_list->size == 1)
 		return (execute_builtin(env_list, command->word_list, flag - 1));
+	flag = 0;
 	while (command != NULL)
 	{
 		if (flag == CMD_HEREDOC)

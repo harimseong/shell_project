@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:09:52 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 20:05:01 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ enum e_redir
 	REDIR_APPEND = 2,
 	REDIR_HEREDOC = 3,
 	REDIR_PROCESSED = 0xff
-};
-
-enum e_command
-{
-	CMD_NORMAL = 0,
-	CMD_HEREDOC
 };
 
 typedef struct s_redirect
