@@ -12,8 +12,6 @@
 
 #include "cmd.h"
 
-#define MAX_PATH (1024)
-
 static void	set_env_pwd(t_dlist *envlist)
 {
 	t_env	*cur_env;
@@ -62,6 +60,7 @@ static char	*check_oldpath(t_dlist *envlist)
 	char	*oldpath;
 
 	envlist->cur = envlist->head;
+	oldpath = NULL;
 	while (envlist->cur != 0)
 	{
 		cur_env = (t_env *)envlist->cur->content;

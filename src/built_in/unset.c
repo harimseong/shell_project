@@ -16,12 +16,12 @@ static int	check_arg_error(char *argv)
 {
 	if (check_identifier_first(argv[0]) == -1)
 	{
-		printf("unset: `%s': not a valid identifier\n", argv);
+		printf("minishell: unset: `%s': not a valid identifier\n", argv);
 		return (1);
 	}
 	if (is_contain_special(argv) == -1)
 	{
-		printf("unset: `%s': not a valid identifier\n", argv);
+		printf("minishell: unset: `%s': not a valid identifier\n", argv);
 		return (1);
 	}
 	return (0);

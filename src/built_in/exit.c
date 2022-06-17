@@ -78,7 +78,7 @@ int	builtin_exit(t_dlist *envlist, int argc, char **argv)
 			status = 255;
 		}
 		else
-			status = ft_atoll(argv[1], NULL) / 256;
+			status = ft_atoll(argv[1], NULL) % 256;
 	}
 	else if (argc > 2)
 	{
