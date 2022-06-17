@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:20:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 19:59:27 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "execute.h"
 #include "libft.h"
 
 #include "minishell.h"
@@ -21,46 +22,56 @@
 #include "constants.h"
 #include "parser/parser.h"
 
-int			generate_process(t_command *command, t_dlist *env_list,
-				int pipe_exist);
-static int	read_command_list(t_dlist *command_list, t_dlist *env_list);
-static int	wait_process(t_dlist *pid_list);
+int
+generate_process(t_command *command, t_dlist *env_list, int pipe_exist);
+int
+is_builtin(const char *name);
+int
+execute_builtin(t_dlist *env_list, t_dlist *word_list, int idx);
+
+static int
+read_command_list(t_dlist *command_list, t_dlist *env_list, t_dlist *pid_list);
+static int
+wait_process(t_dlist *pid_list);
 
 void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 {
 	t_pipeline	*pipeline;
+	t_dlist		*pid_list;
 
+	pid_list = dlist_init();
 	pipeline = get_front(pipeline_list);
 	while (pipeline != NULL)
 	{
 		pipeline->result
-			= read_command_list(pipeline->command_list, env_list);
+			= read_command_list(pipeline->command_list, env_list, pid_list);
 		set_question(env_list, pipeline->result);
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
 	}
 }
 
-int	read_command_list(t_dlist *command_list, t_dlist *env_list)
+int	read_command_list(t_dlist *command_list, t_dlist *env_list,
+		t_dlist *pid_list)
 {
 	t_command	*command;
-	t_dlist		*pid_list;
 	pid_t		pid;
-	int			prev_cmd_flag;
+	int			flag;
 
-	pid_list = dlist_init();
 	command = get_front(command_list);
-	prev_cmd_flag = 0;
+	flag = is_builtin(get_word_from_token(get_front(command->word_list)));
+	if (flag > 0 && command_list->size == 1)
+		return (execute_builtin(env_list, command->word_list, flag - 1));
 	while (command != NULL)
 	{
-		if (prev_cmd_flag == CMD_HEREDOC)
+		if (flag == CMD_HEREDOC)
 		{
 			pid = *((pid_t *)get_front(pid_list));
 			pop_front(pid_list, free);
 			waitpid(pid, NULL, 0);
 		}
 		pid = generate_process(command, env_list, command_list->size > 1);
-		prev_cmd_flag = command->flag;
+		flag = command->flag;
 		pop_front(command_list, delete_command_content);
 		command = get_front(command_list);
 		push_back(pid_list,

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:39:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 19:11:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@
 
 typedef int						(*t_redirect_func)(t_redirect *);
 
-int			is_internal_builtin(t_dlist *word_list);
 int			execute_command(t_dlist *word_list, t_dlist *env_list);
-int			execute_internal_builtin(t_dlist *word_list,
-				t_dlist *env_list, int idx);
 static int	set_redirect(t_dlist *redirect_list);
 static int	fork_and_pipe(int *recent_read_end,
 				int *pipe_fd, int pipe_exist);
@@ -46,9 +43,6 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 	int			status;
 	int			pipe_fd[2];
 
-	status = is_internal_builtin(command->word_list);
-	if (status >= 0)
-		return (execute_internal_builtin(command->word_list, env_list, status));
 	handle_signals_cmd();
 	pid = fork_and_pipe(&recent_read_end, pipe_fd, pipe_exist);
 	if (pid == 0)

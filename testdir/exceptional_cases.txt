@@ -61,9 +61,13 @@ cat -e | wc				# wc blocks until cat ends
 cat -e > /dev/ttys??? | wc	# wc doesn't block
 
 
-cat << 1 << 2 << 3 << 4
+#cat << 1 << 2 << 3 << 4
 unset
 export PATH=a
 
 
 #heredoc history?
+
+
+echo """$?"""
+echo "'"$?"'"
