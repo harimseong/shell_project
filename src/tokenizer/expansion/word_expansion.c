@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 16:57:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:56:27 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ int	expand_word(t_iterator *iterator, int token_type)
 		if (!check_token_type(token_type, TT_QUOTE_MASK))
 			env_out = convert_str_to_quoted(env_value);
 		while (*env_out)
-		{
 			insert_at(buf, expand_point, ft_strndup(env_out++, 1));
-			++iterator->len;
-		}
 	}
 	buf->cur = buf->cur->next;
 	erase_at(buf, buf->cur->prev, free);

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:28:51 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/18 20:21:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int
 expand_question(t_iterator *iterator, t_node *expand_point, int token_type);
 static int
 expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type);
+static int
+expand_number(t_iterator *iterator, t_node *expand_point, int token_type);
 
 static const
 	t_expand_func g_special_expansion_tab[128]
@@ -82,16 +84,16 @@ static const
 	/*45  -*/0,
 	/*46  .*/0,
 	/*47  /*/0,
-	/*48  0*/0,
-	/*49  1*/0,
-	/*50  2*/0,
-	/*51  3*/0,
-	/*52  4*/0,
-	/*53  5*/0,
-	/*54  6*/0,
-	/*55  7*/0,
-	/*56  8*/0,
-	/*57  9*/0,
+	/*48  0*/expand_number,
+	/*49  1*/expand_number,
+	/*50  2*/expand_number,
+	/*51  3*/expand_number,
+	/*52  4*/expand_number,
+	/*53  5*/expand_number,
+	/*54  6*/expand_number,
+	/*55  7*/expand_number,
+	/*56  8*/expand_number,
+	/*57  9*/expand_number,
 	/*58  :*/0,
 	/*59  ;*/0,
 	/*60  <*/0,
@@ -211,5 +213,11 @@ int	expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type)
 		insert_at(iterator->line, expand_point,
 			ft_strndup(home_dir + idx++, 1));
 	}
+	return (0);
+}
+int	expand_number(t_iterator *iterator, t_node *expand_point, int token_type)
+{
+	(void)token_type;
+	erase_at(iterator->line, expand_point->prev, free);
 	return (0);
 }
