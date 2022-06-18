@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:48:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:17:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:01:34 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "minishell.h"
 #include "readline/readline.h"
 #include "readline/history.h"
 #include "libft.h"

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 20:09:12 by hseong            #+#    #+#             */
-/*   Updated: 2021/11/17 16:01:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:18:12 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char		*temp;
 	int			idx;
 
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	ret = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ret)
 		return (NULL);
 	temp = ret;

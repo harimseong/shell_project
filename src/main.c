@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 18:06:37 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 18:59:55 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,15 @@ void	minishell_errormsg(const char *s1, const char *s2, const char *s3)
 	ft_putstr_fd("\n", STDERR_FILENO);
 }
 
-void	minishell_assert(int is_true, const char *file, int line)
+int	minishell_assert(int is_true, const char *file, int line)
 {
 	char	*number;
 
 	if (is_true)
-		return ;
+		return (0);
 	minishell_errormsg(strerror(errno), NULL, NULL);
 	if (DEBUG_FLAG == 0)
-		return ;
+		return (1);
 	ft_putstr_fd("assertion: ", STDERR_FILENO);
 	ft_putstr_fd(file, STDERR_FILENO);
 	ft_putstr_fd(":", STDERR_FILENO);
@@ -95,6 +95,7 @@ void	minishell_assert(int is_true, const char *file, int line)
 	ft_putstr_fd(number, STDERR_FILENO);
 	ft_putstr_fd("\n", STDERR_FILENO);
 	free(number);
+	return (1);
 }
 
 void	prompt_info(t_dlist *env_list)

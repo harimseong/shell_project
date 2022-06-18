@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 15:08:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:01:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 
 #include "constants.h"
+#include "minishell.h"
 #include "parser/parser.h"
 
 static void	parse_io_file(t_dlist *redirect_list);

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:15:08 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:20:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	set_prompt(char **prompt)
 	char	*front;
 
 	front = getenv("USER");
+	if (front == NULL)
+		return (1);
 	*prompt = ft_strjoin(front, g_default_prompt);
 	return (*prompt == NULL);
 }
