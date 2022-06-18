@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:28:05 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/18 20:20:36 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,14 @@ int	check_dollar(t_iterator *iterator, t_token *token, char target)
 	if (target == '$' && !check_token_type(token->type, TT_SQUOTE))
 	{
 		next_target = get_char(iterator->line->cur->next);
-		token->type |= TT_DOLLAR;
 		if (next_target == '\0' || is_ifs(next_target))
 			token->type = TT_WORD;
 		else if (next_target == '?' || ft_isdigit(next_target))
+		{
+			token->type |= TT_DOLLAR;
 			special_expansion(iterator, next_target, token->type);
+			token->type &= (0x7fffffff ^ TT_DOLLAR);
+		}
 		else
 			expand_word(iterator, token->type);
 		return (check_quote(iterator, token, get_char(iterator->line->cur)));
