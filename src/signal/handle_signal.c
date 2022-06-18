@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 16:42:08 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:36:03 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	handle_sigint(int signo)
 
 void	handle_signals_cmd(void)
 {
+	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, handle_sigint_cmd);
 }
 
