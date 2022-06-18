@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:26:45 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/18 22:12:21 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int argc, char *argv[], char *envp[])
 
 	env_list = set_envlist(envp, dlist_init());
 	g_env_list = env_list;
-	minishell_initialize(argc, argv, &prompt);
+	if (minishell_initialize(argc, argv, &prompt))
+		builtin_exit(env_list, 0, NULL);
 	while (prompt)
 	{
 		prompt_info(env_list);
@@ -48,6 +49,7 @@ int	main(int argc, char *argv[], char *envp[])
 			continue ;
 		read_pipeline(pipeline_list, env_list);
 		dlist_delete(pipeline_list, delete_pipeline_content);
+		free(line);
 	}
 	builtin_set_exit(env_list, 1, 0, NULL);
 	return (0);

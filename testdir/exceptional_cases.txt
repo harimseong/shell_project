@@ -75,7 +75,7 @@ echo "'"$?"'"
 
 
 echo 123 && (echo 456)
-echo 123 || (echo 456)
+echo 123 || (echo 456)	#both are same. subshell is not about precedence between pipelines or commands?
 
 
 << 123 |||

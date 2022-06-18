@@ -6,23 +6,27 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:29:37 by gson              #+#    #+#             */
-/*   Updated: 2022/06/14 22:59:31 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/18 21:09:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "cmd.h"
+#include "execute.h"
 
 static int	check_arg_error(char **element, char *argv)
 {
 	if (check_identifier_first(element[0][0]) == -1)
 	{
 		printf("minishell: export: `%s': not a valid identifier\n", argv);
+		free_str_arr(element);
 		return (1);
 	}
 	if (is_contain_special(element[0]) == -1)
 	{
 		printf("minishell: export: `%s': not a valid identifier\n", argv);
+		free_str_arr(element);
+		free(element);
 		return (1);
 	}
 	return (0);
@@ -49,13 +53,13 @@ static t_env	*make_new_env(char **element, char *argv)
 		new_env->value = NULL;
 		new_env->has_equal = 1;
 	}
+	free(element);
 	return (new_env);
 }
 
 int	export_args(t_dlist *envlist, char *argv)
 {
 	t_env	*new_env;
-	t_env	*temp_env;
 	char	**element;
 
 	element = ft_split_first(argv, "=");
@@ -63,16 +67,22 @@ int	export_args(t_dlist *envlist, char *argv)
 		return (1);
 	if (check_identifier_first(element[0][0]) == 0
 		&& ft_strlen(element[0]) == 1)
+	{
+		free_str_arr(element);
 		return (0);
+	}
 	if (check_key_dup(envlist, element, argv) == 1)
 		return (0);
 	new_env = make_new_env(element, argv);
 	push_back(envlist, new_env);
-	temp_env = envlist->tail->content;
-	envlist->tail->content = envlist->tail->prev->content;
-	envlist->tail->prev->content = temp_env;
 	return (0);
 }
+//	move '_' to last
+//	t_env	*temp_env;
+//
+//	temp_env = envlist->tail->content;
+//	envlist->tail->content = envlist->tail->prev->content;
+//	envlist->tail->prev->content = temp_env;
 
 int	export_no_args(t_dlist *envlist)
 {

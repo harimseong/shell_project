@@ -14,6 +14,7 @@ SRC		=	main.c\
 			execute/generate_process.c\
 			execute/redirect_process.c\
 			execute/execute_command.c\
+			execute/execute_command_string.c\
 			execute/execute_helper_func_1.c\
 			execute/execute_helper_func_2.c\
 			execute/execve_wrapper.c\

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 19:36:03 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/18 20:34:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,15 @@ static void	handle_sigint(int signo)
 	}
 }
 
-void	handle_signals_cmd(void)
+void	handle_signals_cmd_parent(void)
 {
 	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, handle_sigint_cmd);
+}
+
+void	handle_signals_cmd_child(void)
+{
+	signal(SIGQUIT, SIG_DFL);
 	signal(SIGINT, handle_sigint_cmd);
 }
 

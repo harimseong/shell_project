@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:25:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:56:27 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 20:51:46 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	expand_word(t_iterator *iterator, int token_type)
 {
 	t_node	*node;
 	t_node	*expand_point;
-	char	*env_out;
 	char	*env_value;
+	size_t	idx;
 	t_dlist	*buf;
 
 	buf = iterator->line;
@@ -36,11 +36,13 @@ int	expand_word(t_iterator *iterator, int token_type)
 	if (node != NULL && ((t_env *)node->content)->value != NULL)
 	{
 		env_value = ((t_env *)node->content)->value;
-		env_out = env_value;
+		idx = 0;
 		if (!check_token_type(token_type, TT_QUOTE_MASK))
-			env_out = convert_str_to_quoted(env_value);
-		while (*env_out)
-			insert_at(buf, expand_point, ft_strndup(env_out++, 1));
+			env_value = convert_str_to_quoted(env_value);
+		while (env_value[idx])
+			insert_at(buf, expand_point, ft_strndup(env_value + idx++, 1));
+		if (!check_token_type(token_type, TT_QUOTE_MASK))
+			free(env_value);
 	}
 	buf->cur = buf->cur->next;
 	erase_at(buf, buf->cur->prev, free);

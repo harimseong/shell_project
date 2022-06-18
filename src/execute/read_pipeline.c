@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:32:42 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 22:45:56 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int
 wait_process(t_dlist *pid_list);
 static int
 pipeline_continue(int pipeline_type);
+static int
+check_builtin(t_dlist *word_list);
 
 extern t_dlist	*g_env_list;
 
@@ -69,7 +71,7 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list,
 	int			flag;
 
 	command = get_front(command_list);
-	flag = is_builtin(get_word_from_token(get_front(command->word_list)));
+	flag = check_builtin(command->word_list);
 	if (flag > 0 && command_list->size == 1)
 		return (execute_builtin(env_list, command->word_list, flag - 1));
 	flag = 0;
@@ -124,4 +126,11 @@ int	pipeline_continue(int pipeline_type)
 	else if (pipeline_type == TT_AND && status != 0)
 		return (0);
 	return (1);
+}
+
+int	check_builtin(t_dlist *word_list)
+{
+	if (word_list->size == 0)
+		return (0);
+	return (is_builtin(get_word_from_token(get_front(word_list))));
 }

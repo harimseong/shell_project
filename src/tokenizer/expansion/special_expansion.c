@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 20:21:20 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 21:44:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ int	expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type)
 	}
 	return (0);
 }
+
 int	expand_number(t_iterator *iterator, t_node *expand_point, int token_type)
 {
 	(void)token_type;

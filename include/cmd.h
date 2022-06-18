@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 19:21:25 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/18 20:31:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char		**copy_env(char	**cpenv, char **envp);
 t_env		*set_env(char *fullenv);
 void		*copy_env_content(void *content);
 void		handle_signals(void);
-void		handle_signals_cmd(void);
+void		handle_signals_cmd_parent(void);
+void		handle_signals_cmd_child(void);
 int			check_key_dup(t_dlist *envlist, char **element, char *argv);
 void		set_env_pwd(t_dlist *envlist, char *oldpwd);
 int			move_directory_old(t_dlist *envlist, const char *path);

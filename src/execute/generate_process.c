@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 16:41:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 20:31:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 	int			status;
 	int			pipe_fd[2];
 
-	handle_signals_cmd();
 	pid = fork_and_pipe(&recent_read_end, pipe_fd, pipe_exist);
+	handle_signals_cmd_parent();
 	if (pid == 0)
 	{
+		handle_signals_cmd_child();
 		status = set_redirect(command->redirect_list);
 		minishell_assert(status == 0, __FILE__, __LINE__);
 		if (status == 0 && command->word_list->size > 0)
