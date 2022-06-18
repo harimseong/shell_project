@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 20:58:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 04:09:16 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:58:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,40 @@ void	dlist_empty(t_dlist *list, void (*delete_content)(void *))
 	*list->tail = (t_node){NULL, NULL, NULL};
 	free(list->tail);
 	*list = (t_dlist){NULL, NULL, NULL, 0, 0, 0};
+}
+
+void	pop_front(t_dlist *list, void (*delete_content)(void *))
+{
+	t_node	*del_node;
+
+	if (list->head == NULL)
+		return ;
+	del_node = list->head;
+	list->head = list->head->next;
+	if (list->head != NULL)
+		list->head->prev = NULL;
+	else
+		list->tail = NULL;
+	delete_content(del_node->content);
+	free(del_node);
+	--list->size;
+}
+
+void	pop_back(t_dlist *list, void (*delete_content)(void *))
+{
+	t_node	*del_node;
+
+	if (list->tail == NULL)
+		return ;
+	del_node = list->tail;
+	list->tail = list->tail->prev;
+	if (list->tail != NULL)
+		list->tail->next = NULL;
+	else
+		list->head = NULL;
+	delete_content(del_node->content);
+	free(del_node);
+	--list->size;
 }
 
 void	erase_at(t_dlist *list, t_node *at, void (*delete_content)(void *))

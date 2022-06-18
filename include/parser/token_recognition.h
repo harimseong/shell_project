@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:14:11 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 17:06:26 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		is_ifs(char c);
 
 int		expand_word(t_iterator *iterator, int token_type);
 int		special_expansion(t_iterator *iterator, char target, int token_type);
+char	*convert_str_to_quoted(char *string);
 
 # define TABLE_SIZE (8)
 

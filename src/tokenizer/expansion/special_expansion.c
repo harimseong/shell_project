@@ -6,12 +6,12 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 16:53:19 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 18:35:31 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <dirent.h>
 #include <stdlib.h>
+#include "cmd.h"
 #include "libft.h"
 
 #include "minishell.h"
@@ -23,12 +23,13 @@ typedef int		(*t_expand_func)(t_iterator *, t_node *, int);
 
 extern t_dlist	*g_env_list;
 
+int
+expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type);
+
 static int
 expand_question(t_iterator *iterator, t_node *expand_point, int token_type);
 static int
 expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type);
-static int
-expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type);
 
 static const
 	t_expand_func g_special_expansion_tab[128]
@@ -192,30 +193,6 @@ int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type)
 		insert_at(iterator->line, expand_point,
 			ft_strndup(status_str + idx++, 1));
 	}
-	return (0);
-}
-
-int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
-{
-	char			current_working_dir[MAX_PATHNAME];
-	DIR				*dir_stream;
-	struct dirent	*dir_ent;
-
-	(void)iterator;
-	(void)expand_point;
-	if (check_token_type(token_type, TT_QUOTE_MASK))
-		return (0);
-	getcwd(current_working_dir, MAX_PATHNAME);
-	dir_stream = opendir(current_working_dir);
-	if (dir_stream == NULL)
-		return (1);
-	dir_ent = readdir(dir_stream);
-	while (dir_ent)
-	{
-		ft_putendl_fd(dir_ent->d_name, MINISHELL_STDIN);
-		dir_ent = readdir(dir_stream);
-	}
-	closedir(dir_stream);
 	return (0);
 }
 
