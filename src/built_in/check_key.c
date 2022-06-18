@@ -65,6 +65,8 @@ int	check_key_dup(t_dlist *envlist, char **element, char *argv)
 		cur_env = (t_env *)envlist->cur->content;
 		if (ft_strcmp(cur_env->key, element[0]) == 0)
 		{
+			if (ft_strchr(argv, '=') == NULL)
+				return (1);
 			make_env(cur_env, element, argv);
 			return (1);
 		}
