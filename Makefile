@@ -39,11 +39,13 @@ SRC		=	main.c\
 			built_in/exit.c\
 			built_in/exit_wrapper.c\
 			built_in/cd.c\
+			built_in/cd_util.c\
 			built_in/ft_atoll.c\
 			built_in/ft_split_first.c\
 			built_in/unset.c\
 			built_in/pwd.c\
 			built_in/find_question.c\
+			built_in/move_directory.c\
 			signal/handle_signal.c
 SRC_DIR	=	src
 SRC		:=	$(SRC:%=$(SRC_DIR)/%)
