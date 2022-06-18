@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asterisk_expansion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:34:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 18:48:43 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:28:35 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static int		str_cmp(const void *first, const void *second);
 static t_dlist	*get_names(DIR *dir_stream);
 static int		insert_names(t_iterator *iterator, t_node *expand_point,
-	t_dlist *name_list);
+					t_dlist *name_list);
 
 int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
 {
@@ -54,7 +54,7 @@ t_dlist	*get_names(DIR *dir_stream)
 			continue ;
 		}
 		push_back(name_list, ft_strndup(dir_ent->d_name,
-			ft_strlen(dir_ent->d_name)));
+				ft_strlen(dir_ent->d_name)));
 		dir_ent = readdir(dir_stream);
 	}
 	dlist_mergesort(name_list, str_cmp);
@@ -62,7 +62,7 @@ t_dlist	*get_names(DIR *dir_stream)
 	return (name_list);
 }
 
-int		insert_names(t_iterator *iterator, t_node *expand_point,
+int	insert_names(t_iterator *iterator, t_node *expand_point,
 	t_dlist *name_list)
 {
 	char		*name;
@@ -79,7 +79,7 @@ int		insert_names(t_iterator *iterator, t_node *expand_point,
 	return (0);
 }
 
-int		str_cmp(const void *first, const void *second)
+int	str_cmp(const void *first, const void *second)
 {
 	return (ft_strcmp(first, second));
 }

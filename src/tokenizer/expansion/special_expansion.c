@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   special_expansion.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 18:35:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:28:51 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,8 @@ int	special_expansion(t_iterator *iterator, char target, int token_type)
 	expand_point = iterator->line->cur->next;
 	if (check_token_type(token_type, TT_DOLLAR))
 		expand_point = expand_point->next;
-	status = g_special_expansion_tab[(int)target](iterator, expand_point, token_type);
+	status = g_special_expansion_tab[(int)target](iterator, expand_point,
+			token_type);
 	minishell_assert(status == 0, __FILE__, __LINE__);
 	iterator->line->cur = iterator->line->cur->next;
 	erase_at(iterator->line, iterator->line->cur->prev, free);
