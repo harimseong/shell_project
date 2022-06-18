@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 21:51:39 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:29:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	execute_command(t_dlist *word_list, t_dlist *env_list)
 		status = execve_wrapper(argv[0], argv, envp, path_arr);
 		free_str_arr(path_arr);
 		free_str_arr(argv);
-		free(envp);
+		free_str_arr(envp);
 	}
 	return (builtin_set_exit(env_list, status, 0, NULL));
 }
