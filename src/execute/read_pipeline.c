@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 16:41:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:27:55 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
 		if (!pipeline_continue(pipeline_type))
-			break;
+			break ;
 	}
 }
 

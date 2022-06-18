@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve_wrapper.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:15:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 16:40:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:27:44 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include "constants.h"
 #include "execute.h"
 
+// access to directory leads to Permission denied error (EACCES)
+// check the name whether directory or not with stat().
 int	execve_wrapper(const char *filename, char **argv, char **envp,
 	char **path_arr)
 {
@@ -25,8 +27,6 @@ int	execve_wrapper(const char *filename, char **argv, char **envp,
 
 	minishell_assert(ft_strlen(filename) < MAX_PATHNAME, __FILE__, __LINE__);
 	file_path = ft_strrchr(filename, '/');
-	// access to directory leads to Permission denied error (EACCES)
-	// check the name whether directory or not with stat().
 	if (file_path == NULL)
 		ft_execvpe(filename, argv, envp, path_arr);
 	else

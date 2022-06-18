@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 18:59:55 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 19:26:45 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char *argv[], char *envp[])
 		prompt_info(env_list);
 		line = readline(prompt);
 		if (line == NULL)
-		// there's a newline before exit message
 			builtin_print_exit(env_list, 0, NULL);
 		if (ft_strlen(line) > 0)
 			add_history(line);
