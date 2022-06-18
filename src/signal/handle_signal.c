@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/17 21:59:13 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 15:51:22 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	handle_sigint(int signo)
 	if (signo == SIGINT)
 	{
 		rl_catch_signals = 0;
-//		printf("\n");
+		printf("\n");
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();

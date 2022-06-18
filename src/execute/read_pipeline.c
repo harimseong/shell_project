@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 22:52:59 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 15:29:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 	}
 }
 
+// moved pid_list to upper function
 int	read_command_list(t_dlist *command_list, t_dlist *env_list,
 		t_dlist *pid_list)
 {
@@ -107,7 +108,7 @@ int	wait_process(t_dlist *pid_list)
 		waitpid(pid, &status, 0);
 	}
 	handle_signals();
-	dlist_delete(pid_list, free);
+	dlist_empty(pid_list, free);
 	return (WIFEXITED(status) * WEXITSTATUS(status)
 		+ WIFSIGNALED(status) * (WTERMSIG(status) | 128));
 }

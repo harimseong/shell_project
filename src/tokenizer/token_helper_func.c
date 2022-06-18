@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 23:11:58 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 15:07:32 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,10 +151,8 @@ int	check_token_type(t_token_type type, t_token_type comp)
 	return ((type & (!!comp * comp + !comp * 0x7fffffff)) == comp);
 }
 
-#include <stdio.h>
 int	check_long_operator(char target, t_token_type *type)
 {
-	printf("%s type = %d, target = %c\n", __FUNCTION__, *type, target);
 	if (!((check_token_type(*type, TT_LESS) && target == '<')
 			|| (check_token_type(*type, TT_GREAT) && target == '>')
 			|| (check_token_type(*type, TT_PIPE) && target == '|')

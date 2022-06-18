@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:11:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 15:08:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void	parse_io_heredoc(t_dlist *redirect_list, int *flag)
 	redirect = malloc(sizeof(t_redirect));
 	*redirect = (t_redirect){REDIR_HEREDOC, -1, end_word->word, NULL,
 	{heredoc, end_word}};
-	*flag = CMD_HEREDOC;
+	*flag = REDIR_HEREDOC;
 	push_back(redirect_list, redirect);
 }

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 23:02:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 15:48:19 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 		prompt_info(env_list);
 		line = readline(prompt);
-		// exit message output after a newline
 		if (line == NULL)
+		// there's a newline before exit message
 			builtin_print_exit(env_list, 0, NULL);
 		if (ft_strlen(line) > 0)
 			add_history(line);
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
 			continue ;
- 				dlist_print_forward(pipeline_list, pipeline_content_print);
 		read_pipeline(pipeline_list, env_list);
 		dlist_delete(pipeline_list, delete_pipeline_content);
 	}
