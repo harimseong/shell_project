@@ -17,7 +17,7 @@ static int	check_arg_error(int argc, char **argv)
 	if (argc > 1)
 	{
 		printf("env: %s: No such file or directory\n", argv[1]);
-		return (127);
+		return (1);
 	}
 	return (0);
 }
