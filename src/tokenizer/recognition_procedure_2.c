@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:28:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 22:48:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 23:16:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 int	check_new_operator(t_iterator *iterator, t_token *token, char target)
 {
 	(void)iterator;
-	if (check_token_type(token->type, TT_QUOTE_MASK))
-		return (APPLIED);
 	if (!ft_strchr(OPERATOR_LIST, target))
 		return (CONTINUE);
+	if (check_token_type(token->type, TT_QUOTE_MASK))
+		return (APPLIED);
 	if (!check_token_type(token->type, TT_EMPTY))
 		return (DELIMIT);
 	token->type = get_operator_type(target);

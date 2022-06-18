@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 19:50:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 23:11:58 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static const int	g_token_type_tab[128]
 	/*37  %*/0,
 	/*38  &*/TT_AMPERSAND,
 	/*39  '*/0,
-	/*40  (*/0,
-	/*41  )*/0,
+	/*40  (*/TT_ERROR,
+	/*41  )*/TT_ERROR,
 	/*42  **/0,
 	/*43  +*/0,
 	/*44  ,*/0,
@@ -151,12 +151,14 @@ int	check_token_type(t_token_type type, t_token_type comp)
 	return ((type & (!!comp * comp + !comp * 0x7fffffff)) == comp);
 }
 
+#include <stdio.h>
 int	check_long_operator(char target, t_token_type *type)
 {
-	if (!(((*type == TT_LESS) && target == '<')
-			|| ((*type == TT_GREAT) && target == '>')
-			|| ((*type == TT_PIPE) && target == '|')
-			|| ((*type == TT_AMPERSAND) && target == '&')))
+	printf("%s type = %d, target = %c\n", __FUNCTION__, *type, target);
+	if (!((check_token_type(*type, TT_LESS) && target == '<')
+			|| (check_token_type(*type, TT_GREAT) && target == '>')
+			|| (check_token_type(*type, TT_PIPE) && target == '|')
+			|| (check_token_type(*type, TT_AMPERSAND) && target == '&')))
 		return (DELIMIT);
 	if (target == '<')
 		*type = TT_DLESS;

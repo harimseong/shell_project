@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 22:33:58 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 23:17:58 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "parser/token.h"
 #include "parser/token_recognition.h"
 
+#include <stdio.h>
 int	check_eoi(t_iterator *iterator, t_token *token, char target)
 {
 	(void)iterator;

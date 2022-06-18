@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:57:22 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:15:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 23:03:42 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	pipeline_content_print(void *pipeline)
 {
 	if (pipeline == NULL)
 		return ;
-	printf("pipeline\n{\n");
+	printf("pipeline type: %d\n{\n", ((t_pipeline *)pipeline)->pipeline_type);
 	dlist_print_forward(((t_pipeline *)pipeline)->command_list,
 		command_content_print);
 	printf("}\n");

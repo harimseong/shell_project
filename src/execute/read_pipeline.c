@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 21:57:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 22:52:59 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,29 @@ static int
 read_command_list(t_dlist *command_list, t_dlist *env_list, t_dlist *pid_list);
 static int
 wait_process(t_dlist *pid_list);
+static int
+pipeline_continue(int pipeline_type);
+
+extern t_dlist	*g_env_list;
 
 void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 {
 	t_pipeline	*pipeline;
 	t_dlist		*pid_list;
+	int			pipeline_type;
 
 	pid_list = dlist_init();
 	pipeline = get_front(pipeline_list);
 	while (pipeline != NULL)
 	{
+		pipeline_type = pipeline->pipeline_type;
 		pipeline->result
 			= read_command_list(pipeline->command_list, env_list, pid_list);
 		set_question(env_list, pipeline->result);
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
+		if (!pipeline_continue(pipeline_type))
+			break;
 	}
 }
 
@@ -102,4 +110,16 @@ int	wait_process(t_dlist *pid_list)
 	dlist_delete(pid_list, free);
 	return (WIFEXITED(status) * WEXITSTATUS(status)
 		+ WIFSIGNALED(status) * (WTERMSIG(status) | 128));
+}
+
+int	pipeline_continue(int pipeline_type)
+{
+	int		status;
+
+	status = get_question(g_env_list);
+	if (pipeline_type == TT_OR && status == 0)
+		return (0);
+	else if (pipeline_type == TT_AND && status != 0)
+		return (0);
+	return (1);
 }

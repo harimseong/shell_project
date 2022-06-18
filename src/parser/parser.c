@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:15:41 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/17 23:08:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 	parse_pipeline(pipeline_list->head->content);
 	token = token_handler(TH_PEEK, NULL);
+	printf("token type %d\n", token->type);
 	while (check_token_type(token->type, TT_PIPELINE))
 	{
+		((t_pipeline *)get_back(pipeline_list))->pipeline_type = token->type;
 		delete_word_content(token_handler(TH_GET, NULL));
 		push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 		parse_pipeline(pipeline_list->tail->content);
@@ -70,9 +72,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	if (!check_token_type(token->type, TT_EMPTY))
 	{
 		set_question(g_env_list, PARSE_ERROR_STATUS);
-		if (DEBUG_FLAG)
-			printf("minishell: parse error: %s: %s: %d: token_type %x\n",
-				__FILE__, __FUNCTION__, __LINE__, token->type);
+		minishell_errormsg("parse error", __FUNCTION__, NULL);
 		parser_error(pipeline_list, token);
 		delete_word_content(token);
 		return (NULL);
