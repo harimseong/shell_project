@@ -6,7 +6,7 @@ CFLAGS	= -Wall -Wextra -Werror
 DEBUG	= -g3 -fsanitize=address
 
 
-SRC		= dlinkedlist.c\
+SRC		= dlinkedlist_new.c\
 		  dlinkedlist_util.c\
 		  dlinkedlist_peek.c\
 		  dlinkedlist_cur.c\

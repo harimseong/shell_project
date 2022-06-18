@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlinkedlist.c                                      :+:      :+:    :+:   */
+/*   dlinkedlist_new.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:17:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/07 14:43:33 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 17:04:15 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,40 +49,6 @@ int	push_back(t_dlist *list, void *content)
 	list->tail = new_node;
 	++list->size;
 	return (1);
-}
-
-void	pop_front(t_dlist *list, void (*delete_content)(void *))
-{
-	t_node	*del_node;
-
-	if (list->head == NULL)
-		return ;
-	del_node = list->head;
-	list->head = list->head->next;
-	if (list->head != NULL)
-		list->head->prev = NULL;
-	else
-		list->tail = NULL;
-	delete_content(del_node->content);
-	free(del_node);
-	--list->size;
-}
-
-void	pop_back(t_dlist *list, void (*delete_content)(void *))
-{
-	t_node	*del_node;
-
-	if (list->tail == NULL)
-		return ;
-	del_node = list->tail;
-	list->tail = list->tail->prev;
-	if (list->tail != NULL)
-		list->tail->next = NULL;
-	else
-		list->head = NULL;
-	delete_content(del_node->content);
-	free(del_node);
-	--list->size;
 }
 
 int	insert_at(t_dlist *list, t_node *at, void *content)

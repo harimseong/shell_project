@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 19:16:21 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/18 19:21:25 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_env {
 
 char		**ft_split_first(const char *str, const char *delim);
 void		delete_content(void *env);
-int			key_compare(void *node1, void *node2);
+int			key_compare(const void *node1, const void *node2);
 int			env(t_dlist *envlist, int argc, char **argv);
 int			cd(t_dlist *envlist, int argc, char **argv);
 int			export(t_dlist *envlist, int argc, char **argv);

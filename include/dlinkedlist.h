@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 06:01:52 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 18:47:50 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 
-typedef int	(*t_comp)(void *, void *);
+typedef int	(*t_comp)(const void *, const void *);
 
 typedef struct s_node
 {

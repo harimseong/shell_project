@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 15:48:19 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 18:06:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	main(int argc, char *argv[], char *envp[])
 // 				system("lsof -p $$");
 // token list:
 // 				dlist_print_forward(pipeline_list, pipeline_content_print);
+// leak check:
+// 				system("leaks minishell");
 
 void	minishell_errormsg(const char *s1, const char *s2, const char *s3)
 {

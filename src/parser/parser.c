@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 16:43:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 17:12:34 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	push_back(pipeline_list, ft_calloc(1, sizeof(t_pipeline)));
 	parse_pipeline(pipeline_list->head->content);
 	token = token_handler(TH_PEEK, NULL);
-	printf("token type %d\n", token->type);
 	while (check_token_type(token->type, TT_PIPELINE))
 	{
 		((t_pipeline *)get_back(pipeline_list))->pipeline_type = token->type;
