@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 15:44:15 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:38:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,10 @@
 
 # include "dlinkedlist.h"
 
-/*
- * 0xf0000000 	Operator bit-mask
- * LSB = 1 		expandable operator
- * LSB = 2 		non-expandable operator
- *			 	|f000|0000|
- * |operator category|operator type|
- */
 typedef enum e_token_type
 {
 	TT_EMPTY =			0x00000000,
-	TT_WORD =			0x01000001,
+	TT_WORD =			0x01000000,
 	TT_OPERATOR =		0x02000000,
 	TT_PIPELINE =		0x02010000,
 	TT_AND =			0x02010001,

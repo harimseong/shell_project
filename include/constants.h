@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:10:09 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:12:18 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:40:28 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 
 # define MINISHELL_STDIN (3)
 # define MINISHELL_STDOUT (4)
+
+#define MAX_PATHNAME (1024)
 
 #endif

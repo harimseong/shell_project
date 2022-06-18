@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:15:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:48:08 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:40:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 #include "libft.h"
 
 #include "minishell.h"
+#include "constants.h"
 #include "execute.h"
-
-#define MAX_PATH (1024)
 
 int	execve_wrapper(const char *filename, char **argv, char **envp,
 	char **path_arr)
 {
 	char	*file_path;
 
-	minishell_assert(ft_strlen(filename) < MAX_PATH, __FILE__, __LINE__);
+	minishell_assert(ft_strlen(filename) < MAX_PATHNAME, __FILE__, __LINE__);
 	file_path = ft_strrchr(filename, '/');
 	// access to directory leads to Permission denied error (EACCES)
 	// check the name whether directory or not with stat().

@@ -6,16 +6,17 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 22:45:14 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:53:19 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <dirent.h>
 #include <stdlib.h>
-#include "execute.h"
 #include "libft.h"
 
 #include "minishell.h"
-#include "parser/token.h"
+#include "execute.h"
+#include "constants.h"
 #include "parser/token_recognition.h"
 
 typedef int		(*t_expand_func)(t_iterator *, t_node *, int);
@@ -165,11 +166,13 @@ static const
 int	special_expansion(t_iterator *iterator, char target, int token_type)
 {
 	t_node	*expand_point;
+	int		status;
 
 	expand_point = iterator->line->cur->next;
 	if (check_token_type(token_type, TT_DOLLAR))
 		expand_point = expand_point->next;
-	g_special_expansion_tab[(int)target](iterator, expand_point, token_type);
+	status = g_special_expansion_tab[(int)target](iterator, expand_point, token_type);
+	minishell_assert(status == 0, __FILE__, __LINE__);
 	iterator->line->cur = iterator->line->cur->next;
 	erase_at(iterator->line, iterator->line->cur->prev, free);
 	return (0);
@@ -178,7 +181,7 @@ int	special_expansion(t_iterator *iterator, char target, int token_type)
 int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type)
 {
 	char	*status_str;
-	int		idx;
+	size_t	idx;
 
 	(void)token_type;
 	status_str = *find_question(g_env_list);
@@ -194,25 +197,32 @@ int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type)
 
 int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
 {
-	char	*status_str;
-	int		idx;
+	char			current_working_dir[MAX_PATHNAME];
+	DIR				*dir_stream;
+	struct dirent	*dir_ent;
 
+	(void)iterator;
+	(void)expand_point;
 	if (check_token_type(token_type, TT_QUOTE_MASK))
 		return (0);
-	status_str = *find_question(g_env_list);
-	idx = 0;
-	while (status_str[idx])
+	getcwd(current_working_dir, MAX_PATHNAME);
+	dir_stream = opendir(current_working_dir);
+	if (dir_stream == NULL)
+		return (1);
+	dir_ent = readdir(dir_stream);
+	while (dir_ent)
 	{
-		insert_at(iterator->line, expand_point,
-			ft_strndup(status_str + idx++, 1));
+		ft_putendl_fd(dir_ent->d_name, MINISHELL_STDIN);
+		dir_ent = readdir(dir_stream);
 	}
+	closedir(dir_stream);
 	return (0);
 }
 
 int	expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type)
 {
 	char	*home_dir;
-	int		idx;
+	size_t	idx;
 
 	home_dir = find_env_by_key(g_env_list, "HOME");
 	if (check_token_type(token_type, TT_QUOTE_MASK) || home_dir == NULL)

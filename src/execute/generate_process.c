@@ -6,14 +6,14 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 20:12:03 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:41:31 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/errno.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
-#include <sys/errno.h>
 #include <signal.h>
 
 #include "minishell.h"

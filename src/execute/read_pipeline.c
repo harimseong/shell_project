@@ -6,20 +6,20 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 15:29:41 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:41:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "execute.h"
+#include <unistd.h>
+#include <stdio.h>
 #include "libft.h"
 
 #include "minishell.h"
 #include "cmd.h"
 #include "constants.h"
+#include "execute.h"
 #include "parser/parser.h"
 
 int

@@ -6,12 +6,14 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/16 19:11:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:49:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+# include <string.h>
 
 # include "parser/token.h"
 # include "sys/errno.h"

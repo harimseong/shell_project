@@ -1,0 +1,2 @@
+align bit masks in enum list to prevent typo.
+	take care when deciding value of bit mask

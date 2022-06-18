@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 15:51:22 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/18 16:42:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include <stdio.h>
 #include "readline/readline.h"
 #include "readline/history.h"
-#include "cmd.h"
+
 #include "minishell.h"
+#include "cmd.h"
 
 extern t_dlist	*g_env_list;
 
