@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/17 22:02:53 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 14:30:52 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ static int	check_only_numeric(char *arg)
 		if (ft_isdigit(arg[i]) == 0)
 		{
 			if (arg[i] == '-' && i == 0)
+			{
+				i++;
 				continue ;
+			}
 			else
 				return (0);
 		}
