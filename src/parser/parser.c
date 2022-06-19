@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 17:12:34 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 18:51:05 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #include "parser/parser.h"
 #include "parser/token_recognition.h"
 
-#define PARSE_ERROR_STATUS (255)
+#define EXIT_STAT_PARSE_ERR (2)
 
 extern t_dlist	*g_env_list;
 
@@ -70,8 +70,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	token_handler(TH_END, NULL);
 	if (!check_token_type(token->type, TT_EMPTY))
 	{
-		set_question(g_env_list, PARSE_ERROR_STATUS);
-		minishell_errormsg("parse error", __FUNCTION__, NULL);
+		set_question(g_env_list, EXIT_STAT_PARSE_ERR);
 		parser_error(pipeline_list, token);
 		delete_word_content(token);
 		return (NULL);

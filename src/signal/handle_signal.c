@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 20:34:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 18:51:47 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ extern t_dlist	*g_env_list;
 
 static void	handle_sigint_cmd(int signo)
 {
-	set_question(g_env_list, 128 + signo);
+//	set_question(g_env_list, 128 + signo);
 	if (signo == SIGINT)
 	{
 		printf("\n");

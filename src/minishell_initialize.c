@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 22:49:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 18:26:48 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ static const char	*g_option_list[]
 
 int	minishell_initialize(int argc, char **argv, char **prompt)
 {
+	minishell_assert(dup2(STDIN_FILENO, MINISHELL_STDIN) 
+		&& dup2(STDOUT_FILENO, MINISHELL_STDOUT), __FILE__, __LINE__);
 	if (argc > 1)
 		return (check_arg(argc, argv));
 	handle_signals();
-	dup2(STDIN_FILENO, MINISHELL_STDIN);
-	dup2(STDOUT_FILENO, MINISHELL_STDOUT);
 	rl_catch_signals = 0;
 	set_prompt(prompt);
 	return (0);
