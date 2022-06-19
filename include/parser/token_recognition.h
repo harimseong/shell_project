@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 19:53:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/20 01:15:27 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int		check_long_operator(char target, t_token_type *type);
 char	*dlist_to_string(t_node *start, size_t len);
 int		is_ifs(char c);
 
-int		expand_word(t_iterator *iterator, int token_type, t_dlist *env_list);
-int		special_expansion(t_iterator *iterator, char target, int token_type,
-			t_dlist *env_list);
+int		expand_word(t_iterator *iterator, int token_type);
+int		special_expansion(t_iterator *iterator, char target, int token_type);
 char	*convert_str_to_quoted(char *string);
 
 # define TABLE_SIZE (8)

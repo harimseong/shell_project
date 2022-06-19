@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:16:58 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 19:45:02 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/20 01:35:40 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	execute_command_string(int argc, char **argv, t_dlist *env_list)
 	pipeline_list = parser(line, env_list);
 	if (pipeline_list == NULL)
 		return (1);
-	if (DEBUG_FLAG)
-		dlist_print_forward(pipeline_list, pipeline_content_print);
 	read_pipeline(pipeline_list, env_list);
 	dlist_delete(pipeline_list, delete_pipeline_content);
 	builtin_exit(env_list, 0, NULL);

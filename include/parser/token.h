@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 18:41:21 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/20 01:27:34 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum e_token_type
 	TT_OR =				0x00200102,
 	TT_REDIRECT =		0x00200200,
 	TT_LESS =			0x00200201,
-	TT_DLESS =			0x00200002,
+	TT_DLESS =			0x00200202,
 	TT_GREAT =			0x00200204,
 	TT_DGREAT =			0x00200208,
 	TT_PIPE =			0x00200400,

@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 19:30:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/20 01:16:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		builtin_print_exit(t_dlist *env_list, int argc, char **argv);
 int		builtin_set_exit(t_dlist *env_list, int status, int argc, char **argv);
 
 int		status_handler(int status, t_dlist *new_env_list, int type);
+t_dlist	*get_env_list(t_dlist *new_env_list);
 
 // delete parsed data
 void	delete_pipeline_content(void *pipeline_arg);

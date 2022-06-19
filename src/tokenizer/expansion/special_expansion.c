@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 19:58:04 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/20 01:16:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 #include "constants.h"
 #include "parser/token_recognition.h"
 
-typedef int		(*t_expand_func)(t_iterator *, t_node *, int, t_dlist *);
+typedef int		(*t_expand_func)(t_iterator *, t_node *, int);
 
 int			expand_asterisk(t_iterator *iterator, t_node *expand_point,
-				int token_type, t_dlist *env_list);
+				int token_type);
 
 static int	expand_question(t_iterator *iterator, t_node *expand_point,
-				int token_type, t_dlist *env_list);
+				int token_type);
 static int	expand_tilde(t_iterator *iterator, t_node *expand_point,
-				int token_type, t_dlist *env_list);
+				int token_type);
 static int	expand_number(t_iterator *iterator, t_node *expand_point,
-				int token_type, t_dlist *env_list);
+				int token_type);
 
 static const
 	t_expand_func g_special_expansion_tab[128]
@@ -164,8 +164,7 @@ static const
 	/*127 del*/0
 };
 
-int	special_expansion(t_iterator *iterator, char target,
-		int token_type, t_dlist *env_list)
+int	special_expansion(t_iterator *iterator, char target, int token_type)
 {
 	t_node	*expand_point;
 	int		status;
@@ -174,20 +173,18 @@ int	special_expansion(t_iterator *iterator, char target,
 	if (check_token_type(token_type, TT_DOLLAR))
 		expand_point = expand_point->next;
 	status = g_special_expansion_tab[(int)target](iterator, expand_point,
-			token_type, env_list);
+			token_type);
 	minishell_assert(status == 0, __FILE__, __LINE__);
 	iterator->line->cur = iterator->line->cur->next;
 	erase_at(iterator->line, iterator->line->cur->prev, free);
 	return (0);
 }
 
-int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type,
-		t_dlist *env_list)
+int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type)
 {
 	char	*status_str;
 	size_t	idx;
 
-	(void)env_list;
 	(void)token_type;
 	status_str = ft_itoa(status_handler(0, NULL, SH_GET));
 	idx = 0;
@@ -201,14 +198,12 @@ int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type,
 	return (0);
 }
 
-int	expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type,
-		t_dlist *env_list)
+int	expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type)
 {
 	char	*home_dir;
 	size_t	idx;
 
-	(void)env_list;
-	home_dir = find_env_by_key(env_list, "HOME");
+	home_dir = find_env_by_key(get_env_list(NULL), "HOME");
 	if (check_token_type(token_type, TT_QUOTE_MASK) || home_dir == NULL)
 		return (0);
 	idx = 0;
@@ -220,11 +215,9 @@ int	expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type,
 	return (0);
 }
 
-int	expand_number(t_iterator *iterator, t_node *expand_point, int token_type,
-		t_dlist *env_list)
+int	expand_number(t_iterator *iterator, t_node *expand_point, int token_type)
 {
 	(void)token_type;
-	(void)env_list;
 	erase_at(iterator->line, expand_point->prev, free);
 	return (0);
 }

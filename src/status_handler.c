@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 21:05:10 by gson              #+#    #+#             */
-/*   Updated: 2022/06/19 19:48:31 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/20 01:18:22 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	status_handler(int status, t_dlist *new_env_list, int type)
 	static t_dlist	*env_list;
 
 	if (type == SH_START)
+	{
+		get_env_list(new_env_list);
 		env_list = new_env_list;
+	}
 	if (type == SH_SET)
 		set_question(env_list, status);
 	else if (type == SH_GET)
@@ -60,4 +63,13 @@ char	**find_question(t_dlist *envlist)
 int	get_question(t_dlist *envlist)
 {
 	return (ft_atoi(*find_question(envlist)));
+}
+
+t_dlist	*get_env_list(t_dlist *new_env_list)
+{
+	static t_dlist	*env_list;
+
+	if (new_env_list != NULL)
+		env_list = new_env_list;
+	return (env_list);
 }

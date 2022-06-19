@@ -1,0 +1,16 @@
+	TEST: cat
+[ minishell output ]
+minishell: syntax error near unexpected token `|'$
+
+[ bash output ]
+bash: -c: line 0: syntax error near unexpected token `|'$
+bash: -c: line 0: `cat asd|||'$
+
+[ diff ]
+1c1,2
+< minishell: syntax error near unexpected token `|'
+---
+> bash: -c: line 0: syntax error near unexpected token `|'
+> bash: -c: line 0: `cat asd|||'
+
+
