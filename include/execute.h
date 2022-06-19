@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:31:10 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 18:35:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:49:09 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 enum e_command
 {
 	CMD_NORMAL = 0,
-	CMD_HEREDOC = REDIR_HEREDOC 
+	CMD_HEREDOC = REDIR_HEREDOC
 };
 
 int		execve_wrapper(const char *filename, char **argv, char **envp,

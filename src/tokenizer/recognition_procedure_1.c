@@ -6,14 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 20:20:36 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:57:39 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 #include "constants.h"
-#include "parser/token.h"
 #include "parser/token_recognition.h"
 
 #include <stdio.h>

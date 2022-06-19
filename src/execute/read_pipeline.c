@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 22:45:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:38:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 		pipeline_type = pipeline->pipeline_type;
 		pipeline->result
 			= read_command_list(pipeline->command_list, env_list, pid_list);
-		set_question(env_list, pipeline->result);
+		status_handler(pipeline->result, NULL, SH_SET);
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
 		if (!pipeline_continue(pipeline_type))
@@ -120,7 +120,7 @@ int	pipeline_continue(int pipeline_type)
 {
 	int		status;
 
-	status = get_question(g_env_list);
+	status = status_handler(0, NULL, SH_GET);
 	if (pipeline_type == TT_OR && status == 0)
 		return (0);
 	else if (pipeline_type == TT_AND && status != 0)

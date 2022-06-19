@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/19 18:51:47 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:31:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,19 @@
 #include "cmd.h"
 
 extern t_dlist	*g_env_list;
+/*
+ * forked child have duplicate signals from parent.
+ * but execve sets those to differently.
+ * ignored signals are kept ignored,
+ * handled signals are set to default.
+ *
+ */
 
+/*
+ * SIGINT handler for child process before execve
+ */
 static void	handle_sigint_cmd(int signo)
 {
-//	set_question(g_env_list, 128 + signo);
 	if (signo == SIGINT)
 	{
 		printf("\n");
@@ -31,9 +40,14 @@ static void	handle_sigint_cmd(int signo)
 	}
 }
 
+/*
+ * SIGINT handler for shell while child processes are running
+ * Ctrl-C sets the status to 1.
+ * global variable is necessary here to access the status.
+ */
 static void	handle_sigint(int signo)
 {
-	set_question(g_env_list, 1);
+	status_handler(1, NULL, SH_SET);
 	if (signo == SIGINT)
 	{
 		rl_catch_signals = 0;

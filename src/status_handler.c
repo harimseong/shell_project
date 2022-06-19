@@ -1,23 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_question.c                                    :+:      :+:    :+:   */
+/*   status_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 21:05:10 by gson              #+#    #+#             */
-/*   Updated: 2022/06/15 18:00:46 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:48:31 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "cmd.h"
 
-void	set_question(t_dlist *envlist, int status)
-{
-	char	**value_ptr;
+static void	set_question(t_dlist *new_env_list, int status);
+static char	**find_question(t_dlist *envlist);
+static int	get_question(t_dlist *envlist);
 
-	value_ptr = find_question(envlist);
+/*
+ * assumes environment variable '?' is never unset.
+ */
+int	status_handler(int status, t_dlist *new_env_list, int type)
+{
+	static t_dlist	*env_list;
+
+	if (type == SH_START)
+		env_list = new_env_list;
+	if (type == SH_SET)
+		set_question(env_list, status);
+	else if (type == SH_GET)
+		return (get_question(env_list));
+	return (0);
+}
+
+void	set_question(t_dlist *env_list, int status)
+{
+	char			**value_ptr;
+
+	value_ptr = find_question(env_list);
 	free(*value_ptr);
 	*value_ptr = ft_itoa(status);
 }

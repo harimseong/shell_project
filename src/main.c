@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 16:32:02 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:45:57 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 #include "cmd.h"
 #include "parser/parser.h"
 
-int			minishell_initialize(int argc, char **argv, char **prompt);
+int			minishell_initialize(int argc, char **argv, t_dlist *env_list,
+				char **prompt);
 static void	prompt_info(t_dlist *env_list);
-
-t_dlist		*g_env_list;
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -33,8 +32,8 @@ int	main(int argc, char *argv[], char *envp[])
 	char			*prompt;
 
 	env_list = set_envlist(envp, dlist_init());
-	g_env_list = env_list;
-	if (minishell_initialize(argc, argv, &prompt))
+	status_handler(0, env_list, SH_START);
+	if (minishell_initialize(argc, argv, env_list, &prompt))
 		builtin_exit(env_list, 0, NULL);
 	while (prompt)
 	{
@@ -51,8 +50,7 @@ int	main(int argc, char *argv[], char *envp[])
 		dlist_delete(pipeline_list, delete_pipeline_content);
 		free(line);
 	}
-	builtin_set_exit(env_list, 1, 0, NULL);
-	return (0);
+	return (1);
 }
 //				inspection tools
 // opened fd:
@@ -101,6 +99,7 @@ int	minishell_assert(int is_true, const char *file, int line)
 
 void	prompt_info(t_dlist *env_list)
 {
+	(void)env_list;
 	if (DEBUG_FLAG)
-		printf("%-4.d|", get_question(env_list));
+		printf("%-4.d|", status_handler(0, NULL, SH_GET));
 }

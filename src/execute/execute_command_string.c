@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 22:16:58 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 16:32:18 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:45:02 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 
 static int	set_arg(int argc, char **argv);
 
-extern t_dlist	*g_env_list;
-
 // argc    0  1                2    3    4
 // minishell -c "command string" arg1 arg2 ...
-int	execute_command_string(int argc, char **argv)
+int	execute_command_string(int argc, char **argv, t_dlist *env_list)
 {
 	t_dlist		*pipeline_list;
 	char		*line;
@@ -32,17 +30,16 @@ int	execute_command_string(int argc, char **argv)
 	if (line == NULL)
 	{
 		minishell_errormsg(argv[1], "option requires an argument", NULL);
-		builtin_set_exit(g_env_list, 2, 0, NULL);
+		builtin_set_exit(env_list, 2, 0, NULL);
 	}
-	pipeline_list = parser(line, g_env_list);
+	pipeline_list = parser(line, env_list);
 	if (pipeline_list == NULL)
 		return (1);
-	
 	if (DEBUG_FLAG)
 		dlist_print_forward(pipeline_list, pipeline_content_print);
-	read_pipeline(pipeline_list, g_env_list);
+	read_pipeline(pipeline_list, env_list);
 	dlist_delete(pipeline_list, delete_pipeline_content);
-	builtin_exit(g_env_list, 0, NULL);
+	builtin_exit(env_list, 0, NULL);
 	return (0);
 }
 //	dlist_print_forward(pipeline_list, pipeline_content_print);

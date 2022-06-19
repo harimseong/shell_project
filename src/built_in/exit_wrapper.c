@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:54:44 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/15 02:54:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:35:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	builtin_print_exit(t_dlist *env_list, int argc, char **argv)
 
 int	builtin_set_exit(t_dlist *env_list, int status, int argc, char **argv)
 {
-	set_question(env_list, status);
+	status_handler(status, NULL, SH_SET);
 	builtin_exit(env_list, argc, argv);
 	return (0);
 }

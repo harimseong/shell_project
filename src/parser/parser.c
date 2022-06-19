@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 18:51:05 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:39:22 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 	token = token_handler(TH_PEEK, NULL);
 	if (check_token_type(token->type, TT_EMPTY))
 	{
-		set_question(g_env_list, 0);
+		status_handler(0, NULL, SH_SET);
 		delete_word_content(token);
 		token_handler(TH_END, NULL);
 		return (NULL);
@@ -70,7 +70,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	token_handler(TH_END, NULL);
 	if (!check_token_type(token->type, TT_EMPTY))
 	{
-		set_question(g_env_list, EXIT_STAT_PARSE_ERR);
+		status_handler(EXIT_STAT_PARSE_ERR, NULL, SH_SET);
 		parser_error(pipeline_list, token);
 		delete_word_content(token);
 		return (NULL);

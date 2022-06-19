@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 18:26:48 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/19 19:48:17 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,30 @@
 #define OPTION_LIST_LEN (1)
 
 static int	set_prompt(char **prompt);
-static int	check_arg(int argc, char **argv);
+static int	check_arg(int argc, char **argv, t_dlist *env_list);
 
-extern t_dlist		*g_env_list;
-
-int					execute_command_string(int argc, char **argv);
+int			execute_command_string(int argc, char **argv,
+				t_dlist *env_list);
 static const char	*g_default_prompt = " $> ";
 static const char	*g_option_list[]
 	= {
 	"-c"
 };
 
-int	minishell_initialize(int argc, char **argv, char **prompt)
+int	minishell_initialize(int argc, char **argv, t_dlist *env_list,
+		char **prompt)
 {
-	minishell_assert(dup2(STDIN_FILENO, MINISHELL_STDIN) 
+	minishell_assert(dup2(STDIN_FILENO, MINISHELL_STDIN)
 		&& dup2(STDOUT_FILENO, MINISHELL_STDOUT), __FILE__, __LINE__);
 	if (argc > 1)
-		return (check_arg(argc, argv));
+		return (check_arg(argc, argv, env_list));
 	handle_signals();
 	rl_catch_signals = 0;
 	set_prompt(prompt);
 	return (0);
 }
 
-int	check_arg(int argc, char **argv)
+int	check_arg(int argc, char **argv, t_dlist *env_list)
 {
 	size_t	idx;
 
@@ -55,7 +55,7 @@ int	check_arg(int argc, char **argv)
 	while (idx < OPTION_LIST_LEN)
 	{
 		if (ft_strncmp(argv[1], g_option_list[idx],
-			ft_strlen(g_option_list[idx]) + 1) == 0)
+				ft_strlen(g_option_list[idx]) + 1) == 0)
 			break ;
 		++idx;
 	}
@@ -65,10 +65,10 @@ int	check_arg(int argc, char **argv)
 			minishell_errormsg("invalid option", NULL, NULL);
 		else
 			minishell_errormsg("arguments not supported", NULL, NULL);
-		set_question(g_env_list, 1);
+		status_handler(2, NULL, SH_SET);
 		return (1);
 	}
-	execute_command_string(argc, argv);
+	execute_command_string(argc, argv, env_list);
 	return (1);
 }
 

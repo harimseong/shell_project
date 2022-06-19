@@ -9,6 +9,7 @@ RM		=	rm -f
 # parser source files
 SRC		=	main.c\
 			minishell_initialize.c\
+			status_handler.c\
 			delete_command_list.c\
 			execute/read_pipeline.c\
 			execute/generate_process.c\
@@ -46,7 +47,6 @@ SRC		=	main.c\
 			built_in/ft_split_first.c\
 			built_in/unset.c\
 			built_in/pwd.c\
-			built_in/find_question.c\
 			built_in/move_directory.c\
 			signal/handle_signal.c
 SRC_DIR	=	src
