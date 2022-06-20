@@ -140,6 +140,7 @@ ls || gccc -v || ls -a || echoo "$TERM"
 ls && gccc -v || ls -a && echoo "$TERM"
 ls || gccc -v && ls -a || echoo "$TERM"
 ls || gcc -v || lss -a || echoo "$TERM"
+ls || gcc -v && ls -a || echo "$TERM" || echo "USER" && echo "PATH" && echo "PWD" || cat Makefile | head -n 5
 ls *
 ls || (pwd && echo 123)
 ls || pwd && echo 123

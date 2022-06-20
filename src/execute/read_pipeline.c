@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 02:32:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 02:35:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int
 read_command_list(t_dlist *command_list, t_dlist *env_list, t_dlist *pid_list);
 static int
 wait_process(t_dlist *pid_list);
-static void 
+static void
 pipeline_logic_op(int pipeline_type, int *status);
 static int
 check_builtin(t_dlist *word_list);

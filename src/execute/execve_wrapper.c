@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:15:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 00:21:05 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 02:35:14 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <unistd.h>
 #include <string.h>
 #include "libft.h"
-# include <stdio.h>
 
 #include "minishell.h"
 #include "constants.h"
@@ -30,27 +29,26 @@ enum e_execve_status
 	ES_PERM = 126,
 	ES_EACCES = 126,
 	ES_ENOENT = 127
-	
 };
 
 static const int	g_status_tab[128]
 	= {
 	0, ES_PERM, ES_ENOENT, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, ES_EACCES, 0, 0,/* 15*/
+	0, 0, 0, 0, 0, ES_EACCES, 0, 0, /* 15*/
 	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,/* 31*/
+	0, 0, 0, 0, 0, 0, 0, 0, /* 31*/
 	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,/* 47*/
+	0, 0, 0, 0, 0, 0, 0, 0, /* 47*/
 	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,/* 63*/
+	0, 0, 0, 0, 0, 0, 0, 0, /* 63*/
 	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,/* 79*/
+	0, 0, 0, 0, 0, 0, 0, 0, /* 79*/
 	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,/* 95*/
+	0, 0, 0, 0, 0, 0, 0, 0, /* 95*/
 	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,/*111*/
+	0, 0, 0, 0, 0, 0, 0, 0, /*111*/
 	0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0,/*127*/
+	0, 0, 0, 0, 0, 0, 0, 0, /*127*/
 };
 
 // access to directory leads to Permission denied error (EACCES)
@@ -100,7 +98,7 @@ int	print_error_execve(int errno_var, const char *filename)
 		minishell_errormsg(filename, "command not found", NULL);
 	else if ((07770000 & st_mode) == S_IFDIR)
 		minishell_errormsg(filename, "is a directory", NULL);
-	else 
+	else
 		minishell_errormsg(filename, strerror(errno_var), NULL);
 	return (1);
 }
