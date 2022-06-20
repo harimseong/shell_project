@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 19:38:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 02:32:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int
 read_command_list(t_dlist *command_list, t_dlist *env_list, t_dlist *pid_list);
 static int
 wait_process(t_dlist *pid_list);
-static int
-pipeline_continue(int pipeline_type);
+static void 
+pipeline_logic_op(int pipeline_type, int *status);
 static int
 check_builtin(t_dlist *word_list);
 
@@ -45,19 +45,24 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 	t_pipeline	*pipeline;
 	t_dlist		*pid_list;
 	int			pipeline_type;
+	int			status;
 
 	pid_list = dlist_init();
 	pipeline = get_front(pipeline_list);
+	status_handler(0, NULL, SH_SET);
+	status = 0;
 	while (pipeline != NULL)
 	{
-		pipeline_type = pipeline->pipeline_type;
-		pipeline->result
-			= read_command_list(pipeline->command_list, env_list, pid_list);
-		status_handler(pipeline->result, NULL, SH_SET);
+		if (status != 0)
+		{
+			pipeline->result
+				= read_command_list(pipeline->command_list, env_list, pid_list);
+			status_handler(pipeline->result, NULL, SH_SET);
+		}
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
-		if (!pipeline_continue(pipeline_type))
-			break ;
+		pipeline_logic_op(pipeline_type, &status);
+		pipeline_type = pipeline->pipeline_type;
 	}
 	dlist_delete(pid_list, free);
 }
@@ -116,16 +121,15 @@ int	wait_process(t_dlist *pid_list)
 		+ WIFSIGNALED(status) * (WTERMSIG(status) | 128));
 }
 
-int	pipeline_continue(int pipeline_type)
+void	pipeline_logic_op(int pipeline_type, int *status)
 {
-	int		status;
+	int		last_status;
 
-	status = status_handler(0, NULL, SH_GET);
-	if (pipeline_type == TT_OR && status == 0)
-		return (0);
-	else if (pipeline_type == TT_AND && status != 0)
-		return (0);
-	return (1);
+	last_status = status_handler(0, NULL, SH_GET);
+	if (pipeline_type == TT_OR)
+		*status = last_status == 0;
+	else if (pipeline_type == TT_AND)
+		*status = last_status != 0;
 }
 
 int	check_builtin(t_dlist *word_list)
