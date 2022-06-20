@@ -10,7 +10,9 @@ int	main(int argc, char *argv[], char *envp[])
 	(void)argc;
 	(void)argv;
 	str = calloc(1, 10);
-	str[0] = 0;
+	str[0] = '.';
+	str[1] = '.';
+	str[2] = 0;
 	execve(str, &str, envp);
 	perror(NULL);
 	return (0);

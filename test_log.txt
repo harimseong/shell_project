@@ -1,4 +1,317 @@
-	TEST: cat
+	TEST: echo 123
+
+[[0;32mOK[0m] [0;33m"[0mecho 123[0;33m"[0m
+
+[ minishell output ]
+123$
+
+[ bash output ]
+123$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo 
+
+[[0;32mOK[0m] [0;33m"[0mecho [0;33m"[0m
+
+[ minishell output ]
+$
+
+[ bash output ]
+$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo "$USER"
+
+[[0;32mOK[0m] [0;33m"[0mecho "$USER"[0;33m"[0m
+
+[ minishell output ]
+hseong$
+
+[ bash output ]
+hseong$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo '$USER'
+
+[[0;32mOK[0m] [0;33m"[0mecho '$USER'[0;33m"[0m
+
+[ minishell output ]
+$USER$
+
+[ bash output ]
+$USER$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo $USER>out1|ls -a&&cat -e<out1
+
+[[0;32mOK[0m] [0;33m"[0mecho $USER>out1|ls -a&&cat -e<out1[0;33m"[0m
+
+[ minishell output ]
+.$
+..$
+.DS_Store$
+.cache$
+.git$
+.gitignore$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+hseong$$
+
+[ bash output ]
+.$
+..$
+.DS_Store$
+.cache$
+.git$
+.gitignore$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+hseong$$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo """$?"""
+
+[[0;32mOK[0m] [0;33m"[0mecho """$?"""[0;33m"[0m
+
+[ minishell output ]
+0$
+
+[ bash output ]
+0$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cd src
+
+[[0;32mOK[0m] [0;33m"[0mcd src[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: pwd
+
+[[0;32mOK[0m] [0;33m"[0mpwd[0;33m"[0m
+
+[ minishell output ]
+/Users/hseong/minishell$
+
+[ bash output ]
+/Users/hseong/minishell$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cd ..
+
+[[0;32mOK[0m] [0;33m"[0mcd ..[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: pwd
+
+[[0;32mOK[0m] [0;33m"[0mpwd[0;33m"[0m
+
+[ minishell output ]
+/Users/hseong/minishell$
+
+[ bash output ]
+/Users/hseong/minishell$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: /bin/ls -a
+
+[[0;32mOK[0m] [0;33m"[0m/bin/ls -a[0;33m"[0m
+
+[ minishell output ]
+.$
+..$
+.DS_Store$
+.cache$
+.git$
+.gitignore$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ bash output ]
+.$
+..$
+.DS_Store$
+.cache$
+.git$
+.gitignore$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cat asd
+
+[[0;32mOK[0m] [0;33m"[0mcat asd[0;33m"[0m
+
+[ minishell output ]
+cat: asd: No such file or directory$
+
+[ bash output ]
+cat: asd: No such file or directory$
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cat asd|||
+
+[[0;31mKO[0m] [0;33m"[0mcat asd|||[0;33m"[0m    <- error message has "bash"
+
 [ minishell output ]
 minishell: syntax error near unexpected token `|'$
 
@@ -12,5 +325,1051 @@ bash: -c: line 0: `cat asd|||'$
 ---
 > bash: -c: line 0: syntax error near unexpected token `|'
 > bash: -c: line 0: `cat asd|||'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: cat asd || ls
+
+[[0;32mOK[0m] [0;33m"[0mcat asd || ls[0;33m"[0m
+
+[ minishell output ]
+cat: asd: No such file or directory$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ bash output ]
+cat: asd: No such file or directory$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cat asd && ls
+
+[[0;32mOK[0m] [0;33m"[0mcat asd && ls[0;33m"[0m
+
+[ minishell output ]
+cat: asd: No such file or directory$
+
+[ bash output ]
+cat: asd: No such file or directory$
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: echo *
+
+[[0;32mOK[0m] [0;33m"[0mecho *[0;33m"[0m
+
+[ minishell output ]
+Makefile README.md RELEASE.flag a.out compile_commands.json doubly_linked_list include libdlinkedlist.a libft libft.a minishell note out1 src test_case.txt test_log.txt test_scripts.sh testdir token_grammar.txt$
+
+[ bash output ]
+Makefile README.md RELEASE.flag a.out compile_commands.json doubly_linked_list include libdlinkedlist.a libft libft.a minishell note out1 src test_case.txt test_log.txt test_scripts.sh testdir token_grammar.txt$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: ls | cat -e && gcc -v || ls -a
+
+[[0;32mOK[0m] [0;33m"[0mls | cat -e && gcc -v || ls -a[0;33m"[0m
+
+[ minishell output ]
+Makefile$$
+README.md$$
+RELEASE.flag$$
+a.out$$
+compile_commands.json$$
+doubly_linked_list$$
+include$$
+libdlinkedlist.a$$
+libft$$
+libft.a$$
+minishell$$
+note$$
+out1$$
+src$$
+test_case.txt$$
+test_log.txt$$
+test_scripts.sh$$
+testdir$$
+token_grammar.txt$$
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1$
+Apple clang version 12.0.0 (clang-1200.0.32.28)$
+Target: x86_64-apple-darwin19.6.0$
+Thread model: posix$
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin$
+
+[ bash output ]
+Makefile$$
+README.md$$
+RELEASE.flag$$
+a.out$$
+compile_commands.json$$
+doubly_linked_list$$
+include$$
+libdlinkedlist.a$$
+libft$$
+libft.a$$
+minishell$$
+note$$
+out1$$
+src$$
+test_case.txt$$
+test_log.txt$$
+test_scripts.sh$$
+testdir$$
+token_grammar.txt$$
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1$
+Apple clang version 12.0.0 (clang-1200.0.32.28)$
+Target: x86_64-apple-darwin19.6.0$
+Thread model: posix$
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: ls | cat -e && gcc -v && ls -a
+
+[[0;32mOK[0m] [0;33m"[0mls | cat -e && gcc -v && ls -a[0;33m"[0m
+
+[ minishell output ]
+Makefile$$
+README.md$$
+RELEASE.flag$$
+a.out$$
+compile_commands.json$$
+doubly_linked_list$$
+include$$
+libdlinkedlist.a$$
+libft$$
+libft.a$$
+minishell$$
+note$$
+out1$$
+src$$
+test_case.txt$$
+test_log.txt$$
+test_scripts.sh$$
+testdir$$
+token_grammar.txt$$
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1$
+Apple clang version 12.0.0 (clang-1200.0.32.28)$
+Target: x86_64-apple-darwin19.6.0$
+Thread model: posix$
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin$
+.$
+..$
+.DS_Store$
+.cache$
+.git$
+.gitignore$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ bash output ]
+Makefile$$
+README.md$$
+RELEASE.flag$$
+a.out$$
+compile_commands.json$$
+doubly_linked_list$$
+include$$
+libdlinkedlist.a$$
+libft$$
+libft.a$$
+minishell$$
+note$$
+out1$$
+src$$
+test_case.txt$$
+test_log.txt$$
+test_scripts.sh$$
+testdir$$
+token_grammar.txt$$
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/4.2.1$
+Apple clang version 12.0.0 (clang-1200.0.32.28)$
+Target: x86_64-apple-darwin19.6.0$
+Thread model: posix$
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin$
+.$
+..$
+.DS_Store$
+.cache$
+.git$
+.gitignore$
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: ls *
+
+[[0;32mOK[0m] [0;33m"[0mls *[0;33m"[0m
+
+[ minishell output ]
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+libdlinkedlist.a$
+libft.a$
+minishell$
+note$
+out1$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+token_grammar.txt$
+$
+doubly_linked_list:$
+Makefile$
+dlinkedlist.h$
+dlinkedlist_cur.c$
+dlinkedlist_cur.o$
+dlinkedlist_delete.c$
+dlinkedlist_delete.o$
+dlinkedlist_dup.c$
+dlinkedlist_dup.o$
+dlinkedlist_mergesort.c$
+dlinkedlist_mergesort.o$
+dlinkedlist_new.c$
+dlinkedlist_new.o$
+dlinkedlist_peek.c$
+dlinkedlist_peek.o$
+dlinkedlist_transfer.c$
+dlinkedlist_transfer.o$
+dlinkedlist_util.c$
+dlinkedlist_util.o$
+libdlinkedlist.a$
+libft_utils.c$
+libft_utils.o$
+$
+include:$
+cmd.h$
+constants.h$
+dlinkedlist.h$
+execute.h$
+libft.h$
+minishell.h$
+parser$
+$
+libft:$
+Makefile$
+ft_abs.c$
+ft_abs.o$
+ft_atoi.c$
+ft_atoi.o$
+ft_atoi_ptr.c$
+ft_atoi_ptr.o$
+ft_bzero.c$
+ft_bzero.o$
+ft_calloc.c$
+ft_calloc.o$
+ft_execvpe.c$
+ft_execvpe.o$
+ft_htoi.c$
+ft_htoi.o$
+ft_isalnum.c$
+ft_isalnum.o$
+ft_isalpha.c$
+ft_isalpha.o$
+ft_isascii.c$
+ft_isascii.o$
+ft_isdigit.c$
+ft_isdigit.o$
+ft_ishex.c$
+ft_ishex.o$
+ft_isprint.c$
+ft_isprint.o$
+ft_isspace.c$
+ft_isspace.o$
+ft_itoa.c$
+ft_itoa.o$
+ft_lstadd_back.c$
+ft_lstadd_front.c$
+ft_lstclear.c$
+ft_lstdelone.c$
+ft_lstiter.c$
+ft_lstlast.c$
+ft_lstmap.c$
+ft_lstnew.c$
+ft_lstsize.c$
+ft_max.c$
+ft_max.o$
+ft_memchr.c$
+ft_memchr.o$
+ft_memcmp.c$
+ft_memcmp.o$
+ft_memcpy.c$
+ft_memcpy.o$
+ft_memmove.c$
+ft_memmove.o$
+ft_memset.c$
+ft_memset.o$
+ft_print_memory.c$
+ft_print_memory.o$
+ft_putchar_fd.c$
+ft_putchar_fd.o$
+ft_putendl_fd.c$
+ft_putendl_fd.o$
+ft_putnbr_fd.c$
+ft_putnbr_fd.o$
+ft_putstr_fd.c$
+ft_putstr_fd.o$
+ft_split.c$
+ft_split.o$
+ft_strchr.c$
+ft_strchr.o$
+ft_strcmp.c$
+ft_strcmp.o$
+ft_strdup.c$
+ft_strdup.o$
+ft_striteri.c$
+ft_striteri.o$
+ft_strjoin.c$
+ft_strjoin.o$
+ft_strlcat.c$
+ft_strlcat.o$
+ft_strlcpy.c$
+ft_strlcpy.o$
+ft_strlen.c$
+ft_strlen.o$
+ft_strmapi.c$
+ft_strmapi.o$
+ft_strncmp.c$
+ft_strncmp.o$
+ft_strndup.c$
+ft_strndup.o$
+ft_strnstr.c$
+ft_strnstr.o$
+ft_strrchr.c$
+ft_strrchr.o$
+ft_strtrim.c$
+ft_strtrim.o$
+ft_substr.c$
+ft_substr.o$
+ft_swap.c$
+ft_swap.o$
+ft_tolower.c$
+ft_tolower.o$
+ft_toupper.c$
+ft_toupper.o$
+libft.a$
+libft.h$
+$
+src:$
+built_in$
+delete_command_list.c$
+delete_command_list.o$
+execute$
+main.c$
+main.o$
+minishell_initialize.c$
+minishell_initialize.o$
+parser$
+signal$
+status_handler.c$
+status_handler.o$
+tokenizer$
+$
+testdir:$
+bash_out_test.txt$
+child_process_debug.c$
+cmd.h$
+dlist_find_test.c$
+exceptional_cases.txt$
+execve_test.c$
+exit_test.c$
+infinite_loop$
+infinite_loop.c$
+max_pipe_test.sh$
+mktmpfd_test.c$
+pgid_test.c$
+pipe_test.c$
+psout$
+psout2$
+readline_header_test.c$
+script_test.sh$
+script_test2.sh$
+stdin_close_test.c$
+waitpid_wuntraced_test.c$
+write_end_test.c$
+
+[ bash output ]
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+libdlinkedlist.a$
+libft.a$
+minishell$
+note$
+out1$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+token_grammar.txt$
+$
+doubly_linked_list:$
+Makefile$
+dlinkedlist.h$
+dlinkedlist_cur.c$
+dlinkedlist_cur.o$
+dlinkedlist_delete.c$
+dlinkedlist_delete.o$
+dlinkedlist_dup.c$
+dlinkedlist_dup.o$
+dlinkedlist_mergesort.c$
+dlinkedlist_mergesort.o$
+dlinkedlist_new.c$
+dlinkedlist_new.o$
+dlinkedlist_peek.c$
+dlinkedlist_peek.o$
+dlinkedlist_transfer.c$
+dlinkedlist_transfer.o$
+dlinkedlist_util.c$
+dlinkedlist_util.o$
+libdlinkedlist.a$
+libft_utils.c$
+libft_utils.o$
+$
+include:$
+cmd.h$
+constants.h$
+dlinkedlist.h$
+execute.h$
+libft.h$
+minishell.h$
+parser$
+$
+libft:$
+Makefile$
+ft_abs.c$
+ft_abs.o$
+ft_atoi.c$
+ft_atoi.o$
+ft_atoi_ptr.c$
+ft_atoi_ptr.o$
+ft_bzero.c$
+ft_bzero.o$
+ft_calloc.c$
+ft_calloc.o$
+ft_execvpe.c$
+ft_execvpe.o$
+ft_htoi.c$
+ft_htoi.o$
+ft_isalnum.c$
+ft_isalnum.o$
+ft_isalpha.c$
+ft_isalpha.o$
+ft_isascii.c$
+ft_isascii.o$
+ft_isdigit.c$
+ft_isdigit.o$
+ft_ishex.c$
+ft_ishex.o$
+ft_isprint.c$
+ft_isprint.o$
+ft_isspace.c$
+ft_isspace.o$
+ft_itoa.c$
+ft_itoa.o$
+ft_lstadd_back.c$
+ft_lstadd_front.c$
+ft_lstclear.c$
+ft_lstdelone.c$
+ft_lstiter.c$
+ft_lstlast.c$
+ft_lstmap.c$
+ft_lstnew.c$
+ft_lstsize.c$
+ft_max.c$
+ft_max.o$
+ft_memchr.c$
+ft_memchr.o$
+ft_memcmp.c$
+ft_memcmp.o$
+ft_memcpy.c$
+ft_memcpy.o$
+ft_memmove.c$
+ft_memmove.o$
+ft_memset.c$
+ft_memset.o$
+ft_print_memory.c$
+ft_print_memory.o$
+ft_putchar_fd.c$
+ft_putchar_fd.o$
+ft_putendl_fd.c$
+ft_putendl_fd.o$
+ft_putnbr_fd.c$
+ft_putnbr_fd.o$
+ft_putstr_fd.c$
+ft_putstr_fd.o$
+ft_split.c$
+ft_split.o$
+ft_strchr.c$
+ft_strchr.o$
+ft_strcmp.c$
+ft_strcmp.o$
+ft_strdup.c$
+ft_strdup.o$
+ft_striteri.c$
+ft_striteri.o$
+ft_strjoin.c$
+ft_strjoin.o$
+ft_strlcat.c$
+ft_strlcat.o$
+ft_strlcpy.c$
+ft_strlcpy.o$
+ft_strlen.c$
+ft_strlen.o$
+ft_strmapi.c$
+ft_strmapi.o$
+ft_strncmp.c$
+ft_strncmp.o$
+ft_strndup.c$
+ft_strndup.o$
+ft_strnstr.c$
+ft_strnstr.o$
+ft_strrchr.c$
+ft_strrchr.o$
+ft_strtrim.c$
+ft_strtrim.o$
+ft_substr.c$
+ft_substr.o$
+ft_swap.c$
+ft_swap.o$
+ft_tolower.c$
+ft_tolower.o$
+ft_toupper.c$
+ft_toupper.o$
+libft.a$
+libft.h$
+$
+src:$
+built_in$
+delete_command_list.c$
+delete_command_list.o$
+execute$
+main.c$
+main.o$
+minishell_initialize.c$
+minishell_initialize.o$
+parser$
+signal$
+status_handler.c$
+status_handler.o$
+tokenizer$
+$
+testdir:$
+bash_out_test.txt$
+child_process_debug.c$
+cmd.h$
+dlist_find_test.c$
+exceptional_cases.txt$
+execve_test.c$
+exit_test.c$
+infinite_loop$
+infinite_loop.c$
+max_pipe_test.sh$
+mktmpfd_test.c$
+pgid_test.c$
+pipe_test.c$
+psout$
+psout2$
+readline_header_test.c$
+script_test.sh$
+script_test2.sh$
+stdin_close_test.c$
+waitpid_wuntraced_test.c$
+write_end_test.c$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: exit -1
+
+[[0;32mOK[0m] [0;33m"[0mexit -1[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 255
+bash exit status = 255
+
+
+
+
+	TEST: exit 257
+
+[[0;32mOK[0m] [0;33m"[0mexit 257[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: exit 42
+
+[[0;32mOK[0m] [0;33m"[0mexit 42[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 42
+bash exit status = 42
+
+
+
+
+	TEST: exit 12345678901234567890
+
+[[0;31mKO[0m] [0;33m"[0mexit 12345678901234567890[0;33m"[0m    <- error message has "bash"
+
+[ minishell output ]
+minishell: exit: `12345678901234567890': numeric argument required$
+
+[ bash output ]
+bash: line 0: exit: 12345678901234567890: numeric argument required$
+
+[ diff ]
+1c1
+< minishell: exit: `12345678901234567890': numeric argument required
+---
+> bash: line 0: exit: 12345678901234567890: numeric argument required
+
+minishell exit status = 255
+bash exit status = 255
+
+
+
+
+	TEST:   
+
+[[0;32mOK[0m] [0;33m"[0m  [0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST:           
+
+[[0;32mOK[0m] [0;33m"[0m          [0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: 	
+
+[[0;32mOK[0m] [0;33m"[0m	[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: 					
+
+[[0;32mOK[0m] [0;33m"[0m					[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: asd
+
+[[0;31mKO[0m] [0;33m"[0masd[0;33m"[0m    <- error message has "bash"
+
+[ minishell output ]
+minishell: asd: command not found$
+
+[ bash output ]
+bash: asd: command not found$
+
+[ diff ]
+1c1
+< minishell: asd: command not found
+---
+> bash: asd: command not found
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: src
+
+[[0;31mKO[0m] [0;33m"[0msrc[0;33m"[0m    <- error message has "bash"
+
+[ minishell output ]
+minishell: src: command not found$
+
+[ bash output ]
+bash: src: command not found$
+
+[ diff ]
+1c1
+< minishell: src: command not found
+---
+> bash: src: command not found
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: /src
+
+[[0;31mKO[0m] [0;33m"[0m/src[0;33m"[0m    <- error message has "bash"
+
+[ minishell output ]
+minishell: No such file or directory$
+
+[ bash output ]
+bash: /src: No such file or directory$
+
+[ diff ]
+1c1
+< minishell: No such file or directory
+---
+> bash: /src: No such file or directory
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ..
+
+[[0;31mKO[0m] [0;33m"[0m..[0;33m"[0m    <- error message has "bash"
+
+[ minishell output ]
+minishell: ..: command not found$
+
+[ bash output ]
+bash: ..: command not found$
+
+[ diff ]
+1c1
+< minishell: ..: command not found
+---
+> bash: ..: command not found
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: .
+
+[[0;31mKO[0m] [0;33m"[0m.[0;33m"[0m
+
+[ minishell output ]
+minishell: .: command not found$
+
+[ bash output ]
+bash: line 0: .: filename argument required$
+.: usage: . filename [arguments]$
+
+[ diff ]
+1c1,2
+< minishell: .: command not found
+---
+> bash: line 0: .: filename argument required
+> .: usage: . filename [arguments]
+
+minishell exit status = 127
+bash exit status = 2
+
+
+
+
+	TEST: /bin/bin/bin
+
+[[0;31mKO[0m] [0;33m"[0m/bin/bin/bin[0;33m"[0m    <- error message has "bash"
+
+[ minishell output ]
+minishell: No such file or directory$
+
+[ bash output ]
+bash: /bin/bin/bin: No such file or directory$
+
+[ diff ]
+1c1
+< minishell: No such file or directory
+---
+> bash: /bin/bin/bin: No such file or directory
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ls || (pwd && echo 123)
+
+[[0;32mOK[0m] [0;33m"[0mls || (pwd && echo 123)[0;33m"[0m
+
+[ minishell output ]
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ bash output ]
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: ls || pwd && echo 123
+
+[[0;31mKO[0m] [0;33m"[0mls || pwd && echo 123[0;33m"[0m
+
+[ minishell output ]
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+
+[ bash output ]
+Makefile$
+README.md$
+RELEASE.flag$
+a.out$
+compile_commands.json$
+doubly_linked_list$
+include$
+libdlinkedlist.a$
+libft$
+libft.a$
+minishell$
+note$
+out1$
+src$
+test_case.txt$
+test_log.txt$
+test_scripts.sh$
+testdir$
+token_grammar.txt$
+123$
+
+[ diff ]
+19a20
+> 123
+
+minishell exit status = 0
+bash exit status = 0
+
+
 
 
