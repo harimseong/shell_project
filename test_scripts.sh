@@ -17,6 +17,23 @@ exit_log()
 	echo "\n\n\n" >> test_log.txt
 }
 
+# $DIFF
+remove_prefix()
+{
+	if echo $1 | grep "bash:" >/dev/null;
+	then
+		cp testdir/.result1 testdir/.temp1;
+		cp testdir/.result2 testdir/.temp2;
+		cat <testdir/.temp1 | sed 's/minishell: //' >testdir/.result1;
+		cat <testdir/.temp2 | sed 's/bash: //' >testdir/.result2;
+	fi
+	if echo $1 | grep "line 0:" >/dev/null;
+	then
+		cp testdir/.result2 testdir/.temp2
+		cat <testdir/.temp2 | sed 's/line 0: //' >testdir/.result2
+	fi
+}
+
 # $CMD  
 test_func()
 {
@@ -26,17 +43,11 @@ test_func()
 	bash -c "$1" 2>> testdir/.result2 >>testdir/.result2 < /dev/null
 	EXIT2=$?
 	DIFF=$(diff testdir/.result1 testdir/.result2 | cat -e)
-	if echo $DIFF | grep "bash:" >/dev/null
-	then
-		cp testdir/.result1 testdir/.temp1
-		cp testdir/.result2 testdir/.temp2
-		cat -e <testdir/.temp1| sed 's/minishell: //' >testdir/.result1
-		cat -e <testdir/.temp2 | sed 's/bash: //' >testdir/.result2
-	fi
+	remove_prefix "$DIFF"
 	DIFF=$(diff testdir/.result1 testdir/.result2)
 	if [ $EXIT1 != $EXIT2 ] || [ "$DIFF" != "" ]
 	then
-		if echo "$DIFF" | grep "line 0: " >/dev/null
+		if echo "$DIFF" | grep ' -c:' >/dev/null
 		then
 			MSG="[$YELLOW_QQ] $CMD"
 		else

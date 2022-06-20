@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 20:31:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 00:23:57 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 	{
 		handle_signals_cmd_child();
 		status = set_redirect(command->redirect_list);
-		minishell_assert(status == 0, __FILE__, __LINE__);
 		if (status == 0 && command->word_list->size > 0)
 			execute_command(command->word_list, env_list);
 		builtin_set_exit(env_list, status, 0, NULL);
@@ -62,15 +61,17 @@ int	set_redirect(t_dlist *redirect_list)
 {
 	t_node		*node;
 	t_redirect	*redirect;
+	int			status;
 
 	node = redirect_list->head;
-	while (node != NULL)
+	status = 0;
+	while (status == 0 && node != NULL)
 	{
 		redirect = node->content;
-		g_redirect_func_tab[redirect->redir_type](redirect);
+		status = g_redirect_func_tab[redirect->redir_type](redirect);
 		node = node->next;
 	}
-	return (0);
+	return (status);
 }
 
 int	fork_and_pipe(int *recent_read_end, int *pipe_fd, int pipe_exist)

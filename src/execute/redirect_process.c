@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:48:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:01:34 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 00:26:10 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	redirect_in(t_redirect *redirect)
 
 	fd = open(redirect->filename, O_RDONLY);
 	if (fd < 0 || dup2(fd, STDIN_FILENO) < 0)
+	{
+		minishell_errormsg(redirect->filename, strerror(errno), NULL);
 		return (1);
+	}
 	redirect->descriptor = fd;
 	redirect->redir_type = REDIR_PROCESSED;
 	return (0);
@@ -45,7 +48,10 @@ int	redirect_out(t_redirect *redirect)
 
 	fd = open(redirect->filename, O_RDWR | O_CREAT | O_TRUNC, 0664);
 	if (fd < 0 || dup2(fd, STDOUT_FILENO) < 0)
+	{
+		minishell_errormsg(redirect->filename, strerror(errno), NULL);
 		return (1);
+	}
 	redirect->descriptor = fd;
 	redirect->redir_type = REDIR_PROCESSED;
 	return (0);
@@ -57,7 +63,10 @@ int	redirect_append(t_redirect *redirect)
 
 	fd = open(redirect->filename, O_RDWR | O_CREAT | O_APPEND, 0664);
 	if (fd < 0 || dup2(fd, STDOUT_FILENO) < 0)
+	{
+		minishell_errormsg(redirect->filename, strerror(errno), NULL);
 		return (1);
+	}
 	redirect->descriptor = fd;
 	redirect->redir_type = REDIR_PROCESSED;
 	return (0);
@@ -71,7 +80,7 @@ int	redirect_heredoc(t_redirect *redirect)
 	int		temp_out;
 
 	if (pipe(pipe_fd) < 0)
-		return (1);
+		return (minishell_assert(1, __FILE__, __LINE__));
 	temp_out = dup(STDOUT_FILENO);
 	dup2(MINISHELL_STDIN, STDIN_FILENO);
 	dup2(MINISHELL_STDOUT, STDOUT_FILENO);
