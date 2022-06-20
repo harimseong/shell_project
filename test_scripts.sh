@@ -4,10 +4,10 @@ exit_log()
 	echo "	TEST: $3\n" >> test_log.txt
 	echo "$4\n" >> test_log.txt
 	echo "[ minishell output ]" >> test_log.txt
-	cat -e testdir/.result1 >> test_log.txt
+	cat testdir/.result1 >> test_log.txt
 	echo "" >> test_log.txt
 	echo "[ bash output ]" >> test_log.txt
-	cat -e testdir/.result2 >> test_log.txt
+	cat testdir/.result2 >> test_log.txt
 	echo "" >> test_log.txt
 	echo "[ diff ]" >> test_log.txt
 	diff testdir/.result1 testdir/.result2 >> test_log.txt
@@ -26,25 +26,32 @@ test_func()
 	bash -c "$1" 2>> testdir/.result2 >>testdir/.result2 < /dev/null
 	EXIT2=$?
 	DIFF=$(diff testdir/.result1 testdir/.result2 | cat -e)
-	if [ $EXIT1 != $EXIT2 ]
+	if echo $DIFF | grep "bash:" >/dev/null
 	then
-		MSG="[$RED_KO] $CMD"
-		STATUS=1
-	elif [ "$DIFF" != "" ]
-	then
-		MSG="[$RED_KO] $CMD"
-		STATUS=1
-		if echo "$DIFF" | grep "bash" > /dev/null
-		then
-			MSG="$MSG    <- error message has \"bash\""
-		fi
-	else
-		STATUS=0
-		MSG="[$GREEN_OK] $CMD"
+		cp testdir/.result1 testdir/.temp1
+		cp testdir/.result2 testdir/.temp2
+		cat -e <testdir/.temp1| sed 's/minishell: //' >testdir/.result1
+		cat -e <testdir/.temp2 | sed 's/bash: //' >testdir/.result2
 	fi
-	echo "$MSG"
+	DIFF=$(diff testdir/.result1 testdir/.result2)
+	if [ $EXIT1 != $EXIT2 ] || [ "$DIFF" != "" ]
+	then
+		if echo "$DIFF" | grep "line 0: " >/dev/null
+		then
+			MSG="[$YELLOW_QQ] $CMD"
+		else
+			MSG="[$RED_KO] $CMD"
+		fi
+		STATUS=1
+	else
+		MSG="[$GREEN_OK] $CMD"
+		STATUS=0
+	fi
+	MSG=$(printf "#%-3d $MSG\n" $TEST_NUMBER)
+	echo $MSG
 	exit_log $EXIT1 $EXIT2 $1 $MSG
 	rm testdir/.result1 testdir/.result2
+	TEST_NUMBER=$((TEST_NUMBER + 1))
 	return $STATUS
 }
 
@@ -69,11 +76,10 @@ test_start()
 	done
 	if [ "$STATUS" != "0" ]
 	then
-		echo "if you want to look at test log, type\ncat test_log.txt | less"
+		echo "\n\tif you want to look at test log, type\n\tcat test_log.txt | less"
 	fi
 }
 
-rm -f test_log.txt
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
 COLOR_YELLOW='\033[0;33m'
@@ -82,9 +88,22 @@ COLOR_END='\033[0m'
 RED_KO="${COLOR_RED}KO${COLOR_END}"
 GREEN_OK="${COLOR_GREEN}OK${COLOR_END}"
 YELLOW_QUOTE="${COLOR_YELLOW}\"${COLOR_END}"
+YELLOW_QQ="${COLOR_YELLOW}??${COLOR_END}"
 
 NEWLINE='
 '
-echo "Use this shell script at the root directory of minishell(where compiled executable created)"
-
+TEST_NUMBER=0
+stat testdir > /dev/null
+if [ $? -ne 0 ]
+then
+	echo "creating test directory"
+	mkdir testdir
+	if [ $? -ne 0 ]
+	then
+		echo "temporary directory creation failed"
+		return 1
+	fi
+fi
+rm -f test_log.txt
 ./minishell -c "pwd" > /dev/null && test_start $1 || echo "minishell executable is not found or wrong."
+rm -f testdir/.temp1 testdir/.temp2

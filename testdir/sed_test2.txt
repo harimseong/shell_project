@@ -1,0 +1,4 @@
+minishell: abc: 123
+: 111: 222
+minishell: def: 456
+424242

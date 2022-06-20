@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:15:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/20 21:57:19 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 00:02:25 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "libft.h"
+# include <stdio.h>
 
 #include "minishell.h"
 #include "constants.h"
@@ -35,7 +36,7 @@ enum e_execve_status
 static const int	g_status_tab[128]
 	= {
 	0, ES_PERM, ES_ENOENT, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, ES_EACCES, 0, 0, 0,/* 15*/
+	0, 0, 0, 0, 0, ES_EACCES, 0, 0,/* 15*/
 	0, 0, 0, 0, 0, 0, 0, 0,
 	0, 0, 0, 0, 0, 0, 0, 0,/* 31*/
 	0, 0, 0, 0, 0, 0, 0, 0,
@@ -58,9 +59,12 @@ int	execve_wrapper(const char *filename, char **argv, char **envp,
 	char **path_arr)
 {
 	char	*file_path;
+	int		errno_var;
+	size_t	len;
 
-	minishell_assert(ft_strlen(filename) < MAX_PATHNAME, __FILE__, __LINE__);
-	file_path = ft_strrchr(filename, '/');
+	len = ft_strlen(filename);
+	minishell_assert(len < MAX_PATHNAME, __FILE__, __LINE__);
+	file_path = ft_strchr(filename, '/');
 	if (file_path == NULL)
 	{
 		ft_execvpe(filename, argv, envp, path_arr);
@@ -69,8 +73,9 @@ int	execve_wrapper(const char *filename, char **argv, char **envp,
 	}
 	else
 		execve(filename, argv, envp);
-	minishell_assert(print_error_execve(errno, filename), __FILE__, __LINE__);
-	return (get_execute_status(errno));
+	errno_var = errno;
+	print_error_execve(errno_var, filename);
+	return (get_execute_status(errno_var));
 }
 
 int	get_execute_status(int errno_var)
@@ -83,45 +88,19 @@ int	get_execute_status(int errno_var)
 int	print_error_execve(int errno_var, const char *filename)
 {
 	struct stat	status_info;
+	mode_t		st_mode;
 
 	if (stat(filename, &status_info) != 0)
-		return (0);
-	if (errno_var == ENOENT)
-	minishell_errormsg(filename, "command not found", NULL);
-	else if (errno_var == EACCES)
 	{
-		if (status_info.st_mode == S_IFDIR)
-			minishell_errormsg(filename, "is a directory", NULL);
-		else
-			minishell_errormsg(filename, strerror(errno), NULL);
-	}
-	else
 		minishell_errormsg(filename, strerror(errno), NULL);
+		return (0);
+	}
+	st_mode = status_info.st_mode;
+	if (errno_var == ENOENT)
+		minishell_errormsg(filename, "command not found", NULL);
+	else if ((07770000 & st_mode) == S_IFDIR)
+		minishell_errormsg(filename, "is a directory", NULL);
+	else 
+		minishell_errormsg(filename, strerror(errno_var), NULL);
 	return (1);
 }
-
-/*
-static int	print_error_execvpe(int errno_var, const char *filename);
-
-int	print_error_execvpe(int errno_var, const char *filename)
-{
-	struct stat	status_info;
-
-	if (stat(filename, &status_info) != 0)
-		return (0);
-	if (errno_var == ENOENT)
-	minishell_errormsg(filename, "command not found", NULL);
-	else if (errno_var == EACCES)
-	{
-		if (status_info.st_mode == S_IFDIR)
-			minishell_errormsg(filename, "is a directory", NULL);
-		else if (status_info.st_mode == S_IFREG)
-			minishell_errormsg(filename, "is a directory", NULL);
-		else
-			minishell_errormsg(filename, strerror(errno), NULL);
-	}
-	else
-		minishell_errormsg(filename, strerror(errno), NULL);
-	return (1);
-}
-*/
