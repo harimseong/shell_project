@@ -87,7 +87,7 @@ test_start()
 	done
 	if [ "$STATUS" != "0" ]
 	then
-		echo "\n\tif you want to look at test log, type\n\tcat test_log.txt | less"
+		echo "\n\ttest log:\n\tcat test_log.txt | less"
 	fi
 }
 

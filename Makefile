@@ -8,7 +8,8 @@ RM		=	rm -f
 
 # parser source files
 SRC		=	main.c\
-			minishell_initialize.c\
+			initialize.c\
+			error.c\
 			status_handler.c\
 			delete_command_list.c\
 			execute/read_pipeline.c\
@@ -21,13 +22,15 @@ SRC		=	main.c\
 			execute/execve_wrapper.c\
 			parser/parser.c\
 			parser/parser_error.c\
-			parser/parse_command.c\
+			parser/parse_simple_command.c\
+			parser/parse_compound_command.c\
 			parser/parse_redirect.c\
 			parser/print_parsing_info.c\
 			tokenizer/tokenizer.c\
 			tokenizer/token_helper_func.c\
 			tokenizer/recognition_procedure_1.c\
 			tokenizer/recognition_procedure_2.c\
+			tokenizer/subshell.c\
 			tokenizer/expansion/word_expansion.c\
 			tokenizer/expansion/word_expansion_quotize.c\
 			tokenizer/expansion/special_expansion.c\

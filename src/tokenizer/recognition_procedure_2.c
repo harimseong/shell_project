@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 22:28:28 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 15:21:11 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 08:03:56 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 #include "constants.h"
 #include "parser/token_recognition.h"
 
-#define OPERATOR_LIST ("<>|&")
+#define OPERATOR_LIST ("<>|&()")
 
 int	check_new_operator(t_iterator *iterator, t_token *token, char target)
 {
-	(void)iterator;
 	if (!ft_strchr(OPERATOR_LIST, target))
 		return (CONTINUE);
 	if (check_token_type(token->type, TT_QUOTE_MASK))
@@ -27,6 +26,13 @@ int	check_new_operator(t_iterator *iterator, t_token *token, char target)
 	if (!check_token_type(token->type, TT_EMPTY))
 		return (DELIMIT);
 	token->type = get_operator_type(target);
+	if (check_token_type(token->type, TT_PARENTHESIS))
+	{
+		if (check_token_type(token->type, TT_PAREN_CLOSE)
+			|| get_subshell_token(iterator))
+			token->type = TT_ERROR;
+		return (DELIMIT);
+	}
 	return (APPLIED);
 }
 

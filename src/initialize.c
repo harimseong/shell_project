@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_initialize.c                             :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 21:31:07 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 19:48:17 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 08:47:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static const char	*g_option_list[]
 int	minishell_initialize(int argc, char **argv, t_dlist *env_list,
 		char **prompt)
 {
+	get_argv(argv);
 	minishell_assert(dup2(STDIN_FILENO, MINISHELL_STDIN)
 		&& dup2(STDOUT_FILENO, MINISHELL_STDOUT), __FILE__, __LINE__);
 	if (argc > 1)

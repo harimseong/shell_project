@@ -34,6 +34,7 @@ pipeline         :              command
                  ;
 command          : simple_command
                  | compound_command
+                 | compound_command redirect_list
 				 ;
 simple_command   : cmd_prefix cmd_word cmd_suffix
                  | cmd_prefix cmd_word
@@ -42,6 +43,9 @@ simple_command   : cmd_prefix cmd_word cmd_suffix
                  | cmd_name
                  ;
 compound_command : subshell
+                 ;
+redirect_list    :               io_redirect
+                 | redirect_list io_redirect // left recursion
                  ;
 subshell         : '(' list ')'
                  ;

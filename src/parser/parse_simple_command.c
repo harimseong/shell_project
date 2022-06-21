@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_command.c                                    :+:      :+:    :+:   */
+/*   parse_simple_command.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:58:32 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/17 20:12:55 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 07:10:32 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 #include "minishell.h"
@@ -22,12 +21,10 @@ static void	parse_cmd_suffix(t_command *command);
 static void	parse_cmd_name(t_command *command);
 void		parse_io_redirect(t_dlist *pipeline_list, int *flag);
 
-void	parse_command(t_command *command)
+void	parse_simple_command(t_command *command)
 {
 	t_token		*token;
 
-	*command = (t_command){.word_list = dlist_init(),
-		.redirect_list = dlist_init()};
 	token = token_handler(TH_PEEK, NULL);
 	if (check_token_type(token->type, TT_REDIRECT))
 	{

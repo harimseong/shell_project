@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 02:35:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 08:02:44 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ pipeline_logic_op(int pipeline_type, int *status);
 static int
 check_builtin(t_dlist *word_list);
 
-extern t_dlist	*g_env_list;
-
 void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 {
 	t_pipeline	*pipeline;
@@ -53,7 +51,8 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 	status = 0;
 	while (pipeline != NULL)
 	{
-		if (status != 0)
+		pipeline_type = pipeline->pipeline_type;
+		if (status == 0)
 		{
 			pipeline->result
 				= read_command_list(pipeline->command_list, env_list, pid_list);
@@ -62,7 +61,6 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
 		pipeline_logic_op(pipeline_type, &status);
-		pipeline_type = pipeline->pipeline_type;
 	}
 	dlist_delete(pid_list, free);
 }

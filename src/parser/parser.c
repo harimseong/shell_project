@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/19 19:39:22 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 07:59:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@
 #include "parser/parser.h"
 #include "parser/token_recognition.h"
 
-#define EXIT_STAT_PARSE_ERR (2)
-
-extern t_dlist	*g_env_list;
-
-void			parse_command(t_command *command);
+void			parse_simple_command(t_command *command);
+void			parse_compound_command(t_command *command);
+static void		parse_command(t_command *command);
 static void		parse_pipeline(t_pipeline *pipeline);
 static t_dlist	*parse_init(t_dlist *pipeline_list);
 
@@ -96,4 +94,17 @@ void	parse_pipeline(t_pipeline *pipeline)
 		parse_command(command_list->tail->content);
 		token = token_handler(TH_PEEK, NULL);
 	}
+}
+
+void	parse_command(t_command *command)
+{
+	t_token		*token;
+
+	*command = (t_command){.word_list = dlist_init(),
+		.redirect_list = dlist_init()};
+	token = token_handler(TH_PEEK, NULL);
+	if (check_token_type(token->type, TT_PAREN_OPEN))
+		parse_compound_command(command);
+	else
+		parse_simple_command(command);
 }

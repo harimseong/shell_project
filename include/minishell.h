@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/20 01:16:53 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 07:15:26 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 # include "parser/token.h"
 # include "sys/errno.h"
+
+#ifndef DEBUG_FLAG
+# define DEBUG_FLAG (0)
+#endif
 
 enum e_signal_handler
 {
@@ -33,6 +37,7 @@ int		builtin_set_exit(t_dlist *env_list, int status, int argc, char **argv);
 
 int		status_handler(int status, t_dlist *new_env_list, int type);
 t_dlist	*get_env_list(t_dlist *new_env_list);
+char	**get_argv(char **new_argv);
 
 // delete parsed data
 void	delete_pipeline_content(void *pipeline_arg);

@@ -73,7 +73,6 @@ export a
 export a=
 export a===
 export 1
-export 1=
 export a=12
 export a=1 b=2 c=3
 export a=1 b=2 a=3
@@ -94,56 +93,6 @@ cd notexistdir/
 cd /notexistdir/
 cd ./notexistdir/
 cd ./notexistdir
-cat asd || ls
-cat asd && ls
-echo *
-ls | cat -e && gcc -v || echo "$TERM"
-ls | cat -e && gcc -v && echo "$TERM"
-ls && gcc -v && ls -a && echo "$TERM"
-ls || gcc -v && ls -a && echo "$TERM"
-ls && gcc -v || ls -a && echo "$TERM"
-ls && gcc -v && ls -a || echo "$TERM"
-ls && gcc -v || ls -a || echo "$TERM"
-ls || gcc -v && ls -a || echo "$TERM"
-ls || gcc -v || ls -a && echo "$TERM"
-ls || gcc -v || ls -a || echo "$TERM"
-lss && gcc -v && ls -a && echo "$TERM"
-lss || gcc -v && ls -a && echo "$TERM"
-lss && gcc -v || ls -a && echo "$TERM"
-lss && gcc -v && ls -a || echo "$TERM"
-lss && gcc -v || ls -a || echo "$TERM"
-lss || gcc -v && ls -a || echo "$TERM"
-lss || gcc -v || ls -a && echo "$TERM"
-lss || gcc -v || ls -a || echo "$TERM"
-ls && gccc -v && ls -a && echo "$TERM"
-ls || gccc -v && ls -a && echo "$TERM"
-ls && gccc -v || ls -a && echo "$TERM"
-ls && gccc -v && ls -a || echo "$TERM"
-ls && gccc -v || ls -a || echo "$TERM"
-ls || gccc -v && ls -a || echo "$TERM"
-ls || gccc -v || ls -a && echo "$TERM"
-ls || gccc -v || ls -a || echo "$TERM"
-ls && gcc -v && lss -a && echo "$TERM"
-ls || gcc -v && lss -a && echo "$TERM"
-ls && gcc -v || lss -a && echo "$TERM"
-ls && gcc -v && lss -a || echo "$TERM"
-ls && gcc -v || lss -a || echo "$TERM"
-ls || gcc -v && lss -a || echo "$TERM"
-ls || gcc -v || lss -a && echo "$TERM"
-ls || gcc -v || lss -a || echo "$TERM"
-lss && gcc -v && ls -a && echoo "$TERM"
-lss || gcc -v || ls -a || echoo "$TERM"
-lss && gcc -v || ls -a && echoo "$TERM"
-lss || gcc -v && ls -a || echoo "$TERM"
-ls && gccc -v && ls -a && echoo "$TERM"
-ls || gccc -v || ls -a || echoo "$TERM"
-ls && gccc -v || ls -a && echoo "$TERM"
-ls || gccc -v && ls -a || echoo "$TERM"
-ls || gcc -v || lss -a || echoo "$TERM"
-ls || gcc -v && ls -a || echo "$TERM" || echo "USER" && echo "PATH" && echo "PWD" || cat Makefile | head -n 5
-ls *
-ls || (pwd && echo 123)
-ls || pwd && echo 123
 /bin/ls -a
 cat nonexistfile
 cat < nonexistfile
