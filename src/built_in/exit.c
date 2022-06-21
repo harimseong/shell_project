@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/21 09:51:19 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 16:13:04 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	check_only_numeric(char *arg)
 	{
 		if (ft_isdigit(arg[i]) == 0)
 		{
-			if (arg[i] == '-' && i == 0)
+			if ((arg[i] == '-' || arg[i] == '+') && i == 0)
 			{
 				i++;
 				continue ;
@@ -72,18 +72,20 @@ int	builtin_exit(t_dlist *envlist, int argc, char **argv)
 	long long	status;
 
 	status = find_status(envlist);
-	if (argc == 2)
+	if (argc >= 2)
 	{
 		if (check_only_numeric(argv[1]) == 0 || check_longlong(argv[1]) == 0)
 		{
 			printf("minishell: exit: %s: numeric argument required\n",
 				argv[1]);
 			status = 255;
+			dlist_delete(envlist, &delete_content);
+			exit((int)status);
 		}
 		else
 			status = ft_atoll(argv[1], NULL) % 256;
 	}
-	else if (argc > 2)
+	if (argc > 2)
 	{
 		printf("minishell: exit: too many arguments\n");
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:29:37 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 21:09:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/21 16:05:12 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static int	check_arg_error(char **element, char *argv)
 	{
 		printf("minishell: export: `%s': not a valid identifier\n", argv);
 		free_str_arr(element);
-		free(element);
 		return (1);
 	}
 	return (0);

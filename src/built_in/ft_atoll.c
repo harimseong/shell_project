@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:11 by gson              #+#    #+#             */
-/*   Updated: 2022/06/03 18:26:54 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/21 16:21:49 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ long long	ft_atoll(char *str, int *error)
 		temp = num;
 		num = 10 * num + *str++ - 48;
 	}
-	if ((temp > num || num > LLONG_MAX) && error != NULL)
+	if (((temp > num || num > (ULLONG_MAX / 2 + neg))) && error != NULL)
 	{
 		*error = -1;
 		return ((LLONG_MAX * !neg + (-LLONG_MAX - 1) * neg));
