@@ -19,3 +19,4 @@ ls && (gccc -v || ls -a) && echoo "$TERM"
 ls || (gccc -v && ls -a) || echoo "$TERM"
 ls || (gccc -v && ls -a) || echoo "$TERM"
 ls || gcc -v || (lss -a || echoo "$TERM")
+lss || (gccc -v || (ls -a && echo "42") && head -n 5 Makefile) && ls

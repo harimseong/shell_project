@@ -47,7 +47,7 @@ test_func()
 	DIFF=$(diff testdir/.result1 testdir/.result2)
 	if [ $EXIT1 != $EXIT2 ] || [ "$DIFF" != "" ]
 	then
-		if echo "$DIFF" | grep ' -c:' >/dev/null
+		if cat testdir/.result2 | grep -f testdir/.result1 >/dev/null
 		then
 			MSG="[$YELLOW_QQ] $CMD"
 		else
@@ -71,7 +71,7 @@ test_start()
 {
 	if [ "$1" == "" ]
 	then
-		echo "please specify test-file.";
+		echo "invaild format. $> sh  test_scripts.sh  test_case";
 		return 0
 	fi
 	cat $1 2> /dev/null 1> /dev/null

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:12:01 by gson              #+#    #+#             */
-/*   Updated: 2022/06/19 14:30:52 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/21 09:51:19 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	builtin_exit(t_dlist *envlist, int argc, char **argv)
 	{
 		if (check_only_numeric(argv[1]) == 0 || check_longlong(argv[1]) == 0)
 		{
-			printf("minishell: exit: `%s': numeric argument required\n",
+			printf("minishell: exit: %s: numeric argument required\n",
 				argv[1]);
 			status = 255;
 		}
