@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:16:11 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/14 21:52:09 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/22 12:09:24 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,20 @@ char	**alloc_words_one(const char *str, size_t count, const char *delim)
 char	**alloc_words_two(const char *str, size_t count, const char *delim)
 {
 	char	**str_arr;
-	size_t	str_idx;
-	size_t	idx;
+	char	*equal_pos;
 
 	str_arr = malloc(sizeof(char *) * (count + 1));
 	str_arr[count] = NULL;
-	str_idx = 0;
-	while (str_idx < count)
-	{
-		idx = 0;
-		while (ft_strchr(delim, str[idx]) != NULL)
-			++str;
-		while (str[idx] && (ft_strchr(delim, str[idx]) == NULL
-				|| str_idx + 1 == count))
-			++idx;
-		str_arr[str_idx] = ft_strndup(str, idx);
-		if (str_arr[str_idx] == NULL)
-			break ;
-		str += idx;
-		++str_idx;
-	}
-	if (str_idx != count)
-		dealloc_words(&str_arr, str_idx);
+	equal_pos = ft_strchr(str, delim[0]);
+	str_arr[0] = ft_strndup(str, equal_pos - str);
+	++equal_pos;
+	str = equal_pos;
+	while (*equal_pos)
+		++equal_pos;
+	if (equal_pos == str)
+		str_arr[1] = NULL;
+	else
+		str_arr[1] = ft_strndup(str, equal_pos - str);
 	return (str_arr);
 }
 

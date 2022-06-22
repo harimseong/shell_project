@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 07:17:09 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 11:28:33 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,14 @@ int	main(int argc, char *argv[], char *envp[])
 			add_history(line);
 		pipeline_list = parser(line, env_list);
 		if (pipeline_list == NULL)
+		{
+			free(line);
 			continue ;
+		}
 		read_pipeline(pipeline_list, env_list);
 		dlist_delete(pipeline_list, delete_pipeline_content);
 		free(line);
+		system("leaks minishell");
 	}
 	return (1);
 }

@@ -1,0 +1,3212 @@
+	TEST: #0   [[0;32mOK[0m] [0;33m"[0m[0;33m"[0m
+
+
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST:   
+
+#1   [[0;32mOK[0m] [0;33m"[0m  [0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST:           
+
+#2   [[0;32mOK[0m] [0;33m"[0m          [0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: 	
+
+#3   [[0;32mOK[0m] [0;33m"[0m	[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: 					
+
+#4   [[0;32mOK[0m] [0;33m"[0m					[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: ls
+
+#5   [[0;32mOK[0m] [0;33m"[0mls[0;33m"[0m
+
+[ minishell output ]
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ bash output ]
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: pwd
+
+#6   [[0;32mOK[0m] [0;33m"[0mpwd[0;33m"[0m
+
+[ minishell output ]
+/Users/gson/minishell
+
+[ bash output ]
+/Users/gson/minishell
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: /bin/ls
+
+#7   [[0;32mOK[0m] [0;33m"[0m/bin/ls[0;33m"[0m
+
+[ minishell output ]
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ bash output ]
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: /bin/echo 42
+
+#8   [[0;32mOK[0m] [0;33m"[0m/bin/echo 42[0;33m"[0m
+
+[ minishell output ]
+42
+
+[ bash output ]
+42
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: /bin/cat <12
+
+#9   [[0;32mOK[0m] [0;33m"[0m/bin/cat <12[0;33m"[0m
+
+[ minishell output ]
+12: No such file or directory
+
+[ bash output ]
+12: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: /bin/cat <Makefile
+
+#10  [[0;32mOK[0m] [0;33m"[0m/bin/cat <Makefile[0;33m"[0m
+
+[ minishell output ]
+NAME	=	minishell
+
+
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
+RM		=	rm -f
+
+# parser source files
+SRC		=	main.c\
+			initialize.c\
+			error.c\
+			status_handler.c\
+			delete_command_list.c\
+			execute/read_pipeline.c\
+			execute/generate_process.c\
+			execute/redirect_process.c\
+			execute/execute_command.c\
+			execute/execute_command_string.c\
+			execute/execute_helper_func_1.c\
+			execute/execute_helper_func_2.c\
+			execute/execve_wrapper.c\
+			parser/parser.c\
+			parser/parser_error.c\
+			parser/parse_simple_command.c\
+			parser/parse_compound_command.c\
+			parser/parse_redirect.c\
+			parser/print_parsing_info.c\
+			tokenizer/tokenizer.c\
+			tokenizer/token_helper_func.c\
+			tokenizer/recognition_procedure_1.c\
+			tokenizer/recognition_procedure_2.c\
+			tokenizer/subshell.c\
+			tokenizer/expansion/word_expansion.c\
+			tokenizer/expansion/word_expansion_quotize.c\
+			tokenizer/expansion/special_expansion.c\
+			tokenizer/expansion/asterisk_expansion.c\
+			built_in/env.c\
+			built_in/export.c\
+			built_in/key_compare.c\
+			built_in/set_env.c\
+			built_in/check_key.c\
+			built_in/delete_content.c\
+			built_in/echo.c\
+			built_in/exit.c\
+			built_in/exit_wrapper.c\
+			built_in/cd.c\
+			built_in/cd_util.c\
+			built_in/ft_atoll.c\
+			built_in/ft_split_first.c\
+			built_in/unset.c\
+			built_in/pwd.c\
+			built_in/move_directory.c\
+			signal/handle_signal.c
+SRC_DIR	=	src
+SRC		:=	$(SRC:%=$(SRC_DIR)/%)
+OBJ		=	$(SRC:%.c=%.o)
+
+INCL	=	minishell.h\
+			doubly_linked_list.h\
+			libft.h\
+			cmd.h\
+			parser/parser.h\
+			parser/token.h\
+			parser/token_recognition.h
+INCL_DIR=	-I./include
+
+ifeq ($(shell uname), Darwin)
+INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+endif
+
+LIB_ADD	+=	-L. 
+LIBTARGET=	all
+
+# NOTE: library order (-ldlinkedlist and -lft) can be problem
+DLLIST	=	libdlinkedlist.a
+DLLIST_DIR=	doubly_linked_list
+LIB_ADD	+=	-ldlinkedlist
+LIBS	+=	DLLIST.lib
+
+LIBFT	=	libft.a
+LIBFT_DIR=	libft
+LIB_ADD	+=	-lft
+LIBS	+=	LIBFT.lib
+
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+LIBFLAGS=	DEBUG_FLAG=1
+COMPILE	=	DEBUG.flag
+else
+COMPILE	=	RELEASE.flag
+endif
+
+
+libs: $(COMPILE) $(LIBS)
+	$(MAKE) $(NAME)
+
+all: $(NAME)
+
+debug: 
+	$(MAKE) DEBUG_FLAG=1 libs
+
+RELEASE.flag:
+	$(MAKE) fclean
+	touch RELEASE.flag
+
+DEBUG.flag:
+	$(MAKE) fclean
+	touch DEBUG.flag
+
+$(LIBS): %.lib:
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCL_DIR) 
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) DEBUG.flag RELEASE.flag
+
+fclean: clean $(LIBS:%=%.clean)
+	$(RM) $($(LIBS:%.lib=%))
+	$(RM) $(NAME)
+
+$(LIBS:%=%.clean): %.lib.clean:
+	$(RM) $($*)
+	@$(MAKE) -C $($*_DIR) fclean
+	$(RM) $*.lib
+
+re: fclean
+	$(MAKE) libs
+
+.PHONY: all clean fclean re libs
+
+[ bash output ]
+NAME	=	minishell
+
+
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
+RM		=	rm -f
+
+# parser source files
+SRC		=	main.c\
+			initialize.c\
+			error.c\
+			status_handler.c\
+			delete_command_list.c\
+			execute/read_pipeline.c\
+			execute/generate_process.c\
+			execute/redirect_process.c\
+			execute/execute_command.c\
+			execute/execute_command_string.c\
+			execute/execute_helper_func_1.c\
+			execute/execute_helper_func_2.c\
+			execute/execve_wrapper.c\
+			parser/parser.c\
+			parser/parser_error.c\
+			parser/parse_simple_command.c\
+			parser/parse_compound_command.c\
+			parser/parse_redirect.c\
+			parser/print_parsing_info.c\
+			tokenizer/tokenizer.c\
+			tokenizer/token_helper_func.c\
+			tokenizer/recognition_procedure_1.c\
+			tokenizer/recognition_procedure_2.c\
+			tokenizer/subshell.c\
+			tokenizer/expansion/word_expansion.c\
+			tokenizer/expansion/word_expansion_quotize.c\
+			tokenizer/expansion/special_expansion.c\
+			tokenizer/expansion/asterisk_expansion.c\
+			built_in/env.c\
+			built_in/export.c\
+			built_in/key_compare.c\
+			built_in/set_env.c\
+			built_in/check_key.c\
+			built_in/delete_content.c\
+			built_in/echo.c\
+			built_in/exit.c\
+			built_in/exit_wrapper.c\
+			built_in/cd.c\
+			built_in/cd_util.c\
+			built_in/ft_atoll.c\
+			built_in/ft_split_first.c\
+			built_in/unset.c\
+			built_in/pwd.c\
+			built_in/move_directory.c\
+			signal/handle_signal.c
+SRC_DIR	=	src
+SRC		:=	$(SRC:%=$(SRC_DIR)/%)
+OBJ		=	$(SRC:%.c=%.o)
+
+INCL	=	minishell.h\
+			doubly_linked_list.h\
+			libft.h\
+			cmd.h\
+			parser/parser.h\
+			parser/token.h\
+			parser/token_recognition.h
+INCL_DIR=	-I./include
+
+ifeq ($(shell uname), Darwin)
+INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+endif
+
+LIB_ADD	+=	-L. 
+LIBTARGET=	all
+
+# NOTE: library order (-ldlinkedlist and -lft) can be problem
+DLLIST	=	libdlinkedlist.a
+DLLIST_DIR=	doubly_linked_list
+LIB_ADD	+=	-ldlinkedlist
+LIBS	+=	DLLIST.lib
+
+LIBFT	=	libft.a
+LIBFT_DIR=	libft
+LIB_ADD	+=	-lft
+LIBS	+=	LIBFT.lib
+
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+LIBFLAGS=	DEBUG_FLAG=1
+COMPILE	=	DEBUG.flag
+else
+COMPILE	=	RELEASE.flag
+endif
+
+
+libs: $(COMPILE) $(LIBS)
+	$(MAKE) $(NAME)
+
+all: $(NAME)
+
+debug: 
+	$(MAKE) DEBUG_FLAG=1 libs
+
+RELEASE.flag:
+	$(MAKE) fclean
+	touch RELEASE.flag
+
+DEBUG.flag:
+	$(MAKE) fclean
+	touch DEBUG.flag
+
+$(LIBS): %.lib:
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCL_DIR) 
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) DEBUG.flag RELEASE.flag
+
+fclean: clean $(LIBS:%=%.clean)
+	$(RM) $($(LIBS:%.lib=%))
+	$(RM) $(NAME)
+
+$(LIBS:%=%.clean): %.lib.clean:
+	$(RM) $($*)
+	@$(MAKE) -C $($*_DIR) fclean
+	$(RM) $*.lib
+
+re: fclean
+	$(MAKE) libs
+
+.PHONY: all clean fclean re libs
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: notexistdir
+
+#11  [[0;32mOK[0m] [0;33m"[0mnotexistdir[0;33m"[0m
+
+[ minishell output ]
+notexistdir: command not found
+
+[ bash output ]
+notexistdir: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: notexistdir/
+
+#12  [[0;32mOK[0m] [0;33m"[0mnotexistdir/[0;33m"[0m
+
+[ minishell output ]
+notexistdir/: No such file or directory
+
+[ bash output ]
+notexistdir/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: /notexistdir
+
+#13  [[0;32mOK[0m] [0;33m"[0m/notexistdir[0;33m"[0m
+
+[ minishell output ]
+/notexistdir: No such file or directory
+
+[ bash output ]
+/notexistdir: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: /notexistdir/
+
+#14  [[0;32mOK[0m] [0;33m"[0m/notexistdir/[0;33m"[0m
+
+[ minishell output ]
+/notexistdir/: No such file or directory
+
+[ bash output ]
+/notexistdir/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ./notexistdir
+
+#15  [[0;32mOK[0m] [0;33m"[0m./notexistdir[0;33m"[0m
+
+[ minishell output ]
+./notexistdir: No such file or directory
+
+[ bash output ]
+./notexistdir: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ./notexistdir/
+
+#16  [[0;32mOK[0m] [0;33m"[0m./notexistdir/[0;33m"[0m
+
+[ minishell output ]
+./notexistdir/: No such file or directory
+
+[ bash output ]
+./notexistdir/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: .notexistdir/
+
+#17  [[0;32mOK[0m] [0;33m"[0m.notexistdir/[0;33m"[0m
+
+[ minishell output ]
+.notexistdir/: No such file or directory
+
+[ bash output ]
+.notexistdir/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: src
+
+#18  [[0;32mOK[0m] [0;33m"[0msrc[0;33m"[0m
+
+[ minishell output ]
+src: command not found
+
+[ bash output ]
+src: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: /bin/
+
+#19  [[0;32mOK[0m] [0;33m"[0m/bin/[0;33m"[0m
+
+[ minishell output ]
+/bin/: is a directory
+
+[ bash output ]
+/bin/: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: /bin
+
+#20  [[0;32mOK[0m] [0;33m"[0m/bin[0;33m"[0m
+
+[ minishell output ]
+/bin: is a directory
+
+[ bash output ]
+/bin: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: bin/
+
+#21  [[0;32mOK[0m] [0;33m"[0mbin/[0;33m"[0m
+
+[ minishell output ]
+bin/: No such file or directory
+
+[ bash output ]
+bin/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: /src/
+
+#22  [[0;32mOK[0m] [0;33m"[0m/src/[0;33m"[0m
+
+[ minishell output ]
+/src/: No such file or directory
+
+[ bash output ]
+/src/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: /src
+
+#23  [[0;32mOK[0m] [0;33m"[0m/src[0;33m"[0m
+
+[ minishell output ]
+/src: No such file or directory
+
+[ bash output ]
+/src: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: src/
+
+#24  [[0;32mOK[0m] [0;33m"[0msrc/[0;33m"[0m
+
+[ minishell output ]
+src/: is a directory
+
+[ bash output ]
+src/: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: ./src/
+
+#25  [[0;32mOK[0m] [0;33m"[0m./src/[0;33m"[0m
+
+[ minishell output ]
+./src/: is a directory
+
+[ bash output ]
+./src/: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: ./
+
+#26  [[0;32mOK[0m] [0;33m"[0m./[0;33m"[0m
+
+[ minishell output ]
+./: is a directory
+
+[ bash output ]
+./: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: /.
+
+#27  [[0;32mOK[0m] [0;33m"[0m/.[0;33m"[0m
+
+[ minishell output ]
+/.: is a directory
+
+[ bash output ]
+/.: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: ..
+
+#28  [[0;32mOK[0m] [0;33m"[0m..[0;33m"[0m
+
+[ minishell output ]
+..: command not found
+
+[ bash output ]
+..: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: .
+
+#29  [[0;31mKO[0m] [0;33m"[0m.[0;33m"[0m
+
+[ minishell output ]
+.: command not found
+
+[ bash output ]
+.: filename argument required
+.: usage: . filename [arguments]
+
+[ diff ]
+1c1,2
+< .: command not found
+---
+> .: filename argument required
+> .: usage: . filename [arguments]
+
+minishell exit status = 127
+bash exit status = 2
+
+
+
+
+	TEST: /
+
+#30  [[0;32mOK[0m] [0;33m"[0m/[0;33m"[0m
+
+[ minishell output ]
+/: is a directory
+
+[ bash output ]
+/: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: //
+
+#31  [[0;32mOK[0m] [0;33m"[0m//[0;33m"[0m
+
+[ minishell output ]
+//: is a directory
+
+[ bash output ]
+//: is a directory
+
+[ diff ]
+
+minishell exit status = 126
+bash exit status = 126
+
+
+
+
+	TEST: echo 123
+
+#32  [[0;32mOK[0m] [0;33m"[0mecho 123[0;33m"[0m
+
+[ minishell output ]
+123
+
+[ bash output ]
+123
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo -n 123
+
+#33  [[0;32mOK[0m] [0;33m"[0mecho -n 123[0;33m"[0m
+
+[ minishell output ]
+123
+[ bash output ]
+123
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo -nnn 123
+
+#34  [[0;32mOK[0m] [0;33m"[0mecho -nnn 123[0;33m"[0m
+
+[ minishell output ]
+123
+[ bash output ]
+123
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo -n-n-n 123
+
+#35  [[0;32mOK[0m] [0;33m"[0mecho -n-n-n 123[0;33m"[0m
+
+[ minishell output ]
+-n-n-n 123
+
+[ bash output ]
+-n-n-n 123
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo -nab 123
+
+#36  [[0;32mOK[0m] [0;33m"[0mecho -nab 123[0;33m"[0m
+
+[ minishell output ]
+-nab 123
+
+[ bash output ]
+-nab 123
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo -n -n -n 123
+
+#37  [[0;32mOK[0m] [0;33m"[0mecho -n -n -n 123[0;33m"[0m
+
+[ minishell output ]
+123
+[ bash output ]
+123
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo -n -a -b 123
+
+#38  [[0;32mOK[0m] [0;33m"[0mecho -n -a -b 123[0;33m"[0m
+
+[ minishell output ]
+-a -b 123
+[ bash output ]
+-a -b 123
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo $NOTEXISTENVVAR
+
+#39  [[0;31mKO[0m] [0;33m"[0mecho $NOTEXISTENVVAR[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+
+[ diff ]
+0a1
+> 
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo "$USER"
+
+#40  [[0;32mOK[0m] [0;33m"[0mecho "$USER"[0;33m"[0m
+
+[ minishell output ]
+gson
+
+[ bash output ]
+gson
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo "'$USER'"
+
+#41  [[0;32mOK[0m] [0;33m"[0mecho "'$USER'"[0;33m"[0m
+
+[ minishell output ]
+'gson'
+
+[ bash output ]
+'gson'
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo '"$USER"'
+
+#42  [[0;32mOK[0m] [0;33m"[0mecho '"$USER"'[0;33m"[0m
+
+[ minishell output ]
+"$USER"
+
+[ bash output ]
+"$USER"
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo '$USER'
+
+#43  [[0;32mOK[0m] [0;33m"[0mecho '$USER'[0;33m"[0m
+
+[ minishell output ]
+$USER
+
+[ bash output ]
+$USER
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo $USER>out1|ls -a&&cat -e<out1
+
+#44  [[0;32mOK[0m] [0;33m"[0mecho $USER>out1|ls -a&&cat -e<out1[0;33m"[0m
+
+[ minishell output ]
+.
+..
+.DS_Store
+.git
+.gitignore
+.vscode
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+gson$
+
+[ bash output ]
+.
+..
+.DS_Store
+.git
+.gitignore
+.vscode
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+gson$
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: echo """$?"""
+
+#45  [[0;32mOK[0m] [0;33m"[0mecho """$?"""[0;33m"[0m
+
+[ minishell output ]
+0
+
+[ bash output ]
+0
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: "cat $TERM | grep CC"
+
+#46  [[0;32mOK[0m] [0;33m"[0m"cat $TERM | grep CC"[0;33m"[0m
+
+[ minishell output ]
+cat xterm-256color | grep CC: command not found
+
+[ bash output ]
+cat xterm-256color | grep CC: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: "cat notexistfile | grep CC"
+
+#47  [[0;32mOK[0m] [0;33m"[0m"cat notexistfile | grep CC"[0;33m"[0m
+
+[ minishell output ]
+cat notexistfile | grep CC: command not found
+
+[ bash output ]
+cat notexistfile | grep CC: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ""
+
+#48  [[0;32mOK[0m] [0;33m"[0m""[0;33m"[0m
+
+[ minishell output ]
+: command not found
+
+[ bash output ]
+: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: "" a
+
+#49  [[0;32mOK[0m] [0;33m"[0m"" a[0;33m"[0m
+
+[ minishell output ]
+: command not found
+
+[ bash output ]
+: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ""a
+
+#50  [[0;32mOK[0m] [0;33m"[0m""a[0;33m"[0m
+
+[ minishell output ]
+a: command not found
+
+[ bash output ]
+a: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: a""
+
+#51  [[0;32mOK[0m] [0;33m"[0ma""[0;33m"[0m
+
+[ minishell output ]
+a: command not found
+
+[ bash output ]
+a: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: c"a"t Makefile
+
+#52  [[0;32mOK[0m] [0;33m"[0mc"a"t Makefile[0;33m"[0m
+
+[ minishell output ]
+NAME	=	minishell
+
+
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
+RM		=	rm -f
+
+# parser source files
+SRC		=	main.c\
+			initialize.c\
+			error.c\
+			status_handler.c\
+			delete_command_list.c\
+			execute/read_pipeline.c\
+			execute/generate_process.c\
+			execute/redirect_process.c\
+			execute/execute_command.c\
+			execute/execute_command_string.c\
+			execute/execute_helper_func_1.c\
+			execute/execute_helper_func_2.c\
+			execute/execve_wrapper.c\
+			parser/parser.c\
+			parser/parser_error.c\
+			parser/parse_simple_command.c\
+			parser/parse_compound_command.c\
+			parser/parse_redirect.c\
+			parser/print_parsing_info.c\
+			tokenizer/tokenizer.c\
+			tokenizer/token_helper_func.c\
+			tokenizer/recognition_procedure_1.c\
+			tokenizer/recognition_procedure_2.c\
+			tokenizer/subshell.c\
+			tokenizer/expansion/word_expansion.c\
+			tokenizer/expansion/word_expansion_quotize.c\
+			tokenizer/expansion/special_expansion.c\
+			tokenizer/expansion/asterisk_expansion.c\
+			built_in/env.c\
+			built_in/export.c\
+			built_in/key_compare.c\
+			built_in/set_env.c\
+			built_in/check_key.c\
+			built_in/delete_content.c\
+			built_in/echo.c\
+			built_in/exit.c\
+			built_in/exit_wrapper.c\
+			built_in/cd.c\
+			built_in/cd_util.c\
+			built_in/ft_atoll.c\
+			built_in/ft_split_first.c\
+			built_in/unset.c\
+			built_in/pwd.c\
+			built_in/move_directory.c\
+			signal/handle_signal.c
+SRC_DIR	=	src
+SRC		:=	$(SRC:%=$(SRC_DIR)/%)
+OBJ		=	$(SRC:%.c=%.o)
+
+INCL	=	minishell.h\
+			doubly_linked_list.h\
+			libft.h\
+			cmd.h\
+			parser/parser.h\
+			parser/token.h\
+			parser/token_recognition.h
+INCL_DIR=	-I./include
+
+ifeq ($(shell uname), Darwin)
+INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+endif
+
+LIB_ADD	+=	-L. 
+LIBTARGET=	all
+
+# NOTE: library order (-ldlinkedlist and -lft) can be problem
+DLLIST	=	libdlinkedlist.a
+DLLIST_DIR=	doubly_linked_list
+LIB_ADD	+=	-ldlinkedlist
+LIBS	+=	DLLIST.lib
+
+LIBFT	=	libft.a
+LIBFT_DIR=	libft
+LIB_ADD	+=	-lft
+LIBS	+=	LIBFT.lib
+
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+LIBFLAGS=	DEBUG_FLAG=1
+COMPILE	=	DEBUG.flag
+else
+COMPILE	=	RELEASE.flag
+endif
+
+
+libs: $(COMPILE) $(LIBS)
+	$(MAKE) $(NAME)
+
+all: $(NAME)
+
+debug: 
+	$(MAKE) DEBUG_FLAG=1 libs
+
+RELEASE.flag:
+	$(MAKE) fclean
+	touch RELEASE.flag
+
+DEBUG.flag:
+	$(MAKE) fclean
+	touch DEBUG.flag
+
+$(LIBS): %.lib:
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCL_DIR) 
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) DEBUG.flag RELEASE.flag
+
+fclean: clean $(LIBS:%=%.clean)
+	$(RM) $($(LIBS:%.lib=%))
+	$(RM) $(NAME)
+
+$(LIBS:%=%.clean): %.lib.clean:
+	$(RM) $($*)
+	@$(MAKE) -C $($*_DIR) fclean
+	$(RM) $*.lib
+
+re: fclean
+	$(MAKE) libs
+
+.PHONY: all clean fclean re libs
+
+[ bash output ]
+NAME	=	minishell
+
+
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
+RM		=	rm -f
+
+# parser source files
+SRC		=	main.c\
+			initialize.c\
+			error.c\
+			status_handler.c\
+			delete_command_list.c\
+			execute/read_pipeline.c\
+			execute/generate_process.c\
+			execute/redirect_process.c\
+			execute/execute_command.c\
+			execute/execute_command_string.c\
+			execute/execute_helper_func_1.c\
+			execute/execute_helper_func_2.c\
+			execute/execve_wrapper.c\
+			parser/parser.c\
+			parser/parser_error.c\
+			parser/parse_simple_command.c\
+			parser/parse_compound_command.c\
+			parser/parse_redirect.c\
+			parser/print_parsing_info.c\
+			tokenizer/tokenizer.c\
+			tokenizer/token_helper_func.c\
+			tokenizer/recognition_procedure_1.c\
+			tokenizer/recognition_procedure_2.c\
+			tokenizer/subshell.c\
+			tokenizer/expansion/word_expansion.c\
+			tokenizer/expansion/word_expansion_quotize.c\
+			tokenizer/expansion/special_expansion.c\
+			tokenizer/expansion/asterisk_expansion.c\
+			built_in/env.c\
+			built_in/export.c\
+			built_in/key_compare.c\
+			built_in/set_env.c\
+			built_in/check_key.c\
+			built_in/delete_content.c\
+			built_in/echo.c\
+			built_in/exit.c\
+			built_in/exit_wrapper.c\
+			built_in/cd.c\
+			built_in/cd_util.c\
+			built_in/ft_atoll.c\
+			built_in/ft_split_first.c\
+			built_in/unset.c\
+			built_in/pwd.c\
+			built_in/move_directory.c\
+			signal/handle_signal.c
+SRC_DIR	=	src
+SRC		:=	$(SRC:%=$(SRC_DIR)/%)
+OBJ		=	$(SRC:%.c=%.o)
+
+INCL	=	minishell.h\
+			doubly_linked_list.h\
+			libft.h\
+			cmd.h\
+			parser/parser.h\
+			parser/token.h\
+			parser/token_recognition.h
+INCL_DIR=	-I./include
+
+ifeq ($(shell uname), Darwin)
+INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+endif
+
+LIB_ADD	+=	-L. 
+LIBTARGET=	all
+
+# NOTE: library order (-ldlinkedlist and -lft) can be problem
+DLLIST	=	libdlinkedlist.a
+DLLIST_DIR=	doubly_linked_list
+LIB_ADD	+=	-ldlinkedlist
+LIBS	+=	DLLIST.lib
+
+LIBFT	=	libft.a
+LIBFT_DIR=	libft
+LIB_ADD	+=	-lft
+LIBS	+=	LIBFT.lib
+
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+LIBFLAGS=	DEBUG_FLAG=1
+COMPILE	=	DEBUG.flag
+else
+COMPILE	=	RELEASE.flag
+endif
+
+
+libs: $(COMPILE) $(LIBS)
+	$(MAKE) $(NAME)
+
+all: $(NAME)
+
+debug: 
+	$(MAKE) DEBUG_FLAG=1 libs
+
+RELEASE.flag:
+	$(MAKE) fclean
+	touch RELEASE.flag
+
+DEBUG.flag:
+	$(MAKE) fclean
+	touch DEBUG.flag
+
+$(LIBS): %.lib:
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCL_DIR) 
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) DEBUG.flag RELEASE.flag
+
+fclean: clean $(LIBS:%=%.clean)
+	$(RM) $($(LIBS:%.lib=%))
+	$(RM) $(NAME)
+
+$(LIBS:%=%.clean): %.lib.clean:
+	$(RM) $($*)
+	@$(MAKE) -C $($*_DIR) fclean
+	$(RM) $*.lib
+
+re: fclean
+	$(MAKE) libs
+
+.PHONY: all clean fclean re libs
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: 'cat $TERM | grep CC'
+
+#53  [[0;32mOK[0m] [0;33m"[0m'cat $TERM | grep CC'[0;33m"[0m
+
+[ minishell output ]
+cat $TERM | grep CC: command not found
+
+[ bash output ]
+cat $TERM | grep CC: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: 'cat notexistfile | grep CC'
+
+#54  [[0;32mOK[0m] [0;33m"[0m'cat notexistfile | grep CC'[0;33m"[0m
+
+[ minishell output ]
+cat notexistfile | grep CC: command not found
+
+[ bash output ]
+cat notexistfile | grep CC: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ''
+
+#55  [[0;32mOK[0m] [0;33m"[0m''[0;33m"[0m
+
+[ minishell output ]
+: command not found
+
+[ bash output ]
+: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: '' a
+
+#56  [[0;32mOK[0m] [0;33m"[0m'' a[0;33m"[0m
+
+[ minishell output ]
+: command not found
+
+[ bash output ]
+: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: ''a
+
+#57  [[0;32mOK[0m] [0;33m"[0m''a[0;33m"[0m
+
+[ minishell output ]
+a: command not found
+
+[ bash output ]
+a: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: a''
+
+#58  [[0;32mOK[0m] [0;33m"[0ma''[0;33m"[0m
+
+[ minishell output ]
+a: command not found
+
+[ bash output ]
+a: command not found
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: c'a't Makefile
+
+#59  [[0;32mOK[0m] [0;33m"[0mc'a't Makefile[0;33m"[0m
+
+[ minishell output ]
+NAME	=	minishell
+
+
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
+RM		=	rm -f
+
+# parser source files
+SRC		=	main.c\
+			initialize.c\
+			error.c\
+			status_handler.c\
+			delete_command_list.c\
+			execute/read_pipeline.c\
+			execute/generate_process.c\
+			execute/redirect_process.c\
+			execute/execute_command.c\
+			execute/execute_command_string.c\
+			execute/execute_helper_func_1.c\
+			execute/execute_helper_func_2.c\
+			execute/execve_wrapper.c\
+			parser/parser.c\
+			parser/parser_error.c\
+			parser/parse_simple_command.c\
+			parser/parse_compound_command.c\
+			parser/parse_redirect.c\
+			parser/print_parsing_info.c\
+			tokenizer/tokenizer.c\
+			tokenizer/token_helper_func.c\
+			tokenizer/recognition_procedure_1.c\
+			tokenizer/recognition_procedure_2.c\
+			tokenizer/subshell.c\
+			tokenizer/expansion/word_expansion.c\
+			tokenizer/expansion/word_expansion_quotize.c\
+			tokenizer/expansion/special_expansion.c\
+			tokenizer/expansion/asterisk_expansion.c\
+			built_in/env.c\
+			built_in/export.c\
+			built_in/key_compare.c\
+			built_in/set_env.c\
+			built_in/check_key.c\
+			built_in/delete_content.c\
+			built_in/echo.c\
+			built_in/exit.c\
+			built_in/exit_wrapper.c\
+			built_in/cd.c\
+			built_in/cd_util.c\
+			built_in/ft_atoll.c\
+			built_in/ft_split_first.c\
+			built_in/unset.c\
+			built_in/pwd.c\
+			built_in/move_directory.c\
+			signal/handle_signal.c
+SRC_DIR	=	src
+SRC		:=	$(SRC:%=$(SRC_DIR)/%)
+OBJ		=	$(SRC:%.c=%.o)
+
+INCL	=	minishell.h\
+			doubly_linked_list.h\
+			libft.h\
+			cmd.h\
+			parser/parser.h\
+			parser/token.h\
+			parser/token_recognition.h
+INCL_DIR=	-I./include
+
+ifeq ($(shell uname), Darwin)
+INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+endif
+
+LIB_ADD	+=	-L. 
+LIBTARGET=	all
+
+# NOTE: library order (-ldlinkedlist and -lft) can be problem
+DLLIST	=	libdlinkedlist.a
+DLLIST_DIR=	doubly_linked_list
+LIB_ADD	+=	-ldlinkedlist
+LIBS	+=	DLLIST.lib
+
+LIBFT	=	libft.a
+LIBFT_DIR=	libft
+LIB_ADD	+=	-lft
+LIBS	+=	LIBFT.lib
+
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+LIBFLAGS=	DEBUG_FLAG=1
+COMPILE	=	DEBUG.flag
+else
+COMPILE	=	RELEASE.flag
+endif
+
+
+libs: $(COMPILE) $(LIBS)
+	$(MAKE) $(NAME)
+
+all: $(NAME)
+
+debug: 
+	$(MAKE) DEBUG_FLAG=1 libs
+
+RELEASE.flag:
+	$(MAKE) fclean
+	touch RELEASE.flag
+
+DEBUG.flag:
+	$(MAKE) fclean
+	touch DEBUG.flag
+
+$(LIBS): %.lib:
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCL_DIR) 
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) DEBUG.flag RELEASE.flag
+
+fclean: clean $(LIBS:%=%.clean)
+	$(RM) $($(LIBS:%.lib=%))
+	$(RM) $(NAME)
+
+$(LIBS:%=%.clean): %.lib.clean:
+	$(RM) $($*)
+	@$(MAKE) -C $($*_DIR) fclean
+	$(RM) $*.lib
+
+re: fclean
+	$(MAKE) libs
+
+.PHONY: all clean fclean re libs
+
+[ bash output ]
+NAME	=	minishell
+
+
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
+RM		=	rm -f
+
+# parser source files
+SRC		=	main.c\
+			initialize.c\
+			error.c\
+			status_handler.c\
+			delete_command_list.c\
+			execute/read_pipeline.c\
+			execute/generate_process.c\
+			execute/redirect_process.c\
+			execute/execute_command.c\
+			execute/execute_command_string.c\
+			execute/execute_helper_func_1.c\
+			execute/execute_helper_func_2.c\
+			execute/execve_wrapper.c\
+			parser/parser.c\
+			parser/parser_error.c\
+			parser/parse_simple_command.c\
+			parser/parse_compound_command.c\
+			parser/parse_redirect.c\
+			parser/print_parsing_info.c\
+			tokenizer/tokenizer.c\
+			tokenizer/token_helper_func.c\
+			tokenizer/recognition_procedure_1.c\
+			tokenizer/recognition_procedure_2.c\
+			tokenizer/subshell.c\
+			tokenizer/expansion/word_expansion.c\
+			tokenizer/expansion/word_expansion_quotize.c\
+			tokenizer/expansion/special_expansion.c\
+			tokenizer/expansion/asterisk_expansion.c\
+			built_in/env.c\
+			built_in/export.c\
+			built_in/key_compare.c\
+			built_in/set_env.c\
+			built_in/check_key.c\
+			built_in/delete_content.c\
+			built_in/echo.c\
+			built_in/exit.c\
+			built_in/exit_wrapper.c\
+			built_in/cd.c\
+			built_in/cd_util.c\
+			built_in/ft_atoll.c\
+			built_in/ft_split_first.c\
+			built_in/unset.c\
+			built_in/pwd.c\
+			built_in/move_directory.c\
+			signal/handle_signal.c
+SRC_DIR	=	src
+SRC		:=	$(SRC:%=$(SRC_DIR)/%)
+OBJ		=	$(SRC:%.c=%.o)
+
+INCL	=	minishell.h\
+			doubly_linked_list.h\
+			libft.h\
+			cmd.h\
+			parser/parser.h\
+			parser/token.h\
+			parser/token_recognition.h
+INCL_DIR=	-I./include
+
+ifeq ($(shell uname), Darwin)
+INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
+LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+endif
+
+LIB_ADD	+=	-L. 
+LIBTARGET=	all
+
+# NOTE: library order (-ldlinkedlist and -lft) can be problem
+DLLIST	=	libdlinkedlist.a
+DLLIST_DIR=	doubly_linked_list
+LIB_ADD	+=	-ldlinkedlist
+LIBS	+=	DLLIST.lib
+
+LIBFT	=	libft.a
+LIBFT_DIR=	libft
+LIB_ADD	+=	-lft
+LIBS	+=	LIBFT.lib
+
+ifeq ($(DEBUG_FLAG), 1)
+CFLAGS	+=	$(DEBUG)
+LIBFLAGS=	DEBUG_FLAG=1
+COMPILE	=	DEBUG.flag
+else
+COMPILE	=	RELEASE.flag
+endif
+
+
+libs: $(COMPILE) $(LIBS)
+	$(MAKE) $(NAME)
+
+all: $(NAME)
+
+debug: 
+	$(MAKE) DEBUG_FLAG=1 libs
+
+RELEASE.flag:
+	$(MAKE) fclean
+	touch RELEASE.flag
+
+DEBUG.flag:
+	$(MAKE) fclean
+	touch DEBUG.flag
+
+$(LIBS): %.lib:
+	$(MAKE) -C $($*_DIR) $(LIBFLAGS) all
+	@cp -p $($*_DIR)/$($*) .
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -lreadline $(LIB_ADD)
+
+$(OBJ): %.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCL_DIR) 
+
+clean:
+	$(RM) $(OBJ)
+	$(RM) DEBUG.flag RELEASE.flag
+
+fclean: clean $(LIBS:%=%.clean)
+	$(RM) $($(LIBS:%.lib=%))
+	$(RM) $(NAME)
+
+$(LIBS:%=%.clean): %.lib.clean:
+	$(RM) $($*)
+	@$(MAKE) -C $($*_DIR) fclean
+	$(RM) $*.lib
+
+re: fclean
+	$(MAKE) libs
+
+.PHONY: all clean fclean re libs
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: exit -1
+
+#60  [[0;32mOK[0m] [0;33m"[0mexit -1[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 255
+bash exit status = 255
+
+
+
+
+	TEST: exit -12345678901234567890
+
+#61  [[0;32mOK[0m] [0;33m"[0mexit -12345678901234567890[0;33m"[0m
+
+[ minishell output ]
+exit: -12345678901234567890: numeric argument required
+
+[ bash output ]
+exit: -12345678901234567890: numeric argument required
+
+[ diff ]
+
+minishell exit status = 255
+bash exit status = 255
+
+
+
+
+	TEST: exit -1234567890
+
+#62  [[0;32mOK[0m] [0;33m"[0mexit -1234567890[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 46
+bash exit status = 46
+
+
+
+
+	TEST: exit 257
+
+#63  [[0;32mOK[0m] [0;33m"[0mexit 257[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: exit 42
+
+#64  [[0;32mOK[0m] [0;33m"[0mexit 42[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 42
+bash exit status = 42
+
+
+
+
+	TEST: exit 12345678901234567890
+
+#65  [[0;32mOK[0m] [0;33m"[0mexit 12345678901234567890[0;33m"[0m
+
+[ minishell output ]
+exit: 12345678901234567890: numeric argument required
+
+[ bash output ]
+exit: 12345678901234567890: numeric argument required
+
+[ diff ]
+
+minishell exit status = 255
+bash exit status = 255
+
+
+
+
+	TEST: exit 1234567890
+
+#66  [[0;32mOK[0m] [0;33m"[0mexit 1234567890[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 210
+bash exit status = 210
+
+
+
+
+	TEST: env
+
+#67  [[0;33m??[0m] [0;33m"[0menv[0;33m"[0m
+
+[ minishell output ]
+TERM_PROGRAM=iTerm.app
+_P9K_TTY=/dev/ttys001
+TERM=xterm-256color
+SHELL=/bin/zsh
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n000ck0m0034h5/T/
+TERM_PROGRAM_VERSION=3.3.7
+TERM_SESSION_ID=w0t0p0:0BD433A1-30EA-46C5-81E6-713CCC748810
+ZSH=/Users/gson/.oh-my-zsh
+USER=gson
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.Lw1gGqWUxJ/Listeners
+__CF_USER_TEXT_ENCODING=0x0:0:0
+PAGER=less
+LSCOLORS=Gxfxcxdxbxegedabagacad
+PATH=/Users/gson/.local/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/gson/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PWD=/Users/gson/minishell
+P9K_SSH=0
+P9K_TTY=old
+LANG=en_US.UTF-8
+ITERM_PROFILE=Default
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=2
+HOME=/Users/gson
+COLORFGBG=12;8
+LC_TERMINAL_VERSION=3.3.7
+ITERM_SESSION_ID=w0t0p0:0BD433A1-30EA-46C5-81E6-713CCC748810
+LESS=-R
+LOGNAME=gson
+LC_TERMINAL=iTerm2
+COLORTERM=truecolor
+_=./minishell
+
+[ bash output ]
+TERM_PROGRAM=iTerm.app
+_P9K_TTY=/dev/ttys001
+SHELL=/bin/zsh
+TERM=xterm-256color
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n000ck0m0034h5/T/
+TERM_PROGRAM_VERSION=3.3.7
+TERM_SESSION_ID=w0t0p0:0BD433A1-30EA-46C5-81E6-713CCC748810
+ZSH=/Users/gson/.oh-my-zsh
+USER=gson
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.Lw1gGqWUxJ/Listeners
+__CF_USER_TEXT_ENCODING=0x0:0:0
+PAGER=less
+LSCOLORS=Gxfxcxdxbxegedabagacad
+PATH=/Users/gson/.local/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/gson/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+_=/usr/bin/env
+PWD=/Users/gson/minishell
+P9K_SSH=0
+LANG=en_US.UTF-8
+P9K_TTY=old
+ITERM_PROFILE=Default
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+COLORFGBG=12;8
+HOME=/Users/gson
+SHLVL=3
+LC_TERMINAL_VERSION=3.3.7
+ITERM_SESSION_ID=w0t0p0:0BD433A1-30EA-46C5-81E6-713CCC748810
+LOGNAME=gson
+LESS=-R
+LC_TERMINAL=iTerm2
+COLORTERM=truecolor
+
+[ diff ]
+3d2
+< TERM=xterm-256color
+4a4
+> TERM=xterm-256color
+14a15
+> _=/usr/bin/env
+17d17
+< P9K_TTY=old
+18a19
+> P9K_TTY=old
+22,23d22
+< SHLVL=2
+< HOME=/Users/gson
+24a24,25
+> HOME=/Users/gson
+> SHLVL=3
+27d27
+< LESS=-R
+28a29
+> LESS=-R
+31d31
+< _=./minishell
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: env a
+
+#68  [[0;32mOK[0m] [0;33m"[0menv a[0;33m"[0m
+
+[ minishell output ]
+env: a: No such file or directory
+
+[ bash output ]
+env: a: No such file or directory
+
+[ diff ]
+
+minishell exit status = 127
+bash exit status = 127
+
+
+
+
+	TEST: export =
+
+#69  [[0;32mOK[0m] [0;33m"[0mexport =[0;33m"[0m
+
+[ minishell output ]
+export: `=': not a valid identifier
+
+[ bash output ]
+export: `=': not a valid identifier
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: export ===
+
+#70  [[0;32mOK[0m] [0;33m"[0mexport ===[0;33m"[0m
+
+[ minishell output ]
+export: `===': not a valid identifier
+
+[ bash output ]
+export: `===': not a valid identifier
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: export a
+
+#71  [[0;32mOK[0m] [0;33m"[0mexport a[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export a=
+
+#72  [[0;32mOK[0m] [0;33m"[0mexport a=[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export a===
+
+#73  [[0;32mOK[0m] [0;33m"[0mexport a===[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export 1
+
+#74  [[0;32mOK[0m] [0;33m"[0mexport 1[0;33m"[0m
+
+[ minishell output ]
+export: `1': not a valid identifier
+
+[ bash output ]
+export: `1': not a valid identifier
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: export a=12
+
+#75  [[0;32mOK[0m] [0;33m"[0mexport a=12[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export a=1 b=2 c=3
+
+#76  [[0;32mOK[0m] [0;33m"[0mexport a=1 b=2 c=3[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export a=1 b=2 a=3
+
+#77  [[0;32mOK[0m] [0;33m"[0mexport a=1 b=2 a=3[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export a=1 1=2 a=3
+
+#78  [[0;32mOK[0m] [0;33m"[0mexport a=1 1=2 a=3[0;33m"[0m
+
+[ minishell output ]
+export: `1=2': not a valid identifier
+
+[ bash output ]
+export: `1=2': not a valid identifier
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: export a a a a a
+
+#79  [[0;32mOK[0m] [0;33m"[0mexport a a a a a[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export a= a= a= a= a=
+
+#80  [[0;32mOK[0m] [0;33m"[0mexport a= a= a= a= a=[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: export a=1 a=1 a=2 a=2 a=3
+
+#81  [[0;32mOK[0m] [0;33m"[0mexport a=1 a=1 a=2 a=2 a=3[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: unset =
+
+#82  [[0;32mOK[0m] [0;33m"[0munset =[0;33m"[0m
+
+[ minishell output ]
+unset: `=': not a valid identifier
+
+[ bash output ]
+unset: `=': not a valid identifier
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: unset 1
+
+#83  [[0;32mOK[0m] [0;33m"[0munset 1[0;33m"[0m
+
+[ minishell output ]
+unset: `1': not a valid identifier
+
+[ bash output ]
+unset: `1': not a valid identifier
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: unset a
+
+#84  [[0;32mOK[0m] [0;33m"[0munset a[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: unset a b c
+
+#85  [[0;32mOK[0m] [0;33m"[0munset a b c[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: unset a 1 c
+
+#86  [[0;32mOK[0m] [0;33m"[0munset a 1 c[0;33m"[0m
+
+[ minishell output ]
+unset: `1': not a valid identifier
+
+[ bash output ]
+unset: `1': not a valid identifier
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: unset a _1
+
+#87  [[0;32mOK[0m] [0;33m"[0munset a _1[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cd .
+
+#88  [[0;32mOK[0m] [0;33m"[0mcd .[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cd ..
+
+#89  [[0;32mOK[0m] [0;33m"[0mcd ..[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cd $HOME
+
+#90  [[0;32mOK[0m] [0;33m"[0mcd $HOME[0;33m"[0m
+
+[ minishell output ]
+
+[ bash output ]
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cd $NOTEXISTENVVAR
+
+#91  [[0;31mKO[0m] [0;33m"[0mcd $NOTEXISTENVVAR[0;33m"[0m
+
+[ minishell output ]
+minishell: cd: : No such file or directory
+
+[ bash output ]
+
+[ diff ]
+1d0
+< minishell: cd: : No such file or directory
+
+minishell exit status = 1
+bash exit status = 0
+
+
+
+
+	TEST: cd notexistdir
+
+#92  [[0;32mOK[0m] [0;33m"[0mcd notexistdir[0;33m"[0m
+
+[ minishell output ]
+cd: notexistdir: No such file or directory
+
+[ bash output ]
+cd: notexistdir: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cd /notexistdir
+
+#93  [[0;32mOK[0m] [0;33m"[0mcd /notexistdir[0;33m"[0m
+
+[ minishell output ]
+cd: /notexistdir: No such file or directory
+
+[ bash output ]
+cd: /notexistdir: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cd notexistdir/
+
+#94  [[0;32mOK[0m] [0;33m"[0mcd notexistdir/[0;33m"[0m
+
+[ minishell output ]
+cd: notexistdir/: No such file or directory
+
+[ bash output ]
+cd: notexistdir/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cd /notexistdir/
+
+#95  [[0;32mOK[0m] [0;33m"[0mcd /notexistdir/[0;33m"[0m
+
+[ minishell output ]
+cd: /notexistdir/: No such file or directory
+
+[ bash output ]
+cd: /notexistdir/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cd ./notexistdir/
+
+#96  [[0;32mOK[0m] [0;33m"[0mcd ./notexistdir/[0;33m"[0m
+
+[ minishell output ]
+cd: ./notexistdir/: No such file or directory
+
+[ bash output ]
+cd: ./notexistdir/: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cd ./notexistdir
+
+#97  [[0;32mOK[0m] [0;33m"[0mcd ./notexistdir[0;33m"[0m
+
+[ minishell output ]
+cd: ./notexistdir: No such file or directory
+
+[ bash output ]
+cd: ./notexistdir: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: /bin/ls -a
+
+#98  [[0;32mOK[0m] [0;33m"[0m/bin/ls -a[0;33m"[0m
+
+[ minishell output ]
+.
+..
+.DS_Store
+.git
+.gitignore
+.vscode
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ bash output ]
+.
+..
+.DS_Store
+.git
+.gitignore
+.vscode
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cat nonexistfile
+
+#99  [[0;32mOK[0m] [0;33m"[0mcat nonexistfile[0;33m"[0m
+
+[ minishell output ]
+cat: nonexistfile: No such file or directory
+
+[ bash output ]
+cat: nonexistfile: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cat < nonexistfile
+
+#100 [[0;32mOK[0m] [0;33m"[0mcat < nonexistfile[0;33m"[0m
+
+[ minishell output ]
+nonexistfile: No such file or directory
+
+[ bash output ]
+nonexistfile: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cat < nonexistfile | ls
+
+#101 [[0;32mOK[0m] [0;33m"[0mcat < nonexistfile | ls[0;33m"[0m
+
+[ minishell output ]
+nonexistfile: No such file or directory
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ bash output ]
+nonexistfile: No such file or directory
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cat < nonexistfile || ls
+
+#102 [[0;32mOK[0m] [0;33m"[0mcat < nonexistfile || ls[0;33m"[0m
+
+[ minishell output ]
+nonexistfile: No such file or directory
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ bash output ]
+nonexistfile: No such file or directory
+Makefile
+README.md
+RELEASE.flag
+doubly_linked_list
+include
+libdlinkedlist.a
+libft
+libft.a
+minishell
+note
+out1
+src
+test_case.txt
+test_case_bonus.txt
+test_case_bonus_2.txt
+test_log.txt
+test_scripts.sh
+testdir
+token_grammar.txt
+
+[ diff ]
+
+minishell exit status = 0
+bash exit status = 0
+
+
+
+
+	TEST: cat < nonexistfile && ls
+
+#103 [[0;32mOK[0m] [0;33m"[0mcat < nonexistfile && ls[0;33m"[0m
+
+[ minishell output ]
+nonexistfile: No such file or directory
+
+[ bash output ]
+nonexistfile: No such file or directory
+
+[ diff ]
+
+minishell exit status = 1
+bash exit status = 1
+
+
+
+
+	TEST: cat asd|||
+
+#104 [[0;33m??[0m] [0;33m"[0mcat asd|||[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `|'
+
+[ bash output ]
+-c: syntax error near unexpected token `|'
+-c: `cat asd|||'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `|'
+---
+> -c: syntax error near unexpected token `|'
+> -c: `cat asd|||'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: ls <
+
+#105 [[0;33m??[0m] [0;33m"[0mls <[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `ls <'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `ls <'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: ls >
+
+#106 [[0;33m??[0m] [0;33m"[0mls >[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `ls >'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `ls >'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: ls >>
+
+#107 [[0;33m??[0m] [0;33m"[0mls >>[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `ls >>'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `ls >>'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: ls <<
+
+#108 [[0;33m??[0m] [0;33m"[0mls <<[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `ls <<'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `ls <<'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: <<
+
+#109 [[0;33m??[0m] [0;33m"[0m<<[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `<<'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `<<'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: >>
+
+#110 [[0;33m??[0m] [0;33m"[0m>>[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `>>'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `>>'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: <
+
+#111 [[0;33m??[0m] [0;33m"[0m<[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `<'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `<'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: >
+
+#112 [[0;33m??[0m] [0;33m"[0m>[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `newline'
+
+[ bash output ]
+-c: syntax error near unexpected token `newline'
+-c: `>'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `newline'
+---
+> -c: syntax error near unexpected token `newline'
+> -c: `>'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
+	TEST: |
+
+#113 [[0;33m??[0m] [0;33m"[0m|[0;33m"[0m
+
+[ minishell output ]
+syntax error near unexpected token `|'
+
+[ bash output ]
+-c: syntax error near unexpected token `|'
+-c: `|'
+
+[ diff ]
+1c1,2
+< syntax error near unexpected token `|'
+---
+> -c: syntax error near unexpected token `|'
+> -c: `|'
+
+minishell exit status = 2
+bash exit status = 2
+
+
+
+
