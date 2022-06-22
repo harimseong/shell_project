@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hseong <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 18:19:25 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 20:04:56 by hseong           ###   ########.fr       */
+/*   Created: 2022/06/22 21:14:25 by hseong            #+#    #+#             */
+/*   Updated: 2022/06/22 21:14:38 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 typedef int				(*t_program)(t_dlist *, int, char **);
 
-int	set_redirect(t_dlist *redirect_list);
-int	is_builtin(const char *name);
-int	execute_builtin(t_dlist *env_list, t_dlist *word_list, int idx);
+int			set_redirect(t_dlist *redirect_list);
+int			is_builtin(const char *name);
+int			execute_builtin(t_dlist *env_list, t_dlist *word_list, int idx);
 
 static void	close_fd(t_dlist *redirect_list);
 

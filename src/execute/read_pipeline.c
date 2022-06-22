@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 20:05:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:14:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,3 @@ void	pipeline_logic_op(int pipeline_type, int *status)
 	else if (pipeline_type == TT_AND)
 		*status = last_status != 0;
 }
-

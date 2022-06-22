@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:48:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 19:08:45 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:15:11 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static const t_redirect_func	g_redirect_func_tab[REDIR_NUM_OPS] = {
 	redirect_heredoc
 };
 
-static const char	*g_heredoc_prompt = "> ";
+static const char				*g_heredoc_prompt = "> ";
 
 int	set_redirect(t_dlist *redirect_list)
 {

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:50:29 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:01:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:46:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	parse_io_file(t_dlist *redirect_list)
 	filename = token_handler(TH_PEEK, NULL);
 	if (!check_token_type(filename->type, TT_WORD))
 	{
+		delete_word_content(operator);
 		if (DEBUG_FLAG)
 			printf("minishell: parse error: %s: %d: token_type %x\n",
 				__FILE__, __LINE__, filename->type);
@@ -68,6 +69,7 @@ void	parse_io_heredoc(t_dlist *redirect_list, int *flag)
 	end_word = token_handler(TH_PEEK, NULL);
 	if (!check_token_type(end_word->type, TT_WORD))
 	{
+		delete_word_content(heredoc);
 		if (DEBUG_FLAG)
 			printf("minishell: parse error: %s: %d: token_type %x\n",
 				__FILE__, __LINE__, end_word->type);

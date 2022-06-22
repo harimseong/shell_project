@@ -2,3 +2,5 @@ align bit masks in enum list to prevent typo.
 	take care of the value of bit mask
 	and using bitwise-OR operation.
 	bit mask can be dangerous.
+
+there's significant chance of memory leak when getting out of the middle of routine.

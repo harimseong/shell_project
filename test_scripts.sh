@@ -10,7 +10,7 @@ exit_log()
 	cat testdir/.result2 >> test_log.txt
 	echo "" >> test_log.txt
 	echo "[ diff ]" >> test_log.txt
-	diff testdir/.result1 testdir/.result2 >> test_log.txt
+	diff testdir/.result1 testdir/.result2 | cat -e >> test_log.txt
 	echo "" >> test_log.txt
 	echo "minishell exit status = $1" >> test_log.txt
 	echo "bash exit status = $2" >> test_log.txt

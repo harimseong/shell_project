@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 18:24:45 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:14:46 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,3 @@ int	execute_command(t_dlist *word_list, t_dlist *env_list)
 	}
 	return (builtin_set_exit(env_list, status, 0, NULL));
 }
-

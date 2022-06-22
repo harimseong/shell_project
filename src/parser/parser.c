@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 19:52:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:37:37 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "parser/token.h"
 #include "readline/readline.h"
 #include "readline/history.h"
 #include "libft.h"
@@ -70,7 +71,7 @@ t_dlist	*parse_init(t_dlist *pipeline_list)
 	{
 		status_handler(EXIT_STAT_PARSE_ERR, NULL, SH_SET);
 		parser_error(pipeline_list, token);
-		delete_word_content(token);
+		delete_word_content(token_handler(TH_PEEK, NULL));
 		return (NULL);
 	}
 	delete_word_content(token);

@@ -1,0 +1,116 @@
+
+  
+          
+	
+					
+ls
+pwd
+/bin/ls
+/bin/echo 42
+/bin/cat <12
+/bin/cat <Makefile
+notexistdir
+notexistdir/
+/notexistdir
+/notexistdir/
+./notexistdir
+./notexistdir/
+.notexistdir/
+src
+/bin/
+/bin
+bin/
+/src/
+/src
+src/
+./src/
+./
+/.
+..
+.
+/
+//
+echo 123
+echo -n 123
+echo -nnn 123
+echo -n-n-n 123
+echo -nab 123
+echo -n -n -n 123
+echo -n -a -b 123
+echo $NOTEXISTENVVAR
+echo "$USER"
+echo "$USER
+echo $USER"
+echo "'$USER'"
+echo '"$USER"'
+echo '$USER'
+echo $USER>out1|ls -a&&cat -e<out1
+echo """$?"""
+"cat $TERM | grep CC"
+"cat notexistfile | grep CC"
+""
+"" a
+""a
+a""
+c"a"t Makefile
+'cat $TERM | grep CC'
+'cat notexistfile | grep CC'
+''
+'' a
+''a
+a''
+c'a't Makefile
+exit -1
+exit -12345678901234567890
+exit -1234567890
+exit 257
+exit 42
+exit 12345678901234567890
+exit 1234567890
+env
+env a
+export =
+export ===
+export a
+export a=
+export a===
+export 1
+export a=12
+export a=1 b=2 c=3
+export a=1 b=2 a=3
+export a=1 1=2 a=3
+export a a a a a
+export a= a= a= a= a=
+export a=1 a=1 a=2 a=2 a=3
+unset =
+unset 1
+unset a
+unset a b c
+unset a 1 c
+unset a _1
+cd .
+cd ..
+cd $HOME
+cd $NOTEXISTENVVAR
+cd notexistdir
+cd /notexistdir
+cd notexistdir/
+cd /notexistdir/
+cd ./notexistdir/
+cd ./notexistdir
+/bin/ls -a
+cat nonexistfile
+cat < nonexistfile
+cat < nonexistfile | ls
+cat < nonexistfile || ls
+cat < nonexistfile && ls
+cat asd|||
+ls <
+ls >
+ls >>
+ls <<
+<<
+>>
+<
+>
+|
