@@ -7,4 +7,6 @@ bash_source
 *.vscode
 *.dSYM
 *.flag
+.DS_Store
 minishell
+test_log.txt
