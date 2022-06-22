@@ -77,6 +77,9 @@ export a=12
 export a=1 b=2 c=3
 export a=1 b=2 a=3
 export a=1 1=2 a=3
+export a a a a a
+export a= a= a= a= a=
+export a=1 a=1 a=2 a=2 a=3
 unset =
 unset 1
 unset a

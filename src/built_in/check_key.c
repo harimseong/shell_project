@@ -6,11 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 13:30:48 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 21:05:23 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 11:42:06 by gson             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
+#include "minishell.h"
+#include "execute.h"
 
 int	is_contain_special(char *str)
 {
@@ -70,7 +72,10 @@ int	check_key_dup(t_dlist *envlist, char **element, char *argv)
 		if (ft_strcmp(cur_env->key, element[0]) == 0)
 		{
 			if (ft_strchr(argv, '=') == NULL)
+			{
+				free_str_arr(element);
 				return (1);
+			}
 			make_env(cur_env, element, argv);
 			return (1);
 		}
