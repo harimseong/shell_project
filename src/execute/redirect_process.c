@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 20:48:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 00:26:10 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 19:08:45 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,33 @@
 #include "constants.h"
 #include "parser/parser.h"
 
-char		*get_next_line(int fd);
+typedef int						(*t_redirect_func)(t_redirect *);
+
+static const t_redirect_func	g_redirect_func_tab[REDIR_NUM_OPS] = {
+	redirect_in,
+	redirect_out,
+	redirect_append,
+	redirect_heredoc
+};
 
 static const char	*g_heredoc_prompt = "> ";
+
+int	set_redirect(t_dlist *redirect_list)
+{
+	t_node		*node;
+	t_redirect	*redirect;
+	int			status;
+
+	node = redirect_list->head;
+	status = 0;
+	while (status == 0 && node != NULL)
+	{
+		redirect = node->content;
+		status = g_redirect_func_tab[redirect->redir_type](redirect);
+		node = node->next;
+	}
+	return (status);
+}
 
 int	redirect_in(t_redirect *redirect)
 {

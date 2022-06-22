@@ -6,21 +6,22 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 15:59:46 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 07:15:26 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 12:29:55 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <sys/errno.h>
+
 # include <string.h>
 
 # include "parser/token.h"
-# include "sys/errno.h"
 
-#ifndef DEBUG_FLAG
-# define DEBUG_FLAG (0)
-#endif
+# ifndef DEBUG_FLAG
+#  define DEBUG_FLAG (0)
+# endif
 
 enum e_signal_handler
 {

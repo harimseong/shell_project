@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 00:02:08 by gson              #+#    #+#             */
-/*   Updated: 2022/06/19 19:31:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 19:50:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include "minishell.h"
 #include "cmd.h"
 
-extern t_dlist	*g_env_list;
 /*
  * forked child have duplicate signals from parent.
  * but execve sets those to differently.
@@ -52,6 +51,8 @@ static void	handle_sigint(int signo)
 	{
 		rl_catch_signals = 0;
 		printf("\n");
+		if (DEBUG_FLAG)
+			printf("%-4.d|", status_handler(0, NULL, SH_GET));
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();

@@ -6,18 +6,16 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 08:02:44 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 20:05:29 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
 #include "minishell.h"
-#include "cmd.h"
 #include "constants.h"
 #include "execute.h"
 #include "parser/parser.h"
@@ -25,9 +23,9 @@
 int
 generate_process(t_command *command, t_dlist *env_list, int pipe_exist);
 int
-is_builtin(const char *name);
-int
-execute_builtin(t_dlist *env_list, t_dlist *word_list, int idx);
+check_builtin_no_pipe(t_command *command, t_dlist *env_list);
+void
+handle_signals(void);
 
 static int
 read_command_list(t_dlist *command_list, t_dlist *env_list, t_dlist *pid_list);
@@ -35,8 +33,6 @@ static int
 wait_process(t_dlist *pid_list);
 static void
 pipeline_logic_op(int pipeline_type, int *status);
-static int
-check_builtin(t_dlist *word_list);
 
 void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 {
@@ -74,9 +70,8 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list,
 	int			flag;
 
 	command = get_front(command_list);
-	flag = check_builtin(command->word_list);
-	if (flag > 0 && command_list->size == 1)
-		return (execute_builtin(env_list, command->word_list, flag - 1));
+	if (command_list->size == 1 && check_builtin_no_pipe(command, env_list))
+		return (status_handler(0, NULL, SH_GET));
 	flag = 0;
 	while (command != NULL)
 	{
@@ -96,6 +91,9 @@ int	read_command_list(t_dlist *command_list, t_dlist *env_list,
 	return (wait_process(pid_list));
 }
 
+/*
+ * sequential waipid could be a problem
+ */
 int	wait_process(t_dlist *pid_list)
 {
 	int		status;
@@ -112,6 +110,7 @@ int	wait_process(t_dlist *pid_list)
 			continue ;
 		}
 		waitpid(pid, &status, 0);
+		print_msg_by_signal(pid, status);
 	}
 	handle_signals();
 	dlist_empty(pid_list, free);
@@ -130,9 +129,3 @@ void	pipeline_logic_op(int pipeline_type, int *status)
 		*status = last_status != 0;
 }
 
-int	check_builtin(t_dlist *word_list)
-{
-	if (word_list->size == 0)
-		return (0);
-	return (is_builtin(get_word_from_token(get_front(word_list))));
-}

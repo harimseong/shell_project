@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 22:31:10 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/20 19:03:41 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 16:59:10 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ char	*find_env_by_key(t_dlist *env_list, const char *key);
 void	free_str_arr(char **arr);
 
 int		is_ifs(char c);
+void	print_msg_by_signal(int pid, int status);
 
 #endif

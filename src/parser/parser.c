@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:22:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 07:59:29 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 19:52:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ t_dlist	*parser(const char *line, t_dlist *env_list)
 	token = token_handler(TH_PEEK, NULL);
 	if (check_token_type(token->type, TT_EMPTY))
 	{
-		status_handler(0, NULL, SH_SET);
 		delete_word_content(token);
 		token_handler(TH_END, NULL);
 		return (NULL);
 	}
+	status_handler(0, NULL, SH_SET);
 	return (parse_init(dlist_init()));
 }
 

@@ -12,6 +12,7 @@ SRC		=	main.c\
 			error.c\
 			status_handler.c\
 			delete_command_list.c\
+			execute/builtin.c\
 			execute/read_pipeline.c\
 			execute/generate_process.c\
 			execute/redirect_process.c\

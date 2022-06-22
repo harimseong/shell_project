@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 00:23:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/22 19:15:33 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,11 @@
 #include "execute.h"
 #include "parser/parser.h"
 
-typedef int						(*t_redirect_func)(t_redirect *);
-
 int			execute_command(t_dlist *word_list, t_dlist *env_list);
-static int	set_redirect(t_dlist *redirect_list);
+int			set_redirect(t_dlist *redirect_list);
 static int	fork_and_pipe(int *recent_read_end,
 				int *pipe_fd, int pipe_exist);
 static int	safe_dup2(int oldfd, int newfd, int line);
-
-static const t_redirect_func	g_redirect_func_tab[REDIR_NUM_OPS] = {
-	redirect_in,
-	redirect_out,
-	redirect_append,
-	redirect_heredoc
-};
 
 int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 {
@@ -55,23 +46,6 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 	}
 	minishell_assert(pid >= 0, __FILE__, __LINE__);
 	return (pid);
-}
-
-int	set_redirect(t_dlist *redirect_list)
-{
-	t_node		*node;
-	t_redirect	*redirect;
-	int			status;
-
-	node = redirect_list->head;
-	status = 0;
-	while (status == 0 && node != NULL)
-	{
-		redirect = node->content;
-		status = g_redirect_func_tab[redirect->redir_type](redirect);
-		node = node->next;
-	}
-	return (status);
 }
 
 int	fork_and_pipe(int *recent_read_end, int *pipe_fd, int pipe_exist)

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 11:28:33 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/22 19:51:15 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int			minishell_initialize(int argc, char **argv, t_dlist *env_list,
 				char **prompt);
-static void	prompt_info(t_dlist *env_list);
+static void	prompt_info(void);
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -37,36 +37,31 @@ int	main(int argc, char *argv[], char *envp[])
 		builtin_exit(env_list, 0, NULL);
 	while (prompt)
 	{
-		prompt_info(env_list);
+		prompt_info();
 		line = readline(prompt);
 		if (line == NULL)
 			builtin_print_exit(env_list, 0, NULL);
 		if (ft_strlen(line) > 0)
 			add_history(line);
 		pipeline_list = parser(line, env_list);
+		free(line);
 		if (pipeline_list == NULL)
-		{
-			free(line);
 			continue ;
-		}
 		read_pipeline(pipeline_list, env_list);
 		dlist_delete(pipeline_list, delete_pipeline_content);
-		free(line);
-		system("leaks minishell");
 	}
 	return (1);
 }
 //				inspection tools
 // opened fd:
-// 				system("lsof -p $$");
+// 		system("lsof -p $$");
 // token list:
-// 				dlist_print_forward(pipeline_list, pipeline_content_print);
+// 		dlist_print_forward(pipeline_list, pipeline_content_print);
 // leak check:
-// 				system("leaks minishell");
+// 		system("leaks minishell");
 
-void	prompt_info(t_dlist *env_list)
+void	prompt_info(void)
 {
-	(void)env_list;
 	if (DEBUG_FLAG)
 		printf("%-4.d|", status_handler(0, NULL, SH_GET));
 }

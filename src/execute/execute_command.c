@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 18:06:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 16:40:43 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/22 18:24:45 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,8 @@
 #include "constants.h"
 #include "execute.h"
 
-#define BUILTIN_TAB_SIZE (7)
-
-typedef int				(*t_program)(t_dlist *, int, char **);
-
 int	is_builtin(const char *name);
 int	execute_builtin(t_dlist *env_list, t_dlist *word_list, int idx);
-
-static const char		*g_builtin_name_tab[BUILTIN_TAB_SIZE]
-	= {
-	"cd",
-	"exit",
-	"unset",
-	"export",
-	"echo",
-	"env",
-	"pwd",
-};
-
-static const t_program	g_builtin_tab[BUILTIN_TAB_SIZE]
-	= {
-	cd,
-	builtin_exit,
-	unset,
-	export,
-	echo,
-	env,
-	pwd
-};
 
 // envp is made of env_list which is be deallocated later.
 // don't free envp.
@@ -73,32 +47,3 @@ int	execute_command(t_dlist *word_list, t_dlist *env_list)
 	return (builtin_set_exit(env_list, status, 0, NULL));
 }
 
-int	is_builtin(const char *name)
-{
-	int		idx;
-
-	idx = 0;
-	while (idx < BUILTIN_TAB_SIZE)
-	{
-		if (ft_strncmp(name, g_builtin_name_tab[idx],
-				ft_strlen(g_builtin_name_tab[idx]) + 1) == 0)
-			return (idx + 1);
-		++idx;
-	}
-	return (0);
-}
-
-// argv is made of word_list which is be deallocated later.
-// don't free argv.
-int	execute_builtin(t_dlist *env_list, t_dlist *word_list, int idx)
-{
-	int		argc;
-	char	**argv;
-	int		status;
-
-	argc = word_list->size;
-	argv = dlist_to_array(word_list, get_word_from_token);
-	status = g_builtin_tab[idx](env_list, argc, argv);
-	free(argv);
-	return (status);
-}
