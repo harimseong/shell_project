@@ -10,3 +10,4 @@ bash_source
 .DS_Store
 minishell
 test_log.txt
+*testoutput

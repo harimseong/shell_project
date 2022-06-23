@@ -48,17 +48,25 @@ echo $USER>out1|ls -a&&cat -e<out1
 echo """$?"""
 "cat $TERM | grep CC"
 "cat notexistfile | grep CC"
+cat notexistfile | grep CC"
+"cat notexistfile | grep CC"
+cat notexistfile | ep CC
+"
 ""
 "" a
+" a
 ""a
-a""
+a"
 c"a"t Makefile
 'cat $TERM | grep CC'
 'cat notexistfile | grep CC'
 ''
+'
 '' a
 ''a
+'a
 a''
+a'
 c'a't Makefile
 exit -1
 exit -12345678901234567890
@@ -85,6 +93,8 @@ export a=1 a=1 a=2 a=2 a=3
 unset =
 unset 1
 unset a
+unset a a
+unset a a b b
 unset a b c
 unset a 1 c
 unset a _1
@@ -99,6 +109,9 @@ cd /notexistdir/
 cd ./notexistdir/
 cd ./notexistdir
 /bin/ls -a
+bin/ls -a
+bin/ls -b
+bin/ls --b
 cat nonexistfile
 cat < nonexistfile
 cat < nonexistfile | ls
@@ -109,6 +122,11 @@ ls <
 ls >
 ls >>
 ls <<
+|ls
+ls|
+< ls
+> ls
+>> ls
 <<
 >>
 <
