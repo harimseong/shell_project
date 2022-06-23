@@ -6,11 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 19:51:15 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/23 21:57:43 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <curses.h>
+#include <term.h>
 #include <stdio.h>
 #include "readline/readline.h"
 #include "readline/history.h"

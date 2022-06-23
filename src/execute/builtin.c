@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:14:25 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 21:14:38 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/23 21:54:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static const t_program	g_builtin_tab[BUILTIN_TAB_SIZE]
 	builtin_exit,
 	unset,
 	export,
-	echo,
+	builtin_echo,
 	env,
 	pwd
 };

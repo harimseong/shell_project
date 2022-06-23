@@ -71,7 +71,7 @@ INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
 LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
 endif
 
-LIB_ADD	+=	-L. 
+LIB_ADD	+=	-L.
 LIBTARGET=	all
 
 # NOTE: library order (-ldlinkedlist and -lft) can be problem

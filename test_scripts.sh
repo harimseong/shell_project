@@ -58,7 +58,13 @@ test_func()
 		MSG="[$GREEN_OK] $CMD"
 		STATUS=0
 	fi
-	MSG=$(printf "#%-3d $MSG\n" $TEST_NUMBER)
+	if [ $EXIT2 -eq 0 ]
+	then
+		STATUS_COLOR=${COLOR_GREEN}
+	else
+		STATUS_COLOR=${COLOR_RED}
+	fi
+	MSG=$(printf "${STATUS_COLOR}#%-3d${COLOR_END} $MSG\n" $TEST_NUMBER)
 	echo $MSG
 	exit_log $EXIT1 $EXIT2 $1 $MSG
 	rm testdir/.result1 testdir/.result2

@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:27:00 by gson              #+#    #+#             */
-/*   Updated: 2022/06/18 20:31:53 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/23 21:53:26 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			env(t_dlist *envlist, int argc, char **argv);
 int			cd(t_dlist *envlist, int argc, char **argv);
 int			export(t_dlist *envlist, int argc, char **argv);
 int			unset(t_dlist *envlist, int argc, char **argv);
-int			echo(t_dlist *envlist, int argc, char **argv);
+int			builtin_echo(t_dlist *envlist, int argc, char **argv);
 int			pwd(t_dlist *envlist, int argc, char **argv);
 long long	ft_atoll(char *str, int *error);
 int			is_contain_special(char *str);
