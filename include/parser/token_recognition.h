@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 04:04:50 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/30 21:03:07 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	*dlist_to_string(t_node *start, size_t len);
 int		is_ifs(char c);
 
 int		expand_word(t_iterator *iterator, int token_type);
+int		expand_asterisk(t_iterator *iterator, t_node *expand_point,
+		int token_type);
 int		special_expansion(t_iterator *iterator, char target, int token_type);
 char	*convert_str_to_quoted(char *string);
 int		get_subshell_token(t_iterator *iterator);

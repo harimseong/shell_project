@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:55:06 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/20 01:16:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/01 19:01:07 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,12 @@
 
 typedef int		(*t_expand_func)(t_iterator *, t_node *, int);
 
-int			expand_asterisk(t_iterator *iterator, t_node *expand_point,
-				int token_type);
-
-static int	expand_question(t_iterator *iterator, t_node *expand_point,
-				int token_type);
-static int	expand_tilde(t_iterator *iterator, t_node *expand_point,
-				int token_type);
-static int	expand_number(t_iterator *iterator, t_node *expand_point,
-				int token_type);
+static int
+expand_question(t_iterator *iterator, t_node *expand_point, int token_type);
+static int
+expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type);
+static int
+expand_number(t_iterator *iterator, t_node *expand_point, int token_type);
 
 static const
 	t_expand_func g_special_expansion_tab[128]
@@ -76,7 +73,7 @@ static const
 	/*39  '*/0,
 	/*40  (*/0,
 	/*41  )*/0,
-	/*42  **/expand_asterisk,
+	/*42  **/0,
 	/*43  +*/0,
 	/*44  ,*/0,
 	/*45  -*/0,
@@ -198,6 +195,13 @@ int	expand_question(t_iterator *iterator, t_node *expand_point, int token_type)
 	return (0);
 }
 
+/*
+ * if HOME environment variable is unset, use previously saved one.
+ * when it is newly set, saved one is alse updated.
+ *
+ * ~... = ~...
+ * ~/... = $HOME/...
+ */
 int	expand_tilde(t_iterator *iterator, t_node *expand_point, int token_type)
 {
 	char	*home_dir;

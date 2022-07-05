@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 15:15:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 16:40:52 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/28 16:54:51 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ int	execve_wrapper(const char *filename, char **argv, char **envp,
 	int		errno_var;
 	size_t	len;
 
-	if (path_arr == NULL || path_arr[0] == NULL)
-	{
-		minishell_errormsg(filename, "No such file or directory", NULL);
-		return (ES_ENOENT);
-	}
 	len = ft_strlen(filename);
 	minishell_assert(len < MAX_PATHNAME, __FILE__, __LINE__);
 	file_path = ft_strchr(filename, '/');
 	if (file_path == NULL)
 	{
+		if (path_arr != NULL && path_arr[0] == NULL)
+		{
+			minishell_errormsg(filename, "No such file or directory", NULL);
+			return (ES_ENOENT);
+		}
 		ft_execvpe(filename, argv, envp, path_arr);
 		minishell_errormsg(filename, "command not found", NULL);
 		return (ES_ENOENT);

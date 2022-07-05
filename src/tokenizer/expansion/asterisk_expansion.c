@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:34:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 19:28:35 by gson             ###   ########.fr       */
+/*   Updated: 2022/06/30 20:58:49 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #include <dirent.h>
 #include "libft.h"
 
+#include "minishell.h"
 #include "cmd.h"
 #include "constants.h"
 #include "parser/token_recognition.h"
 
 static int		str_cmp(const void *first, const void *second);
 static t_dlist	*get_names(DIR *dir_stream);
+static void		filter_names(t_iterator *iterator, t_dlist *name_list);
 static int		insert_names(t_iterator *iterator, t_node *expand_point,
 					t_dlist *name_list);
 
@@ -30,12 +32,14 @@ int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
 	t_dlist			*name_list;
 
 	if (check_token_type(token_type, TT_QUOTE_MASK))
-		return (0);
-	getcwd(current_working_dir, MAX_PATHNAME);
+			return (0);
+	minishell_assert(getcwd(current_working_dir, MAX_PATHNAME) == 0,
+		__FILE__, __LINE__);
 	dir_stream = opendir(current_working_dir);
 	if (dir_stream == NULL)
 		return (1);
 	name_list = get_names(dir_stream);
+	filter_names(iterator, name_list);
 	return (insert_names(iterator, expand_point, name_list));
 }
 
@@ -79,7 +83,13 @@ int	insert_names(t_iterator *iterator, t_node *expand_point,
 	return (0);
 }
 
+void	filter_names(t_iterator *iterator, t_dlist *name_list)
+{
+
+}
+
 int	str_cmp(const void *first, const void *second)
 {
-	return (ft_strcmp(first, second));
+	return (ft_strncmp(first, second, ft_strlen(second) + 1));
 }
+

@@ -27,11 +27,11 @@ $TEST $TEST2 some_file
 
 
 cat" -e" 	#fail
-cat " -e"	#success 
+cat " -e"	#success, fail on recent version of bash?
 export TEST1="cat"
 export TEST2=" -e"
 $TEST1$TEST2		#success(two token)
-echo $TEST1$TEST2	#one token
+echo $TEST1$TEST2	#one token?
 
 c"a"t -e 	#success
 c"a"t$TEST2 #success
@@ -80,3 +80,14 @@ echo 123 || (echo 456)	#both are same. subshell is not about precedence between 
 
 << 123 |||
 << 123 <<
+
+
+$> ls
+cat
+$> *
+// cat is waiting for input
+
+$> ls
+'<' abc cat
+$> *
+<: command not found

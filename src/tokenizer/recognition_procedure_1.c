@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/23 10:51:40 by hseong           ###   ########.fr       */
+/*   Updated: 2022/06/28 17:59:05 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 	if ((target == '\'' && check_token_type(token->type, TT_SQUOTE))
 		|| (target == '"' && check_token_type(token->type, TT_DQUOTE)))
 	{
-		token->type = TT_EMPTY * (iterator->line->cur->prev == iterator->record)
-			+ TT_WORD * (iterator->line->cur->prev != iterator->record);
+// $> ""		// should be a token made of empty string
+// $> echo ""	// there's no empty string token like above.
+//		token->type = TT_EMPTY * (iterator->line->cur->prev == iterator->record)
+//			+ TT_WORD * (iterator->line->cur->prev != iterator->record);
 		move_back(iterator->line);
 		erase_at(iterator->line, iterator->record, free);
 		erase_at(iterator->line, iterator->line->cur->prev, free);
@@ -75,16 +77,14 @@ int	check_dollar(t_iterator *iterator, t_token *token, char target)
 	if (target == '$' && !check_token_type(token->type, TT_SQUOTE))
 	{
 		next_target = get_char(iterator->line->cur->next);
-		if (next_target == '\0' || is_ifs(next_target))
-			token->type = TT_WORD;
-		else if (next_target == '?' || ft_isdigit(next_target))
+		if (next_target == '?' || ft_isdigit(next_target))
 		{
 			token->type |= TT_DOLLAR;
 			special_expansion(iterator, next_target, token->type);
-			token->type &= (0x7fffffff ^ TT_DOLLAR);
 		}
-		else
+		else if (next_target != '\0' && !is_ifs(next_target))
 			expand_word(iterator, token->type);
+		token->type = TT_WORD;
 		return (check_quote(iterator, token, get_char(iterator->line->cur)));
 	}
 	return (CONTINUE);
