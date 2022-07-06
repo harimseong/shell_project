@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:26:19 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/28 17:54:21 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/06 19:13:56 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ typedef struct s_iterator
 {
 	t_node	*record;
 	t_dlist	*line;
-	int		len;
 	t_dlist	*env_list;
 }				t_iterator;
 

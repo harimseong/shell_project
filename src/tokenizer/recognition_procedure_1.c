@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/28 17:59:05 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/06 19:07:53 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 // $> echo ""	// there's no empty string token like above.
 //		token->type = TT_EMPTY * (iterator->line->cur->prev == iterator->record)
 //			+ TT_WORD * (iterator->line->cur->prev != iterator->record);
+		token->type &= (0xffffffff ^ (TT_QUOTE_MASK | 0b11));
 		move_back(iterator->line);
 		erase_at(iterator->line, iterator->record, free);
 		erase_at(iterator->line, iterator->line->cur->prev, free);

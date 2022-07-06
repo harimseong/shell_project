@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:34:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/30 20:58:49 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/06 19:20:24 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,15 @@ int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
 		__FILE__, __LINE__);
 	dir_stream = opendir(current_working_dir);
 	if (dir_stream == NULL)
-		return (1);
+		return (minishell_assert(0, __FILE__, __LINE__));
 	name_list = get_names(dir_stream);
 	filter_names(iterator, name_list);
 	return (insert_names(iterator, expand_point, name_list));
 }
 
+/*
+ * readdir error?
+ */
 t_dlist	*get_names(DIR *dir_stream)
 {
 	struct dirent	*dir_ent;
@@ -85,7 +88,16 @@ int	insert_names(t_iterator *iterator, t_node *expand_point,
 
 void	filter_names(t_iterator *iterator, t_dlist *name_list)
 {
+	char	*pattern;
+	t_node	*node;
 
+	pattern = dlist_to_string(iterator->line->head, iterator->line->idx);
+	node = name_list->head;
+	while (node != name_list->tail)
+	{
+		if (is_matching(node->content)
+	}
+	free(pattern);
 }
 
 int	str_cmp(const void *first, const void *second)
