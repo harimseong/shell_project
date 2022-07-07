@@ -36,6 +36,7 @@ SRC		=	main.c\
 			tokenizer/expansion/word_expansion_quotize.c\
 			tokenizer/expansion/special_expansion.c\
 			tokenizer/expansion/asterisk_expansion.c\
+			tokenizer/expansion/helper_func.c\
 			built_in/env.c\
 			built_in/export.c\
 			built_in/key_compare.c\

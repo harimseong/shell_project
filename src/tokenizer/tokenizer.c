@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/07/01 18:55:30 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/07 20:26:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,23 @@ t_token	*token_handler(int type, t_iterator *new_iterator)
 t_token	*get_token(t_iterator *iterator)
 {
 	t_token	*new_token;
-	t_dlist	*buf;
+	t_dlist	*input_line;
 
 	new_token = ft_calloc(1, sizeof(t_token));
 	minishell_assert(new_token != NULL, __FILE__, __LINE__);
-	buf = iterator->line;
-	iterate_buffer(iterator, buf, new_token);
+	input_line = iterator->line;
+	iterate_buffer(iterator, input_line, new_token);
+	if (check_token_type(new_token->type, TT_ASTERISK))
+	{
+		expand_asterisk(iterator, iterator->line->cur, new_token->type);
+		iterate_buffer(iterator, input_line, new_token);
+	}
 	if (new_token->type == TT_EMPTY)
 		return (new_token);
-	else if (check_token_type(new_token->type, TT_ASTERISK))
-		expand_asterisk(iterator, iterator->line->cur, new_token->type);
-	new_token->word = dlist_to_string(buf->head, buf->idx);
+	new_token->word = dlist_to_string(input_line->head, input_line->idx);
 	minishell_assert(new_token->word != NULL, __FILE__, __LINE__);
-	while (buf->size > 0 && buf->head != buf->cur)
-		pop_front(buf, free);
+	while (input_line->size > 0 && input_line->head != input_line->cur)
+		pop_front(input_line, free);
 	return (new_token);
 }
 
@@ -86,24 +89,23 @@ int	recog_character(t_iterator *iterator, t_token *token)
 				get_char(iterator->line->cur));
 		++idx;
 	}
-	iterator->len += ret != DELIMIT;
-	++iterator->len;
 	return (ret);
 }
 
-void	iterate_buffer(t_iterator *iterator, t_dlist *buf, t_token *new_token)
+void	iterate_buffer(t_iterator *iterator, t_dlist *input_line,
+		t_token *new_token)
 {
-	while (get_char(buf->head) != 0)
+	while (get_char(input_line->head) != 0)
 	{
-		buf->cur = buf->head;
-		buf->idx = 0;
+		input_line->cur = input_line->head;
+		input_line->idx = 0;
 		while (recog_character(iterator, new_token) != DELIMIT)
-			move_back(buf);
+			move_back(input_line);
 		if (new_token->type != TT_EMPTY)
 			break ;
-		while (buf->size > 0 && buf->head != buf->cur)
-			pop_front(buf, free);
-		if (buf->idx == 0)
-			pop_front(buf, free);
+		while (input_line->size > 0 && input_line->head != input_line->cur)
+			pop_front(input_line, free);
+		if (input_line->idx == 0)
+			pop_front(input_line, free);
 	}
 }

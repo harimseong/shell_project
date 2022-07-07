@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:34:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/07/06 19:20:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/07 20:35:13 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 #include "constants.h"
 #include "parser/token_recognition.h"
 
-static int		str_cmp(const void *first, const void *second);
+int				str_cmp(const void *first, const void *second);
 static t_dlist	*get_names(DIR *dir_stream);
 static void		filter_names(t_iterator *iterator, t_dlist *name_list);
 static int		insert_names(t_iterator *iterator, t_node *expand_point,
 					t_dlist *name_list);
+static int		pattern_matched(const char *pattern, const char *str);
 
 int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
 {
@@ -33,7 +34,7 @@ int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
 
 	if (check_token_type(token_type, TT_QUOTE_MASK))
 			return (0);
-	minishell_assert(getcwd(current_working_dir, MAX_PATHNAME) == 0,
+	minishell_assert(getcwd(current_working_dir, MAX_PATHNAME) != NULL,
 		__FILE__, __LINE__);
 	dir_stream = opendir(current_working_dir);
 	if (dir_stream == NULL)
@@ -55,11 +56,12 @@ t_dlist	*get_names(DIR *dir_stream)
 	name_list = dlist_init();
 	while (dir_ent)
 	{
-		if (dir_ent->d_name[0] == '.')
-		{		
+/*		if (dir_ent->d_name[0] == '.')
+		{
 			dir_ent = readdir(dir_stream);
 			continue ;
 		}
+		*/
 		push_back(name_list, ft_strndup(dir_ent->d_name,
 				ft_strlen(dir_ent->d_name)));
 		dir_ent = readdir(dir_stream);
@@ -90,18 +92,29 @@ void	filter_names(t_iterator *iterator, t_dlist *name_list)
 {
 	char	*pattern;
 	t_node	*node;
+	t_node	*temp;
 
 	pattern = dlist_to_string(iterator->line->head, iterator->line->idx);
 	node = name_list->head;
 	while (node != name_list->tail)
 	{
-		if (is_matching(node->content)
+		if (pattern_matched(pattern, node->content))
+		{
+			node = node->next;
+			continue ;
+		}
+		temp = node;
+		node = node->next;
+		erase_at(name_list, temp, free);
 	}
+	if (name_list->size == 0)
+		push_back(name_list, pattern);
 	free(pattern);
 }
 
-int	str_cmp(const void *first, const void *second)
+int		pattern_matched(const char *pattern, const char *str)
 {
-	return (ft_strncmp(first, second, ft_strlen(second) + 1));
+	(void)pattern;
+	(void)str;
+	return (1);
 }
-

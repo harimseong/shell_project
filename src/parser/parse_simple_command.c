@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 16:58:32 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 07:10:32 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/07 21:27:17 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ void	parse_simple_command(t_command *command)
 			parse_cmd_suffix(command);
 	}
 	else
+	{
 		token->type = TT_ERROR;
+		minishell_errormsg(__FILE__, __FUNCTION__, NULL);
+	}
 }
 
 void	parse_cmd_name(t_command *command)

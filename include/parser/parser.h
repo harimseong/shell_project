@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 21:54:15 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 16:39:14 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/07 22:08:40 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct s_redirect
 }			t_redirect;
 
 /*
- * word_list->content		= t_token
- * redirect_list->content	= t_redirect
+ * word_list->content		: t_token
+ * redirect_list->content	: t_redirect
  */
 typedef struct s_command
 {
@@ -51,7 +51,7 @@ typedef struct s_command
 }			t_command;
 
 /*
- * command_list->content	= t_command
+ * command_list->content	: t_command
  */
 typedef struct s_pipeline
 {
