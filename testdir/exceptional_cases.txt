@@ -91,3 +91,7 @@ $> ls
 '<' abc cat
 $> *
 <: command not found
+
+
+echo a$			# if the next character of dollar is one of the IFS, dollar doen't expand.
+echo "a$ a"		# same for quoted dollar.

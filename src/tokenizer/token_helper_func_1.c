@@ -6,13 +6,12 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 23:19:41 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/21 08:38:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/08 15:47:08 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "parser/token.h"
 #include "parser/token_recognition.h"
 
 static const int	g_token_type_tab[128]

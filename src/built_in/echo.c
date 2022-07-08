@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:48:54 by gson              #+#    #+#             */
-/*   Updated: 2022/06/23 21:54:01 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/08 17:25:07 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	check_echo_flag(char *arg)
 	int	i;
 	int	arg_len;
 
-	if (arg == NULL)
+	if (arg == NULL || arg[0] == 0)
 		return (0);
 	i = 0;
 	arg_len = ft_strlen(arg);

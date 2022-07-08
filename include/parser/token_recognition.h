@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 14:08:40 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/30 21:03:07 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/08 15:48:20 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		get_operator_type(char target);
 int		check_long_operator(char target, t_token_type *type);
 char	*dlist_to_string(t_node *start, size_t len);
 int		is_ifs(char c);
+void	remove_mask(t_token_type *type, int mask);
 
 int		expand_word(t_iterator *iterator, int token_type);
 int		expand_asterisk(t_iterator *iterator, t_node *expand_point,

@@ -28,7 +28,8 @@ SRC		=	main.c\
 			parser/parse_redirect.c\
 			parser/print_parsing_info.c\
 			tokenizer/tokenizer.c\
-			tokenizer/token_helper_func.c\
+			tokenizer/token_helper_func_1.c\
+			tokenizer/token_helper_func_2.c\
 			tokenizer/recognition_procedure_1.c\
 			tokenizer/recognition_procedure_2.c\
 			tokenizer/subshell.c\

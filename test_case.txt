@@ -46,11 +46,19 @@ echo '"$USER"'
 echo '$USER'
 echo $USER>out1|ls -a&&cat -e<out1
 echo """$?"""
+echo $
+echo "$"
+echo a$
+echo "a$ a"
+echo '$'
+echo 'a$ a'
 "cat $TERM | grep CC"
 "cat notexistfile | grep CC"
 cat notexistfile | grep CC"
 "cat notexistfile | grep CC"
 cat notexistfile | ep CC
+echo ""
+echo ''
 "
 ""
 "" a
