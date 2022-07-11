@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 21:07:30 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 21:14:53 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/11 15:06:59 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ read_command_list(t_dlist *command_list, t_dlist *env_list, t_dlist *pid_list);
 static int
 wait_process(t_dlist *pid_list);
 static void
-pipeline_logic_op(int pipeline_type, int *status);
+pipeline_operation(int pipeline_type, int *status);
 
 void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 {
@@ -56,7 +56,7 @@ void	read_pipeline(t_dlist *pipeline_list, t_dlist *env_list)
 		}
 		pop_front(pipeline_list, delete_pipeline_content);
 		pipeline = get_front(pipeline_list);
-		pipeline_logic_op(pipeline_type, &status);
+		pipeline_operation(pipeline_type, &status);
 	}
 	dlist_delete(pid_list, free);
 }
@@ -118,7 +118,7 @@ int	wait_process(t_dlist *pid_list)
 		+ WIFSIGNALED(status) * (WTERMSIG(status) | 128));
 }
 
-void	pipeline_logic_op(int pipeline_type, int *status)
+void	pipeline_operation(int pipeline_type, int *status)
 {
 	int		last_status;
 

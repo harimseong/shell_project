@@ -1,8 +1,7 @@
 # $EXIT1 $EXIT2 $CMD
-exit_log()
+test_log()
 {
-	echo "	TEST: $3\n" >> test_log.txt
-	echo "$4\n" >> test_log.txt
+	echo "$3\n" >> test_log.txt
 	echo "[ minishell output ]" >> test_log.txt
 	cat testdir/.result1 >> test_log.txt
 	echo "" >> test_log.txt
@@ -66,7 +65,7 @@ test_func()
 	fi
 	MSG=$(printf "${STATUS_COLOR}#%-3d${COLOR_END} $MSG\n" $TEST_NUMBER)
 	echo $MSG
-	exit_log $EXIT1 $EXIT2 $1 $MSG
+	test_log $EXIT1 $EXIT2 $MSG
 	rm testdir/.result1 testdir/.result2
 	TEST_NUMBER=$((TEST_NUMBER + 1))
 	return $STATUS

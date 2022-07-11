@@ -2,6 +2,14 @@ cat asd || ls
 cat asd && ls
 echo *
 ls *
+echo */
+echo *//
+echo *"a"
+echo *'a'
+echo "a"*
+echo 'a'*
+echo *$NOTHING
+echo $NOTHING*
 ls | cat -e && gcc -v || echo "$TERM"
 ls | cat -e && gcc -v && echo "$TERM"
 ls && gcc -v && ls -a && echo "$TERM"

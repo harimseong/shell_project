@@ -6,7 +6,7 @@
 /*   By: hseong <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 06:57:35 by hseong            #+#    #+#             */
-/*   Updated: 2022/07/08 16:34:35 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/11 15:11:23 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ static void	parse_subshell(t_command *command);
 static void	parse_redirect_list(t_command *command);
 
 /*
- * TT_PAREN_OPEN has been checked both in here and parse_command.
- * adding is_compound_command at parse_command would be better.
+ * TT_PAREN_OPEN has been checked both in here and parse_command().
+ * adding is_compound_command() at parse_command() would be better
+ * when there're compound commands more than one.
  */
 void	parse_compound_command(t_command *command)
 {

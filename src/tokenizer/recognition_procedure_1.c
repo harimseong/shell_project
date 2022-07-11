@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 17:59:13 by hseong            #+#    #+#             */
-/*   Updated: 2022/07/08 17:07:11 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/11 15:57:05 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	check_eoi(t_iterator *iterator, t_token *token, char target)
 	if (target == '\0')
 	{
 		if (check_token_type(token->type, TT_QUOTE_MASK))
-			token->type = TT_EOF_ERROR;
+			token->type = TT_ERROR
+				| (TT_SQUOTE_ERROR * check_token_type(token->type, TT_SQUOTE)
+				+ TT_DQUOTE_ERROR * check_token_type(token->type, TT_DQUOTE));
 		return (DELIMIT);
 	}
 	return (CONTINUE);
@@ -48,9 +50,8 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 // $> echo ""	// there's no empty string token like above.
 //		token->type = TT_EMPTY * (iterator->line->cur->prev == iterator->record)
 //			+ TT_WORD * (iterator->line->cur->prev != iterator->record);
-//		token->type |= TT_WORD;
-//		remove_mask(&token->type, TT_QUOTE_MASK | 0b11);
-		token->type = TT_WORD;
+		token->type |= TT_WORD;
+		remove_mask(&token->type, TT_QUOTE_MASK | 0b11);
 		move_back(iterator->line);
 		erase_at(iterator->line, iterator->record, free);
 		erase_at(iterator->line, iterator->line->cur->prev, free);
@@ -64,6 +65,7 @@ int	check_quote(t_iterator *iterator, t_token *token, char target)
 		if (!check_token_type(token->type, TT_EMPTY)
 			&& !check_token_type(token->type, TT_WORD))
 			return (DELIMIT);
+		token->type |= TT_WORD;
 		token->type
 			|= TT_SQUOTE * (target == '\'') + TT_DQUOTE * (target == '"');
 		return (APPLIED);

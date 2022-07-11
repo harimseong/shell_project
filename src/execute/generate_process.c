@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 17:45:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/22 19:15:33 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/11 15:35:02 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	generate_process(t_command *command, t_dlist *env_list, int pipe_exist)
 	return (pid);
 }
 
-int	fork_and_pipe(int *recent_read_end, int *pipe_fd, int pipe_exist)
+static int	fork_and_pipe(int *recent_read_end, int *pipe_fd, int pipe_exist)
 {
 	int	pid;
 	int	status;
@@ -75,7 +75,7 @@ int	fork_and_pipe(int *recent_read_end, int *pipe_fd, int pipe_exist)
 	return (pid - (pid + 1) * (status < 0));
 }
 
-int	safe_dup2(int oldfd, int newfd, int line)
+static int	safe_dup2(int oldfd, int newfd, int line)
 {
 	int	status;
 

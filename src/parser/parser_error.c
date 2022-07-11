@@ -6,7 +6,7 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:37 by hseong            #+#    #+#             */
-/*   Updated: 2022/07/08 17:29:56 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/10 17:47:12 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	parser_error(t_dlist *pipeline_list, t_token *token)
 static void	parser_eof_error(t_token *token)
 {
 	if (check_token_type(token->type, TT_SQUOTE_ERROR))
-		minishell_errormsg("unexpected error while looking for matching `''", NULL, NULL);
+		minishell_errormsg("unexpected error while looking for matching `''",
+			NULL, NULL);
 	if (check_token_type(token->type, TT_DQUOTE_ERROR))
-		minishell_errormsg("unexpected error while looking for matching `\"'", NULL, NULL);
-	minishell_errormsg("syntax error:", "unexpected end of file", NULL);
+		minishell_errormsg("unexpected error while looking for matching `\"'",
+			NULL, NULL);
+	minishell_errormsg("syntax error", "unexpected end of file", NULL);
 }

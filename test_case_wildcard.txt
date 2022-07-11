@@ -1,0 +1,12 @@
+echo *l*
+echo *l
+echo l*
+echo *
+echo .*
+echo .*.a
+echo *li*
+echo *li
+echo li*
+echo *list*
+echo *.a
+echo *.a*

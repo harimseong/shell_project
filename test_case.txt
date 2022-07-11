@@ -132,12 +132,12 @@ ls >>
 ls <<
 |ls
 ls|
-< ls
-> ls
->> ls
+< testdir/redirect_test
+> testdir/redirect_test
+>> testdir/redirect_test
 <<
 >>
 <
 >
 |
-rm -f ls
+rm -f testdir/redirect_test

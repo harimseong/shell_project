@@ -6,12 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 21:26:50 by hseong            #+#    #+#             */
-/*   Updated: 2022/07/07 20:26:41 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/11 15:35:47 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
+#include "dlinkedlist.h"
 
 #include "minishell.h"
 #include "constants.h"
@@ -23,6 +24,7 @@ typedef int	(*t_token_func)(t_iterator *, t_token *);
 static t_token	*get_token(t_iterator *iterator);
 static void		iterate_buffer(t_iterator *iterator, t_dlist *buf,
 				t_token *new_token);
+static void		postprocess_token(t_iterator *iterator, t_token *new_token);
 
 t_token	*token_handler(int type, t_iterator *new_iterator)
 {
@@ -53,29 +55,6 @@ t_token	*token_handler(int type, t_iterator *new_iterator)
 	return (NULL);
 }
 
-t_token	*get_token(t_iterator *iterator)
-{
-	t_token	*new_token;
-	t_dlist	*input_line;
-
-	new_token = ft_calloc(1, sizeof(t_token));
-	minishell_assert(new_token != NULL, __FILE__, __LINE__);
-	input_line = iterator->line;
-	iterate_buffer(iterator, input_line, new_token);
-	if (check_token_type(new_token->type, TT_ASTERISK))
-	{
-		expand_asterisk(iterator, iterator->line->cur, new_token->type);
-		iterate_buffer(iterator, input_line, new_token);
-	}
-	if (new_token->type == TT_EMPTY)
-		return (new_token);
-	new_token->word = dlist_to_string(input_line->head, input_line->idx);
-	minishell_assert(new_token->word != NULL, __FILE__, __LINE__);
-	while (input_line->size > 0 && input_line->head != input_line->cur)
-		pop_front(input_line, free);
-	return (new_token);
-}
-
 int	recog_character(t_iterator *iterator, t_token *token)
 {
 	int		idx;
@@ -86,13 +65,32 @@ int	recog_character(t_iterator *iterator, t_token *token)
 	while (idx < TABLE_SIZE && ret == CONTINUE)
 	{
 		ret = g_token_recog_tab[idx](iterator, token,
-				get_char(iterator->line->cur));
+			get_char(iterator->line->cur));
 		++idx;
 	}
 	return (ret);
 }
 
-void	iterate_buffer(t_iterator *iterator, t_dlist *input_line,
+static t_token	*get_token(t_iterator *iterator)
+{
+	t_token	*new_token;
+	t_dlist	*input_line;
+
+	new_token = ft_calloc(1, sizeof(t_token));
+	minishell_assert(new_token != NULL, __FILE__, __LINE__);
+	input_line = iterator->line;
+	iterate_buffer(iterator, input_line, new_token);
+	if (new_token->type == TT_EMPTY)
+		return (new_token);
+	postprocess_token(iterator, new_token);
+	new_token->word = dlist_to_string(input_line->head, input_line->idx);
+	minishell_assert(new_token->word != NULL, __FILE__, __LINE__);
+	while (input_line->size > 0 && input_line->head != input_line->cur)
+		pop_front(input_line, free);
+	return (new_token);
+}
+
+static void	iterate_buffer(t_iterator *iterator, t_dlist *input_line,
 		t_token *new_token)
 {
 	while (get_char(input_line->head) != 0)
@@ -107,5 +105,23 @@ void	iterate_buffer(t_iterator *iterator, t_dlist *input_line,
 			pop_front(input_line, free);
 		if (input_line->idx == 0)
 			pop_front(input_line, free);
+	}
+}
+
+static void		postprocess_token(t_iterator *iterator, t_token *new_token)
+{
+	t_dlist		*input_line;
+
+	input_line = iterator->line;
+	if (check_token_type(new_token->type, TT_ASTERISK))
+	{
+		expand_asterisk(iterator, input_line->cur, new_token->type);
+		iterate_buffer(iterator, input_line, new_token);
+	}
+	else if (check_token_type(new_token->type, TT_PARENTHESIS))
+	{
+		erase_at(input_line, input_line->head, free);
+		erase_at(input_line, input_line->cur->prev, free);
+		input_line->idx -= 2;
 	}
 }
