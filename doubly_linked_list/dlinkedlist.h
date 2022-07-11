@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 20:19:18 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/18 18:46:57 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/11 20:51:30 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		push_back(t_dlist *list, void *content);
 int		insert_at(t_dlist *list, t_node *at, void *content);
 void	pop_front(t_dlist *list, void (*delete_content)(void *));
 void	pop_back(t_dlist *list, void (*delete_content)(void *));
-void	erase_at(t_dlist *list, t_node *at, void (*delete_content)(void *));
+t_node	*erase_at(t_dlist *list, t_node *at, void (*delete_content)(void *));
 void	pop_node(t_dlist *list, t_node *del_node,
 			void (*delete_content)(void *));
 

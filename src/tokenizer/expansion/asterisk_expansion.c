@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 18:34:49 by hseong            #+#    #+#             */
-/*   Updated: 2022/07/11 19:32:24 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/11 21:01:17 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@
 #include "constants.h"
 #include "parser/token_recognition.h"
 
+#define MAX_PATTERN_LEN (128)
+
 int				token_word_cmp(const void *first, const void *second);
 static t_dlist	*get_names(DIR *dir_stream);
 static void		filter_names(const t_iterator *iterator, t_dlist *name_list);
 static int		insert_names(t_iterator *iterator, t_node *expand_point,
 					t_dlist *name_list);
-static int		pattern_matched(const char *pattern, t_token *str);
+static int		pattern_matched(char *pattern, t_token *str);
 char			*get_sub_pattern(const char *pattern);
+void			filter_special_cases(const char *pattern, t_dlist *name_list);
+int				find_pattern(char **pattern_ptr, char **str_ptr);
 
 int	expand_asterisk(t_iterator *iterator, t_node *expand_point, int token_type)
 {
@@ -93,7 +97,7 @@ void	filter_names(const t_iterator *iterator, t_dlist *name_list)
 	t_node	*temp;
 
 	pattern = dlist_to_string(iterator->line->head, iterator->line->idx);
-	filter_specifics(pattern, name_list);
+	filter_special_cases(pattern, name_list);
 	node = name_list->head;
 	while (node != NULL)
 	{
@@ -118,34 +122,19 @@ void	filter_names(const t_iterator *iterator, t_dlist *name_list)
 /*
  * pattern matching for directory
  */
-int		pattern_matched(const char *pattern, t_token *name)
+int		pattern_matched(char *pattern, t_token *name)
 {
-	static char	pattern_buf[128] = {0, };
 	char		*str;
-	int			idx;
+	int			status;
 
 	str = name->word;
 	while (*str)
 	{
 		if (*pattern == '*')
 		{
-			idx = 0;
-			while (*pattern == '*')
-				++pattern;
-			while (pattern[idx] && pattern[idx] != '*')
-			{
-				pattern_buf[idx] = pattern[idx];
-				++idx;
-			}
-			pattern_buf[idx] = 0;
-			if (idx == 0)
-				return (1);
-			str = ft_strnstr(str, pattern_buf, ft_strlen(str));
-			if (str == NULL)
-				return (0);
-			pattern += idx;
-			str += idx;
-			continue ;
+			status = find_pattern(&pattern, &str);
+			if (status < 2)
+				return (status);
 		}
 		if (*pattern != *str)
 			return (0);
@@ -157,4 +146,56 @@ int		pattern_matched(const char *pattern, t_token *name)
 	while (*pattern == '*')
 		++pattern;
 	return (*pattern == '\0');
+}
+
+int	find_pattern(char **pattern_ptr, char **str_ptr)
+{
+	char		*pattern;
+	char		*str;
+	static char	pattern_buf[MAX_PATTERN_LEN] = {0, };
+	int			idx;
+
+	pattern = *pattern_ptr;
+	str = *str_ptr;
+	idx = 0;
+	while (*pattern == '*')
+		++pattern;
+	while (pattern[idx] && pattern[idx] != '*')
+	{
+		pattern_buf[idx] = pattern[idx];
+		++idx;
+	}
+	pattern_buf[idx] = 0;
+	if (idx == 0)
+		return (1);
+	str = ft_strnstr(str, pattern_buf, ft_strlen(str));
+	if (str == NULL)
+		return (0);
+	if (*pattern == '\0' && *str != '\0')
+	{
+		++*str_ptr;
+		return (find_pattern(&pattern, str_ptr));
+	}
+	*pattern_ptr += idx;
+	*str_ptr += idx;
+	return (2);
+}
+
+void	filter_special_cases(const char *pattern, t_dlist *name_list)
+{
+	t_node	*node;
+	t_token	*name;
+
+	if (pattern[0] == '*')
+	{
+		node = name_list->head;
+		while (node != name_list->tail)
+		{
+			name = node->content;
+			if (name->word[0] == '.')
+				node = erase_at(name_list, node, delete_word_content);
+			else
+				node = node->next;
+		}
+	}
 }
