@@ -1,7 +1,7 @@
 NAME	=	minishell
 
 
-CC		=	gcc
+CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
 DEBUG	=	-g3 -fsanitize=address -DDEBUG_FLAG=1
 RM		=	rm -f

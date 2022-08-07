@@ -1,7 +1,7 @@
 NAME	= libdlinkedlist.a
 
 
-CC		= gcc
+CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 DEBUG	= -g3 -fsanitize=address
 

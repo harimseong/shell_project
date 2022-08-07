@@ -6,13 +6,18 @@
 /*   By: hseong <hseong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 21:21:20 by hseong            #+#    #+#             */
-/*   Updated: 2022/05/11 15:24:19 by hseong           ###   ########.fr       */
+/*   Updated: 2022/07/12 20:45:33 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# define WORD_BYTES (16)
 
 typedef unsigned long long int	t_uint64;
+
+typedef struct s_word
+{
+	unsigned long long int	byte[WORD_BYTES];
+}			t_word;
 
 static void	set_word(int c, t_word *num);
 
@@ -20,12 +25,12 @@ static void	set_word(int c, t_word *num);
 // big endian		: msb is at lower address.
 // int32 0A0B0C0D	> i [0D], i+1 [0C], i+2 [0B], i+3[0A]
 // little endian	: lsb is at lower address.
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, t_uint64 len)
 {
 	unsigned char	*ptr;
 	t_word			*word;
 	t_word			num;
-	size_t			idx;
+	t_uint64		idx;
 
 	ptr = (unsigned char *)b;
 	idx = len % (8 * WORD_BYTES);
@@ -42,7 +47,7 @@ void	*ft_memset(void *b, int c, size_t len)
 
 void	set_word(int c, t_word *num)
 {
-	size_t		idx;
+	t_uint64	idx;
 	t_uint64	long_c;
 
 	long_c = (t_uint64)c;
