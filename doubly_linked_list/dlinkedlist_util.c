@@ -6,14 +6,13 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 10:20:14 by hseong            #+#    #+#             */
-/*   Updated: 2022/06/11 04:45:01 by hseong           ###   ########.fr       */
+/*   Updated: 2022/08/07 13:21:35 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 #include "dlinkedlist.h"
-#include "libft.h"
 
 t_dlist	*dlist_init(void)
 {
