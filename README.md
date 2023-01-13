@@ -1,9 +1,9 @@
 # minishell
 
-minishell is a 42-cursus C project to make quite simple shell program.
+Minishell is simple shell program which has subset of bash's features. 
 
 ### installation
-installed readline library developer package is required to compile.  
+libreadline developer package is required to compile.
 installing it with package manager like apt or brew is recommended.
 ##### Homebrew
 `brew install readline`
@@ -11,12 +11,13 @@ installing it with package manager like apt or brew is recommended.
 `apt install libreadline-dev`
 
 ### what it does
-the goal of this project is making a simple shell as stated on project specification, so this is not an actual shell programming language, but a simple prompting program mimicking small part of bash shell.  
-most simple redirect operations, pipe, part of quoting and parameter expansion, and some bulit-ins with a few or without options are mandatory part. it can be extended to include wildcard, pipeline operators, parenthesis for subshell, etc..
+Some redirect operations(<, >, <<, >>), pipe(|), some quoting and parameter expansion($WORD), and some bulit-ins with a few or without options are implemented.
+Further improvements in mind are to include wildcard, pipeline operators, parenthesis for subshell.
 
 ### experience
-the biggest challenge was making parser because available tools are limited by a rule.  
-the rule allows neither regular expression function nor parser generator like bison and yacc, but some of C standard library functions and system calls.  
+I tried to follow structure of POSIX shell rather than to do it from scratch, because referencing POSIX shell specification is good practice.
+Thus writing codes was straightforward except there're some limits about external functions and the project.
+the rule allows neither regular expression function nor parser generator like bison and yacc.  but some of C standard library functions and system calls.  
 so I hand coded tokenizer and parser and my partner did same for built-ins.
 
 ### reference
