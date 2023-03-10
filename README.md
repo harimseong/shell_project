@@ -1,6 +1,6 @@
-# minishell
+# shell_project
 
-Minishell is simple shell program which has subset of bash's features. 
+This is very simplified POSIX shell practice project 
 
 ### installation
 libreadline developer package is required to compile.
