@@ -92,7 +92,7 @@ test_start()
 	done
 	if [ "$STATUS" != "0" ]
 	then
-		echo "\n\ttest log:\n\tcat test_log.txt | less"
+		printf "\n\ttest log:\n\tcat test_log.txt | less\n"
 	fi
 }
 
