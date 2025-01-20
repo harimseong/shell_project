@@ -1,26 +1,47 @@
 # shell_project
 
-This is very simplified POSIX shell practice project 
+This is a small shell providing features from subset of [POSIX shell](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19).
 
-### installation
-libreadline developer package is required to compile.
-installing it with package manager like apt or brew is recommended.
-##### Homebrew
+### Library
+libreadline developer package (>= 8.12) is the only dependency.
+installing it with package manager like `apt` or `brew` is recommended.
+
+##### macOS
 `brew install readline`
+
 ##### Ubuntu
-`apt install libreadline-dev`
+`apt-get install libreadline-dev`
 
-### what it does
-Some redirect operations(<, >, <<, >>), pipe(|), some quoting and parameter expansion($WORD), and some bulit-ins with a few or without options are implemented.
-Further improvements in mind are to include wildcard, pipeline operators, parenthesis for subshell.
+### Configure and Build
+`envsubst` command must exists. Install `gettext` package unless exist.
 
-### experience
-I tried to follow structure of POSIX shell rather than to do it from scratch, because referencing POSIX shell specification is good practice.
-Thus writing codes was straightforward except there're some limits about external functions and the project.
-the rule allows neither regular expression function nor parser generator like bison and yacc.  but some of C standard library functions and system calls.  
-so I hand coded tokenizer and parser and my partner did same for built-ins.
+##### macOS
+`brew install gettext`
 
-### reference
-I referenced [POSIX shell command language specification](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html) to make tokenizer and studied about parser to understand parsing process and made [RDP](https://en.m.wikipedia.org/wiki/Recursive_descent_parser) parser.  
-bash source code from https://ftp.gnu.org/ was helpful but not much because its old-style codes make it hard to read and understand.
-dash source code from https://git.kernel.org/pub/scm/utils/dash/dash.git was better when understanding the shell because it's more readable than bash.
+##### Ubuntu
+`apt-get install gettext`
+
+Run `./configure.sh && make` to configure and build.
+You may need to adjust library path manually if configure script does not work as expected.
+
+### Debug
+Run `make debug` to build in debug mode. It will enable
+- compiler options (debug symbol, sanitizer)
+- commandline structure logging
+- latest exit value
+
+
+### Supported Features
+- redirection operators (<, >, <<, >>)
+- commandline pipe (|)
+- quoting (', ")
+- parameter expansion ($WORD) and environment variables management (export, env, unset)
+- bulit-in commands (cd, pwd, echo, exit)
+- conditional operators (&&, ||)
+
+
+### Notes
+- Parser is hand-coded recursive descent parser based on BNF in `bnf.md`.
+- [Grammar reference](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_10)
+- [Token recognition reference](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_03)
+- Referenced bash's source code to determine the memory model of the commandline.
