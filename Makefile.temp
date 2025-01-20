@@ -69,10 +69,9 @@ INCL	=	minishell.h\
 INCL_DIR=	-I./include
 
 ifeq ($(shell uname), Darwin)
-INCL_DIR	+=	-I/Users/$(USER)/.brew/Cellar/readline/8.1.2/include
-LIB_ADD	=	-L/Users/$(USER)/.brew/Cellar/readline/8.1.2/lib
+INCL_DIR	+=-I${READLINE_HEADER}
+LIB_ADD	=	-L${READLINE_PATH}
 endif
-
 LIB_ADD	+=	-L.
 LIBTARGET=	all
 

@@ -11,3 +11,4 @@ bash_source
 minishell
 test_log.txt
 *testoutput
+Makefile
