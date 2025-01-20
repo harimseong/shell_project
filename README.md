@@ -40,6 +40,37 @@ Run `make debug` to build in debug mode. It will enable
 - conditional operators (&&, ||)
 
 
+### Test
+`test_script.sh` receives a file that has commands to be tested. There is one test case per line. Each test case will be executed in this shell and bash. stdout, exit value pair of both will be compared to decide correctness.
+
+
+Summary will be printed in stdout and details will be stored `test_log.txt`.
+```
+# stdout
+...
+#9   [OK] "echo 'a'*"
+#10  [OK] "echo *$NOTHING"
+#11  [OK] "echo $NOTHING*"
+#12  [OK] "ls | cat -e && gcc -v || echo "$TERM""
+...
+```
+# test_log.txt
+...
+[ shell output ]
+42
+
+[ bash output ]
+42
+
+[ diff ]
+
+shell exit status = 0
+bash exit status = 0
+...
+```
+```
+
+
 ### Notes
 - Parser is hand-coded recursive descent parser based on BNF in `bnf.md`.
 - [Grammar reference](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19_10)
