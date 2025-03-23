@@ -6,7 +6,7 @@
 /*   By: gson <gson@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:00:17 by hseong            #+#    #+#             */
-/*   Updated: 2025/01/20 23:03:35 by hseong           ###   ########.fr       */
+/*   Updated: 2025/03/23 23:36:41 by hseong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	main(int argc, char *argv[], char *envp[])
 		pipeline_list = parser(line, env_list);
 		free(line);
 		if (pipeline_list == NULL)
-			continue ;
+			continue;
     if (DEBUG_FLAG)
-  		dlist_print_forward(pipeline_list, pipeline_content_print);
+      dlist_print_forward(pipeline_list, pipeline_content_print);
 		read_pipeline(pipeline_list, env_list);
 		dlist_delete(pipeline_list, delete_pipeline_content);
 	}

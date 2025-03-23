@@ -75,7 +75,7 @@ io_here          : DLESS     here_end
                  ;
 here_end         : WORD                      /* Apply rule 3 */
                  ;
-seperator_op     : '&'
+seperator_op     : '&'                       /* Not supported */
                  | ';'
                  ;
 linebreak        : 'newline'
