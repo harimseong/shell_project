@@ -12,26 +12,22 @@ This is a small shell supporting subset of [POSIX shell](https://pubs.opengroup.
 
 
 ## Prerequisite
-- libreadline developer package (>= 8.12)
-installing it with package manager like `apt` or `brew` is recommended.
+- libreadline developer package (>= 8.12) for terminal input
+- `gettext` for configuration
+
+Recommend using package manager like `apt` or `brew` to install the library.
 
 #### macOS
-`brew install readline`
+`brew install readline gettext`
 
 #### Ubuntu
-`apt-get install libreadline-dev`
+`apt-get install libreadline-dev gettext`
 
 ## Configure and Build
-`envsubst` command must exists. Install `gettext` package unless exist.
-
-#### macOS
-`brew install gettext`
-
-#### Ubuntu
-`apt-get install gettext`
 
 Run `./configure.sh && make` to configure and build.
-You may need to adjust library path manually if configure script does not work as expected.
+
+You may need to adjust library path manually if configure script does not work.
 
 
 ## Debug
