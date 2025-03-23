@@ -1,6 +1,6 @@
 # shell_project
 
-This is a small shell supporting subset of [POSIX shell](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19) standard.
+This is a small shell that follows subset of [POSIX shell](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19) standard.
 
 ## Supported Features
 - redirection operators (<, >, <<, >>)
