@@ -3,12 +3,12 @@
 This is a small shell that follows subset of [POSIX shell](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#tag_19) standard.
 
 ## Supported Features
-- redirection operators (<, >, <<, >>)
-- commandline pipe (|)
-- quoting (', ")
-- parameter expansion ($WORD) and environment variables management (export, env, unset)
-- bulit-in commands (`cd`, `pwd`, `echo`, `exit`)
-- conditional operators (&&, ||)
+- redirection operators (`<, >, <<, >>`)
+- commandline pipe (`|`)
+- quoting (`', "`)
+- parameter expansion (`$WORD`) and environment variables management (`export, env, unset`)
+- bulit-in commands (`cd, pwd, echo, exit`)
+- conditional operators (`&&, ||`)
 
 
 ## Prerequisite
