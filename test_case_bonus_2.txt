@@ -1,6 +1,7 @@
 (ls)
 (ls))
 (ls)(
+(export HOME="/") && echo $HOME
 ls >testdir/testoutput || (pwd && echo 123 | cat -e >>testdir/testoutput && cat testdir/testoutput)
 ls >testdir/testoutput || pwd && echo 123 | cat -e >>testdir/testoutput && cat testdir/testoutput
 ls >testdir/testoutput && gcc -v || (ls -a && cat testdir/testoutput && echo "$TERM" && cat testdir/testoutput)
